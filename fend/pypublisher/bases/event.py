@@ -58,4 +58,4 @@ class Event(object):
         """ Raises the event and call the subscribers callbacks.
         Every callback will be called and receive the event and its data. """
         for callback in self.subscribers.values():
-            callback(self, data)
+            callback(self.id, data)
