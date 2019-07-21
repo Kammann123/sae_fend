@@ -23,8 +23,13 @@ class Property(object):
     # value's history is saved as a list of two element tuple
     # history = [ (datetime, value), ... , (datetime, value) ]
 
-    def __init__(self, buffer_length):
+    def __init__(self, buffer_length: int):
         self.max_length = buffer_length
+        self.history = []
+        self.value = None
+
+    def clear(self):
+        """ Clear property state's history. """
         self.history = []
         self.value = None
 
