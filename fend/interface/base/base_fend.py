@@ -12,7 +12,6 @@ from enum import Enum
 from pypublisher.bases.publisher import Publisher
 
 from fend.interface.properties.angular_speed import RPMAngularSpeed
-from fend.interface.properties.base.property import Property
 
 
 class PropertyNotFound(Exception):

@@ -6,8 +6,8 @@
 # third-party modules
 
 # pypublisher modules
-from pypublisher import Event
-from pypublisher import EventData
+from pypublisher.bases.event import Event
+from pypublisher.bases.event import EventData
 
 
 class EventAlreadyRegistered(Exception):
