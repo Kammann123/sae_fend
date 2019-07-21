@@ -1,5 +1,5 @@
 """
-This is the Front-End base class which defines the interface for
+This is the Front-End interface class which defines the interface for
 the Back-End interaction with the user interface.
 """
 
@@ -9,16 +9,18 @@ from enum import Enum
 # third-party modules
 
 # sae project modules
-from fend.pypublisher.bases.publisher import Publisher
+from pypublisher.bases.publisher import Publisher
 
 
 class Events(Enum):
+    """ Declaring Front-End events. """
+
     TextMessageSent = "TextMessageSent"
 
 
 class BaseFend(Publisher):
     """
-    BaseFend base class works as an event publisher, and the back-end instance subscribes to specific
+    BaseFend interface class works as an event publisher, and the back-end instance subscribes to specific
     events and gets notified with a callback method.
     """
 

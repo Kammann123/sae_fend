@@ -6,7 +6,7 @@
 # third-party modules
 
 # sae project modules
-from fend.pypublisher.bases.event import EventData
+from pypublisher.bases.event import EventData
 
 
 class TextMessageData(EventData):

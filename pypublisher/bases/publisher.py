@@ -6,8 +6,8 @@
 # third-party modules
 
 # pypublisher modules
-from fend.pypublisher.bases.event import Event
-from fend.pypublisher.bases.event import EventData
+from pypublisher import Event
+from pypublisher import EventData
 
 
 class EventAlreadyRegistered(Exception):
