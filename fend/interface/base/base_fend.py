@@ -11,6 +11,14 @@ from enum import Enum
 # sae project modules
 from pypublisher.bases.publisher import Publisher
 
+from fend.interface.properties.angular_speed import RPMAngularSpeed
+from fend.interface.properties.base.property import Property
+
+
+class PropertyNotFound(Exception):
+    def __init__(self):
+        Exception.__init__(self, "BaseFend property not found.")
+
 
 class Events(Enum):
     """ Declaring Front-End events. """
@@ -24,8 +32,19 @@ class BaseFend(Publisher):
     events and gets notified with a callback method.
     """
 
-    def __init__(self):
+    def __init__(self, buffer_length: int):
         super(BaseFend, self).__init__()
 
         # Declaring front end events
         self.register_event(Events.TextMessageSent)
+
+        # Defining properties
+        self.angular_speed = RPMAngularSpeed(buffer_length)
+
+    def update(self, magnitude, new_value):
+        """ Updates a magnitude's value. """
+        for attribute_name, attribute_value in self.__dict__.items():
+            if isinstance(attribute_value, magnitude):
+                getattr(self, attribute_name).set(new_value)
+        else:
+            raise PropertyNotFound
