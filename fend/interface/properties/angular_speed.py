@@ -19,7 +19,7 @@ class RPMAngularSpeed(Property):
         """ Verifies if the given value is a valid property state
         and returns a boolean result.
         """
-        if type(new_value) is float:
+        if type(new_value) is float or type(new_value) is int:
             if 0 <= new_value <= 14000.0:
                 return True
         return False
