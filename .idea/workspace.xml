@@ -2,10 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5a226690-185e-43ff-a5c0-bc49cce0a952" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/fend/classes/fend.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/fend/views/initial_win/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/fend/views/initial_win/init_window_logic.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fend/views/initial_win/init_window_logic.py" beforeDir="false" afterPath="$PROJECT_DIR$/fend/views/initial_win/init_window_logic.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -16,34 +14,26 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/fend/views/__init__.py">
+        <entry file="file://$PROJECT_DIR$/fend/views/initial_win/init_window_logic.py">
           <provider selected="true" editor-type-id="live-pycharm">
             <state>
-              <first_editor />
-              <second_editor />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/fend/views/initial_win/__init__.py">
-          <provider selected="true" editor-type-id="live-pycharm">
-            <state>
-              <first_editor />
+              <first_editor relative-caret-position="340">
+                <caret line="20" column="5" selection-start-line="20" selection-start-column="5" selection-end-line="20" selection-end-column="5" />
+                <folding>
+                  <element signature="e#0#53#0" expanded="true" />
+                </folding>
+              </first_editor>
               <second_editor />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/fend/views/initial_win/init_window_logic.py">
+        <entry file="file://$PROJECT_DIR$/fend/classes/fend.py">
           <provider selected="true" editor-type-id="live-pycharm">
             <state>
-              <first_editor relative-caret-position="408">
-                <caret line="24" column="43" selection-start-line="24" selection-start-column="43" selection-end-line="24" selection-end-column="43" />
-                <folding>
-                  <element signature="e#0#53#0" expanded="true" />
-                </folding>
+              <first_editor relative-caret-position="255">
+                <caret line="15" column="23" lean-forward="true" selection-start-line="15" selection-start-column="23" selection-end-line="15" selection-end-column="23" />
               </first_editor>
               <second_editor />
             </state>
@@ -72,7 +62,7 @@
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="676" />
+    <option name="x" value="-7" />
     <option name="width" value="697" />
     <option name="height" value="735" />
   </component>
@@ -128,7 +118,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../filter-simulator" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -147,17 +137,24 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="192e1324-8720-439e-a736-64c4a7a20ac0" name="Default Changelist" comment="" />
+      <changelist id="5a226690-185e-43ff-a5c0-bc49cce0a952" name="Default Changelist" comment="" />
       <created>1563303785655</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1563303785655</updated>
     </task>
+    <task id="LOCAL-00001" summary="initial window upgrades">
+      <created>1563309846025</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1563309846025</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.1688988" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -181,12 +178,21 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="trying to pull" />
-    <option name="LAST_COMMIT_MESSAGE" value="trying to pull" />
+    <MESSAGE value="initial window upgrades" />
+    <option name="LAST_COMMIT_MESSAGE" value="initial window upgrades" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/fend/views/window/window_ui.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-255" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/fend/views/initial_win/__init__.py">
+      <provider selected="true" editor-type-id="live-pycharm">
+        <state>
+          <first_editor />
+          <second_editor />
+        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/fend/views/__init__.py">
@@ -198,31 +204,31 @@
       </provider>
       <provider editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/fend/classes/fend.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" selection-start-line="10" selection-end-line="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/fend/views/initial_win/__init__.py">
-      <provider selected="true" editor-type-id="live-pycharm">
-        <state>
-          <first_editor />
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/fend/views/initial_win/init_window_logic.py">
       <provider selected="true" editor-type-id="live-pycharm">
         <state>
-          <first_editor relative-caret-position="408">
-            <caret line="24" column="43" selection-start-line="24" selection-start-column="43" selection-end-line="24" selection-end-column="43" />
+          <first_editor relative-caret-position="340">
+            <caret line="20" column="5" selection-start-line="20" selection-start-column="5" selection-end-line="20" selection-end-column="5" />
             <folding>
               <element signature="e#0#53#0" expanded="true" />
             </folding>
           </first_editor>
           <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/fend/classes/fend.py">
+      <provider selected="true" editor-type-id="live-pycharm">
+        <state>
+          <first_editor relative-caret-position="255">
+            <caret line="15" column="23" lean-forward="true" selection-start-line="15" selection-start-column="23" selection-end-line="15" selection-end-column="23" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" selection-start-line="10" selection-end-line="10" />
         </state>
       </provider>
     </entry>
