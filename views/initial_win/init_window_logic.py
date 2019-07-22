@@ -1,4 +1,4 @@
-from fend.views.initial_win.init_window_view import *
+from views.initial_win.init_window_view import *
 import threading
 
 
