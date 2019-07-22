@@ -14,6 +14,7 @@ from fend.interface.base.base_fend import BaseFend
 from fend.interface.base.base_fend import Events
 
 from fend.interface.events.textmessage import TextMessageData
+from fend.interface.properties.angular_speed import RPMAngularSpeed
 
 
 class BackEnd(Subscriber):
@@ -47,6 +48,12 @@ if __name__ == "__main__":
     # Instances
     front_end = BaseFend(100)
     back_end = BackEnd(front_end)
+
+    # Setting property values
+    front_end.update(RPMAngularSpeed, 3150)
+
+    # Show values
+    print("Current RPM value: {}".format(front_end.angular_speed.value))
 
     # Event triggering
     front_end.raise_event(Events.TextMessageSent,

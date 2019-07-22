@@ -45,5 +45,6 @@ class BaseFend(Publisher):
         for attribute_name, attribute_value in self.__dict__.items():
             if isinstance(attribute_value, magnitude):
                 getattr(self, attribute_name).set(new_value)
+                break
         else:
             raise PropertyNotFound
