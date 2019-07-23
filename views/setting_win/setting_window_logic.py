@@ -9,16 +9,17 @@ import serial.tools.list_ports
 from PyQt5 import uic, QtWidgets
 
 # sae project modules
+from views.setting_win.setting_window_view import Ui_SettingWindow
 
 
-class SettingWindow(QtWidgets.QDialog):
-    def __init__(self):
-        super(SettingWindow, self).__init__()
-        uic.loadUi('settingWindow.ui', self)
+class SettingWindow(QtWidgets.QDialog, Ui_SettingWindow):
+    def __init__(self, *args, **kwargs):
+        QtWidgets.QDialog.__init__(self, *args, **kwargs)
+        self.setupUi(self)
 
         self.finishButton.clicked.connect(self.finished_callback)
 
-        """ getting available serial ports"""
+        """ getting available serial ports """
         port = list(serial.tools.list_ports.comports())
         for puerto in port:
             self.portBox.addItem(puerto.device)
