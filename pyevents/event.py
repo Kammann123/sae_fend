@@ -1,11 +1,14 @@
 """
+Event Class
+Integration between OOP and Event-Driven Programming by allowing an object/instance of a class to raise
+its own events.
 """
 
 # python native modules
 
 # third-party modules
 
-# pypublisher modules
+# pyevents modules
 
 
 class AlreadySubscribed(Exception):
@@ -27,7 +30,8 @@ class EventData(object):
 class Event(object):
     """ Base class of an event.
     An internal dictionary saves the callback and its owner instance to identify who
-    is subscribing each callback. """
+    is subscribing each callback.
+    Raising an event will execute every subscriber's callback."""
 
     def __init__(self, identifier):
         self.id = identifier

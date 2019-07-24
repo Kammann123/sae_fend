@@ -6,7 +6,7 @@
 # third-party modules
 
 # sae project modules
-from pypublisher.bases.event import EventData
+from pyevents.event import EventData
 
 
 class TextMessageData(EventData):

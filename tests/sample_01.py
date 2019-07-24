@@ -7,13 +7,13 @@ Sample 01. Test of publisher/subscriber system and property's history.
 # third-party modules
 
 # sae project modules
-from pypublisher.bases.subscriber import Subscriber
+from pypublisher.subscriber import Subscriber
 
-from fend.interface.base.base_fend import BaseFend
+from fend.interface.interface import FendInterface
 
-from fend.interface.base.base_fend import Events
+from fend.interface.interface import Events
 
-from fend.interface.events.textmessage import TextMessageData
+from fend.interface.events.text_message import TextMessageData
 from fend.interface.properties.angular_speed import RPMAngularSpeed
 
 
@@ -21,7 +21,7 @@ class BackEnd(Subscriber):
     """ BackEnd Simulator.-
     """
 
-    def __init__(self, fend: BaseFend):
+    def __init__(self, fend: FendInterface):
         Subscriber.__init__(self)
 
         # Keep the front end reference
@@ -46,7 +46,7 @@ class BackEnd(Subscriber):
 if __name__ == "__main__":
 
     # Instances
-    front_end = BaseFend(100)
+    front_end = FendInterface(100)
     back_end = BackEnd(front_end)
 
     # Setting property values

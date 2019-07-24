@@ -1,4 +1,6 @@
 """
+Publisher
+Design Pattern mix, using events and the observer pattern, allowing multiple event handling through identifiers.
 """
 
 # python native modules
@@ -6,8 +8,8 @@
 # third-party modules
 
 # pypublisher modules
-from pypublisher.bases.event import Event
-from pypublisher.bases.event import EventData
+from pyevents.event import Event
+from pyevents.event import EventData
 
 
 class EventAlreadyRegistered(Exception):

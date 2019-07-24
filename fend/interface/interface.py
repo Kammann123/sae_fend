@@ -1,6 +1,5 @@
 """
-This is the Front-End interface class which defines the interface for
-the Back-End interaction with the user interface.
+Front-End base class, data model and interface with the back end.
 """
 
 # python native modules
@@ -9,7 +8,7 @@ from enum import Enum
 # third-party modules
 
 # sae project modules
-from pypublisher.bases.publisher import Publisher
+from pypublisher.publisher import Publisher
 
 from fend.interface.properties.angular_speed import RPMAngularSpeed
 
@@ -25,14 +24,14 @@ class Events(Enum):
     TextMessageSent = "TextMessageSent"
 
 
-class BaseFend(Publisher):
+class FendInterface(Publisher):
     """
     BaseFend interface class works as an event publisher, and the back-end instance subscribes to specific
     events and gets notified with a callback method.
     """
 
     def __init__(self, buffer_length: int):
-        super(BaseFend, self).__init__()
+        Publisher.__init__(self)
 
         # Declaring front end events
         self.register_event(Events.TextMessageSent)
