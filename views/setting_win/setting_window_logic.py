@@ -9,7 +9,7 @@ import serial.tools.list_ports
 from PyQt5 import uic, QtWidgets
 
 # sae project modules
-from views.setting_win.settingWindow_view import Ui_SettingWindow
+from views.setting_win.setting_window_view import Ui_SettingWindow
 
 
 class SettingWindow(QtWidgets.QDialog, Ui_SettingWindow):

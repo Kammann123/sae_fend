@@ -36,7 +36,7 @@ class Ui_InitWindow(object):
         self.saeLogo.setScaledContents(True)
         self.saeLogo.setObjectName("saeLogo")
         self.redCar = QtWidgets.QLabel(InitWindow)
-        self.redCar.setGeometry(QtCore.QRect(490, 210, 71, 31))
+        self.redCar.setGeometry(QtCore.QRect(0, 230, 71, 31))
         self.redCar.setText("")
         self.redCar.setPixmap(QtGui.QPixmap("X:/Users/Emilia/Desktop/ITBA/SAE/red_car.png"))
         self.redCar.setScaledContents(True)
