@@ -36,13 +36,13 @@ class FendInterface(Publisher):
     def __init__(self, buffer_length: int):
         Publisher.__init__(self)
 
-        # Declaring front end events
+        # Front-End action events
         self.register_event(Events.TextMessageSent)
 
-        # Defining properties
+        # Front-End properties
         self.angular_speed = RPMAngularSpeed(buffer_length)
 
-        # Object's events
+        # Object events
         self.changed = Event("InterfaceChanged")
 
     def update(self, magnitude, new_value):
