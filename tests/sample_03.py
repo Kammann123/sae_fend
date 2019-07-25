@@ -3,7 +3,6 @@ Sample 02. Testing SAEFend object's state flow.
 """
 
 # python native modules
-from enum import Enum
 
 # third-party modules
 

@@ -22,6 +22,8 @@ from fend.core.events import Finished
 from fend.core.events import Close
 from fend.core.events import ErrorOccurred
 
+from fend.user.session import Session
+
 
 class SAEFend(FendInterface, StateObject):
     """ SAEFend core class """
@@ -29,6 +31,9 @@ class SAEFend(FendInterface, StateObject):
     def __init__(self, buffer_length: int):
         FendInterface.__init__(self, buffer_length)
         StateObject.__init__(self)
+
+        # SAEFend application members
+        self.session = Session()
 
         # Setting up the state flow of the SAEFend Object
         self.set_flow(InitialWindowState, Finished, SetupWindowState)
@@ -46,3 +51,10 @@ class SAEFend(FendInterface, StateObject):
         self.set_default(InitialWindowState)
         self.restart()
 
+        # Schedules StateObject's run_event() method as a task
+        self.register_task(self.run_event)
+
+    def run(self):
+        """ SAEFend executes services or tasks registered by the back-end
+        or runs the events from the StateObject's queue. """
+        self.run_task()

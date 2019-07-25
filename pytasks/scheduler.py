@@ -38,7 +38,7 @@ class Scheduler(object):
     def fetch_task(self) -> Task:
         """ Returns the next task to be executed. """
         if self._current is None or self._current == len(self._tasks):
-            self.restart()
+            self.restart_task()
         self._current += 1
         return self._tasks[self._current - 1]
 
