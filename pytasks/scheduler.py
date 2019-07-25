@@ -42,6 +42,6 @@ class Scheduler(object):
         self._current += 1
         return self._tasks[self._current - 1]
 
-    def restart(self):
+    def restart_task(self):
         """ Restarts the order of the executed tasks. """
         self._current = 0

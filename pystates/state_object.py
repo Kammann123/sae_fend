@@ -15,6 +15,11 @@ from pystates.state import State
 from pystates.state_event import StateEvent
 
 
+class StateNotFound(Exception):
+    def __init__(self):
+        Exception.__init__(self, "The State was not found as registered.")
+
+
 class StateEventNotExpected(Exception):
     def __init__(self):
         Exception.__init__(self, "The StateEvent was not expected during current state of the object.")
@@ -81,9 +86,13 @@ class StateObject(object):
         else:
             self._flow[from_state_instance][event_instance] = to_state_instance
 
-    def set_default(self, default_state: State):
+    def set_default(self, default_state):
         """ Sets up the default state of the object. """
-        self._default = default_state
+        default_state_instance = default_state()
+        if default_state_instance in self._flow.keys():
+            self._default = default_state_instance
+        else:
+            raise StateNotFound
 
     def restart(self):
         """ Restarts the state of the object. """
