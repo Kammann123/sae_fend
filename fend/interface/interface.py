@@ -8,6 +8,8 @@ from enum import Enum
 # third-party modules
 
 # sae project modules
+from pytasks.concurrent_scheduler import ConcurrentScheduler
+
 from pypublisher.publisher import Publisher
 
 from pyevents.event import EventData
@@ -27,13 +29,14 @@ class Events(Enum):
     TextMessageSent = "TextMessageSent"
 
 
-class FendInterface(Publisher):
+class FendInterface(Publisher, ConcurrentScheduler):
     """
     BaseFend interface class works as an event publisher, and the back-end instance subscribes to specific
     events and gets notified with a callback method.
     """
 
     def __init__(self, buffer_length: int):
+        ConcurrentScheduler.__init__(self)
         Publisher.__init__(self)
 
         # Front-End action events
