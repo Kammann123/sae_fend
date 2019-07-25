@@ -10,6 +10,9 @@ from enum import Enum
 # sae project modules
 from pypublisher.publisher import Publisher
 
+from pyevents.event import EventData
+from pyevents.event import Event
+
 from fend.interface.properties.angular_speed import RPMAngularSpeed
 
 
@@ -39,11 +42,15 @@ class FendInterface(Publisher):
         # Defining properties
         self.angular_speed = RPMAngularSpeed(buffer_length)
 
+        # Object's events
+        self.changed = Event("InterfaceChanged")
+
     def update(self, magnitude, new_value):
         """ Updates a magnitude's value. """
         for attribute_name, attribute_value in self.__dict__.items():
             if isinstance(attribute_value, magnitude):
-                getattr(self, attribute_name).set(new_value)
+                if getattr(self, attribute_name).set(new_value):
+                    self.changed(EventData())
                 break
         else:
             raise PropertyNotFound

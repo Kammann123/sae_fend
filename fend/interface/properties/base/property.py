@@ -39,10 +39,13 @@ class Property(object):
         self.history = []
         self.value = None
 
-    def set(self, new_value):
+    def set(self, new_value) -> bool:
         """ Sets a new value for the property.
         If the given one is not valid, then an
         exception will be raised.
+
+        Returns whether it changes or not the current value
+        of the Property.
         """
         if self.verify(new_value):
             if self.value != new_value:
@@ -52,8 +55,10 @@ class Property(object):
                 self.history.append((datetime.now(), new_value))
 
                 self.property_changed(EventData())
+                return True
         else:
             raise InvalidPropertyValue
+        return False
 
     def verify(self, new_value) -> bool:
         """ Verifies if the given value is a valid property state
