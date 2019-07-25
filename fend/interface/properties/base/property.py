@@ -7,6 +7,8 @@ from datetime import datetime
 # third-party modules
 
 # sae project modules
+from pyevents.event import Event
+from pyevents.event import EventData
 
 
 class InvalidPropertyValue(Exception):
@@ -24,9 +26,13 @@ class Property(object):
     # history = [ (datetime, value), ... , (datetime, value) ]
 
     def __init__(self, buffer_length: int):
+        # Property's members
         self.max_length = buffer_length
         self.history = []
         self.value = None
+
+        # Property's events
+        self.property_changed = Event("PropertyChanged")
 
     def clear(self):
         """ Clear property state's history. """
@@ -39,10 +45,13 @@ class Property(object):
         exception will be raised.
         """
         if self.verify(new_value):
-            self.value = new_value
-            if len(self.history) >= self.max_length:
-                del self.history[0]
-            self.history.append((datetime.now(), new_value))
+            if self.value != new_value:
+                self.value = new_value
+                if len(self.history) >= self.max_length:
+                    del self.history[0]
+                self.history.append((datetime.now(), new_value))
+
+                self.property_changed(EventData())
         else:
             raise InvalidPropertyValue
 
