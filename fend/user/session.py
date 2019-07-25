@@ -12,3 +12,5 @@ Session data class
 class Session(object):
     """ Application's session data. """
 
+    def __init__(self):
+        self.serial = None

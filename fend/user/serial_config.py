@@ -11,7 +11,7 @@ from enum import Enum
 
 
 class BaudRates(Enum):
-    """ Standard Port Serial Baud Rates. """
+    """ Standard Serial Port Baud Rates. """
     _110 = "110"
     _300 = "300"
     _600 = "600"
@@ -29,7 +29,7 @@ class BaudRates(Enum):
 
 
 class Parity(Enum):
-    """ Standard Port Serial Parities. """
+    """ Standard Serial Port Parities. """
     ODD = "Odd"
     EVEN = "Even"
     NONE = "None"
