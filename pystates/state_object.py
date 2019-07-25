@@ -88,7 +88,7 @@ class StateObject(object):
 
     def set_default(self, default_state):
         """ Sets up the default state of the object. """
-        default_state_instance = default_state()
+        default_state_instance = default_state(self)
         if default_state_instance in self._flow.keys():
             self._default = default_state_instance
         else:
@@ -115,6 +115,7 @@ class StateObject(object):
         if event is not None:
             if isinstance(event, StateEvent):
                 self._queue.put(event)
+                return
 
         # Was not a valid event...
         raise NotAValidEvent

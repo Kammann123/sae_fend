@@ -7,6 +7,7 @@ State base class
 # third-party modules
 
 # sae project modules
+from pygeneral.strings import hash_by_ascii
 
 
 class State(object):
@@ -28,4 +29,7 @@ class State(object):
         return self.name == other.name
 
     def __hash__(self):
+        return hash_by_ascii(self.name)
+
+    def __str__(self):
         return self.name

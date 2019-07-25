@@ -7,6 +7,7 @@ StateEvent base class
 # third-party modules
 
 # sae project modules
+from pygeneral.strings import hash_by_ascii
 
 
 class StateEvent(object):
@@ -28,4 +29,7 @@ class StateEvent(object):
         return self.id == other.id
 
     def __hash__(self):
+        return hash_by_ascii(self.id)
+
+    def __str__(self):
         return self.id
