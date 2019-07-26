@@ -6,17 +6,19 @@ Setting UART staff window (port, speed, parity)
 
 # third-party modules
 import serial.tools.list_ports
-from PyQt5 import uic, QtWidgets
+from PyQt5 import QtWidgets
 
 # sae project modules
 from views.setting_win.setting_window_view import Ui_SettingWindow
+from fend.user.serial_config import SerialConfig
+from fend.user.session import Session
 
 
 class SettingWindow(QtWidgets.QDialog, Ui_SettingWindow):
-    def __init__(self, *args, **kwargs):
+    def __init__(self, session: Session, *args, **kwargs):
         QtWidgets.QDialog.__init__(self, *args, **kwargs)
         self.setupUi(self)
-
+        self._user_session = session
         self.finishButton.clicked.connect(self.finished_callback)
 
         """ getting available serial ports """
@@ -29,7 +31,10 @@ class SettingWindow(QtWidgets.QDialog, Ui_SettingWindow):
 
     def finished_callback(self):
         """ Callback to send information after selecting UART's options """
-        print(self.portBox.currentText())
-        print(self.speedBox.currentText())
-        print(self.parityBox.currentText())
+        # print(self.portBox.currentText())
+        # print(self.speedBox.currentText())
+        # print(self.parityBox.currentText())
+        """ Loading the current session's serial information """
+        self._user_session.serial = SerialConfig(self.speedBox.currentText(), 0, self.parityBox.currentText(), 0)
+
         self.hide()
