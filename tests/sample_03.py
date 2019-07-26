@@ -1,5 +1,5 @@
 """
-Sample 02. Testing SAEFend object's state flow.
+Sample 03. Testing SAEFend object's state flow.
 """
 
 # python native modules

@@ -22,7 +22,7 @@ class Scheduler(object):
 
     def __init__(self):
         self._tasks = []
-        self._current = None
+        self._current_task = None
 
     def register_task(self, task: Task):
         """ Registers a new task to be executed. """
@@ -37,11 +37,11 @@ class Scheduler(object):
 
     def fetch_task(self) -> Task:
         """ Returns the next task to be executed. """
-        if self._current is None or self._current == len(self._tasks):
+        if self._current_task is None or self._current_task == len(self._tasks):
             self.restart_task()
-        self._current += 1
-        return self._tasks[self._current - 1]
+        self._current_task += 1
+        return self._tasks[self._current_task - 1]
 
     def restart_task(self):
         """ Restarts the order of the executed tasks. """
-        self._current = 0
+        self._current_task = 0
