@@ -13,12 +13,11 @@
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
-  <widget class="QWidget" name="centralwidget">
+  <widget class="QWidget" name="central_widget">
    <layout class="QVBoxLayout" name="verticalLayout">
     <item>
-     <widget class="QStackedWidget" name="stackedWidget">
-      <widget class="QWidget" name="page_0"/>
-      <widget class="QWidget" name="page_1"/>
+     <widget class="QStackedWidget" name="stacked_widget">
+      <widget class="QWidget" name="page"/>
       <widget class="QWidget" name="page_2"/>
      </widget>
     </item>

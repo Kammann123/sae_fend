@@ -13,6 +13,15 @@ from views.main_win.main_window_view import Ui_MainWindow
 
 from fend.core.sae_fend import SAEFend
 
+from fend.core.states import InitialWindowState
+from fend.core.states import SetupWindowState
+from fend.core.states import MonitorWindowState
+from fend.core.states import ErrorState
+from fend.core.states import CloseState
+
+from fend.core.events import ErrorOccurred
+from fend.core.events import Close
+
 
 class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
     """ MainWindow, main window class.
@@ -36,10 +45,47 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         self.timer.timeout.connect(self.fend_model.run)
         self.timer.start(self.PROCESS_TIMER)
 
-    def on_state_changed(self, event_id, event_data):
-        """ OnStateChanged event callback.
+        # Signals of MainWindow
+        self.closeEvent = self.on_close
 
-        Get the StateObject's current state and instantiate the corresponding
-        view controller window, swapping the stacked widget and deleting the previous one.
-        """
-        pass
+        # Initial view startup
+        self.update_view()
+
+    def on_state_changed(self, event_id, event_data):
+        """ OnStateChanged event callback. """
+        self.update_view()
+
+    def on_close(self, event):
+        """ OnClose event callback. """
+        self.fend_model.send_event(Close(self, None))
+
+    def update_view(self):
+        """ Updates the widget's view according to the model's state. """
+        state = self.fend_model.current_state()
+
+        if state.name == InitialWindowState.name:
+            pass
+        elif state.name == MonitorWindowState.name:
+            pass
+        elif state.name == SetupWindowState.name:
+            pass
+        elif state.name == ErrorState.name:
+            pass
+        elif state.name == CloseState.name:
+            pass
+
+    def swap_widget(self, widget_class):
+        """ Swaps the current widget for a new instance of the given class. """
+
+        # Creating instance of the new widget
+        widget_instance = widget_class(self.fend_model, self)
+
+        # Removing the current widget
+        self.stacked_widget.removeWidget(self.stacked_widget.currentWidget())
+
+        # Resizing the widget's size
+        self.setFixedSize(self.stacked_widget.sizeHint())
+
+        # Replacing the new widget
+        self.stacked_widget.addWidget(widget_instance)
+        self.stacked_widget.setCurrentWidget(widget_instance)
