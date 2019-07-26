@@ -11,14 +11,14 @@ from PyQt5 import QtWidgets
 # sae project modules
 from views.setting_win.setting_window_view import Ui_SettingWindow
 from fend.user.serial_config import SerialConfig
-from fend.user.session import Session
+from fend.core.sae_fend import SAEFend
 
 
 class SettingWindow(QtWidgets.QDialog, Ui_SettingWindow):
-    def __init__(self, session: Session, *args, **kwargs):
+    def __init__(self, sae_fend: SAEFend, *args, **kwargs):
         QtWidgets.QDialog.__init__(self, *args, **kwargs)
         self.setupUi(self)
-        self._user_session = session
+        self._sae_fend = sae_fend
         self.finishButton.clicked.connect(self.finished_callback)
 
         """ getting available serial ports """
@@ -35,6 +35,6 @@ class SettingWindow(QtWidgets.QDialog, Ui_SettingWindow):
         # print(self.speedBox.currentText())
         # print(self.parityBox.currentText())
         """ Loading the current session's serial information """
-        self._user_session.serial = SerialConfig(self.speedBox.currentText(), 0, self.parityBox.currentText(), 0)
+        self._sae_fend.session.serial = SerialConfig(self.speedBox.currentText(), 0, self.parityBox.currentText(), 0)
 
         self.hide()
