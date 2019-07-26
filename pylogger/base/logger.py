@@ -21,6 +21,6 @@ class Logger(object):
         self._session_user = username
         self._session_date = datetime.now()
 
-    def log(self, message) -> str:
+    def log(self, message: str):
         """ Logs a message """
         raise NotImplemented

@@ -24,8 +24,3 @@ class Finished(StateEvent):
 class Close(StateEvent):
     """ Close the front-end. """
     id = "Close"
-
-
-class ErrorOccurred(StateEvent):
-    """ An error occurred in any of the states. """
-    id = "Error"

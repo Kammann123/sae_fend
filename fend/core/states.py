@@ -25,11 +25,6 @@ class MonitorWindowState(State):
     name = "MonitorWindowState"
 
 
-class ErrorState(State):
-    """ The error state. """
-    name = "ErrorState"
-
-
 class CloseState(State):
     """ The closing state. """
     name = "CloseState"

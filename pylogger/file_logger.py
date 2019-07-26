@@ -6,7 +6,7 @@ FileLogger class.
 
 # third-party modules
 
-# sae project
+# sae project modules
 from pylogger.base.logger import Logger
 
 
@@ -26,7 +26,7 @@ class FileLogger(Logger):
             )
         )
 
-    def log(self, message) -> str:
+    def log(self, message: str):
         # Verify if file does not exist, creates it and adds header data
         try:
             file = open(self._formatted_filename, "r")

@@ -85,10 +85,8 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
             pass
         elif state.name == SetupWindowState.name:
             pass
-        elif state.name == ErrorState.name:
-            pass
         elif state.name == CloseState.name:
-            self.on_close(None)
+            self.close()
 
     def swap_widget(self, widget_class):
         """ Swaps the current widget for a new instance of the given class. """
