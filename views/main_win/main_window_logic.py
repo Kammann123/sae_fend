@@ -99,6 +99,7 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         self.stacked_widget.removeWidget(current_widget)
 
         # Resizing the widget's size
+        self.setFixedSize(widget_instance.size())
 
         # Replacing the new widget
         self.stacked_widget.addWidget(widget_instance)

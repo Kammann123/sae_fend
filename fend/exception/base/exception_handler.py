@@ -3,6 +3,7 @@ ExceptionHandler base class
 """
 
 # python native modules
+from traceback import extract_tb
 
 # third-party modules
 
@@ -20,11 +21,19 @@ class ExceptionHandler(object):
         self.logger = logger
 
     def __call__(self, exception_type, value, traceback):
+        # Retrieves the traceback path
+        traceback_message = ""
+        for traceback_path in extract_tb(traceback):
+            traceback_message += "{}\n".format(traceback_path)
+
+        # Creates the formatted message to be logged
         message = """[EXCEPTION]
         Type: {}
         Value: {}
         Traceback: {}
         
-        Good luck :D""".format(exception_type, value, traceback)
+        Good luck :D""".format(exception_type,
+                               value,
+                               traceback_message)
 
         self.logger.log(message)
