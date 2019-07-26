@@ -37,5 +37,9 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         self.timer.start(self.PROCESS_TIMER)
 
     def on_state_changed(self, event_id, event_data):
-        """ OnStateChanged event callback. """
+        """ OnStateChanged event callback.
+
+        Get the StateObject's current state and instantiate the corresponding
+        view controller window, swapping the stacked widget and deleting the previous one.
+        """
         pass
