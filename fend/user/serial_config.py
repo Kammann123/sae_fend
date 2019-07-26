@@ -43,7 +43,7 @@ class SerialConfig(object):
                  data_bits: int,
                  parity: Parity,
                  stop_bits: int,
-                 port: int
+                 port: str
                  ):
         self.baud_rate = baud_rate
         self.data_bits = data_bits

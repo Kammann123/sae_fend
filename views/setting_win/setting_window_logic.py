@@ -12,6 +12,7 @@ from PyQt5 import QtWidgets
 from views.setting_win.setting_window_view import Ui_SettingWindow
 from fend.user.serial_config import SerialConfig
 from fend.core.sae_fend import SAEFend
+from fend.core.events import Finished
 
 
 class SettingWindow(QtWidgets.QDialog, Ui_SettingWindow):
@@ -35,6 +36,7 @@ class SettingWindow(QtWidgets.QDialog, Ui_SettingWindow):
         # print(self.speedBox.currentText())
         # print(self.parityBox.currentText())
         """ Loading the current session's serial information """
-        self._sae_fend.session.serial = SerialConfig(self.speedBox.currentText(), 0, self.parityBox.currentText(), 0)
+        self._sae_fend.session.serial = SerialConfig(self.speedBox.currentText(), 0, self.parityBox.currentText(), 0,
+                                                     self.portBox.currentText())
+        self._sae_fend.send_event(Finished("Finish", None))
 
-        self.hide()
