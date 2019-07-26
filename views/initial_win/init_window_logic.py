@@ -10,6 +10,8 @@ from views.initial_win.init_window_view import *
 
 from fend.core.sae_fend import SAEFend
 
+from PyQt5 import QtWidgets
+
 
 class InitWindow(QtWidgets.QWidget, Ui_InitWindow):
     """ InitialWindow class """
