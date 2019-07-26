@@ -17,10 +17,8 @@ from fend.core.sae_fend import SAEFend
 from fend.core.states import InitialWindowState
 from fend.core.states import SetupWindowState
 from fend.core.states import MonitorWindowState
-from fend.core.states import ErrorState
 from fend.core.states import CloseState
 
-from fend.core.events import ErrorOccurred
 from fend.core.events import Close
 
 

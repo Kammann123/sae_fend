@@ -11,8 +11,7 @@ from pylogger.base.logger import Logger
 
 
 class FileLogger(Logger):
-    """ FileLogger, Logger's interface implementation to save data
-    in files.
+    """ FileLogger, Logger's interface implementation to save data in files.
     """
 
     def __init__(self, username: str, filename: str):
