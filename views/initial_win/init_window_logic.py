@@ -1,11 +1,29 @@
+"""
+"""
+
+# python native modules
+
+# third-party modules
+
+# sae project modules
 from views.initial_win.init_window_view import *
 
+from fend.core.sae_fend import SAEFend
 
-class InitWindow(QtWidgets.QDialog, Ui_InitWindow):
-    def __init__(self, lifetime, *args, **kwargs):
-        QtWidgets.QDialog.__init__(self, *args, **kwargs)
+
+class InitWindow(QtWidgets.QWidget, Ui_InitWindow):
+    """ InitialWindow class """
+
+    LIFETIME = 3000
+
+    def __init__(self, fend_model: SAEFend, *args, **kwargs):
+        QtWidgets.QWidget.__init__(self, *args, **kwargs)
         self.setupUi(self)
         self.setWindowTitle("ITBA SAE")
+
+        # member
+        self.fend_model = fend_model
+
         # animation configuration
         self.animation_time = 3000      # animation's duration in milliseconds
         self.carAnimation = QtCore.QPropertyAnimation(self.redCar, b"geometry")  # creating and configuring animation
@@ -19,10 +37,11 @@ class InitWindow(QtWidgets.QDialog, Ui_InitWindow):
         self.carAnimation.start()
         self.animationTimer.start(self.animation_time)
         self.show()
+
         # timer to end window's life
         self.lifeTimer = QtCore.QTimer()
         self.lifeTimer.timeout.connect(self._stop_showing)
-        self.lifeTimer.start(lifetime)
+        self.lifeTimer.start(self.LIFETIME)
 
     def _stop_showing(self):
         self.hide()
