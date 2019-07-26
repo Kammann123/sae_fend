@@ -1,0 +1,12 @@
+[Application Session]
+Username: SAEMember
+Date: 26/07/19 16:51
+
+- Logged data -
+
+[EXCEPTION]
+        Type: <class 'TypeError'>
+        Value: removeWidget(self, QWidget): not enough arguments
+        Traceback: <traceback object at 0x030BB0A8>
+        
+        Good luck :D

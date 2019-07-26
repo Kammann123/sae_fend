@@ -12,6 +12,8 @@ from PyQt5 import QtCore
 # sae project modules
 from views.main_win.main_window_view import Ui_MainWindow
 
+from views.initial_win.init_window_logic import InitWindow
+
 from fend.core.sae_fend import SAEFend
 
 from fend.core.states import InitialWindowState
@@ -78,10 +80,10 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         state = self.fend_model.current_state()
 
         if state.name == InitialWindowState.name:
+            self.swap_widget(InitWindow)
+        elif state.name == SetupWindowState.name:
             pass
         elif state.name == MonitorWindowState.name:
-            pass
-        elif state.name == SetupWindowState.name:
             pass
         elif state.name == CloseState.name:
             self.close()
@@ -93,10 +95,10 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         widget_instance = widget_class(self.fend_model, self)
 
         # Removing the current widget
-        self.stacked_widget.removeWidget(self.stacked_widget.currentWidget())
+        current_widget = self.stacked_widget.currentWidget()
+        self.stacked_widget.removeWidget(current_widget)
 
         # Resizing the widget's size
-        self.setFixedSize(self.stacked_widget.sizeHint())
 
         # Replacing the new widget
         self.stacked_widget.addWidget(widget_instance)
