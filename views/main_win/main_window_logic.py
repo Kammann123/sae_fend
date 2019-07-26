@@ -19,7 +19,7 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
     """
 
     # Constant values
-    PROCESS_TIMER = 100
+    PROCESS_TIMER = 25
 
     def __init__(self, fend_model: SAEFend, *args, **kwargs):
         QtWidgets.QMainWindow.__init__(self, *args, **kwargs)
