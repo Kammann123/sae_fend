@@ -38,5 +38,5 @@ class SettingWindow(QtWidgets.QDialog, Ui_SettingWindow):
         """ Loading the current session's serial information """
         self._sae_fend.session.serial = SerialConfig(self.speedBox.currentText(), 0, self.parityBox.currentText(), 0,
                                                      self.portBox.currentText())
-        self._sae_fend.send_event(Finished("Finish", None))
+        self._sae_fend.send_event(Finished(self, None))
 
