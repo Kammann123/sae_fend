@@ -111,7 +111,7 @@ class Ui_SettingWindow(object):
         self.parity.setText(_translate("SettingWindow", "Parity"))
         self.parityBox.setItemText(0, _translate("SettingWindow", "Even"))
         self.parityBox.setItemText(1, _translate("SettingWindow", "Odd"))
-        self.parityBox.setItemText(2, _translate("SettingWindow", "Nothing"))
+        self.parityBox.setItemText(2, _translate("SettingWindow", "None"))
 
 
 if __name__ == "__main__":

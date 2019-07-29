@@ -12,8 +12,6 @@ from PyQt5 import QtCore
 # sae project modules
 from views.main_win.main_window_view import Ui_MainWindow
 
-from views.initial_win.init_window_logic import InitWindow
-
 from fend.core.sae_fend import SAEFend
 
 from fend.core.states import InitialWindowState
@@ -25,8 +23,7 @@ from fend.core.events import Close
 
 
 class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
-    """ MainWindow, main window class.
-    """
+    """ MainWindow, main window class """
 
     # Constant values
     PROCESS_TIMER = 25
@@ -80,7 +77,7 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         state = self.fend_model.current_state()
 
         if state.name == InitialWindowState.name:
-            self.swap_widget(InitWindow)
+            pass
         elif state.name == SetupWindowState.name:
             pass
         elif state.name == MonitorWindowState.name:

@@ -15,9 +15,9 @@ from fend.core.sae_fend import SAEFend
 from fend.core.events import Finished
 
 
-class SettingWindow(QtWidgets.QDialog, Ui_SettingWindow):
+class SettingWindow(QtWidgets.QWidget, Ui_SettingWindow):
     def __init__(self, sae_fend: SAEFend, *args, **kwargs):
-        QtWidgets.QDialog.__init__(self, *args, **kwargs)
+        QtWidgets.QWidget.__init__(self, *args, **kwargs)
         self.setupUi(self)
         self._sae_fend = sae_fend
         self.finishButton.clicked.connect(self.finished_callback)
@@ -27,16 +27,15 @@ class SettingWindow(QtWidgets.QDialog, Ui_SettingWindow):
         for puerto in port:
             self.portBox.addItem(puerto.device)
 
-    def start_showing(self):
-        self.show()
-
     def finished_callback(self):
         """ Callback to send information after selecting UART's options """
         # print(self.portBox.currentText())
         # print(self.speedBox.currentText())
         # print(self.parityBox.currentText())
         """ Loading the current session's serial information """
-        self._sae_fend.session.serial = SerialConfig(self.speedBox.currentText(), 0, self.parityBox.currentText(), 0,
+        self._sae_fend.session.serial = SerialConfig(self.speedBox.currentText(),
+                                                     0,
+                                                     self.parityBox.currentText(),
+                                                     0,
                                                      self.portBox.currentText())
-        self._sae_fend.send_event(Finished("Finish", None))
-
+        self._sae_fend.send_event(Finished(self, None))
