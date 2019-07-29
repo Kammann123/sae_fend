@@ -39,3 +39,7 @@ class SettingWindow(QtWidgets.QWidget, Ui_SettingWindow):
                                                      0,
                                                      self.portBox.currentText())
         self._sae_fend.send_event(Finished(self, None))
+<<<<<<< HEAD
+=======
+
+>>>>>>> 391c46436822df20b56c201969bf1b7125929f3d
