@@ -1,3 +1,4 @@
 PyQt5==5.12.2
 PyQt5-sip==4.19.17
 serial==0.0.97
+matplotlib==3.1.1
