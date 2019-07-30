@@ -7,6 +7,7 @@
 # WARNING! All changes made in this file will be lost!
 
 from PyQt5 import QtCore, QtGui, QtWidgets
+from views.monitor_win.rpm_widget.rpm_widget import RPMGraphWidget
 
 
 class Ui_MonitorWindow(object):
@@ -29,8 +30,6 @@ class Ui_MonitorWindow(object):
         _translate = QtCore.QCoreApplication.translate
         MonitorWindow.setWindowTitle(_translate("MonitorWindow", "Monitor"))
 
-
-from rpmgraphwidget import RPMGraphWidget
 
 
 if __name__ == "__main__":

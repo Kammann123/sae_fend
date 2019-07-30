@@ -13,6 +13,7 @@ from views.setting_win.setting_window_view import Ui_SettingWindow
 from fend.user.serial_config import SerialConfig
 from fend.core.sae_fend import SAEFend
 from fend.core.events import Finished
+from fend.core.events import Close
 
 
 class SettingWindow(QtWidgets.QWidget, Ui_SettingWindow):
@@ -39,7 +40,5 @@ class SettingWindow(QtWidgets.QWidget, Ui_SettingWindow):
                                                      0,
                                                      self.portBox.currentText())
         self._sae_fend.send_event(Finished(self, None))
-<<<<<<< HEAD
-=======
 
->>>>>>> 391c46436822df20b56c201969bf1b7125929f3d
+
