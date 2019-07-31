@@ -1,5 +1,5 @@
 """
-Thermometer Widget Plugin
+Gauge Widget Plugin
 """
 
 # python native modules
@@ -9,14 +9,14 @@ from PyQt5.QtDesigner import QPyDesignerCustomWidgetPlugin
 from PyQt5.QtGui import QIcon
 
 # sae project modules
-from thermometer import ThermometerWidget
+from gaugewidget import GaugeWidget
 
 
-class ThermometerPlugin(QPyDesignerCustomWidgetPlugin):
-    """ ThermometerPlugin Class. """
+class GaugeWidgetPlugin(QPyDesignerCustomWidgetPlugin):
+    """ GaugeWidget Plugin Class. """
 
     def __init__(self, parent=None):
-        super(ThermometerPlugin, self).__init__(parent)
+        super(GaugeWidgetPlugin, self).__init__(parent)
         self.initialized = False
 
     def initialize(self, core):
@@ -29,10 +29,10 @@ class ThermometerPlugin(QPyDesignerCustomWidgetPlugin):
         return self.initialized
 
     def createWidget(self, parent):
-        return ThermometerWidget(parent)
+        return GaugeWidget(parent)
 
     def name(self):
-        return "ThermometerWidget"
+        return "GaugeWidget"
 
     def group(self):
         return "SAE Widgets"
@@ -50,15 +50,15 @@ class ThermometerPlugin(QPyDesignerCustomWidgetPlugin):
         return False
 
     def domXml(self):
-        return '<widget class="ThermometerWidget" name="thermometerWidget">\n' \
+        return '<widget class="GaugeWidget" name="gaugeWidget">\n' \
                ' <property name="toolTip">\n' \
                '  <string>Click and drag here</string>\n' \
                ' </property>\n' \
                ' <property name="whatsThis">\n' \
-               '  <string>Temperature visualizer. ' \
+               '  <string>Gauge Widget. ' \
                ' </string>\n' \
                ' </property>\n' \
                '</widget>\n'
 
     def includeFile(self):
-        return "thermometer"
+        return "gaugewidget"
