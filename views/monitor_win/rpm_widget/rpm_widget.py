@@ -1,6 +1,7 @@
 """
 RPM class to show evolution through time
 """
+
 # python native modules
 
 # third-party modules
