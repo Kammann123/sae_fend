@@ -20,7 +20,7 @@ class Ui_MonitorWindow(object):
         sizePolicy.setHeightForWidth(MonitorWindow.sizePolicy().hasHeightForWidth())
         MonitorWindow.setSizePolicy(sizePolicy)
         self.rpmGraph = RPMGraphWidget(MonitorWindow)
-        self.rpmGraph.setGeometry(QtCore.QRect(420, 20, 251, 191))
+        self.rpmGraph.setGeometry(QtCore.QRect(400, 20, 300, 200))
         self.rpmGraph.setObjectName("rpmGraph")
 
         self.retranslateUi(MonitorWindow)
