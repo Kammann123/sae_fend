@@ -43,7 +43,7 @@ class SAEFend(FendInterface, StateObject):
         self.set_flow(MonitorWindowState, GoBack, SetupWindowState)
         self.set_flow(MonitorWindowState, Close, CloseState)
 
-        self.set_default(SetupWindowState)
+        self.set_default(InitialWindowState)
         self.restart()
 
         # Schedules StateObject's run_event() method as a task

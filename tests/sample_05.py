@@ -11,7 +11,7 @@ import sys
 
 # sae project modules
 from pypublisher.subscriber import Subscriber
-from fend.interface.interface import FendInterface
+from fend.core.sae_fend import SAEFend
 from fend.interface.properties.angular_speed import RPMAngularSpeed
 from views.monitor_win.monitor_window_logic import MonitorWindow, QtWidgets
 
@@ -20,7 +20,7 @@ class BackEnd(Subscriber):
     """ BackEnd Simulator.-
     """
 
-    def __init__(self, fend: FendInterface):
+    def __init__(self, fend: SAEFend):
         Subscriber.__init__(self)
 
         # Keep the front end reference
@@ -39,9 +39,12 @@ class BackEnd(Subscriber):
 
 if __name__ == "__main__":
 
+    # Constant values
+    BUFFER_LENGTH = 100
+
     # Instances
     app = QtWidgets.QApplication([])
-    front_end = FendInterface(100)
+    front_end = SAEFend(BUFFER_LENGTH)
     back_end = BackEnd(front_end)
     window = MonitorWindow(front_end)
 

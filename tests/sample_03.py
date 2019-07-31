@@ -13,7 +13,6 @@ from fend.core.sae_fend import SAEFend
 from fend.core.events import GoBack
 from fend.core.events import Finished
 from fend.core.events import Close
-from fend.core.events import ErrorOccurred
 
 
 def choice_menu() -> StateEvent:
@@ -28,8 +27,7 @@ def choice_menu() -> StateEvent:
     options = ["Quit",
                GoBack("Sample", None),
                Finished("Sample", None),
-               Close("Sample", None),
-               ErrorOccurred("Sample", None)
+               Close("Sample", None)
                ]
     choice_index = 0
 
