@@ -16,6 +16,7 @@ from PyQt5.QtCore import pyqtSignal
 from PyQt5.QtCore import pyqtSlot
 from PyQt5.QtCore import QPoint
 
+from PyQt5.QtGui import QTransform
 from PyQt5.QtGui import QPainter
 from PyQt5.QtGui import QBrush
 from PyQt5.QtGui import QPen
@@ -24,6 +25,51 @@ from PyQt5.QtGui import QColor
 from PyQt5.QtCore import Qt
 
 # sae project modules
+
+
+class IndexedValueAlgorithm:
+    """ IndexedValueAlgorithm
+    Class Methods containing different types of algorithms to
+    distribute a range of values through an iterable collection of objects.
+    """
+
+    def __init__(
+            self,
+            from_x,
+            from_y,
+            to_x,
+            to_y):
+        self.from_x = from_x
+        self.from_y = from_y
+        self.to_x = to_x
+        self.to_y = to_y
+
+    def __call__(self, x):
+        raise NotImplemented
+
+
+class LinearAlgorithm(IndexedValueAlgorithm):
+    """ LinearAlgorithm
+    Linear distribution of the range of values.
+    """
+
+    def __init__(
+            self,
+            from_x,
+            from_y,
+            to_x,
+            to_y):
+        super(LinearAlgorithm, self).__init__(
+            from_x,
+            from_y,
+            to_x,
+            to_y)
+
+        self.scope = (to_y - from_y) / (to_x - from_x)
+        self.origin = from_y
+
+    def __call__(self, x):
+        return self.origin + self.scope * (x - self.from_x)
 
 
 class AngularLine(object):
@@ -190,9 +236,11 @@ class GaugeWidget(QWidget):
         self.resetIndicatorsNumber()
         self.resetIndicatorLength()
         self.resetIndicatorWidth()
+        self.resetDeltaLength()
         self.resetStartAngle()
         self.resetEndAngle()
         self.resetMargin()
+        self.resetMirror()
 
         self.resetMaxValue()
         self.resetMinValue()
@@ -206,34 +254,39 @@ class GaugeWidget(QWidget):
         """
 
         def generateIndicatorColor(index: int, indicatorsNumber: int, alpha: int):
-
-            def linearFunction(m: float, b: float, x: float):
-                return m * x + b
-
             redComponent = 0
             greenComponent = 0
             blueComponent = 0
 
             begin_value = 255
             end_value = 25
-            scope = (end_value - begin_value) / (indicatorsNumber / 3)
+
+            redAlgorithm = LinearAlgorithm(0, begin_value, indicatorsNumber / 3, end_value)
+            greenAlgorithm = LinearAlgorithm(indicatorsNumber / 3, begin_value, indicatorsNumber * 2 / 3, end_value)
+            blueAlgorithm = LinearAlgorithm(indicatorsNumber * 2 / 3, begin_value, indicatorsNumber, end_value)
 
             if index < indicatorsNumber / 3:
-                greenComponent = linearFunction(scope, begin_value, index + 1)
+                greenComponent = redAlgorithm(index + 1)
             elif index < (indicatorsNumber * 2) / 3:
-                redComponent = linearFunction(scope, begin_value, index + 1 - indicatorsNumber / 3)
+                redComponent = greenAlgorithm(index + 1)
             elif index < indicatorsNumber:
-                blueComponent = linearFunction(scope, begin_value, index + 1 - indicatorsNumber * 2 / 3)
+                blueComponent = blueAlgorithm(index + 1)
 
             return QColor(redComponent, greenComponent, blueComponent, alpha)
+
+        radiusAlgorithm = LinearAlgorithm(
+            0,
+            self.size().width() / 2 - self.margin - self.deltaLength,
+            self.indicatorsNumber,
+            self.size().width() / 2 - self.margin)
 
         self.indicator = [
             RadialIndicator(
                 self.minValue + (self.maxValue - self.minValue) * (index + 1) / self.indicatorsNumber,
                 QPoint(self.size().width() / 2, self.size().height() - self.margin),
                 self.startAngle - (self.endAngle - self.startAngle) * index / (self.indicatorsNumber - 1),
-                self.size().width() / 2 - self.margin - self.indicatorLength,
-                self.size().width() / 2 - self.margin,
+                self.size().width() / 2 - self.margin - self.indicatorLength - self.deltaLength,
+                radiusAlgorithm(index),
                 self.indicatorWidth,
                 QColor(0, 0, 0),
                 generateIndicatorColor(index, self.indicatorsNumber, 100),
@@ -245,7 +298,7 @@ class GaugeWidget(QWidget):
         self.needle = NeedleIndicator(
             QPoint(self.size().width() / 2, self.size().height() - self.margin),
             (self.size().width() / 2 - self.margin - self.indicatorLength) * 0.07,
-            (self.size().width() / 2 - self.margin - self.indicatorLength) * 0.9,
+            (self.size().width() / 2 - self.margin - self.indicatorLength - self.deltaLength) * 0.9,
             QColor(0, 0, 0)
         )
 
@@ -258,8 +311,12 @@ class GaugeWidget(QWidget):
 
     def paintEvent(self, event):
         painter = QPainter(self)
-
         painter.setRenderHint(QPainter.Antialiasing)
+
+        if self.mirror:
+            painter.translate(self.size().width(), 0)
+            painter.rotate(180)
+            painter.scale(1, -1)
 
         for indicator in self.indicator:
             indicator.trigger(self.value)
@@ -375,13 +432,37 @@ class GaugeWidget(QWidget):
     def resetMaxValue(self):
         self._maxValue = 10000
 
+    # Getter, setter and resetter of the DeltaLength property
+    def getDeltaLength(self):
+        return self._deltaLength
+
+    def setDeltaLength(self, value: float):
+        self._deltaLength = value
+        self.update()
+
+    def resetDeltaLength(self):
+        self._deltaLength = 0
+
+    # Getter, setter and resetter of the mirror property
+    def getMirror(self):
+        return self._mirror
+
+    def setMirror(self, value: bool):
+        self._mirror = value
+        self.update()
+
+    def resetMirror(self):
+        self._mirror = False
+
     # GaugeWidget's Properties
     indicatorsNumber = pyqtProperty(int, getIndicatorsNumber, setIndicatorsNumber, resetIndicatorsNumber)
     indicatorLength = pyqtProperty(int, getIndicatorLength, setIndicatorLength, resetIndicatorLength)
     indicatorWidth = pyqtProperty(int, getIndicatorWidth, setIndicatorWidth, resetIndicatorWidth)
+    deltaLength = pyqtProperty(float, getDeltaLength, setDeltaLength, resetDeltaLength)
     startAngle = pyqtProperty(int, getStartAngle, setStartAngle, resetStartAngle)
     endAngle = pyqtProperty(int, getEndAngle, setEndAngle, resetEndAngle)
     margin = pyqtProperty(float, getMargin, setMargin, resetMargin)
+    mirror = pyqtProperty(bool, getMirror, setMirror, resetMirror)
 
     value = pyqtProperty(float, getValue, setValue, resetValue)
     minValue = pyqtProperty(float, getMinValue, setMinValue, resetMinValue)
