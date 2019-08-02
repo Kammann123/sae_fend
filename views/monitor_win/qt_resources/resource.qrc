@@ -1,0 +1,6 @@
+<RCC>
+  <qresource prefix="thermometer">
+    <file>../resources/thermometer.png</file>
+    <file>../resources/thermometer_v2.png</file>
+  </qresource>
+</RCC>

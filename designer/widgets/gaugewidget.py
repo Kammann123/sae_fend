@@ -10,19 +10,21 @@ from math import cos
 # third-party modules
 from PyQt5.QtWidgets import QApplication
 from PyQt5.QtWidgets import QWidget
+from PyQt5.QtWidgets import QLabel
 
 from PyQt5.QtCore import pyqtProperty
 from PyQt5.QtCore import pyqtSignal
 from PyQt5.QtCore import pyqtSlot
 from PyQt5.QtCore import QPoint
 
-from PyQt5.QtGui import QTransform
+from PyQt5.QtGui import QRadialGradient
 from PyQt5.QtGui import QPainter
 from PyQt5.QtGui import QBrush
 from PyQt5.QtGui import QPen
 from PyQt5.QtGui import QColor
 
 from PyQt5.QtCore import Qt
+from PyQt5.QtCore import QSize
 
 # sae project modules
 
@@ -117,15 +119,15 @@ class AngularLine(object):
 
         # Building up the polygon
         bottom_x = self.radius_one * cos( radians(self.angle) ) + self.origin.x()
-        bottom_y = self.radius_one * sin( radians(self.angle) ) + self.origin.y()
+        bottom_y = -self.radius_one * sin( radians(self.angle) ) + self.origin.y()
         top_x = self.radius_two * cos( radians(self.angle) ) + self.origin.x()
-        top_y = self.radius_two * sin( radians(self.angle) ) + self.origin.y()
+        top_y = -self.radius_two * sin( radians(self.angle) ) + self.origin.y()
 
         painter.drawPolygon(
-            QPoint(bottom_x - delta_x, bottom_y - delta_y),
-            QPoint(bottom_x + delta_x, bottom_y + delta_y),
-            QPoint(top_x + delta_x, top_y + delta_y),
-            QPoint(top_x - delta_x, top_y - delta_y)
+            QPoint(bottom_x - delta_x, bottom_y + delta_y),
+            QPoint(bottom_x + delta_x, bottom_y - delta_y),
+            QPoint(top_x + delta_x, top_y - delta_y),
+            QPoint(top_x - delta_x, top_y + delta_y)
         )
 
         painter.restore()
@@ -205,14 +207,14 @@ class NeedleIndicator(object):
 
         painter.drawPolygon(
             QPoint(self.origin.x() + self.base_radius * cos(radians(self.angle - 90)),
-                   self.origin.y() + self.base_radius * sin(radians(self.angle - 90))
+                   self.origin.y() - self.base_radius * sin(radians(self.angle - 90))
                    ),
             QPoint(self.origin.x() + self.base_radius * cos(radians(self.angle + 90)),
-                   self.origin.y() + self.base_radius * sin(radians(self.angle + 90))
+                   self.origin.y() - self.base_radius * sin(radians(self.angle + 90))
                    ),
             QPoint(
                 self.origin.x() + self.needle_length * cos(radians(self.angle)),
-                self.origin.y() + self.needle_length * sin(radians(self.angle))
+                self.origin.y() - self.needle_length * sin(radians(self.angle))
             )
         )
 
@@ -231,9 +233,14 @@ class GaugeWidget(QWidget):
         # Components
         self.indicators = []
         self.needle = None
+        self.label = QLabel(self)
+        self.label.setNum(0)
+
+        self.valueChanged.connect(self.label.setNum)
 
         # Widget General Settings
         self.setWindowTitle("Gauge Widget")
+        self.setMinimumSize(QSize(200, 200))
 
         self.resetIndicatorsNumber()
         self.resetIndicatorLength()
@@ -256,9 +263,9 @@ class GaugeWidget(QWidget):
         """
 
         def generateIndicatorColor(index: int, indicatorsNumber: int, alpha: int):
-            redComponent = 0
-            greenComponent = 0
-            blueComponent = 0
+            redComponent = 20
+            greenComponent = 20
+            blueComponent = 20
 
             begin_value = 255
             end_value = 25
@@ -276,31 +283,41 @@ class GaugeWidget(QWidget):
 
             return QColor(redComponent, greenComponent, blueComponent, alpha)
 
+        shortestSide = self.size().width() if self.size().width() < self.size().height() else self.size().height()
+
         radiusAlgorithm = LinearAlgorithm(
             0,
-            self.size().width() / 2 - self.margin - self.deltaLength,
+            shortestSide / 2 - self.margin - self.deltaLength,
             self.indicatorsNumber,
-            self.size().width() / 2 - self.margin)
+            shortestSide / 2 - self.margin
+        )
+
+        angleAlgorithm = LinearAlgorithm(
+            0,
+            self.startAngle,
+            self.indicatorsNumber - 1,
+            self.endAngle
+        )
 
         self.indicator = [
             RadialIndicator(
                 self.minValue + (self.maxValue - self.minValue) * (index + 1) / self.indicatorsNumber,
-                QPoint(self.size().width() / 2, self.size().height() - self.margin),
-                self.startAngle - (self.endAngle - self.startAngle) * index / (self.indicatorsNumber - 1),
-                self.size().width() / 2 - self.margin - self.indicatorLength - self.deltaLength,
+                QPoint(self.size().width() / 2, self.size().height() / 2),
+                angleAlgorithm(index),
+                shortestSide / 2 - self.margin - self.indicatorLength - self.deltaLength,
                 radiusAlgorithm(index),
                 self.indicatorWidth,
                 QColor(0, 0, 0),
-                generateIndicatorColor(index, self.indicatorsNumber, 100),
-                generateIndicatorColor(index, self.indicatorsNumber, 255)
+                generateIndicatorColor(index, self.indicatorsNumber, 50),
+                generateIndicatorColor(index, self.indicatorsNumber, 250)
             )
             for index in range(self.indicatorsNumber)
         ]
 
         self.needle = NeedleIndicator(
-            QPoint(self.size().width() / 2, self.size().height() - self.margin),
-            (self.size().width() / 2 - self.margin - self.indicatorLength) * 0.07,
-            (self.size().width() / 2 - self.margin - self.indicatorLength - self.deltaLength) * 0.98,
+            QPoint(self.size().width() / 2, self.size().height() / 2),
+            (shortestSide / 2 - self.margin - self.indicatorLength) * 0.04,
+            (shortestSide / 2 - self.margin - self.indicatorLength - self.deltaLength) * 0.98,
             QColor(0, 0, 0)
         )
 
@@ -312,20 +329,62 @@ class GaugeWidget(QWidget):
         super(GaugeWidget, self).update()
 
     def paintEvent(self, event):
+        # Painter Instances
         painter = QPainter(self)
         painter.setRenderHint(QPainter.Antialiasing)
 
+        shortestSide = self.size().width() if self.size().width() < self.size().height() else self.size().height()
+        outerRadius = shortestSide / 2 - self.margin / 2
+
+        # Background Settings
+        radialGradient = QRadialGradient(
+            QPoint(self.size().width() / 2,
+                   self.size().height() / 2
+                   ),
+            outerRadius
+        )
+
+        radialGradient.setColorAt(0.8, QColor(110, 110, 110, 80))
+        radialGradient.setColorAt(1, QColor(55, 55, 55, 170))
+        brush = QBrush(radialGradient)
+        painter.setBrush(brush)
+
+        painter.drawEllipse(
+            QPoint(
+                self.size().width() / 2,
+                self.size().height() / 2,
+            ),
+            outerRadius,
+            outerRadius
+        )
+
+        # Mirroring option
         if self.mirror:
             painter.translate(self.size().width(), 0)
             painter.rotate(180)
             painter.scale(1, -1)
 
+        # Radial colorful indicators
         for indicator in self.indicator:
             indicator.trigger(self.value)
             indicator.draw(painter)
 
-        self.needle.setAngle(self.startAngle - (self.endAngle - self.startAngle) * (self.value - self.minValue) / (self.maxValue - self.minValue))
+        # Needle indicator
+        angleAlgorithm = LinearAlgorithm(
+            self.minValue,
+            self.startAngle,
+            self.maxValue,
+            self.endAngle
+        )
+        self.needle.setAngle(angleAlgorithm(self.value))
         self.needle.draw(painter)
+
+        # Current value label
+        self.label.resize(self.label.sizeHint())
+        self.label.move(
+            self.size().width() / 2 - self.label.width() / 2,
+            self.size().height() / 2 + shortestSide / 2 - self.margin - self.indicatorLength - self.deltaLength - self.label.height()
+        )
 
         painter.end()
 
@@ -338,7 +397,7 @@ class GaugeWidget(QWidget):
         self.update()
 
     def resetIndicatorsNumber(self):
-        self._indicatorsNumber = 100
+        self._indicatorsNumber = 150
 
     # Getter, setter and resetter of indicatorWidth
     def getIndicatorWidth(self):
@@ -360,7 +419,7 @@ class GaugeWidget(QWidget):
         self.update()
 
     def resetIndicatorLength(self):
-        self._indicatorLength = 25
+        self._indicatorLength = 70
 
     # Getter, setter and resetter of startAngle
     def getStartAngle(self):
@@ -371,7 +430,7 @@ class GaugeWidget(QWidget):
         self.update()
 
     def resetStartAngle(self):
-        self._startAngle = 180
+        self._startAngle = 225
 
     # Getter, setter and resetter of endAngle
     def getEndAngle(self):
@@ -382,7 +441,7 @@ class GaugeWidget(QWidget):
         self.update()
 
     def resetEndAngle(self):
-        self._endAngle = 0
+        self._endAngle = -45
 
     # Getter, setter and resetter of margin
     def getMargin(self):
@@ -393,7 +452,7 @@ class GaugeWidget(QWidget):
         self.update()
 
     def resetMargin(self):
-        self._margin = 30
+        self._margin = 10
 
     # Getter, setter and resetter of value property
     def getValue(self):
