@@ -192,6 +192,8 @@ class NeedleIndicator(object):
 
         brush = QBrush(Qt.SolidPattern)
         pen = QPen()
+        pen.setJoinStyle(Qt.RoundJoin)
+        pen.setCapStyle(Qt.RoundCap)
         brush.setColor(self.color)
         pen.setColor(self.color)
         painter.setBrush(brush)
@@ -298,7 +300,7 @@ class GaugeWidget(QWidget):
         self.needle = NeedleIndicator(
             QPoint(self.size().width() / 2, self.size().height() - self.margin),
             (self.size().width() / 2 - self.margin - self.indicatorLength) * 0.07,
-            (self.size().width() / 2 - self.margin - self.indicatorLength - self.deltaLength) * 0.9,
+            (self.size().width() / 2 - self.margin - self.indicatorLength - self.deltaLength) * 0.98,
             QColor(0, 0, 0)
         )
 
