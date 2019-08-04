@@ -214,6 +214,10 @@ class GaugeWidget(QWidget):
         self.resetMinValue()
         self.resetValue()
 
+        self.resetNeedleColor()
+        self.resetStartColor()
+        self.resetEndColor()
+
         self.update()
 
     def updateComponents(self):
@@ -277,7 +281,7 @@ class GaugeWidget(QWidget):
             QPoint(self.size().width() / 2, self.size().height() / 2),
             (shortestSide / 2 - self.margin - self.indicatorLength) * 0.04,
             (shortestSide / 2 - self.margin - self.indicatorLength - self.deltaLength) * 0.98,
-            QColor(0, 0, 0)
+            self.needleColor
         )
 
     def resizeEvent(self, event):
@@ -303,8 +307,8 @@ class GaugeWidget(QWidget):
             outerRadius
         )
 
-        radialGradient.setColorAt(0.8, QColor(110, 110, 110, 80))
-        radialGradient.setColorAt(1, QColor(55, 55, 55, 170))
+        radialGradient.setColorAt(0.8, self.startColor)
+        radialGradient.setColorAt(1, self.endColor)
         brush = QBrush(radialGradient)
         painter.setBrush(brush)
 
@@ -474,6 +478,39 @@ class GaugeWidget(QWidget):
     def resetMirror(self):
         self._mirror = False
 
+    # Getter, setter and resetter of the needleColor property
+    def getNeedleColor(self):
+        return self._needleColor
+
+    def setNeedleColor(self, value: QColor):
+        self._needleColor = value
+        self.update()
+
+    def resetNeedleColor(self):
+        self._needleColor = QColor(0, 0, 0)
+
+    # Getter, setter and resetter of the startColor property
+    def getStartColor(self):
+        return self._startColor
+
+    def setStartColor(self, value: QColor):
+        self._startColor = value
+        self.update()
+
+    def resetStartColor(self):
+        self._startColor = QColor(110, 110, 110, 80)
+
+    # Getter, setter and resetter of the endColor property
+    def getEndColor(self):
+        return self._endColor
+
+    def setEndColor(self, value: QColor):
+        self._endColor = value
+        self.update()
+
+    def resetEndColor(self):
+        self._endColor = QColor(55, 55, 55, 170)
+
     # GaugeWidget's Properties
     indicatorsNumber = pyqtProperty(int, getIndicatorsNumber, setIndicatorsNumber, resetIndicatorsNumber)
     indicatorLength = pyqtProperty(int, getIndicatorLength, setIndicatorLength, resetIndicatorLength)
@@ -487,6 +524,10 @@ class GaugeWidget(QWidget):
     value = pyqtProperty(float, getValue, setValue, resetValue)
     minValue = pyqtProperty(float, getMinValue, setMinValue, resetMinValue)
     maxValue = pyqtProperty(float, getMaxValue, setMaxValue, resetMaxValue)
+
+    needleColor = pyqtProperty(QColor, getNeedleColor, setNeedleColor, resetNeedleColor)
+    startColor = pyqtProperty(QColor, getStartColor, setStartColor, resetStartColor)
+    endColor = pyqtProperty(QColor, getEndColor, setEndColor, resetEndColor)
 
 
 if __name__ == "__main__":

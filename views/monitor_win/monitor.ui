@@ -646,6 +646,20 @@
            <property name="maxValue">
             <double>16000.000000000000000</double>
            </property>
+           <property name="startColor">
+            <color alpha="80">
+             <red>88</red>
+             <green>157</green>
+             <blue>172</blue>
+            </color>
+           </property>
+           <property name="endColor">
+            <color alpha="170">
+             <red>6</red>
+             <green>17</green>
+             <blue>55</blue>
+            </color>
+           </property>
           </widget>
          </item>
          <item alignment="Qt::AlignHCenter">
@@ -771,6 +785,20 @@
            </property>
            <property name="maxValue">
             <double>200.000000000000000</double>
+           </property>
+           <property name="startColor">
+            <color alpha="80">
+             <red>88</red>
+             <green>157</green>
+             <blue>172</blue>
+            </color>
+           </property>
+           <property name="endColor">
+            <color alpha="170">
+             <red>6</red>
+             <green>17</green>
+             <blue>55</blue>
+            </color>
            </property>
           </widget>
          </item>
