@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1154</width>
-    <height>612</height>
+    <width>1115</width>
+    <height>547</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -65,7 +65,7 @@
         </property>
         <layout class="QVBoxLayout" name="verticalLayout_4">
          <property name="spacing">
-          <number>15</number>
+          <number>35</number>
          </property>
          <property name="sizeConstraint">
           <enum>QLayout::SetNoConstraint</enum>
@@ -122,11 +122,11 @@
             <number>4</number>
            </property>
            <property name="maxValue">
-            <double>15000.000000000000000</double>
+            <double>16000.000000000000000</double>
            </property>
           </widget>
          </item>
-         <item>
+         <item alignment="Qt::AlignHCenter">
           <widget class="QLabel" name="label">
            <property name="sizePolicy">
             <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
@@ -144,7 +144,7 @@
             <number>1</number>
            </property>
            <property name="text">
-            <string>RPM</string>
+            <string>Speed [RPM]</string>
            </property>
            <property name="textFormat">
             <enum>Qt::RichText</enum>
@@ -190,7 +190,7 @@
         </property>
         <layout class="QVBoxLayout" name="verticalLayout_5">
          <property name="spacing">
-          <number>15</number>
+          <number>35</number>
          </property>
          <property name="sizeConstraint">
           <enum>QLayout::SetNoConstraint</enum>
@@ -247,14 +247,14 @@
             <number>4</number>
            </property>
            <property name="mirror">
-            <bool>true</bool>
+            <bool>false</bool>
            </property>
            <property name="maxValue">
-            <double>15000.000000000000000</double>
+            <double>200.000000000000000</double>
            </property>
           </widget>
          </item>
-         <item>
+         <item alignment="Qt::AlignHCenter">
           <widget class="QLabel" name="label_2">
            <property name="sizePolicy">
             <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
@@ -272,7 +272,7 @@
             <number>1</number>
            </property>
            <property name="text">
-            <string>Speed</string>
+            <string>Ground Speed [km/h]</string>
            </property>
            <property name="textFormat">
             <enum>Qt::RichText</enum>
@@ -284,7 +284,7 @@
             <set>Qt::AlignCenter</set>
            </property>
            <property name="wordWrap">
-            <bool>true</bool>
+            <bool>false</bool>
            </property>
            <property name="indent">
             <number>0</number>
@@ -362,7 +362,7 @@
                 </widget>
                </item>
                <item>
-                <widget class="QLabel" name="label_13">
+                <widget class="QLabel" name="airTemperature">
                  <property name="sizePolicy">
                   <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                    <horstretch>0</horstretch>
@@ -449,7 +449,7 @@
                 </widget>
                </item>
                <item>
-                <widget class="QLabel" name="label_6">
+                <widget class="QLabel" name="engineTemperature">
                  <property name="sizePolicy">
                   <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                    <horstretch>0</horstretch>
