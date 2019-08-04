@@ -7,7 +7,6 @@ Bar Widget
 # third-party modules
 from PyQt5.QtWidgets import QApplication
 from PyQt5.QtWidgets import QWidget
-from PyQt5.QtWidgets import QLabel
 
 from PyQt5.QtCore import pyqtProperty
 from PyQt5.QtCore import pyqtSignal
@@ -44,9 +43,15 @@ class BarWidget(QWidget):
         self.resetValue()
         self.resetMinValue()
         self.resetMaxValue()
+
+        self.resetPrefix()
+        self.resetSuffix()
+
         self.resetHasStatusColor()
         self.resetIsHorizontal()
         self.resetIsInverted()
+
+        self.resetTextHeight()
         self.resetTextMargin()
         self.resetMargin()
         self.resetRadius()
@@ -55,11 +60,6 @@ class BarWidget(QWidget):
         self.resetUpColor()
         self.resetOkColor()
         self.resetColor()
-
-        # Components
-        self.label = QLabel(self)
-        self.label.setNum(self.value)
-        self.valueChanged.connect(self.label.setNum)
 
     def paintEvent(self, event):
         # Setting up instances
@@ -73,12 +73,20 @@ class BarWidget(QWidget):
 
         # Bar size computing...
         width = self.size().width() - self.margin * 2
-        height = self.size().height() - self.margin * 2 - self.label.height() - self.textMargin
+        height = self.size().height() - self.margin * 2 - self.textMargin - self.textHeight
 
         # Text Printing...
-        self.label.move(
-            self.size().width() / 2 - self.label.width() / 2,
-            self.size().height() - self.margin - self.label.height()
+        painter.drawText(
+            self.textMargin,
+            self.margin + height + self.textMargin,
+            self.size().width() - self.textMargin * 2,
+            self.textHeight,
+            Qt.AlignVCenter | Qt.AlignHCenter,
+            "{} {} {}".format(
+                self.prefix,
+                self.value,
+                self.suffix
+            )
         )
 
         # Bar drawing...
@@ -108,7 +116,7 @@ class BarWidget(QWidget):
 
         yPositionAlgorithm = LinearAlgorithm(
             self.minValue,
-            self.size().height() - self.margin - self.label.height() - self.textMargin if not self.isInverted else self.margin,
+            self.size().height() - self.margin - self.textHeight - self.textMargin if not self.isInverted else self.margin,
             self.maxValue,
             self.margin
         )
@@ -288,23 +296,59 @@ class BarWidget(QWidget):
     def resetUpColor(self):
         self._upColor = QColor(255, 0, 0)
 
+    # Getter, setter, resetter of the textHeight property
+    def getTextHeight(self):
+        return self._textHeight
+
+    def setTextHeight(self, value: float):
+        self._textHeight = value
+        self.update()
+
+    def resetTextHeight(self):
+        self._textHeight = 30
+
+    # Getter, setter and resetter of the prefix property
+    def getPrefix(self):
+        return self._prefix
+
+    def setPrefix(self, value: str):
+        self._prefix = value
+        self.update()
+
+    def resetPrefix(self):
+        self._prefix = ""
+
+    # Getter, setter and resetter of the suffix property
+    def getSuffix(self):
+        return self._suffix
+
+    def setSuffix(self, value: str):
+        self._suffix = value
+        self.update()
+
+    def resetSuffix(self):
+        self._suffix = ""
+
     # BarWidget's Properties
     value = pyqtProperty(float, getValue, setValue, resetValue)
     minValue = pyqtProperty(float, getMinValue, setMinValue, resetMinValue)
     maxValue = pyqtProperty(float, getMaxValue, setMaxValue, resetMaxValue)
+
+    prefix = pyqtProperty(str, getPrefix, setPrefix, resetPrefix)
+    suffix = pyqtProperty(str, getSuffix, setSuffix, resetSuffix)
 
     hasStatusColor = pyqtProperty(bool, getHasStatusColor, setHasStatusColor, resetHasStatusColor)
     isHorizontal = pyqtProperty(bool, getIsHorizontal, setIsHorizontal, resetIsHorizontal)
     isInverted = pyqtProperty(bool, getIsInverted, setIsInverted, resetIsInverted)
 
     textMargin = pyqtProperty(float, getTextMargin, setTextMargin, resetTextMargin)
+    textHeight = pyqtProperty(float, getTextHeight, setTextHeight, resetTextHeight)
     margin = pyqtProperty(float, getMargin, setMargin, resetMargin)
     radius = pyqtProperty(float, getRadius, setRadius, resetRadius)
 
     downColor = pyqtProperty(QColor, getDownColor, setDownColor, resetDownColor)
     okColor = pyqtProperty(QColor, getOkColor, setOkColor, resetOkColor)
     upColor = pyqtProperty(QColor, getUpColor, setUpColor, resetUpColor)
-
     color = pyqtProperty(QColor, getColor, setColor, resetColor)
 
 

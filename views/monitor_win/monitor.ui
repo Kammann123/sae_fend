@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1184</width>
-    <height>677</height>
+    <width>1190</width>
+    <height>507</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -38,7 +38,7 @@
    <item>
     <widget class="QFrame" name="frame">
      <property name="sizePolicy">
-      <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+      <sizepolicy hsizetype="Maximum" vsizetype="Minimum">
        <horstretch>0</horstretch>
        <verstretch>0</verstretch>
       </sizepolicy>
@@ -86,7 +86,7 @@
       <item row="0" column="0" colspan="2">
        <widget class="QFrame" name="frame_4">
         <property name="sizePolicy">
-         <sizepolicy hsizetype="Preferred" vsizetype="Maximum">
+         <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
           <horstretch>0</horstretch>
           <verstretch>0</verstretch>
          </sizepolicy>
@@ -102,10 +102,7 @@
         <property name="frameShadow">
          <enum>QFrame::Raised</enum>
         </property>
-        <layout class="QHBoxLayout" name="horizontalLayout">
-         <property name="spacing">
-          <number>0</number>
-         </property>
+        <layout class="QGridLayout" name="gridLayout_2">
          <property name="leftMargin">
           <number>0</number>
          </property>
@@ -118,742 +115,630 @@
          <property name="bottomMargin">
           <number>0</number>
          </property>
-         <item>
-          <widget class="QFrame" name="frame_5">
+         <item row="0" column="2" alignment="Qt::AlignHCenter">
+          <widget class="QLabel" name="label_7">
            <property name="sizePolicy">
-            <sizepolicy hsizetype="Minimum" vsizetype="Maximum">
+            <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
              <horstretch>0</horstretch>
              <verstretch>0</verstretch>
             </sizepolicy>
            </property>
+           <property name="minimumSize">
+            <size>
+             <width>1</width>
+             <height>5</height>
+            </size>
+           </property>
            <property name="font">
             <font>
-             <family>MS Sans Serif</family>
+             <family>Berlin Sans FB Demi</family>
              <pointsize>12</pointsize>
              <weight>50</weight>
              <bold>false</bold>
             </font>
            </property>
-           <property name="frameShape">
-            <enum>QFrame::StyledPanel</enum>
+           <property name="text">
+            <string>Ignition Advance</string>
            </property>
-           <property name="frameShadow">
-            <enum>QFrame::Raised</enum>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
            </property>
-           <layout class="QVBoxLayout" name="verticalLayout_6">
-            <item alignment="Qt::AlignHCenter">
-             <widget class="QLabel" name="label_3">
-              <property name="sizePolicy">
-               <sizepolicy hsizetype="Maximum" vsizetype="Maximum">
-                <horstretch>0</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
-              </property>
-              <property name="minimumSize">
-               <size>
-                <width>7</width>
-                <height>6</height>
-               </size>
-              </property>
-              <property name="font">
-               <font>
-                <pointsize>10</pointsize>
-                <weight>75</weight>
-                <bold>true</bold>
-               </font>
-              </property>
-              <property name="text">
-               <string>Throttle Position</string>
-              </property>
-              <property name="scaledContents">
-               <bool>false</bool>
-              </property>
-              <property name="alignment">
-               <set>Qt::AlignCenter</set>
-              </property>
-              <property name="wordWrap">
-               <bool>false</bool>
-              </property>
-             </widget>
-            </item>
-            <item alignment="Qt::AlignHCenter">
-             <widget class="BarWidget" name="barWidget">
-              <property name="sizePolicy">
-               <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-                <horstretch>0</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
-              </property>
-              <property name="minimumSize">
-               <size>
-                <width>45</width>
-                <height>150</height>
-               </size>
-              </property>
-              <property name="font">
-               <font>
-                <family>MS Gothic</family>
-                <pointsize>14</pointsize>
-                <weight>50</weight>
-                <bold>false</bold>
-                <strikeout>false</strikeout>
-               </font>
-              </property>
-              <property name="acceptDrops">
-               <bool>false</bool>
-              </property>
-              <property name="toolTip">
-               <string>Click and drag here</string>
-              </property>
-              <property name="whatsThis">
-               <string>Bar Widget.  </string>
-              </property>
-              <property name="autoFillBackground">
-               <bool>false</bool>
-              </property>
-              <property name="hasStatusColor">
-               <bool>true</bool>
-              </property>
-              <property name="textMargin">
-               <double>10.000000000000000</double>
-              </property>
-              <property name="margin">
-               <double>10.000000000000000</double>
-              </property>
-              <property name="radius">
-               <double>3.000000000000000</double>
-              </property>
-              <property name="downColor">
-               <color>
-                <red>0</red>
-                <green>0</green>
-                <blue>116</blue>
-               </color>
-              </property>
-              <property name="okColor">
-               <color>
-                <red>0</red>
-                <green>125</green>
-                <blue>0</blue>
-               </color>
-              </property>
-              <property name="upColor">
-               <color>
-                <red>132</red>
-                <green>0</green>
-                <blue>0</blue>
-               </color>
-              </property>
-              <property name="color">
-               <color alpha="150">
-                <red>121</red>
-                <green>1</green>
-                <blue>241</blue>
-               </color>
-              </property>
-             </widget>
-            </item>
-           </layout>
+           <property name="wordWrap">
+            <bool>true</bool>
+           </property>
           </widget>
          </item>
-         <item>
-          <widget class="QFrame" name="frame_7">
+         <item row="0" column="0" alignment="Qt::AlignHCenter">
+          <widget class="QLabel" name="label_3">
            <property name="sizePolicy">
-            <sizepolicy hsizetype="Minimum" vsizetype="Maximum">
+            <sizepolicy hsizetype="Maximum" vsizetype="Maximum">
              <horstretch>0</horstretch>
              <verstretch>0</verstretch>
             </sizepolicy>
            </property>
+           <property name="minimumSize">
+            <size>
+             <width>7</width>
+             <height>6</height>
+            </size>
+           </property>
            <property name="font">
             <font>
-             <family>MS Sans Serif</family>
+             <family>Berlin Sans FB Demi</family>
              <pointsize>12</pointsize>
              <weight>50</weight>
              <bold>false</bold>
             </font>
            </property>
-           <property name="frameShape">
-            <enum>QFrame::StyledPanel</enum>
+           <property name="text">
+            <string>Throttle Position</string>
            </property>
-           <property name="frameShadow">
-            <enum>QFrame::Raised</enum>
+           <property name="scaledContents">
+            <bool>false</bool>
            </property>
-           <layout class="QVBoxLayout" name="verticalLayout_9">
-            <property name="spacing">
-             <number>0</number>
-            </property>
-            <property name="leftMargin">
-             <number>0</number>
-            </property>
-            <property name="topMargin">
-             <number>0</number>
-            </property>
-            <property name="rightMargin">
-             <number>0</number>
-            </property>
-            <property name="bottomMargin">
-             <number>0</number>
-            </property>
-            <item alignment="Qt::AlignHCenter">
-             <widget class="QLabel" name="label_6">
-              <property name="sizePolicy">
-               <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-                <horstretch>0</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
-              </property>
-              <property name="font">
-               <font>
-                <pointsize>10</pointsize>
-                <weight>75</weight>
-                <bold>true</bold>
-               </font>
-              </property>
-              <property name="text">
-               <string>Lambda</string>
-              </property>
-              <property name="wordWrap">
-               <bool>false</bool>
-              </property>
-             </widget>
-            </item>
-            <item alignment="Qt::AlignHCenter">
-             <widget class="BarWidget" name="barWidget_3">
-              <property name="sizePolicy">
-               <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-                <horstretch>0</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
-              </property>
-              <property name="minimumSize">
-               <size>
-                <width>45</width>
-                <height>150</height>
-               </size>
-              </property>
-              <property name="font">
-               <font>
-                <family>MS Gothic</family>
-                <pointsize>14</pointsize>
-                <weight>50</weight>
-                <bold>false</bold>
-                <strikeout>false</strikeout>
-               </font>
-              </property>
-              <property name="acceptDrops">
-               <bool>false</bool>
-              </property>
-              <property name="toolTip">
-               <string>Click and drag here</string>
-              </property>
-              <property name="whatsThis">
-               <string>Bar Widget.  </string>
-              </property>
-              <property name="autoFillBackground">
-               <bool>false</bool>
-              </property>
-              <property name="value">
-               <double>75.000000000000000</double>
-              </property>
-              <property name="hasStatusColor">
-               <bool>true</bool>
-              </property>
-              <property name="textMargin">
-               <double>10.000000000000000</double>
-              </property>
-              <property name="margin">
-               <double>10.000000000000000</double>
-              </property>
-              <property name="radius">
-               <double>3.000000000000000</double>
-              </property>
-              <property name="downColor">
-               <color>
-                <red>0</red>
-                <green>0</green>
-                <blue>116</blue>
-               </color>
-              </property>
-              <property name="okColor">
-               <color>
-                <red>0</red>
-                <green>125</green>
-                <blue>0</blue>
-               </color>
-              </property>
-              <property name="upColor">
-               <color>
-                <red>132</red>
-                <green>0</green>
-                <blue>0</blue>
-               </color>
-              </property>
-              <property name="color">
-               <color alpha="150">
-                <red>121</red>
-                <green>1</green>
-                <blue>241</blue>
-               </color>
-              </property>
-             </widget>
-            </item>
-           </layout>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+           <property name="wordWrap">
+            <bool>true</bool>
+           </property>
           </widget>
          </item>
-         <item>
-          <widget class="QFrame" name="frame_9">
+         <item row="0" column="1" alignment="Qt::AlignHCenter">
+          <widget class="QLabel" name="label_6">
            <property name="sizePolicy">
-            <sizepolicy hsizetype="Minimum" vsizetype="Maximum">
+            <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
              <horstretch>0</horstretch>
              <verstretch>0</verstretch>
             </sizepolicy>
            </property>
            <property name="font">
             <font>
-             <family>MS Sans Serif</family>
+             <family>Berlin Sans FB Demi</family>
              <pointsize>12</pointsize>
              <weight>50</weight>
              <bold>false</bold>
             </font>
            </property>
-           <property name="frameShape">
-            <enum>QFrame::StyledPanel</enum>
+           <property name="text">
+            <string>Lambda</string>
            </property>
-           <property name="frameShadow">
-            <enum>QFrame::Raised</enum>
+           <property name="wordWrap">
+            <bool>true</bool>
            </property>
-           <layout class="QVBoxLayout" name="verticalLayout_10">
-            <property name="spacing">
-             <number>0</number>
-            </property>
-            <property name="leftMargin">
-             <number>0</number>
-            </property>
-            <property name="topMargin">
-             <number>0</number>
-            </property>
-            <property name="rightMargin">
-             <number>0</number>
-            </property>
-            <property name="bottomMargin">
-             <number>0</number>
-            </property>
-            <item alignment="Qt::AlignHCenter|Qt::AlignVCenter">
-             <widget class="QLabel" name="label_7">
-              <property name="sizePolicy">
-               <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
-                <horstretch>0</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
-              </property>
-              <property name="minimumSize">
-               <size>
-                <width>1</width>
-                <height>5</height>
-               </size>
-              </property>
-              <property name="font">
-               <font>
-                <pointsize>10</pointsize>
-                <weight>75</weight>
-                <bold>true</bold>
-               </font>
-              </property>
-              <property name="text">
-               <string>Ignition Advance</string>
-              </property>
-              <property name="alignment">
-               <set>Qt::AlignCenter</set>
-              </property>
-              <property name="wordWrap">
-               <bool>false</bool>
-              </property>
-             </widget>
-            </item>
-            <item alignment="Qt::AlignHCenter">
-             <widget class="BarWidget" name="barWidget_4">
-              <property name="sizePolicy">
-               <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-                <horstretch>0</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
-              </property>
-              <property name="minimumSize">
-               <size>
-                <width>45</width>
-                <height>150</height>
-               </size>
-              </property>
-              <property name="font">
-               <font>
-                <family>MS Gothic</family>
-                <pointsize>14</pointsize>
-                <weight>50</weight>
-                <bold>false</bold>
-                <strikeout>false</strikeout>
-               </font>
-              </property>
-              <property name="acceptDrops">
-               <bool>false</bool>
-              </property>
-              <property name="toolTip">
-               <string>Click and drag here</string>
-              </property>
-              <property name="whatsThis">
-               <string>Bar Widget.  </string>
-              </property>
-              <property name="autoFillBackground">
-               <bool>false</bool>
-              </property>
-              <property name="value">
-               <double>38.000000000000000</double>
-              </property>
-              <property name="hasStatusColor">
-               <bool>true</bool>
-              </property>
-              <property name="textMargin">
-               <double>10.000000000000000</double>
-              </property>
-              <property name="margin">
-               <double>10.000000000000000</double>
-              </property>
-              <property name="radius">
-               <double>3.000000000000000</double>
-              </property>
-              <property name="downColor">
-               <color>
-                <red>0</red>
-                <green>0</green>
-                <blue>116</blue>
-               </color>
-              </property>
-              <property name="okColor">
-               <color>
-                <red>0</red>
-                <green>125</green>
-                <blue>0</blue>
-               </color>
-              </property>
-              <property name="upColor">
-               <color>
-                <red>132</red>
-                <green>0</green>
-                <blue>0</blue>
-               </color>
-              </property>
-              <property name="color">
-               <color alpha="150">
-                <red>121</red>
-                <green>1</green>
-                <blue>241</blue>
-               </color>
-              </property>
-             </widget>
-            </item>
-           </layout>
           </widget>
          </item>
-         <item>
-          <widget class="QFrame" name="frame_6">
+         <item row="1" column="3" alignment="Qt::AlignHCenter">
+          <widget class="BarWidget" name="barWidget_2">
            <property name="sizePolicy">
-            <sizepolicy hsizetype="Minimum" vsizetype="Maximum">
+            <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
              <horstretch>0</horstretch>
              <verstretch>0</verstretch>
             </sizepolicy>
            </property>
+           <property name="minimumSize">
+            <size>
+             <width>100</width>
+             <height>50</height>
+            </size>
+           </property>
            <property name="font">
             <font>
-             <family>MS Sans Serif</family>
+             <family>Franklin Gothic Medium Cond</family>
+             <pointsize>14</pointsize>
+             <weight>50</weight>
+             <bold>false</bold>
+             <underline>false</underline>
+             <strikeout>false</strikeout>
+             <kerning>false</kerning>
+            </font>
+           </property>
+           <property name="acceptDrops">
+            <bool>false</bool>
+           </property>
+           <property name="toolTip">
+            <string>Click and drag here</string>
+           </property>
+           <property name="whatsThis">
+            <string>Bar Widget.  </string>
+           </property>
+           <property name="autoFillBackground">
+            <bool>false</bool>
+           </property>
+           <property name="value">
+            <double>22.000000000000000</double>
+           </property>
+           <property name="suffix">
+            <string>°C</string>
+           </property>
+           <property name="hasStatusColor">
+            <bool>true</bool>
+           </property>
+           <property name="isHorizontal">
+            <bool>true</bool>
+           </property>
+           <property name="isInverted">
+            <bool>false</bool>
+           </property>
+           <property name="textMargin">
+            <double>3.000000000000000</double>
+           </property>
+           <property name="textHeight">
+            <double>19.000000000000000</double>
+           </property>
+           <property name="margin">
+            <double>6.000000000000000</double>
+           </property>
+           <property name="radius">
+            <double>1.000000000000000</double>
+           </property>
+           <property name="downColor">
+            <color>
+             <red>0</red>
+             <green>0</green>
+             <blue>116</blue>
+            </color>
+           </property>
+           <property name="okColor">
+            <color>
+             <red>0</red>
+             <green>125</green>
+             <blue>0</blue>
+            </color>
+           </property>
+           <property name="upColor">
+            <color>
+             <red>132</red>
+             <green>0</green>
+             <blue>0</blue>
+            </color>
+           </property>
+           <property name="color">
+            <color alpha="150">
+             <red>121</red>
+             <green>1</green>
+             <blue>241</blue>
+            </color>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="3" alignment="Qt::AlignRight">
+          <widget class="QLabel" name="label_4">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="minimumSize">
+            <size>
+             <width>1</width>
+             <height>5</height>
+            </size>
+           </property>
+           <property name="font">
+            <font>
+             <family>Berlin Sans FB Demi</family>
              <pointsize>12</pointsize>
              <weight>50</weight>
              <bold>false</bold>
             </font>
            </property>
-           <property name="frameShape">
-            <enum>QFrame::StyledPanel</enum>
+           <property name="text">
+            <string>Engine Temperature</string>
            </property>
-           <property name="frameShadow">
-            <enum>QFrame::Raised</enum>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
            </property>
-           <layout class="QVBoxLayout" name="verticalLayout_7">
-            <property name="spacing">
-             <number>0</number>
-            </property>
-            <property name="leftMargin">
-             <number>0</number>
-            </property>
-            <property name="topMargin">
-             <number>0</number>
-            </property>
-            <property name="rightMargin">
-             <number>0</number>
-            </property>
-            <property name="bottomMargin">
-             <number>0</number>
-            </property>
-            <item alignment="Qt::AlignHCenter|Qt::AlignVCenter">
-             <widget class="QLabel" name="label_4">
-              <property name="sizePolicy">
-               <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
-                <horstretch>0</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
-              </property>
-              <property name="minimumSize">
-               <size>
-                <width>1</width>
-                <height>5</height>
-               </size>
-              </property>
-              <property name="font">
-               <font>
-                <pointsize>10</pointsize>
-                <weight>75</weight>
-                <bold>true</bold>
-               </font>
-              </property>
-              <property name="text">
-               <string>Engine Temperature</string>
-              </property>
-              <property name="alignment">
-               <set>Qt::AlignCenter</set>
-              </property>
-              <property name="wordWrap">
-               <bool>true</bool>
-              </property>
-             </widget>
-            </item>
-            <item alignment="Qt::AlignHCenter">
-             <widget class="BarWidget" name="barWidget_2">
-              <property name="sizePolicy">
-               <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-                <horstretch>0</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
-              </property>
-              <property name="minimumSize">
-               <size>
-                <width>45</width>
-                <height>150</height>
-               </size>
-              </property>
-              <property name="font">
-               <font>
-                <family>MS Gothic</family>
-                <pointsize>14</pointsize>
-                <weight>50</weight>
-                <bold>false</bold>
-                <strikeout>false</strikeout>
-               </font>
-              </property>
-              <property name="acceptDrops">
-               <bool>false</bool>
-              </property>
-              <property name="toolTip">
-               <string>Click and drag here</string>
-              </property>
-              <property name="whatsThis">
-               <string>Bar Widget.  </string>
-              </property>
-              <property name="autoFillBackground">
-               <bool>false</bool>
-              </property>
-              <property name="value">
-               <double>22.000000000000000</double>
-              </property>
-              <property name="hasStatusColor">
-               <bool>true</bool>
-              </property>
-              <property name="textMargin">
-               <double>10.000000000000000</double>
-              </property>
-              <property name="margin">
-               <double>10.000000000000000</double>
-              </property>
-              <property name="radius">
-               <double>3.000000000000000</double>
-              </property>
-              <property name="downColor">
-               <color>
-                <red>0</red>
-                <green>0</green>
-                <blue>116</blue>
-               </color>
-              </property>
-              <property name="okColor">
-               <color>
-                <red>0</red>
-                <green>125</green>
-                <blue>0</blue>
-               </color>
-              </property>
-              <property name="upColor">
-               <color>
-                <red>132</red>
-                <green>0</green>
-                <blue>0</blue>
-               </color>
-              </property>
-              <property name="color">
-               <color alpha="150">
-                <red>121</red>
-                <green>1</green>
-                <blue>241</blue>
-               </color>
-              </property>
-             </widget>
-            </item>
-           </layout>
+           <property name="wordWrap">
+            <bool>true</bool>
+           </property>
           </widget>
          </item>
-         <item>
-          <widget class="QFrame" name="frame_8">
+         <item row="0" column="4" alignment="Qt::AlignHCenter">
+          <widget class="QLabel" name="label_5">
            <property name="sizePolicy">
-            <sizepolicy hsizetype="Minimum" vsizetype="Maximum">
+            <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
              <horstretch>0</horstretch>
              <verstretch>0</verstretch>
             </sizepolicy>
            </property>
+           <property name="minimumSize">
+            <size>
+             <width>1</width>
+             <height>1</height>
+            </size>
+           </property>
            <property name="font">
             <font>
+             <family>Berlin Sans FB Demi</family>
              <pointsize>12</pointsize>
+             <weight>50</weight>
+             <bold>false</bold>
             </font>
            </property>
-           <property name="frameShape">
-            <enum>QFrame::StyledPanel</enum>
+           <property name="text">
+            <string>Oil Pressure</string>
            </property>
-           <property name="frameShadow">
-            <enum>QFrame::Raised</enum>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
            </property>
-           <layout class="QVBoxLayout" name="verticalLayout_8">
-            <property name="spacing">
-             <number>0</number>
-            </property>
-            <property name="leftMargin">
-             <number>0</number>
-            </property>
-            <property name="topMargin">
-             <number>0</number>
-            </property>
-            <property name="rightMargin">
-             <number>0</number>
-            </property>
-            <property name="bottomMargin">
-             <number>0</number>
-            </property>
-            <item alignment="Qt::AlignHCenter">
-             <widget class="QLabel" name="label_5">
-              <property name="sizePolicy">
-               <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
-                <horstretch>0</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
-              </property>
-              <property name="minimumSize">
-               <size>
-                <width>1</width>
-                <height>1</height>
-               </size>
-              </property>
-              <property name="font">
-               <font>
-                <pointsize>10</pointsize>
-                <weight>75</weight>
-                <bold>true</bold>
-               </font>
-              </property>
-              <property name="text">
-               <string>Oil Pressure</string>
-              </property>
-              <property name="alignment">
-               <set>Qt::AlignCenter</set>
-              </property>
-              <property name="wordWrap">
-               <bool>true</bool>
-              </property>
-             </widget>
-            </item>
-            <item alignment="Qt::AlignHCenter">
-             <widget class="BarWidget" name="barWidget_5">
-              <property name="sizePolicy">
-               <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-                <horstretch>0</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
-              </property>
-              <property name="minimumSize">
-               <size>
-                <width>45</width>
-                <height>150</height>
-               </size>
-              </property>
-              <property name="font">
-               <font>
-                <family>MS Gothic</family>
-                <pointsize>14</pointsize>
-                <weight>50</weight>
-                <bold>false</bold>
-                <strikeout>false</strikeout>
-               </font>
-              </property>
-              <property name="acceptDrops">
-               <bool>false</bool>
-              </property>
-              <property name="toolTip">
-               <string>Click and drag here</string>
-              </property>
-              <property name="whatsThis">
-               <string>Bar Widget.  </string>
-              </property>
-              <property name="autoFillBackground">
-               <bool>false</bool>
-              </property>
-              <property name="value">
-               <double>40.000000000000000</double>
-              </property>
-              <property name="hasStatusColor">
-               <bool>true</bool>
-              </property>
-              <property name="textMargin">
-               <double>10.000000000000000</double>
-              </property>
-              <property name="margin">
-               <double>10.000000000000000</double>
-              </property>
-              <property name="radius">
-               <double>3.000000000000000</double>
-              </property>
-              <property name="downColor">
-               <color>
-                <red>0</red>
-                <green>0</green>
-                <blue>116</blue>
-               </color>
-              </property>
-              <property name="okColor">
-               <color>
-                <red>0</red>
-                <green>125</green>
-                <blue>0</blue>
-               </color>
-              </property>
-              <property name="upColor">
-               <color>
-                <red>132</red>
-                <green>0</green>
-                <blue>0</blue>
-               </color>
-              </property>
-              <property name="color">
-               <color alpha="150">
-                <red>121</red>
-                <green>1</green>
-                <blue>241</blue>
-               </color>
-              </property>
-             </widget>
-            </item>
-           </layout>
+           <property name="wordWrap">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="0" alignment="Qt::AlignHCenter">
+          <widget class="BarWidget" name="barWidget">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="minimumSize">
+            <size>
+             <width>100</width>
+             <height>50</height>
+            </size>
+           </property>
+           <property name="font">
+            <font>
+             <family>Franklin Gothic Medium Cond</family>
+             <pointsize>14</pointsize>
+             <weight>50</weight>
+             <bold>false</bold>
+             <underline>false</underline>
+             <strikeout>false</strikeout>
+             <kerning>false</kerning>
+            </font>
+           </property>
+           <property name="acceptDrops">
+            <bool>false</bool>
+           </property>
+           <property name="toolTip">
+            <string>Click and drag here</string>
+           </property>
+           <property name="whatsThis">
+            <string>Bar Widget.  </string>
+           </property>
+           <property name="autoFillBackground">
+            <bool>false</bool>
+           </property>
+           <property name="suffix">
+            <string>%</string>
+           </property>
+           <property name="hasStatusColor">
+            <bool>true</bool>
+           </property>
+           <property name="isHorizontal">
+            <bool>true</bool>
+           </property>
+           <property name="isInverted">
+            <bool>false</bool>
+           </property>
+           <property name="textMargin">
+            <double>3.000000000000000</double>
+           </property>
+           <property name="textHeight">
+            <double>19.000000000000000</double>
+           </property>
+           <property name="margin">
+            <double>6.000000000000000</double>
+           </property>
+           <property name="radius">
+            <double>1.000000000000000</double>
+           </property>
+           <property name="downColor">
+            <color>
+             <red>0</red>
+             <green>0</green>
+             <blue>116</blue>
+            </color>
+           </property>
+           <property name="okColor">
+            <color>
+             <red>0</red>
+             <green>125</green>
+             <blue>0</blue>
+            </color>
+           </property>
+           <property name="upColor">
+            <color>
+             <red>132</red>
+             <green>0</green>
+             <blue>0</blue>
+            </color>
+           </property>
+           <property name="color">
+            <color alpha="150">
+             <red>121</red>
+             <green>1</green>
+             <blue>241</blue>
+            </color>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="2" alignment="Qt::AlignHCenter">
+          <widget class="BarWidget" name="barWidget_4">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="minimumSize">
+            <size>
+             <width>100</width>
+             <height>50</height>
+            </size>
+           </property>
+           <property name="font">
+            <font>
+             <family>Franklin Gothic Medium Cond</family>
+             <pointsize>14</pointsize>
+             <weight>50</weight>
+             <bold>false</bold>
+             <underline>false</underline>
+             <strikeout>false</strikeout>
+             <kerning>false</kerning>
+            </font>
+           </property>
+           <property name="acceptDrops">
+            <bool>false</bool>
+           </property>
+           <property name="toolTip">
+            <string>Click and drag here</string>
+           </property>
+           <property name="whatsThis">
+            <string>Bar Widget.  </string>
+           </property>
+           <property name="autoFillBackground">
+            <bool>false</bool>
+           </property>
+           <property name="value">
+            <double>38.000000000000000</double>
+           </property>
+           <property name="suffix">
+            <string>°</string>
+           </property>
+           <property name="hasStatusColor">
+            <bool>true</bool>
+           </property>
+           <property name="isHorizontal">
+            <bool>true</bool>
+           </property>
+           <property name="isInverted">
+            <bool>false</bool>
+           </property>
+           <property name="textMargin">
+            <double>3.000000000000000</double>
+           </property>
+           <property name="textHeight">
+            <double>19.000000000000000</double>
+           </property>
+           <property name="margin">
+            <double>6.000000000000000</double>
+           </property>
+           <property name="radius">
+            <double>1.000000000000000</double>
+           </property>
+           <property name="downColor">
+            <color>
+             <red>0</red>
+             <green>0</green>
+             <blue>116</blue>
+            </color>
+           </property>
+           <property name="okColor">
+            <color>
+             <red>0</red>
+             <green>125</green>
+             <blue>0</blue>
+            </color>
+           </property>
+           <property name="upColor">
+            <color>
+             <red>132</red>
+             <green>0</green>
+             <blue>0</blue>
+            </color>
+           </property>
+           <property name="color">
+            <color alpha="150">
+             <red>121</red>
+             <green>1</green>
+             <blue>241</blue>
+            </color>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="1" alignment="Qt::AlignHCenter">
+          <widget class="BarWidget" name="barWidget_3">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="minimumSize">
+            <size>
+             <width>100</width>
+             <height>50</height>
+            </size>
+           </property>
+           <property name="font">
+            <font>
+             <family>Franklin Gothic Medium Cond</family>
+             <pointsize>14</pointsize>
+             <weight>50</weight>
+             <bold>false</bold>
+             <underline>false</underline>
+             <strikeout>false</strikeout>
+             <kerning>false</kerning>
+            </font>
+           </property>
+           <property name="acceptDrops">
+            <bool>false</bool>
+           </property>
+           <property name="toolTip">
+            <string>Click and drag here</string>
+           </property>
+           <property name="whatsThis">
+            <string>Bar Widget.  </string>
+           </property>
+           <property name="autoFillBackground">
+            <bool>false</bool>
+           </property>
+           <property name="value">
+            <double>74.000000000000000</double>
+           </property>
+           <property name="suffix">
+            <string>La</string>
+           </property>
+           <property name="hasStatusColor">
+            <bool>true</bool>
+           </property>
+           <property name="isHorizontal">
+            <bool>true</bool>
+           </property>
+           <property name="isInverted">
+            <bool>false</bool>
+           </property>
+           <property name="textMargin">
+            <double>3.000000000000000</double>
+           </property>
+           <property name="textHeight">
+            <double>19.000000000000000</double>
+           </property>
+           <property name="margin">
+            <double>6.000000000000000</double>
+           </property>
+           <property name="radius">
+            <double>1.000000000000000</double>
+           </property>
+           <property name="downColor">
+            <color>
+             <red>0</red>
+             <green>0</green>
+             <blue>116</blue>
+            </color>
+           </property>
+           <property name="okColor">
+            <color>
+             <red>0</red>
+             <green>125</green>
+             <blue>0</blue>
+            </color>
+           </property>
+           <property name="upColor">
+            <color>
+             <red>132</red>
+             <green>0</green>
+             <blue>0</blue>
+            </color>
+           </property>
+           <property name="color">
+            <color alpha="150">
+             <red>121</red>
+             <green>1</green>
+             <blue>241</blue>
+            </color>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="4" alignment="Qt::AlignHCenter">
+          <widget class="BarWidget" name="barWidget_5">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="minimumSize">
+            <size>
+             <width>100</width>
+             <height>50</height>
+            </size>
+           </property>
+           <property name="font">
+            <font>
+             <family>Franklin Gothic Medium Cond</family>
+             <pointsize>14</pointsize>
+             <weight>50</weight>
+             <bold>false</bold>
+             <underline>false</underline>
+             <strikeout>false</strikeout>
+             <kerning>false</kerning>
+            </font>
+           </property>
+           <property name="acceptDrops">
+            <bool>false</bool>
+           </property>
+           <property name="toolTip">
+            <string>Click and drag here</string>
+           </property>
+           <property name="whatsThis">
+            <string>Bar Widget.  </string>
+           </property>
+           <property name="autoFillBackground">
+            <bool>false</bool>
+           </property>
+           <property name="value">
+            <double>40.000000000000000</double>
+           </property>
+           <property name="suffix">
+            <string>kPa</string>
+           </property>
+           <property name="hasStatusColor">
+            <bool>true</bool>
+           </property>
+           <property name="isHorizontal">
+            <bool>true</bool>
+           </property>
+           <property name="isInverted">
+            <bool>false</bool>
+           </property>
+           <property name="textMargin">
+            <double>3.000000000000000</double>
+           </property>
+           <property name="textHeight">
+            <double>19.000000000000000</double>
+           </property>
+           <property name="margin">
+            <double>6.000000000000000</double>
+           </property>
+           <property name="radius">
+            <double>1.000000000000000</double>
+           </property>
+           <property name="downColor">
+            <color>
+             <red>0</red>
+             <green>0</green>
+             <blue>116</blue>
+            </color>
+           </property>
+           <property name="okColor">
+            <color>
+             <red>0</red>
+             <green>125</green>
+             <blue>0</blue>
+            </color>
+           </property>
+           <property name="upColor">
+            <color>
+             <red>132</red>
+             <green>0</green>
+             <blue>0</blue>
+            </color>
+           </property>
+           <property name="color">
+            <color alpha="150">
+             <red>121</red>
+             <green>1</green>
+             <blue>241</blue>
+            </color>
+           </property>
           </widget>
          </item>
         </layout>
@@ -862,7 +747,7 @@
       <item row="2" column="1">
        <widget class="QFrame" name="frame_3">
         <property name="sizePolicy">
-         <sizepolicy hsizetype="Minimum" vsizetype="Maximum">
+         <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
           <horstretch>0</horstretch>
           <verstretch>0</verstretch>
          </sizepolicy>
@@ -898,7 +783,7 @@
          <item alignment="Qt::AlignHCenter">
           <widget class="GaugeWidget" name="gaugeWidget_2">
            <property name="sizePolicy">
-            <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+            <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
              <horstretch>0</horstretch>
              <verstretch>0</verstretch>
             </sizepolicy>
@@ -948,8 +833,8 @@
            </property>
            <property name="startColor">
             <color alpha="80">
-             <red>88</red>
-             <green>157</green>
+             <red>151</red>
+             <green>172</green>
              <blue>172</blue>
             </color>
            </property>
@@ -972,9 +857,10 @@
            </property>
            <property name="font">
             <font>
-             <pointsize>10</pointsize>
-             <weight>75</weight>
-             <bold>true</bold>
+             <family>Berlin Sans FB Demi</family>
+             <pointsize>12</pointsize>
+             <weight>50</weight>
+             <bold>false</bold>
             </font>
            </property>
            <property name="layoutDirection">
@@ -1015,7 +901,7 @@
       <item row="2" column="0">
        <widget class="QFrame" name="frame_2">
         <property name="sizePolicy">
-         <sizepolicy hsizetype="Minimum" vsizetype="Maximum">
+         <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
           <horstretch>0</horstretch>
           <verstretch>0</verstretch>
          </sizepolicy>
@@ -1051,7 +937,7 @@
          <item alignment="Qt::AlignHCenter">
           <widget class="GaugeWidget" name="gaugeWidget">
            <property name="sizePolicy">
-            <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+            <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
              <horstretch>0</horstretch>
              <verstretch>0</verstretch>
             </sizepolicy>
@@ -1090,6 +976,9 @@
            <property name="indicatorWidth">
             <number>4</number>
            </property>
+           <property name="mirror">
+            <bool>false</bool>
+           </property>
            <property name="value">
             <double>14000.000000000000000</double>
            </property>
@@ -1098,8 +987,8 @@
            </property>
            <property name="startColor">
             <color alpha="80">
-             <red>88</red>
-             <green>157</green>
+             <red>151</red>
+             <green>172</green>
              <blue>172</blue>
             </color>
            </property>
@@ -1122,9 +1011,10 @@
            </property>
            <property name="font">
             <font>
-             <pointsize>10</pointsize>
-             <weight>75</weight>
-             <bold>true</bold>
+             <family>Berlin Sans FB Demi</family>
+             <pointsize>12</pointsize>
+             <weight>50</weight>
+             <bold>false</bold>
             </font>
            </property>
            <property name="layoutDirection">
@@ -1165,7 +1055,7 @@
       <item row="1" column="0" colspan="2">
        <widget class="QFrame" name="frame_10">
         <property name="sizePolicy">
-         <sizepolicy hsizetype="Preferred" vsizetype="Maximum">
+         <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
           <horstretch>0</horstretch>
           <verstretch>0</verstretch>
          </sizepolicy>
@@ -1176,10 +1066,7 @@
         <property name="frameShadow">
          <enum>QFrame::Raised</enum>
         </property>
-        <layout class="QHBoxLayout" name="horizontalLayout_4">
-         <property name="spacing">
-          <number>0</number>
-         </property>
+        <layout class="QGridLayout" name="gridLayout_3">
          <property name="leftMargin">
           <number>0</number>
          </property>
@@ -1192,177 +1079,121 @@
          <property name="bottomMargin">
           <number>0</number>
          </property>
-         <item>
-          <widget class="QFrame" name="frame_14">
+         <item row="0" column="0" alignment="Qt::AlignHCenter">
+          <widget class="QLabel" name="label_12">
            <property name="sizePolicy">
-            <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+            <sizepolicy hsizetype="Maximum" vsizetype="Maximum">
              <horstretch>0</horstretch>
              <verstretch>0</verstretch>
             </sizepolicy>
            </property>
+           <property name="minimumSize">
+            <size>
+             <width>7</width>
+             <height>6</height>
+            </size>
+           </property>
            <property name="font">
             <font>
-             <family>MS Sans Serif</family>
+             <family>Berlin Sans FB Demi</family>
              <pointsize>12</pointsize>
              <weight>50</weight>
              <bold>false</bold>
             </font>
            </property>
-           <property name="frameShape">
-            <enum>QFrame::StyledPanel</enum>
+           <property name="text">
+            <string>Air Temperature</string>
            </property>
-           <property name="frameShadow">
-            <enum>QFrame::Raised</enum>
+           <property name="scaledContents">
+            <bool>false</bool>
            </property>
-           <layout class="QVBoxLayout" name="verticalLayout_14">
-            <property name="spacing">
-             <number>0</number>
-            </property>
-            <property name="leftMargin">
-             <number>0</number>
-            </property>
-            <property name="topMargin">
-             <number>0</number>
-            </property>
-            <property name="rightMargin">
-             <number>0</number>
-            </property>
-            <property name="bottomMargin">
-             <number>0</number>
-            </property>
-            <item alignment="Qt::AlignHCenter">
-             <widget class="QLabel" name="label_12">
-              <property name="sizePolicy">
-               <sizepolicy hsizetype="Maximum" vsizetype="Maximum">
-                <horstretch>0</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
-              </property>
-              <property name="minimumSize">
-               <size>
-                <width>7</width>
-                <height>6</height>
-               </size>
-              </property>
-              <property name="font">
-               <font>
-                <pointsize>10</pointsize>
-                <weight>75</weight>
-                <bold>true</bold>
-               </font>
-              </property>
-              <property name="text">
-               <string>Air Temperature</string>
-              </property>
-              <property name="scaledContents">
-               <bool>false</bool>
-              </property>
-              <property name="alignment">
-               <set>Qt::AlignCenter</set>
-              </property>
-              <property name="wordWrap">
-               <bool>false</bool>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QFrame" name="frame_15">
-              <property name="sizePolicy">
-               <sizepolicy hsizetype="Minimum" vsizetype="Maximum">
-                <horstretch>0</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
-              </property>
-              <property name="frameShape">
-               <enum>QFrame::StyledPanel</enum>
-              </property>
-              <property name="frameShadow">
-               <enum>QFrame::Raised</enum>
-              </property>
-              <layout class="QHBoxLayout" name="horizontalLayout_6">
-               <item>
-                <widget class="QLabel" name="label_13">
-                 <property name="sizePolicy">
-                  <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-                   <horstretch>0</horstretch>
-                   <verstretch>0</verstretch>
-                  </sizepolicy>
-                 </property>
-                 <property name="font">
-                  <font>
-                   <pointsize>15</pointsize>
-                  </font>
-                 </property>
-                 <property name="text">
-                  <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;img src=&quot;:/thermometer/resources/thermometer_v2.png&quot;/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="NumberWidget" name="numberWidget_2">
-                 <property name="sizePolicy">
-                  <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
-                   <horstretch>0</horstretch>
-                   <verstretch>0</verstretch>
-                  </sizepolicy>
-                 </property>
-                 <property name="minimumSize">
-                  <size>
-                   <width>152</width>
-                   <height>58</height>
-                  </size>
-                 </property>
-                 <property name="font">
-                  <font>
-                   <pointsize>15</pointsize>
-                   <weight>75</weight>
-                   <bold>true</bold>
-                  </font>
-                 </property>
-                 <property name="toolTip">
-                  <string>Click and drag here</string>
-                 </property>
-                 <property name="whatsThis">
-                  <string>Number Widget.  </string>
-                 </property>
-                 <property name="value">
-                  <double>120.000000000000000</double>
-                 </property>
-                 <property name="minValue">
-                  <double>0.000000000000000</double>
-                 </property>
-                 <property name="maxValue">
-                  <double>150.000000000000000</double>
-                 </property>
-                 <property name="arrowMargin">
-                  <double>10.000000000000000</double>
-                 </property>
-                 <property name="suffix">
-                  <string>° C</string>
-                 </property>
-                </widget>
-               </item>
-              </layout>
-             </widget>
-            </item>
-           </layout>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+           <property name="wordWrap">
+            <bool>false</bool>
+           </property>
           </widget>
          </item>
-         <item>
-          <widget class="QFrame" name="frame_16">
+         <item row="0" column="2" alignment="Qt::AlignHCenter">
+          <widget class="QLabel" name="label_16">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Maximum" vsizetype="Maximum">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="minimumSize">
+            <size>
+             <width>7</width>
+             <height>6</height>
+            </size>
+           </property>
+           <property name="font">
+            <font>
+             <family>Berlin Sans FB Demi</family>
+             <pointsize>12</pointsize>
+             <weight>50</weight>
+             <bold>false</bold>
+            </font>
+           </property>
+           <property name="text">
+            <string>Battery Voltage</string>
+           </property>
+           <property name="scaledContents">
+            <bool>false</bool>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+           <property name="wordWrap">
+            <bool>false</bool>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="1" alignment="Qt::AlignHCenter">
+          <widget class="QLabel" name="label_14">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Maximum" vsizetype="Maximum">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="minimumSize">
+            <size>
+             <width>7</width>
+             <height>6</height>
+            </size>
+           </property>
+           <property name="font">
+            <font>
+             <family>Berlin Sans FB Demi</family>
+             <pointsize>12</pointsize>
+             <weight>50</weight>
+             <bold>false</bold>
+            </font>
+           </property>
+           <property name="text">
+            <string>Fuel Used</string>
+           </property>
+           <property name="scaledContents">
+            <bool>false</bool>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+           <property name="wordWrap">
+            <bool>false</bool>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="0" alignment="Qt::AlignHCenter">
+          <widget class="QFrame" name="frame_15">
            <property name="sizePolicy">
             <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
              <horstretch>0</horstretch>
              <verstretch>0</verstretch>
             </sizepolicy>
-           </property>
-           <property name="font">
-            <font>
-             <family>MS Sans Serif</family>
-             <pointsize>12</pointsize>
-             <weight>50</weight>
-             <bold>false</bold>
-            </font>
            </property>
            <property name="frameShape">
             <enum>QFrame::StyledPanel</enum>
@@ -1370,152 +1201,79 @@
            <property name="frameShadow">
             <enum>QFrame::Raised</enum>
            </property>
-           <layout class="QVBoxLayout" name="verticalLayout_15">
-            <property name="spacing">
-             <number>0</number>
-            </property>
-            <property name="leftMargin">
-             <number>0</number>
-            </property>
-            <property name="topMargin">
-             <number>0</number>
-            </property>
-            <property name="rightMargin">
-             <number>0</number>
-            </property>
-            <property name="bottomMargin">
-             <number>0</number>
-            </property>
-            <item alignment="Qt::AlignHCenter">
-             <widget class="QLabel" name="label_14">
-              <property name="sizePolicy">
-               <sizepolicy hsizetype="Maximum" vsizetype="Maximum">
-                <horstretch>0</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
-              </property>
-              <property name="minimumSize">
-               <size>
-                <width>7</width>
-                <height>6</height>
-               </size>
-              </property>
-              <property name="font">
-               <font>
-                <pointsize>10</pointsize>
-                <weight>75</weight>
-                <bold>true</bold>
-               </font>
-              </property>
-              <property name="text">
-               <string>Fuel Used</string>
-              </property>
-              <property name="scaledContents">
-               <bool>false</bool>
-              </property>
-              <property name="alignment">
-               <set>Qt::AlignCenter</set>
-              </property>
-              <property name="wordWrap">
-               <bool>false</bool>
-              </property>
-             </widget>
-            </item>
+           <layout class="QHBoxLayout" name="horizontalLayout_6">
             <item>
-             <widget class="QFrame" name="frame_17">
+             <widget class="QLabel" name="label_13">
               <property name="sizePolicy">
                <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
                 <horstretch>0</horstretch>
                 <verstretch>0</verstretch>
                </sizepolicy>
               </property>
-              <property name="frameShape">
-               <enum>QFrame::StyledPanel</enum>
+              <property name="font">
+               <font>
+                <pointsize>15</pointsize>
+               </font>
               </property>
-              <property name="frameShadow">
-               <enum>QFrame::Raised</enum>
+              <property name="text">
+               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;img src=&quot;:/thermometer/resources/thermometer_v2.png&quot;/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
               </property>
-              <layout class="QHBoxLayout" name="horizontalLayout_7">
-               <item>
-                <widget class="QLabel" name="label_15">
-                 <property name="sizePolicy">
-                  <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-                   <horstretch>0</horstretch>
-                   <verstretch>0</verstretch>
-                  </sizepolicy>
-                 </property>
-                 <property name="font">
-                  <font>
-                   <pointsize>15</pointsize>
-                  </font>
-                 </property>
-                 <property name="text">
-                  <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;img src=&quot;:/fuel/resources/fuel_v2.png&quot;/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="NumberWidget" name="numberWidget_3">
-                 <property name="sizePolicy">
-                  <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
-                   <horstretch>0</horstretch>
-                   <verstretch>0</verstretch>
-                  </sizepolicy>
-                 </property>
-                 <property name="minimumSize">
-                  <size>
-                   <width>143</width>
-                   <height>64</height>
-                  </size>
-                 </property>
-                 <property name="font">
-                  <font>
-                   <pointsize>15</pointsize>
-                   <weight>75</weight>
-                   <bold>true</bold>
-                  </font>
-                 </property>
-                 <property name="toolTip">
-                  <string>Click and drag here</string>
-                 </property>
-                 <property name="whatsThis">
-                  <string>Number Widget.  </string>
-                 </property>
-                 <property name="value">
-                  <double>3.000000000000000</double>
-                 </property>
-                 <property name="maxValue">
-                  <double>10.000000000000000</double>
-                 </property>
-                 <property name="margin">
-                  <double>2.000000000000000</double>
-                 </property>
-                 <property name="suffix">
-                  <string>L</string>
-                 </property>
-                </widget>
-               </item>
-              </layout>
+             </widget>
+            </item>
+            <item>
+             <widget class="NumberWidget" name="numberWidget_2">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="minimumSize">
+               <size>
+                <width>140</width>
+                <height>60</height>
+               </size>
+              </property>
+              <property name="font">
+               <font>
+                <pointsize>15</pointsize>
+                <weight>75</weight>
+                <bold>true</bold>
+               </font>
+              </property>
+              <property name="toolTip">
+               <string>Click and drag here</string>
+              </property>
+              <property name="whatsThis">
+               <string>Number Widget.  </string>
+              </property>
+              <property name="value">
+               <double>120.000000000000000</double>
+              </property>
+              <property name="minValue">
+               <double>0.000000000000000</double>
+              </property>
+              <property name="maxValue">
+               <double>150.000000000000000</double>
+              </property>
+              <property name="arrowMargin">
+               <double>10.000000000000000</double>
+              </property>
+              <property name="suffix">
+               <string>° C</string>
+              </property>
              </widget>
             </item>
            </layout>
           </widget>
          </item>
-         <item>
-          <widget class="QFrame" name="frame_18">
+         <item row="1" column="1" alignment="Qt::AlignHCenter">
+          <widget class="QFrame" name="frame_17">
            <property name="sizePolicy">
             <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
              <horstretch>0</horstretch>
              <verstretch>0</verstretch>
             </sizepolicy>
-           </property>
-           <property name="font">
-            <font>
-             <family>MS Sans Serif</family>
-             <pointsize>12</pointsize>
-             <weight>50</weight>
-             <bold>false</bold>
-            </font>
            </property>
            <property name="frameShape">
             <enum>QFrame::StyledPanel</enum>
@@ -1523,132 +1281,141 @@
            <property name="frameShadow">
             <enum>QFrame::Raised</enum>
            </property>
-           <layout class="QVBoxLayout" name="verticalLayout_16">
-            <property name="spacing">
-             <number>0</number>
-            </property>
-            <property name="leftMargin">
-             <number>0</number>
-            </property>
-            <property name="topMargin">
-             <number>0</number>
-            </property>
-            <property name="rightMargin">
-             <number>0</number>
-            </property>
-            <property name="bottomMargin">
-             <number>0</number>
-            </property>
-            <item alignment="Qt::AlignHCenter">
-             <widget class="QLabel" name="label_16">
+           <layout class="QHBoxLayout" name="horizontalLayout_7">
+            <item>
+             <widget class="QLabel" name="label_15">
               <property name="sizePolicy">
-               <sizepolicy hsizetype="Maximum" vsizetype="Maximum">
+               <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="font">
+               <font>
+                <pointsize>15</pointsize>
+               </font>
+              </property>
+              <property name="text">
+               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;img src=&quot;:/fuel/resources/fuel_v2.png&quot;/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="NumberWidget" name="numberWidget_3">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
                 <horstretch>0</horstretch>
                 <verstretch>0</verstretch>
                </sizepolicy>
               </property>
               <property name="minimumSize">
                <size>
-                <width>7</width>
-                <height>6</height>
+                <width>110</width>
+                <height>60</height>
                </size>
               </property>
               <property name="font">
                <font>
-                <pointsize>10</pointsize>
+                <pointsize>15</pointsize>
                 <weight>75</weight>
                 <bold>true</bold>
                </font>
               </property>
-              <property name="text">
-               <string>Battery Voltage</string>
+              <property name="toolTip">
+               <string>Click and drag here</string>
               </property>
-              <property name="scaledContents">
-               <bool>false</bool>
+              <property name="whatsThis">
+               <string>Number Widget.  </string>
               </property>
-              <property name="alignment">
-               <set>Qt::AlignCenter</set>
+              <property name="value">
+               <double>3.000000000000000</double>
               </property>
-              <property name="wordWrap">
-               <bool>false</bool>
+              <property name="maxValue">
+               <double>10.000000000000000</double>
+              </property>
+              <property name="margin">
+               <double>2.000000000000000</double>
+              </property>
+              <property name="suffix">
+               <string>L</string>
               </property>
              </widget>
             </item>
+           </layout>
+          </widget>
+         </item>
+         <item row="1" column="2" alignment="Qt::AlignHCenter">
+          <widget class="QFrame" name="frame_19">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="frameShape">
+            <enum>QFrame::StyledPanel</enum>
+           </property>
+           <property name="frameShadow">
+            <enum>QFrame::Raised</enum>
+           </property>
+           <layout class="QHBoxLayout" name="horizontalLayout_8">
             <item>
-             <widget class="QFrame" name="frame_19">
+             <widget class="QLabel" name="label_17">
               <property name="sizePolicy">
-               <sizepolicy hsizetype="Minimum" vsizetype="Maximum">
+               <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
                 <horstretch>0</horstretch>
                 <verstretch>0</verstretch>
                </sizepolicy>
               </property>
-              <property name="frameShape">
-               <enum>QFrame::StyledPanel</enum>
+              <property name="font">
+               <font>
+                <pointsize>15</pointsize>
+               </font>
               </property>
-              <property name="frameShadow">
-               <enum>QFrame::Raised</enum>
+              <property name="text">
+               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;img src=&quot;:/battery/resources/car_battery.png&quot;/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
               </property>
-              <layout class="QHBoxLayout" name="horizontalLayout_8">
-               <item>
-                <widget class="QLabel" name="label_17">
-                 <property name="sizePolicy">
-                  <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-                   <horstretch>0</horstretch>
-                   <verstretch>0</verstretch>
-                  </sizepolicy>
-                 </property>
-                 <property name="font">
-                  <font>
-                   <pointsize>15</pointsize>
-                  </font>
-                 </property>
-                 <property name="text">
-                  <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;img src=&quot;:/battery/resources/car_battery.png&quot;/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="NumberWidget" name="numberWidget_4">
-                 <property name="sizePolicy">
-                  <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
-                   <horstretch>0</horstretch>
-                   <verstretch>0</verstretch>
-                  </sizepolicy>
-                 </property>
-                 <property name="minimumSize">
-                  <size>
-                   <width>132</width>
-                   <height>60</height>
-                  </size>
-                 </property>
-                 <property name="font">
-                  <font>
-                   <pointsize>15</pointsize>
-                   <weight>75</weight>
-                   <bold>true</bold>
-                  </font>
-                 </property>
-                 <property name="toolTip">
-                  <string>Click and drag here</string>
-                 </property>
-                 <property name="whatsThis">
-                  <string>Number Widget.  </string>
-                 </property>
-                 <property name="value">
-                  <double>13.800000000000001</double>
-                 </property>
-                 <property name="minValue">
-                  <double>10.000000000000000</double>
-                 </property>
-                 <property name="maxValue">
-                  <double>16.000000000000000</double>
-                 </property>
-                 <property name="suffix">
-                  <string>V</string>
-                 </property>
-                </widget>
-               </item>
-              </layout>
+             </widget>
+            </item>
+            <item>
+             <widget class="NumberWidget" name="numberWidget_4">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="minimumSize">
+               <size>
+                <width>135</width>
+                <height>60</height>
+               </size>
+              </property>
+              <property name="font">
+               <font>
+                <pointsize>15</pointsize>
+                <weight>75</weight>
+                <bold>true</bold>
+               </font>
+              </property>
+              <property name="toolTip">
+               <string>Click and drag here</string>
+              </property>
+              <property name="whatsThis">
+               <string>Number Widget.  </string>
+              </property>
+              <property name="value">
+               <double>13.800000000000001</double>
+              </property>
+              <property name="minValue">
+               <double>10.000000000000000</double>
+              </property>
+              <property name="maxValue">
+               <double>16.000000000000000</double>
+              </property>
+              <property name="suffix">
+               <string>V</string>
+              </property>
              </widget>
             </item>
            </layout>
