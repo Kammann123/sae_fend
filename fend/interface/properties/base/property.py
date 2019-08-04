@@ -25,11 +25,12 @@ class Property(object):
     # value's history is saved as a list of two element tuple
     # history = [ (datetime, value), ... , (datetime, value) ]
 
-    def __init__(self, buffer_length: int):
+    def __init__(self, identifier, buffer_length: int):
         # Property's members
         self.max_length = buffer_length
         self.history = []
         self.value = None
+        self.id = identifier
 
         # Property's events
         self.property_changed = Event("PropertyChanged")

@@ -12,6 +12,7 @@ from PyQt5.QtCore import pyqtProperty
 from PyQt5.QtCore import pyqtSignal
 from PyQt5.QtCore import pyqtSlot
 from PyQt5.QtCore import QPoint
+from PyQt5.QtCore import QSize
 from PyQt5.QtCore import Qt
 
 from PyQt5.QtGui import QPainter
@@ -132,6 +133,9 @@ class NumberWidget(QWidget):
                 pointTwo,
                 pointThree
             )
+
+            # Preventing random size
+            self.setMinimumSize(QSize(self.size().width(), self.size().height()))
 
     # Getter, setter and resetter of value property
     def getValue(self):

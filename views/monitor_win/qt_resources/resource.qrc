@@ -3,4 +3,11 @@
     <file>../resources/thermometer.png</file>
     <file>../resources/thermometer_v2.png</file>
   </qresource>
+  <qresource prefix="battery">
+    <file>../resources/car_battery.png</file>
+  </qresource>
+  <qresource prefix="fuel">
+    <file>../resources/fuel_v2.png</file>
+    <file>../resources/fuel.png</file>
+  </qresource>
 </RCC>

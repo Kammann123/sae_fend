@@ -15,7 +15,7 @@ from pypublisher.publisher import Publisher
 from pyevents.event import EventData
 from pyevents.event import Event
 
-from fend.interface.properties.angular_speed import RPMAngularSpeed
+from fend.interface.properties.number_property import NumberProperty
 
 
 class PropertyNotFound(Exception):
@@ -27,6 +27,21 @@ class Events(Enum):
     """ Declaring Front-End events. """
 
     TextMessageSent = "TextMessageSent"
+
+
+class Properties(Enum):
+    """ Declaring Front-End properties. """
+
+    RPMAngularSpeed = "RPMAngularSpeed"
+    ThrottlePosition = "ThrottlePosition"
+    AirTemperature = "AirTemperature"
+    EngineTemperature = "EngineTemperature"
+    LambdaOne = "LambdaOne"
+    OilPressure = "OilPressure"
+    BatteryVoltage = "BatteryVoltage"
+    GroundSpeed = "GroundSpeed"
+    IgnitionAdvance = "IgnitionAdvance"
+    FuelUsed = "FuelUsed"
 
 
 class FendInterface(Publisher, ConcurrentScheduler):
@@ -43,9 +58,18 @@ class FendInterface(Publisher, ConcurrentScheduler):
         self.register_event(Events.TextMessageSent)
 
         # Front-End properties
-        self.angular_speed = RPMAngularSpeed(buffer_length)
+        self.angular_speed = NumberProperty(Properties.RPMAngularSpeed, 0.0, 16000.0, buffer_length)
+        self.throttle_position = NumberProperty(Properties.ThrottlePosition, 0, 100, buffer_length)
+        self.air_temperature = NumberProperty(Properties.AirTemperature, 0.0, 60.0, buffer_length)
+        self.engine_temperature = NumberProperty(Properties.EngineTemperature, 0.0, 130.0, buffer_length)
+        self.lambda_one = NumberProperty(Properties.LambdaOne, 0.7, 1.2, buffer_length)
+        self.oil_pressure = NumberProperty(Properties.OilPressure, 0, 1000, buffer_length)
+        self.battery_voltage = NumberProperty(Properties.BatteryVoltage, 10, 16, buffer_length)
+        self.ground_speed = NumberProperty(Properties.GroundSpeed, 0, 200, buffer_length)
+        self.ignition_advance = NumberProperty(Properties.IgnitionAdvance, 0, 90, buffer_length)
+        self.fuel_used = NumberProperty(Properties.FuelUsed, 0, 10, buffer_length)
 
-        # Object events
+      # Object events
         self.changed = Event("InterfaceChanged")
 
     def update(self, magnitude, new_value):
