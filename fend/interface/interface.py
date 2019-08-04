@@ -72,12 +72,13 @@ class FendInterface(Publisher, ConcurrentScheduler):
       # Object events
         self.changed = Event("InterfaceChanged")
 
-    def update(self, magnitude, new_value):
+    def update(self, magnitude: Properties, new_value):
         """ Updates a magnitude's value. """
         for attribute_name, attribute_value in self.__dict__.items():
-            if isinstance(attribute_value, magnitude):
-                if getattr(self, attribute_name).set(new_value):
-                    self.changed(EventData())
-                break
+            if isinstance(attribute_value, NumberProperty):
+                if getattr(self, attribute_name).id == magnitude:
+                    if getattr(self, attribute_name).set(new_value):
+                        self.changed(EventData())
+                    break
         else:
             raise PropertyNotFound

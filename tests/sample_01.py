@@ -11,10 +11,10 @@ from pypublisher.subscriber import Subscriber
 
 from fend.interface.interface import FendInterface
 
+from fend.interface.interface import Properties
 from fend.interface.interface import Events
 
 from fend.interface.events.text_message import TextMessageData
-from fend.interface.properties.angular_speed import RPMAngularSpeed
 
 
 class BackEnd(Subscriber):
@@ -50,7 +50,7 @@ if __name__ == "__main__":
     back_end = BackEnd(front_end)
 
     # Setting property values
-    front_end.update(RPMAngularSpeed, 3150)
+    front_end.update(Properties.RPMAngularSpeed, 3150)
 
     # Show values
     print("Current RPM value: {}".format(front_end.angular_speed.value))
