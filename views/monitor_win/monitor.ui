@@ -139,6 +139,9 @@
               <property name="autoFillBackground">
                <bool>false</bool>
               </property>
+              <property name="hasStatusColor">
+               <bool>true</bool>
+              </property>
               <property name="textMargin">
                <double>10.000000000000000</double>
               </property>
@@ -147,6 +150,27 @@
               </property>
               <property name="radius">
                <double>3.000000000000000</double>
+              </property>
+              <property name="downColor">
+               <color>
+                <red>0</red>
+                <green>0</green>
+                <blue>116</blue>
+               </color>
+              </property>
+              <property name="okColor">
+               <color>
+                <red>0</red>
+                <green>125</green>
+                <blue>0</blue>
+               </color>
+              </property>
+              <property name="upColor">
+               <color>
+                <red>132</red>
+                <green>0</green>
+                <blue>0</blue>
+               </color>
               </property>
               <property name="color">
                <color alpha="150">
@@ -242,7 +266,10 @@
                <bool>false</bool>
               </property>
               <property name="value">
-               <double>90.000000000000000</double>
+               <double>75.000000000000000</double>
+              </property>
+              <property name="hasStatusColor">
+               <bool>true</bool>
               </property>
               <property name="textMargin">
                <double>10.000000000000000</double>
@@ -252,6 +279,27 @@
               </property>
               <property name="radius">
                <double>3.000000000000000</double>
+              </property>
+              <property name="downColor">
+               <color>
+                <red>0</red>
+                <green>0</green>
+                <blue>116</blue>
+               </color>
+              </property>
+              <property name="okColor">
+               <color>
+                <red>0</red>
+                <green>125</green>
+                <blue>0</blue>
+               </color>
+              </property>
+              <property name="upColor">
+               <color>
+                <red>132</red>
+                <green>0</green>
+                <blue>0</blue>
+               </color>
               </property>
               <property name="color">
                <color alpha="150">
@@ -343,7 +391,10 @@
                <bool>false</bool>
               </property>
               <property name="value">
-               <double>30.000000000000000</double>
+               <double>38.000000000000000</double>
+              </property>
+              <property name="hasStatusColor">
+               <bool>true</bool>
               </property>
               <property name="textMargin">
                <double>10.000000000000000</double>
@@ -353,6 +404,27 @@
               </property>
               <property name="radius">
                <double>3.000000000000000</double>
+              </property>
+              <property name="downColor">
+               <color>
+                <red>0</red>
+                <green>0</green>
+                <blue>116</blue>
+               </color>
+              </property>
+              <property name="okColor">
+               <color>
+                <red>0</red>
+                <green>125</green>
+                <blue>0</blue>
+               </color>
+              </property>
+              <property name="upColor">
+               <color>
+                <red>132</red>
+                <green>0</green>
+                <blue>0</blue>
+               </color>
               </property>
               <property name="color">
                <color alpha="150">
@@ -444,7 +516,10 @@
                <bool>false</bool>
               </property>
               <property name="value">
-               <double>1.000000000000000</double>
+               <double>22.000000000000000</double>
+              </property>
+              <property name="hasStatusColor">
+               <bool>true</bool>
               </property>
               <property name="textMargin">
                <double>10.000000000000000</double>
@@ -454,6 +529,27 @@
               </property>
               <property name="radius">
                <double>3.000000000000000</double>
+              </property>
+              <property name="downColor">
+               <color>
+                <red>0</red>
+                <green>0</green>
+                <blue>116</blue>
+               </color>
+              </property>
+              <property name="okColor">
+               <color>
+                <red>0</red>
+                <green>125</green>
+                <blue>0</blue>
+               </color>
+              </property>
+              <property name="upColor">
+               <color>
+                <red>132</red>
+                <green>0</green>
+                <blue>0</blue>
+               </color>
               </property>
               <property name="color">
                <color alpha="150">
@@ -544,6 +640,9 @@
               <property name="value">
                <double>40.000000000000000</double>
               </property>
+              <property name="hasStatusColor">
+               <bool>true</bool>
+              </property>
               <property name="textMargin">
                <double>10.000000000000000</double>
               </property>
@@ -552,6 +651,27 @@
               </property>
               <property name="radius">
                <double>3.000000000000000</double>
+              </property>
+              <property name="downColor">
+               <color>
+                <red>0</red>
+                <green>0</green>
+                <blue>116</blue>
+               </color>
+              </property>
+              <property name="okColor">
+               <color>
+                <red>0</red>
+                <green>125</green>
+                <blue>0</blue>
+               </color>
+              </property>
+              <property name="upColor">
+               <color>
+                <red>132</red>
+                <green>0</green>
+                <blue>0</blue>
+               </color>
               </property>
               <property name="color">
                <color alpha="150">

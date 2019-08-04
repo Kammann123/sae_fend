@@ -44,11 +44,16 @@ class BarWidget(QWidget):
         self.resetValue()
         self.resetMinValue()
         self.resetMaxValue()
+        self.resetHasStatusColor()
         self.resetIsHorizontal()
         self.resetIsInverted()
         self.resetTextMargin()
         self.resetMargin()
         self.resetRadius()
+
+        self.resetDownColor()
+        self.resetUpColor()
+        self.resetOkColor()
         self.resetColor()
 
         # Components
@@ -87,7 +92,16 @@ class BarWidget(QWidget):
         )
 
         # Filling the bar...
-        brush.setColor(self.color)
+        color = self.color
+        if self.hasStatusColor:
+            if self.value < self.minValue + (self.maxValue - self.minValue) / 3:
+                color = self.downColor
+            elif self.value < self.minValue + (self.maxValue - self.minValue) * 2 / 3:
+                color = self.okColor
+            elif self.value < self.minValue + (self.maxValue - self.minValue):
+                color = self.upColor
+
+        brush.setColor(color)
         brush.setStyle(Qt.SolidPattern)
         painter.setBrush(brush)
         painter.setPen(pen)
@@ -230,16 +244,67 @@ class BarWidget(QWidget):
     def resetTextMargin(self):
         self._textMargin = 10
 
+    # Getter, setter, resetter of the hasStatusColor property
+    def getHasStatusColor(self):
+        return self._hasStatusColor
+
+    def setHasStatusColor(self, value: bool):
+        self._hasStatusColor = value
+        self.update()
+
+    def resetHasStatusColor(self):
+        self._hasStatusColor = False
+
+    # Getter, setter, resetter of the downColor property
+    def getDownColor(self):
+        return self._downColor
+
+    def setDownColor(self, value: QColor):
+        self._downColor = value
+        self.update()
+
+    def resetDownColor(self):
+        self._downColor = QColor(0, 0, 255)
+
+    # Getter, setter, resetter of the okColor property
+    def getOkColor(self):
+        return self._okColor
+
+    def setOkColor(self, value: QColor):
+        self._okColor = value
+        self.update()
+
+    def resetOkColor(self):
+        self._okColor = QColor(0, 255, 0)
+
+    # Getter, setter, resetter of the upColor property
+    def getUpColor(self):
+        return self._upColor
+
+    def setUpColor(self, value: QColor):
+        self._upColor = value
+        self.update()
+
+    def resetUpColor(self):
+        self._upColor = QColor(255, 0, 0)
+
     # BarWidget's Properties
     value = pyqtProperty(float, getValue, setValue, resetValue)
     minValue = pyqtProperty(float, getMinValue, setMinValue, resetMinValue)
     maxValue = pyqtProperty(float, getMaxValue, setMaxValue, resetMaxValue)
 
+    hasStatusColor = pyqtProperty(bool, getHasStatusColor, setHasStatusColor, resetHasStatusColor)
     isHorizontal = pyqtProperty(bool, getIsHorizontal, setIsHorizontal, resetIsHorizontal)
     isInverted = pyqtProperty(bool, getIsInverted, setIsInverted, resetIsInverted)
+
     textMargin = pyqtProperty(float, getTextMargin, setTextMargin, resetTextMargin)
     margin = pyqtProperty(float, getMargin, setMargin, resetMargin)
     radius = pyqtProperty(float, getRadius, setRadius, resetRadius)
+
+    downColor = pyqtProperty(QColor, getDownColor, setDownColor, resetDownColor)
+    okColor = pyqtProperty(QColor, getOkColor, setOkColor, resetOkColor)
+    upColor = pyqtProperty(QColor, getUpColor, setUpColor, resetUpColor)
+
     color = pyqtProperty(QColor, getColor, setColor, resetColor)
 
 
