@@ -192,10 +192,6 @@ class GaugeWidget(QWidget):
         # Components
         self.indicators = []
         self.needle = None
-        self.label = QLabel(self)
-        self.label.setNum(0)
-
-        self.valueChanged.connect(self.label.setNum)
 
         # Widget General Settings
         self.setWindowTitle("Gauge Widget")
@@ -217,6 +213,10 @@ class GaugeWidget(QWidget):
         self.resetNeedleColor()
         self.resetStartColor()
         self.resetEndColor()
+
+        self.resetTextHeight()
+        self.resetPrefix()
+        self.resetSuffix()
 
         self.update()
 
@@ -343,10 +343,19 @@ class GaugeWidget(QWidget):
         self.needle.draw(painter)
 
         # Current value label
-        self.label.resize(self.label.sizeHint())
-        self.label.move(
-            self.size().width() / 2 - self.label.width() / 2,
-            self.size().height() / 2 + shortestSide / 2 - self.margin - self.indicatorLength - self.deltaLength - self.label.height()
+        textHeight = 20
+
+        painter.drawText(
+            0,
+            self.size().height() / 2 + shortestSide / 2 - self.margin - self.indicatorLength - self.deltaLength,
+            self.size().width(),
+            textHeight,
+            Qt.AlignHCenter | Qt.AlignVCenter,
+            "{} {} {}".format(
+                self.prefix,
+                self.value,
+                self.suffix
+            )
         )
 
         painter.end()
@@ -511,6 +520,39 @@ class GaugeWidget(QWidget):
     def resetEndColor(self):
         self._endColor = QColor(55, 55, 55, 170)
 
+    # Getter, setter, resetter of the textHeight property
+    def getTextHeight(self):
+        return self._textHeight
+
+    def setTextHeight(self, value: float):
+        self._textHeight = value
+        self.update()
+
+    def resetTextHeight(self):
+        self._textHeight = 10
+
+    # Getter, setter, resetter of the prefix property
+    def getPrefix(self):
+        return self._prefix
+
+    def setPrefix(self, value: str):
+        self._prefix = value
+        self.update()
+
+    def resetPrefix(self):
+        self._prefix = ""
+
+    # Getter, setter, resetter of the suffix property
+    def getSuffix(self):
+        return self._suffix
+
+    def setSuffix(self, value: str):
+        self._suffix = value
+        self.update()
+
+    def resetSuffix(self):
+        self._suffix = ""
+
     # GaugeWidget's Properties
     indicatorsNumber = pyqtProperty(int, getIndicatorsNumber, setIndicatorsNumber, resetIndicatorsNumber)
     indicatorLength = pyqtProperty(int, getIndicatorLength, setIndicatorLength, resetIndicatorLength)
@@ -524,6 +566,10 @@ class GaugeWidget(QWidget):
     value = pyqtProperty(float, getValue, setValue, resetValue)
     minValue = pyqtProperty(float, getMinValue, setMinValue, resetMinValue)
     maxValue = pyqtProperty(float, getMaxValue, setMaxValue, resetMaxValue)
+
+    textHeight = pyqtProperty(float, getTextHeight, setTextHeight, resetTextHeight)
+    prefix = pyqtProperty(str, getPrefix, setPrefix, resetPrefix)
+    suffix = pyqtProperty(str, getSuffix, setSuffix, resetSuffix)
 
     needleColor = pyqtProperty(QColor, getNeedleColor, setNeedleColor, resetNeedleColor)
     startColor = pyqtProperty(QColor, getStartColor, setStartColor, resetStartColor)

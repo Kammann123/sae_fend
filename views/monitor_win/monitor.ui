@@ -224,10 +224,10 @@
            </property>
            <property name="font">
             <font>
-             <family>Franklin Gothic Medium Cond</family>
+             <family>MS Sans Serif</family>
              <pointsize>14</pointsize>
-             <weight>50</weight>
-             <bold>false</bold>
+             <weight>75</weight>
+             <bold>true</bold>
              <underline>false</underline>
              <strikeout>false</strikeout>
              <kerning>false</kerning>
@@ -384,10 +384,10 @@
            </property>
            <property name="font">
             <font>
-             <family>Franklin Gothic Medium Cond</family>
+             <family>MS Sans Serif</family>
              <pointsize>14</pointsize>
-             <weight>50</weight>
-             <bold>false</bold>
+             <weight>75</weight>
+             <bold>true</bold>
              <underline>false</underline>
              <strikeout>false</strikeout>
              <kerning>false</kerning>
@@ -475,10 +475,10 @@
            </property>
            <property name="font">
             <font>
-             <family>Franklin Gothic Medium Cond</family>
+             <family>MS Sans Serif</family>
              <pointsize>14</pointsize>
-             <weight>50</weight>
-             <bold>false</bold>
+             <weight>75</weight>
+             <bold>true</bold>
              <underline>false</underline>
              <strikeout>false</strikeout>
              <kerning>false</kerning>
@@ -569,10 +569,10 @@
            </property>
            <property name="font">
             <font>
-             <family>Franklin Gothic Medium Cond</family>
+             <family>MS Sans Serif</family>
              <pointsize>14</pointsize>
-             <weight>50</weight>
-             <bold>false</bold>
+             <weight>75</weight>
+             <bold>true</bold>
              <underline>false</underline>
              <strikeout>false</strikeout>
              <kerning>false</kerning>
@@ -663,10 +663,10 @@
            </property>
            <property name="font">
             <font>
-             <family>Franklin Gothic Medium Cond</family>
+             <family>MS Sans Serif</family>
              <pointsize>14</pointsize>
-             <weight>50</weight>
-             <bold>false</bold>
+             <weight>75</weight>
+             <bold>true</bold>
              <underline>false</underline>
              <strikeout>false</strikeout>
              <kerning>false</kerning>
@@ -800,6 +800,14 @@
              <height>200</height>
             </size>
            </property>
+           <property name="font">
+            <font>
+             <family>MS Sans Serif</family>
+             <pointsize>14</pointsize>
+             <weight>75</weight>
+             <bold>true</bold>
+            </font>
+           </property>
            <property name="toolTip">
             <string>Click and drag here</string>
            </property>
@@ -830,6 +838,9 @@
            </property>
            <property name="maxValue">
             <double>200.000000000000000</double>
+           </property>
+           <property name="suffix">
+            <string>km/h</string>
            </property>
            <property name="startColor">
             <color alpha="80">
@@ -873,7 +884,7 @@
             <number>1</number>
            </property>
            <property name="text">
-            <string>Ground Speed [km/h]</string>
+            <string>Ground Speed</string>
            </property>
            <property name="textFormat">
             <enum>Qt::RichText</enum>
@@ -954,6 +965,14 @@
              <height>200</height>
             </size>
            </property>
+           <property name="font">
+            <font>
+             <family>MS Sans Serif</family>
+             <pointsize>14</pointsize>
+             <weight>75</weight>
+             <bold>true</bold>
+            </font>
+           </property>
            <property name="toolTip">
             <string>Click and drag here</string>
            </property>
@@ -984,6 +1003,9 @@
            </property>
            <property name="maxValue">
             <double>16000.000000000000000</double>
+           </property>
+           <property name="suffix">
+            <string>RPM</string>
            </property>
            <property name="startColor">
             <color alpha="80">
@@ -1027,7 +1049,7 @@
             <number>1</number>
            </property>
            <property name="text">
-            <string>Speed [RPM]</string>
+            <string>Speed</string>
            </property>
            <property name="textFormat">
             <enum>Qt::RichText</enum>
