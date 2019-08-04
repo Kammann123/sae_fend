@@ -47,6 +47,7 @@ class BarWidget(QWidget):
         self.resetIsInverted()
         self.resetMargin()
         self.resetRadius()
+        self.resetColor()
 
     def paintEvent(self, event):
         # Setting up instances
@@ -73,7 +74,7 @@ class BarWidget(QWidget):
         )
 
         # Filling the bar...
-        brush.setColor(QColor(220, 0, 100))
+        brush.setColor(self.color)
         brush.setStyle(Qt.SolidPattern)
         painter.setBrush(brush)
         painter.setPen(pen)
@@ -115,9 +116,6 @@ class BarWidget(QWidget):
             self.radius
         )
 
-
-    # BarWidget's Slots
-
     # Getter, setter, resetter of value property
     def getValue(self):
         return self._value
@@ -126,7 +124,7 @@ class BarWidget(QWidget):
     def setValue(self, value: float):
         self._value = value
         self.update()
-        self.valueChanged(value)
+        self.valueChanged.emit(value)
 
     def resetValue(self):
         self._value = 68
@@ -197,6 +195,17 @@ class BarWidget(QWidget):
     def resetRadius(self):
         self._radius = 12
 
+    # Getter, setter, resetter of color property
+    def getColor(self):
+        return self._color
+
+    def setColor(self, value: QColor):
+        self._color = value
+        self.update()
+
+    def resetColor(self):
+        self._color = QColor(220, 0, 100)
+
     # BarWidget's Properties
     value = pyqtProperty(float, getValue, setValue, resetValue)
     minValue = pyqtProperty(float, getMinValue, setMinValue, resetMinValue)
@@ -206,6 +215,7 @@ class BarWidget(QWidget):
     isInverted = pyqtProperty(bool, getIsInverted, setIsInverted, resetIsInverted)
     margin = pyqtProperty(float, getMargin, setMargin, resetMargin)
     radius = pyqtProperty(float, getRadius, setRadius, resetRadius)
+    color = pyqtProperty(QColor, getColor, setColor, resetColor)
 
 
 if __name__ == "__main__":

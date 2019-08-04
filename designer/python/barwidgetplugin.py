@@ -29,7 +29,7 @@ class BarWidgetPlugin(QPyDesignerCustomWidgetPlugin):
         return self.initialized
 
     def createWidget(self, parent):
-        return BarWidgetPlugin(parent)
+        return BarWidget(parent)
 
     def name(self):
         return "BarWidget"
