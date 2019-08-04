@@ -7,6 +7,7 @@ Bar Widget
 # third-party modules
 from PyQt5.QtWidgets import QApplication
 from PyQt5.QtWidgets import QWidget
+from PyQt5.QtWidgets import QLabel
 
 from PyQt5.QtCore import pyqtProperty
 from PyQt5.QtCore import pyqtSignal
@@ -45,9 +46,15 @@ class BarWidget(QWidget):
         self.resetMaxValue()
         self.resetIsHorizontal()
         self.resetIsInverted()
+        self.resetTextMargin()
         self.resetMargin()
         self.resetRadius()
         self.resetColor()
+
+        # Components
+        self.label = QLabel(self)
+        self.label.setNum(self.value)
+        self.valueChanged.connect(self.label.setNum)
 
     def paintEvent(self, event):
         # Setting up instances
@@ -61,7 +68,13 @@ class BarWidget(QWidget):
 
         # Bar size computing...
         width = self.size().width() - self.margin * 2
-        height = self.size().height() - self.margin * 2
+        height = self.size().height() - self.margin * 2 - self.label.height() - self.textMargin
+
+        # Text Printing...
+        self.label.move(
+            self.size().width() / 2 - self.label.width() / 2,
+            self.size().height() - self.margin - self.label.height()
+        )
 
         # Bar drawing...
         painter.drawRoundedRect(
@@ -81,7 +94,7 @@ class BarWidget(QWidget):
 
         yPositionAlgorithm = LinearAlgorithm(
             self.minValue,
-            self.size().height() - self.margin if not self.isInverted else self.margin,
+            self.size().height() - self.margin - self.label.height() - self.textMargin if not self.isInverted else self.margin,
             self.maxValue,
             self.margin
         )
@@ -206,6 +219,17 @@ class BarWidget(QWidget):
     def resetColor(self):
         self._color = QColor(220, 0, 100)
 
+    # Getter, setter, resetter of textMargin property
+    def getTextMargin(self):
+        return self._textMargin
+
+    def setTextMargin(self, value: float):
+        self._textMargin = value
+        self.update()
+
+    def resetTextMargin(self):
+        self._textMargin = 10
+
     # BarWidget's Properties
     value = pyqtProperty(float, getValue, setValue, resetValue)
     minValue = pyqtProperty(float, getMinValue, setMinValue, resetMinValue)
@@ -213,6 +237,7 @@ class BarWidget(QWidget):
 
     isHorizontal = pyqtProperty(bool, getIsHorizontal, setIsHorizontal, resetIsHorizontal)
     isInverted = pyqtProperty(bool, getIsInverted, setIsInverted, resetIsInverted)
+    textMargin = pyqtProperty(float, getTextMargin, setTextMargin, resetTextMargin)
     margin = pyqtProperty(float, getMargin, setMargin, resetMargin)
     radius = pyqtProperty(float, getRadius, setRadius, resetRadius)
     color = pyqtProperty(QColor, getColor, setColor, resetColor)
