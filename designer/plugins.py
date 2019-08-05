@@ -73,7 +73,7 @@ env.insert('PYTHONPATH', os.path.join(base, 'widgets'))
 designer = QProcess()
 designer.setProcessEnvironment(env)
 
-designer_bin = 'C:/Users/Lucas/AppData/Local/Programs/Python/Python36-32/Lib/site-packages/pyqt5_tools'
+designer_bin = 'C:/Users/santi/AppData/Local/Programs/Python/Python37-32/Lib/site-packages/pyqt5_tools'
 
 if sys.platform == 'darwin':
     designer_bin += '/Designer.app/Contents/MacOS/Designer'

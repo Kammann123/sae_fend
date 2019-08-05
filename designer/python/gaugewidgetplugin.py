@@ -9,7 +9,7 @@ from PyQt5.QtDesigner import QPyDesignerCustomWidgetPlugin
 from PyQt5.QtGui import QIcon
 
 # sae project modules
-from gaugewidget import GaugeWidget
+from designer.widgets.gaugewidget import GaugeWidget
 
 
 class GaugeWidgetPlugin(QPyDesignerCustomWidgetPlugin):

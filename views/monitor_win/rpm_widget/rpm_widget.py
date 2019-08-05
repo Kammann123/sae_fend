@@ -1,38 +1,27 @@
 """
-RPM class to show evolution through time
+RPM class to show evolution through time / en stand_by no se si va a ser util, por las dudas no lo borro
 """
 
 # python native modules
 
 # third-party modules
-from PyQt5.QtWidgets import *
-from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg
-from matplotlib.figure import Figure
 
 # sae project modules
-from views.monitor_win.graph_widget.base_widget import GraphWidget
+from designer.widgets.timegraphwidget import TimeGraphWidget
 from fend.core.sae_fend import SAEFend
 
-from fend.interface.interface import Events
-from fend.interface.properties.angular_speed import RPMAngularSpeed
 
-
-class RPMGraphWidget(GraphWidget):
+class RPMGraphWidget(TimeGraphWidget):
 
     def __init__(self, parent=None, fend: SAEFend = None):
-        GraphWidget.__init__(self, "RPM", parent, fend)
+        TimeGraphWidget.__init__(self, parent)
 
-        self.rpm_values = []
-        self.rpm_time = []
-        self.curr = 0
+        # To do things, remember
 
-        self.canvas.axes.get_xaxis().set_visible(False)  # Hiding x axis numbers
-
-        self.canvas.axes.set_xlabel("time")  # I don't know why is not working
-        self.canvas.axes.set_ylabel("value")
 
         """ Subscribing to the rpm property """
         if fend is not None:
+            self.setBufferLen(fend.angular_speed.max_length)
             for i in range(fend.angular_speed.max_length):
                 self.rpm_values.append(0)
                 self.rpm_time.append(i)
@@ -59,7 +48,6 @@ class RPMGraphWidget(GraphWidget):
             self.curr += 1
             self.canvas.axes.clear()
             self.canvas.axes.plot(self.rpm_time, self.rpm_values, color="k", linewidth=1)
-            print(len(self.rpm_time))
             self.canvas.draw()
 
     def set_sae_fend(self, fend: SAEFend):

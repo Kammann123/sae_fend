@@ -9,7 +9,7 @@ from PyQt5.QtDesigner import QPyDesignerCustomWidgetPlugin
 from PyQt5.QtGui import QIcon
 
 # sae project modules
-from thermometer import ThermometerWidget
+from designer.widgets.thermometer import ThermometerWidget
 
 
 class ThermometerPlugin(QPyDesignerCustomWidgetPlugin):
