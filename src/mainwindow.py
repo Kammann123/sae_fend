@@ -1,11 +1,15 @@
 # PyQt5 modules
 from PyQt5 import QtWidgets
+from PyQt5 import QtCore
 
 # Python modules
 from typing import Dict, List
 
-# MainWindow ui design imports
+# MainWindow import
 from src.ui.mainwindow import Ui_MainWindow
+
+# Widgets import
+from src.index import Index
 
 
 class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
@@ -22,12 +26,14 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         # mistakes of the programmer, it also creates the widgets
         # as part of the stacked widget layout
         self._widget_paths: Dict[str, QtWidgets.QWidget] = {}
-        self._default_path: str = ''    # TODO! Define the default path
+        self._default_path: str = 'index'
+
         self.declare_router(
             {
-                # Add here some new widgets to route
+                'index': Index(self)
             }
         )
+        self.route(self._default_path)
 
     def get_paths(self) -> List[str]:
         """
@@ -44,18 +50,17 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         :param paths: Dictionary with string's indexed widgets
         """
         if type(paths) is dict:
-            for targets in paths.values():
-                if type(targets) is not QtWidgets.QWidget:
+            for target in paths.values():
+                if not isinstance(target, QtWidgets.QWidget):
                     raise ValueError('Invalid type of path targets in dictionary received at declare_router() method')
             else:
                 self._widget_paths = paths
-                for key, value in paths:
+                for key, value in paths.items():
                     self.router_widget.addWidget(value)
-                if self._default_path:
-                    self.route(self._default_path)
         else:
             raise ValueError('Invalid type of paths parameter in declare_router() method')
 
+    @QtCore.pyqtSlot(str)
     def route(self, path: str):
         """
         Switches the current displayed widget in the main window's screen,

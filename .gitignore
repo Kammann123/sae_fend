@@ -1,2 +1,5 @@
 # PyCharm related project files
 idea/
+
+# Python cached files
+__pycache__/
