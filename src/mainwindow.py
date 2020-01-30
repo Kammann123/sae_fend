@@ -43,15 +43,16 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         using only its internal name.
         :param paths: Dictionary with string's indexed widgets
         """
-        if type(paths) is Dict:
+        if type(paths) is dict:
             for targets in paths.values():
                 if type(targets) is not QtWidgets.QWidget:
                     raise ValueError('Invalid type of path targets in dictionary received at declare_router() method')
             else:
                 self._widget_paths = paths
                 for key, value in paths:
-                    widget_index = self.router_widget.addWidget(value)
-                self.route(self._default_path)
+                    self.router_widget.addWidget(value)
+                if self._default_path:
+                    self.route(self._default_path)
         else:
             raise ValueError('Invalid type of paths parameter in declare_router() method')
 
