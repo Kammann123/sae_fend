@@ -1,0 +1,3 @@
+# Python dependencies should be written here to assure a correct
+# update with the 'pip install -r requirements' command
+PyQt5
