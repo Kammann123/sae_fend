@@ -1,5 +1,6 @@
 # PyCharm related project files
-idea/
+.idea/
 
 # Python cached files
 __pycache__/
+*.pyc
