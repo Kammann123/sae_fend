@@ -1,18 +1,17 @@
 # PyQt5 modules
-from PyQt5 import QtWidgets
+from PyQt5.QtWidgets import QMainWindow, QWidget
 from PyQt5 import QtCore
 
 # Python modules
 from typing import Dict, List
 
-# MainWindow import
-from src.ui.mainwindow import Ui_MainWindow
-
 # Widgets import
+from src.ui.mainwindow import Ui_MainWindow
 from src.index import Index
+from src.monitor import Monitor
 
 
-class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
+class MainWindow(QMainWindow, Ui_MainWindow):
     """ Application's main window, here is where an internal router path
         will be used to control what to show in the screen. It manages the
         application flow.
@@ -25,12 +24,13 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         # Declaring the router paths, and type checking to prevent
         # mistakes of the programmer, it also creates the widgets
         # as part of the stacked widget layout
-        self._widget_paths: Dict[str, QtWidgets.QWidget] = {}
+        self._widget_paths: Dict[str, QWidget] = {}
         self._default_path: str = 'index'
 
         self.declare_router(
             {
-                'index': Index(self)
+                'index': Index(self),
+                'monitor': Monitor(self)
             }
         )
         self.route(self._default_path)
@@ -42,7 +42,7 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         """
         return list(self._widget_paths.keys())
 
-    def declare_router(self, paths: Dict[str, QtWidgets.QWidget]):
+    def declare_router(self, paths: Dict[str, QWidget]):
         """
         Declares the router paths of the main window, basically it creates a dictionary
         so we can dynamically declare and switch the current widget on screen, by
@@ -51,7 +51,7 @@ class MainWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         """
         if type(paths) is dict:
             for target in paths.values():
-                if not isinstance(target, QtWidgets.QWidget):
+                if not isinstance(target, QWidget):
                     raise ValueError('Invalid type of path targets in dictionary received at declare_router() method')
             else:
                 self._widget_paths = paths
