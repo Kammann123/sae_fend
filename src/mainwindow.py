@@ -1,6 +1,6 @@
 # PyQt5 modules
 from PyQt5.QtWidgets import QMainWindow, QWidget
-from PyQt5 import QtCore
+from PyQt5.QtCore import pyqtSlot
 
 # Python modules
 from typing import Dict, List
@@ -60,7 +60,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         else:
             raise ValueError('Invalid type of paths parameter in declare_router() method')
 
-    @QtCore.pyqtSlot(str)
+    @pyqtSlot(str, name='route')
     def route(self, path: str):
         """
         Switches the current displayed widget in the main window's screen,

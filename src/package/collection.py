@@ -1,5 +1,5 @@
 # PyQt5 modules
-from PyQt5.QtCore import QObject, pyqtSignal
+from PyQt5.QtCore import QObject, pyqtSignal, pyqtSlot
 
 # Python modules
 from time import time
@@ -37,12 +37,12 @@ class DataCollection(QObject):
     """
 
     # Class signals definition
-    increased = pyqtSignal()
-    decreased = pyqtSignal()
-    remained = pyqtSignal()
-    collectionChanged = pyqtSignal()
-    valueAdded = pyqtSignal(DataValue)
-    valueRemoved = pyqtSignal(DataValue)
+    increased = pyqtSignal(name='increased')
+    decreased = pyqtSignal(name='decreased')
+    remained = pyqtSignal(name='remained')
+    collection_changed = pyqtSignal(name='collectionChanged')
+    value_added = pyqtSignal(DataValue, name='valueAdded')
+    value_removed = pyqtSignal(DataValue, name='valueRemoved')
 
     def __init__(self, values: List[DataValue] = None):
         super(DataCollection, self).__init__()
@@ -59,6 +59,7 @@ class DataCollection(QObject):
     def values(self):
         return self._values
 
+    @pyqtSlot(DataValue, name='add', result=bool)
     def add(self, value: DataValue):
         """
         Adds a new value to the DataCollection.
@@ -69,8 +70,8 @@ class DataCollection(QObject):
             self._values.append(value)
 
             # Emitting corresponding signals
-            self.valueAdded.emit(value)
-            self.collectionChanged.emit()
+            self.value_added.emit(value)
+            self.collection_changed.emit()
             if self._last_value_added is not None:
                 if self._last_value_added.value > value.value:
                     self.decreased.emit()
@@ -81,6 +82,24 @@ class DataCollection(QObject):
             self._last_value_added = value
         else:
             raise ValueError('Type error when adding a new value to DataCollection. DataValue expected!')
+
+    @pyqtSlot(DataValue, name='remove', result=bool)
+    def remove(self, value: DataValue) -> bool:
+        """
+        Removes a specific DataValue from the collection.
+        :param value: The DataValue to be removed
+        :return: Boolean value on success
+        """
+        if isinstance(value, DataValue):
+            if value in self._values:
+                # Deleting the DataValue element
+                del self._values[self._values.index(value)]
+
+                # Emitting the corresponding signals
+                self.value_removed.emit(value)
+                self.collection_changed.emit()
+                return True
+        return False
 
     def remove_by_timestamp(self, timestamp: float) -> bool:
         """
@@ -95,20 +114,3 @@ class DataCollection(QObject):
                 return True
         else:
             return False
-
-    def remove(self, value: DataValue) -> bool:
-        """
-        Removes a specific DataValue from the collection.
-        :param value: The DataValue to be removed
-        :return: Boolean value on success
-        """
-        if isinstance(value, DataValue):
-            if value in self._values:
-                # Deleting the DataValue element
-                del self._values[self._values.index(value)]
-
-                # Emitting the corresponding signals
-                self.valueRemoved.emit(value)
-                self.collectionChanged.emit()
-                return True
-        return False

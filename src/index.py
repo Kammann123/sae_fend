@@ -23,7 +23,7 @@ class Index(QWidget, Ui_Index):
         # Connecting signals and slots in the widget
         self.continue_button.clicked.connect(self.on_continue)
 
-    @pyqtSlot()
+    @pyqtSlot(name='onContinue')
     def on_continue(self):
         """
         When continue button is pressed, MainWindow is told to route
