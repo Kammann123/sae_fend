@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6878c0d4-5907-4739-a7cd-ad3587e88ece" name="Default Changelist" comment="">
+    <list default="true" id="91be7996-9cd1-4b7e-8b6e-b80fc4e5e430" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/package/collection.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
