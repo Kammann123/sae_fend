@@ -44,7 +44,7 @@ class DataCollection(QObject):
     value_added = pyqtSignal(DataValue, name='valueAdded')
     value_removed = pyqtSignal(DataValue, name='valueRemoved')
 
-    def __init__(self, values: List[DataValue] = None):
+    def __init__(self, name: str, values: List[DataValue] = None):
         super(DataCollection, self).__init__()
 
         # Default arguments control
@@ -52,8 +52,13 @@ class DataCollection(QObject):
             values = []
 
         # Class private attributes
+        self._name = name
         self._values = values
         self._last_value_added = None
+
+    @property
+    def name(self):
+        return self._name
 
     @property
     def values(self):
@@ -100,17 +105,3 @@ class DataCollection(QObject):
                 self.collection_changed.emit()
                 return True
         return False
-
-    def remove_by_timestamp(self, timestamp: float) -> bool:
-        """
-        Removes a DataValue from the collection, it identifies
-        the element by its timestamp.
-        :param timestamp: The DataValue's timestamp
-        :return Boolean value on success
-        """
-        for value in self._values:
-            if value.timestamp == timestamp:
-                self.remove(value)
-                return True
-        else:
-            return False
