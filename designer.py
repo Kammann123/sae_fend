@@ -1,5 +1,5 @@
 """ This Designer script is an utility that can be used to run the Qt Designer tool interface
-    adding automatically the environment variables needed to detect the new widget plugins.
+    adding automatically the environment variables needed to detect the new widget plugins from the project.
 """
 
 # PyQt5 modules
@@ -30,8 +30,8 @@ if __name__ == "__main__":
     designer_bin = 'designer'
 
     base = os.path.dirname(__file__)
-    plugin_path = os.path.join(base, '..', 'src/widgets/plugins')
-    widget_path = os.path.join(base, '..', 'src/widgets')
+    plugin_path = os.path.join(base, 'plugins')
+    widget_path = os.path.join(base, 'src', 'widgets')
 
     env = QProcessEnvironment.systemEnvironment()
     env.insert('PYQTDESIGNERPATH', plugin_path)

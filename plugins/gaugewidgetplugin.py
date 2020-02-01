@@ -1,9 +1,15 @@
+""" All python scripts and modules in the project may be imported with an absolute import using as root
+    the root directory of the project. Only for plugins the relative import will be used because they
+    are loaded by the QtDesigner tool, thus, no root directory can be used. Remember that an environment
+    path has been added with the PYTHONPATH location of the widget.
+"""
+
 # PyQt5 modules
 from PyQt5.QtDesigner import QPyDesignerCustomWidgetPlugin
 from PyQt5.QtGui import QIcon
 
 # Project modules
-from src.widgets.gaugewidget import CircularGauge
+from gaugewidget import CircularGauge
 
 
 class CircularGaugePlugin(QPyDesignerCustomWidgetPlugin):
