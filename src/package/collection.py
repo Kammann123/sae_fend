@@ -11,6 +11,14 @@ class DataValue(QObject):
         would like it to contain.
     """
 
+    @property
+    def value(self):
+        return self._value
+
+    @property
+    def timestamp(self):
+        return self._timestamp
+
     def __init__(self, value):
         super(DataValue, self).__init__()
 
@@ -21,14 +29,6 @@ class DataValue(QObject):
     def __eq__(self, other) -> bool:
         return self._timestamp == other.timestamp
 
-    @property
-    def value(self):
-        return self._value
-
-    @property
-    def timestamp(self):
-        return self._timestamp
-
 
 class DataCollection(QObject):
     """ DataCollection instances hold a collection of data values related to any
@@ -36,13 +36,20 @@ class DataCollection(QObject):
         and other features.
     """
 
-    # Class signals definition
     increased = pyqtSignal(name='increased')
     decreased = pyqtSignal(name='decreased')
     remained = pyqtSignal(name='remained')
     collection_changed = pyqtSignal(name='collectionChanged')
     value_added = pyqtSignal(DataValue, name='valueAdded')
     value_removed = pyqtSignal(DataValue, name='valueRemoved')
+
+    @property
+    def name(self):
+        return self._name
+
+    @property
+    def values(self):
+        return self._values
 
     def __init__(self, name: str, values: List[DataValue] = None):
         super(DataCollection, self).__init__()
@@ -55,14 +62,6 @@ class DataCollection(QObject):
         self._name = name
         self._values = values
         self._last_value_added = None
-
-    @property
-    def name(self):
-        return self._name
-
-    @property
-    def values(self):
-        return self._values
 
     @pyqtSlot(DataValue, name='add', result=bool)
     def add(self, value: DataValue):
