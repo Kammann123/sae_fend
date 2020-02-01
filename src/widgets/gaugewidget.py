@@ -4,102 +4,11 @@ from PyQt5.QtGui import QPaintEvent, QPainter, QPainterPath, QFont, QBrush, QCol
 from PyQt5.QtCore import QSize, QPoint, QPointF, QRectF, Qt
 from PyQt5.QtCore import pyqtSlot, pyqtProperty
 
-# Python modules
-from math import sin, cos, radians, floor
-
-
-def draw_adjusted_text(
-        painter: QPainter,
-        label: str,
-        font: QFont,
-        center_x: int,
-        center_y: int
-):
-    """
-    Draw a string text with a particular format in the screen
-    :param painter:
-    :param label:
-    :param font:
-    :param center_x:
-    :param center_y:
-    """
-    painter.save()
-    painter.setFont(font)
-    metrics = QFontMetrics(font)
-    label_width = metrics.boundingRect(label).width()
-    label_height = metrics.boundingRect(label).height()
-
-    painter.drawText(
-        QRectF(
-            center_x - floor(label_width / 2),
-            center_y - floor(label_height / 2),
-            label_width,
-            label_height
-        ),
-        Qt.AlignHCenter,
-        label
-    )
-    painter.restore()
-
-
-def draw_circular_bar(
-        painter: QPainter,
-        radius: int,
-        angle: int,
-        span: int,
-        width: int,
-        fill_brush: QBrush,
-        line_brush: QBrush,
-        line_width: int
-):
-    """
-    Draw a circular bar using the QPainter handler given by the outer caller.
-    :param painter: Painter handler
-    :param radius:  Circular radius
-    :param angle:   Starting angle
-    :param span:    Span angle
-    :param width:   Width between circular
-    :param fill_brush:  Color pattern used to fill the path
-    :param line_brush:  Color pattern used to draw lines
-    :param line_width:  Line width
-    """
-    painter.save()
-    path = QPainterPath()
-    path.moveTo(
-        QPointF(
-            (radius - width / 2) * cos(radians(angle)) + radius,
-            -(radius - width / 2) * sin(radians(angle)) + radius
-        )
-    )
-    path.lineTo(
-        QPointF(
-            radius * cos(radians(angle)) + radius,
-            -radius * sin(radians(angle)) + radius
-        )
-    )
-    path.arcTo(QRectF(0, 0, radius * 2, radius * 2), angle, span)
-    path.lineTo(
-        QPointF(
-            (radius - width / 2) * cos(radians(angle + span)) + radius,
-            -(radius - width / 2) * sin(radians(angle + span)) + radius
-        )
-    )
-    path.arcTo(
-        QRectF(
-            width // 2, width // 2,
-            radius * 2 - width, radius * 2 - width
-        ),
-        angle + span,
-        -span
-    )
-
-    pen = QPen(line_brush, line_width)
-    pen.setJoinStyle(Qt.RoundJoin)
-
-    painter.setPen(pen)
-    painter.fillPath(path, fill_brush)
-    painter.drawPath(path)
-    painter.restore()
+# Project modules
+try:
+    from src.widgets.bases.utils import draw_adjusted_text, draw_circular_bar, draw_labeled_value
+except:
+    from bases.utils import draw_adjusted_text, draw_circular_bar, draw_labeled_value
 
 
 class CircularGauge(QWidget):
@@ -221,7 +130,6 @@ class CircularGauge(QWidget):
     def __init__(self, parent=None):
         super(CircularGauge, self).__init__(parent)
 
-        # Private class attributes definition
         self._fill_color = QBrush(QColor(255, 255, 255))
         self._bar_background = QBrush(QColor(0, 0, 0, 30))
         self._line_color = QBrush(QColor(0, 0, 0, 100))
@@ -240,16 +148,12 @@ class CircularGauge(QWidget):
         self._label_font = QFont()
         self._label_font.setPixelSize(25)
 
-        self.resize(600, 600)
-
     @pyqtSlot(float, name='setValue')
     @pyqtSlot(int, name='setValue')
     def set_value(self, value):
         self.value = int(value)
 
     def paintEvent(self, event: QPaintEvent):
-        # QPainter instance to draw over this QWidget, and
-        # settings to allow customizable details of the CircularGauge
         painter = QPainter(self)
         painter.setRenderHints(QPainter.Antialiasing | QPainter.HighQualityAntialiasing)
 
@@ -275,28 +179,15 @@ class CircularGauge(QWidget):
             self.line_width
         )
 
-        value_metrics = QFontMetrics(self.value_font)
-        label_metrics = QFontMetrics(self.label_font)
-
-        draw_adjusted_text(
+        draw_labeled_value(
             painter,
-            "{}".format(self.value),
+            self.label,
+            self.value,
+            self.label_font,
             self.value_font,
             self.center.x(),
             self.center.y()
         )
-
-        draw_adjusted_text(
-            painter,
-            self.label,
-            self.label_font,
-            self.center.x(),
-            self.center.y() + value_metrics.boundingRect("{}".format(self.value)).height() // 2
-            + label_metrics.boundingRect(self.label).height() // 2
-        )
-
-    def sizeHint(self) -> QSize:
-        return super(CircularGauge, self).sizeHint()
 
 
 if __name__ == "__main__":

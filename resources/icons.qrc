@@ -1,0 +1,16 @@
+<RCC>
+  <qresource prefix="thermometer">
+    <file>../assets/thermometer/thermometer.png</file>
+  </qresource>
+  <qresource prefix="battery">
+    <file>../assets/battery/car+battery+icon-1320184285905906096.png</file>
+    <file>../assets/battery/battery.png</file>
+  </qresource>
+  <qresource prefix="throttle">
+    <file>../assets/throttle/throttle_376187.png</file>
+    <file>../assets/throttle/2303987-200.png</file>
+  </qresource>
+  <qresource prefix="fuel">
+    <file>../assets/fuel/fuel.png</file>
+  </qresource>
+</RCC>
