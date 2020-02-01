@@ -216,6 +216,7 @@ class CircularGauge(QWidget):
     @value.setter
     def value(self, value: int):
         self._value = value
+        self.update()
 
     def __init__(self, parent=None):
         super(CircularGauge, self).__init__(parent)
@@ -241,7 +242,8 @@ class CircularGauge(QWidget):
 
         self.resize(600, 600)
 
-    @pyqtSlot(int, float, name='setValue')
+    @pyqtSlot(float, name='setValue')
+    @pyqtSlot(int, name='setValue')
     def set_value(self, value):
         self.value = int(value)
 
