@@ -1,6 +1,18 @@
 <RCC>
   <qresource prefix="thermometer">
+    <file>../assets/thermometer/120779.png</file>
+    <file>../assets/thermometer/Car_Engine_-_Dashboard_Lights_110-512.png</file>
     <file>../assets/thermometer/thermometer.png</file>
+  </qresource>
+  <qresource prefix="ignition">
+    <file>../assets/ignition/50425-200.png</file>
+  </qresource>
+  <qresource prefix="oil">
+    <file>../assets/oil/drawing8-512.png</file>
+    <file>../assets/oil/17696-200.png</file>
+  </qresource>
+  <qresource prefix="lambda">
+    <file>../assets/lambda/lambda-97846_960_720.png</file>
   </qresource>
   <qresource prefix="battery">
     <file>../assets/battery/car+battery+icon-1320184285905906096.png</file>
