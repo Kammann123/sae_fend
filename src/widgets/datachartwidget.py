@@ -5,12 +5,10 @@ from PyQt5.QtGui import QPainter
 from PyQt5.QtChart import *
 
 # Project modules
-from src.package.collection import DataCollection, DataValue
+from src.widgets.bases.utils import quick_property
 
 # Python modules
-from typing import Union
-from random import random
-from time import sleep
+from typing import Union, List
 
 
 """ Defining the constant values and handlers to map the SeriesType into
@@ -50,7 +48,7 @@ def series_type(value: Union[int, str]) -> Union[int, str]:
             raise ValueError('Invalid type of argument.')
 
 
-def create_series(value: Union[int, str]) -> QAbstractSeries:
+def create_series(value: Union[int, str]):
     """
     Creates an instance of the series, according to the given type of series
     in the value parameter.
@@ -86,13 +84,26 @@ class DataChart(QWidget):
         to be capable of reloading its model every time is needed.
     """
 
-    def __init__(self, model: DataCollection, chart_type: Union[int, str] = QAbstractSeries.SeriesTypeLine, parent=None):
+    values_label = quick_property(str, 'values_label')
+    title = quick_property(str, 'title')
+
+    def __init__(
+            self,
+            title: str = '',
+            label: str = '',
+            values: List[float] = None,
+            timestamps: List[float] = None,
+            chart_type: Union[int, str] = QAbstractSeries.SeriesTypeLine,
+            parent=None):
         super(DataChart, self).__init__(parent)
         self.setMinimumSize(QSize(640, 480))
 
         # Private class members or attributes
-        self._model = model
         self._series_type = chart_type
+        self._values_label = label
+        self._timestamps = timestamps if timestamps is not None else []
+        self._values = values if values is not None else []
+        self._title = title
 
         # Building the DataChart, set as private members of this class
         self._chart = QChart()
@@ -109,16 +120,20 @@ class DataChart(QWidget):
         # Updating the chart's content
         self.update_chart()
 
-    def mousePressEvent(self, event):
+    @pyqtSlot(name='onUpdate')
+    def on_update(self):
+        """
+        Updates the widget view.
+        """
         self.update_chart()
 
-    @pyqtSlot(name='onChanged')
-    def on_changed(self):
+    @pyqtSlot(list, list, name='setData')
+    def set_data(self, timestamps: List[float], values: List[float]):
         """
-        Whenever the linked model to this view has changed its content,
-        this slot should be called to update the QChart series, and its properties.
-        For encapsulation purpose, this slot only calls an update char method
+        Sets new data in the chart view and updates the widget.
         """
+        self._timestamps = timestamps
+        self._values = values
         self.update_chart()
 
     def update_chart(self):
@@ -137,13 +152,13 @@ class DataChart(QWidget):
 
         # Creating the data series, appending every value, adding the series to the chart
         self._series = create_series(self._series_type)
-        for value in self._model.values:
-            self._series.append(value.timestamp, value.value)
+        for timestamp, value in zip(self._timestamps, self._values):
+            self._series.append(timestamp, value)
         self._chart.addSeries(self._series)
 
         # Adding new axes to the chart
         self._y_axis = QValueAxis()
-        self._y_axis.setTitleText(f"{self._model.magnitude} [{self._model.units}]")
+        self._y_axis.setTitleText(self._values_label)
 
         self._x_axis = QDateTimeAxis()
         self._x_axis.setFormat("hh:mm:ss")
@@ -155,7 +170,7 @@ class DataChart(QWidget):
         self._series.attachAxis(self._x_axis)
 
         # Adding style to the chart
-        self._chart.setTitle(self._model.name)
+        self._chart.setTitle(self._title)
         self._chart.setTheme(QChart.ChartThemeDark)
         self._chart_view.setRenderHints(QPainter.HighQualityAntialiasing)
 
@@ -165,20 +180,6 @@ class DataChart(QWidget):
 
 if __name__ == "__main__":
     app = QApplication([])
-
-    test = DataCollection(
-        'Air Temperature',
-        'Temperature',
-        '°C'
-    )
-
-    for i in range(10):
-        test.add(
-            DataValue(random() * 300)
-        )
-        sleep(0.1)
-
-    widget = DataChart(test, QAbstractSeries.SeriesTypeScatter)
+    widget = DataChart(chart_type=QAbstractSeries.SeriesTypeScatter)
     widget.show()
-
     app.exec()
