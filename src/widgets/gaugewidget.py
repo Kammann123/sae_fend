@@ -5,9 +5,11 @@ from PyQt5.QtCore import QSize, QPoint, QPointF, QRectF, Qt
 from PyQt5.QtCore import pyqtSlot, pyqtProperty
 
 # Project modules
+# noinspection PyBroadException
 try:
     from src.widgets.bases.utils import draw_adjusted_text, draw_circular_bar, draw_labeled_value
 except:
+    # noinspection PyUnresolvedReferences
     from bases.utils import draw_adjusted_text, draw_circular_bar, draw_labeled_value
 
 

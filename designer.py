@@ -4,11 +4,9 @@
 
 # PyQt5 modules
 from PyQt5.QtCore import QProcess, QProcessEnvironment
-from PyQt5.QtWidgets import QApplication, QMessageBox
 
 # Python modules
 import os
-import sys
 
 if __name__ == "__main__":
     designer_bin = 'designer'
@@ -24,4 +22,5 @@ if __name__ == "__main__":
     designer = QProcess()
     designer.setProcessEnvironment(env)
     designer.start(designer_bin)
+    designer.waitForFinished(-1)
     designer.exitCode()

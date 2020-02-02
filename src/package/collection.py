@@ -23,7 +23,7 @@ class DataValue(QObject):
         super(DataValue, self).__init__()
 
         # Class private attributes
-        self._timestamp = time()
+        self._timestamp = time() * 1000
         self._value = float(value)
 
     def __eq__(self, other) -> bool:
@@ -39,19 +39,61 @@ class DataCollection(QObject):
     increased = pyqtSignal(name='increased')
     decreased = pyqtSignal(name='decreased')
     remained = pyqtSignal(name='remained')
-    collection_changed = pyqtSignal(name='collectionChanged')
+    changed = pyqtSignal(name='changed')
     value_added = pyqtSignal(DataValue, name='valueAdded')
     value_removed = pyqtSignal(DataValue, name='valueRemoved')
 
     @property
-    def name(self):
+    def max_value(self):
+        return max([value.value for value in self.values])
+
+    @property
+    def min_value(self):
+        return min([value.value for value in self.values])
+
+    @property
+    def min_timestamp(self):
+        return min([value.timestamp for value in self.values])
+
+    @property
+    def max_timestamp(self):
+        return max([value.timestamp for value in self.values])
+
+    @property
+    def magnitude(self):
+        return self._magnitude
+
+    @property
+    def first_value(self):
+        if self.has_values:
+            return self._values[0]
+        else:
+            return None
+
+    @property
+    def last_value(self):
+        if self.has_values:
+            return self.values[-1]
+        else:
+            return None
+
+    @property
+    def has_values(self) -> bool:
+        return len(self._values) > 0
+
+    @property
+    def name(self) -> str:
         return self._name
 
     @property
-    def values(self):
+    def units(self) -> str:
+        return self._units
+
+    @property
+    def values(self) -> List[DataValue]:
         return self._values
 
-    def __init__(self, name: str, values: List[DataValue] = None):
+    def __init__(self, name: str, magnitude: str, units: str, values: List[DataValue] = None):
         super(DataCollection, self).__init__()
 
         # Default arguments control
@@ -60,7 +102,9 @@ class DataCollection(QObject):
 
         # Class private attributes
         self._name = name
+        self._units = units
         self._values = values
+        self._magnitude = magnitude
         self._last_value_added = None
 
     @pyqtSlot(DataValue, name='add', result=bool)
@@ -75,7 +119,7 @@ class DataCollection(QObject):
 
             # Emitting corresponding signals
             self.value_added.emit(value)
-            self.collection_changed.emit()
+            self.changed.emit()
             if self._last_value_added is not None:
                 if self._last_value_added.value > value.value:
                     self.decreased.emit()
@@ -101,6 +145,6 @@ class DataCollection(QObject):
 
                 # Emitting the corresponding signals
                 self.value_removed.emit(value)
-                self.collection_changed.emit()
+                self.changed.emit()
                 return True
         return False
