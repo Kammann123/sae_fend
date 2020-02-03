@@ -26,6 +26,13 @@ class IconWidget(QWidget):
         self.setSizePolicy(QSizePolicy.Preferred, QSizePolicy.Preferred)
         self._icon = QIcon()
 
+    @pyqtSlot(name='onUpdate')
+    def on_update(self):
+        """
+        Updates the widget view.
+        """
+        self.update()
+
     def paintEvent(self, event: QPaintEvent):
         painter = QPainter(self)
         painter.setRenderHints(QPainter.Antialiasing | QPainter.HighQualityAntialiasing)
@@ -66,6 +73,13 @@ class ArrowWidget(QWidget):
         self._up_brush = QBrush(QColor(0, 255, 0))
         self._scale = 0.5
         self._status = DataStatus.Steady
+
+    @pyqtSlot(name='onUpdate')
+    def on_update(self):
+        """
+        Updates the widget view.
+        """
+        self.update()
 
     def paintEvent(self, event: QPaintEvent):
         painter = QPainter(self)
@@ -125,7 +139,18 @@ class ValueWidget(QWidget):
     @pyqtSlot(int, name='setValue')
     @pyqtSlot(float, name='setValue')
     def set_value(self, value):
+        """
+        Sets a new value
+        :param value: New value
+        """
         self._value = int(value)
+        self.update()
+
+    @pyqtSlot(name='onUpdate')
+    def on_update(self):
+        """
+        Updates the widget view.
+        """
         self.update()
 
     def paintEvent(self, event: QPaintEvent):
@@ -179,6 +204,12 @@ class IconData(QWidget):
         self.horizontal_layout.addWidget(self.arrow_widget, alignment=Qt.AlignVCenter)
 
         self.setLayout(self.horizontal_layout)
+
+    @pyqtSlot(name='onUpdate')
+    def on_update(self):
+        self.icon_widget.update()
+        self.value_widget.update()
+        self.arrow_widget.update()
 
     @pyqtSlot(int, name='setValue')
     @pyqtSlot(float, name='setValue')

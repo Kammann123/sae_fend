@@ -12,10 +12,6 @@ class BaseViewModel(QObject):
     """
 
     @pyqtProperty(DataCollection)
-    def previous_model(self) -> DataCollection:
-        return self._previous_model
-
-    @pyqtProperty(DataCollection)
     def model(self) -> DataCollection:
         return self._model
 
@@ -26,13 +22,19 @@ class BaseViewModel(QObject):
     def __init__(self, widget: QWidget):
         super(BaseViewModel, self).__init__()
         self._widget = widget
-        self._previous_model = None
         self._model = None
+
+    def __unbind__(self):
+        """
+        Unbinds the current model and view.
+        Should be overwritten by child classes.
+        """
+        raise NotImplementedError
 
     def __bind__(self):
         """
-        Handler to be overwritten by any child class, to define
-        how the widget and the model should be connecting one to each other
+        Binds the current model and view.
+        Should be overwritten by child classes.
         """
         raise NotImplementedError
 
@@ -51,6 +53,20 @@ class BaseViewModel(QObject):
         Sets the new model of the ViewModel
         :param value:  New model
         """
-        self._previous_model = self._model
+        if self.model is not None:
+            self.__unbind__()
         self._model = value
         self.__bind__()
+
+        self.widget.on_update()
+
+    @pyqtSlot(name='removeModel')
+    def remove_model(self):
+        """
+        Removes the current model.
+        """
+        if self.model is not None:
+            self.__unbind__()
+        self._model = None
+
+        self.widget.on_update()

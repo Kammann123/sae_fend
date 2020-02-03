@@ -60,4 +60,4 @@ class IconDataPlugin(QPyDesignerCustomWidgetPlugin):
                '</widget>\n'
 
     def includeFile(self):
-        return "icondatawidget"
+        return "src/widgets/icondatawidget"

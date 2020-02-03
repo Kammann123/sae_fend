@@ -11,14 +11,15 @@ class IconDataViewModel(BaseViewModel):
     def __init__(self, widget: IconData):
         super(IconDataViewModel, self).__init__(widget)
 
-    def __bind__(self):
+    def __unbind__(self):
         # Clean widget slot connections
-        if self.previous_model is not None:
-            self.previous_model.increased.disconnect(self.widget.set_increasing)
-            self.previous_model.decreased.disconnect(self.widget.set_decreasing)
-            self.previous_model.remained.disconnect(self.widget.set_steady)
-            self.previous_model.value_added.disconnect(self.set_value)
+        if self.model is not None:
+            self.model.increased.disconnect(self.widget.set_increasing)
+            self.model.decreased.disconnect(self.widget.set_decreasing)
+            self.model.remained.disconnect(self.widget.set_steady)
+            self.model.value_added.disconnect(self.set_value)
 
+    def __bind__(self):
         # Create new connections to model's signals
         self.model.increased.connect(self.widget.set_increasing)
         self.model.decreased.connect(self.widget.set_decreasing)

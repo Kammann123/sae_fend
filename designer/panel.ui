@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>1557</width>
-    <height>563</height>
+    <height>523</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -21,7 +21,7 @@
   </property>
   <layout class="QHBoxLayout" name="horizontalLayout">
    <item>
-    <widget class="CircularGauge" name="speed_gauge">
+    <widget class="CircularGauge" name="ground_speed_display">
      <property name="sizePolicy">
       <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
        <horstretch>0</horstretch>
@@ -82,7 +82,7 @@
        <property name="sizeHint" stdset="0">
         <size>
          <width>20</width>
-         <height>120</height>
+         <height>100</height>
         </size>
        </property>
       </spacer>
@@ -95,7 +95,7 @@
          <verstretch>0</verstretch>
         </sizepolicy>
        </property>
-       <layout class="QGridLayout" name="gridLayout" rowstretch="0,0,0,0,0" columnstretch="0,0,0,0">
+       <layout class="QGridLayout" name="gridLayout" rowstretch="0,0,0,0" columnstretch="0,0,0,0">
         <property name="sizeConstraint">
          <enum>QLayout::SetMinimumSize</enum>
         </property>
@@ -396,7 +396,7 @@
           </property>
           <layout class="QVBoxLayout" name="verticalLayout">
            <item>
-            <widget class="IconData" name="voltage_display">
+            <widget class="IconData" name="battery_display">
              <property name="sizePolicy">
               <sizepolicy hsizetype="Maximum" vsizetype="Maximum">
                <horstretch>0</horstretch>
@@ -526,7 +526,7 @@
           </property>
           <layout class="QVBoxLayout" name="verticalLayout_4">
            <item>
-            <widget class="IconData" name="fuel_display">
+            <widget class="IconData" name="fuel_used_display">
              <property name="sizePolicy">
               <sizepolicy hsizetype="Maximum" vsizetype="Maximum">
                <horstretch>0</horstretch>
@@ -591,7 +591,7 @@
           </property>
           <layout class="QVBoxLayout" name="verticalLayout_16">
            <item>
-            <widget class="IconData" name="ignition_display">
+            <widget class="IconData" name="ignition_advance_display">
              <property name="sizePolicy">
               <sizepolicy hsizetype="Maximum" vsizetype="Maximum">
                <horstretch>0</horstretch>
@@ -645,7 +645,7 @@
        <property name="sizeHint" stdset="0">
         <size>
          <width>20</width>
-         <height>120</height>
+         <height>100</height>
         </size>
        </property>
       </spacer>
@@ -653,7 +653,7 @@
     </layout>
    </item>
    <item>
-    <widget class="CircularGauge" name="rpm_gauge">
+    <widget class="CircularGauge" name="rpm_display">
      <property name="sizePolicy">
       <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
        <horstretch>0</horstretch>
@@ -710,12 +710,12 @@
   <customwidget>
    <class>CircularGauge</class>
    <extends>QWidget</extends>
-   <header>gaugewidget</header>
+   <header>src/widgets/gaugewidget</header>
   </customwidget>
   <customwidget>
    <class>IconData</class>
    <extends>QWidget</extends>
-   <header>icondatawidget</header>
+   <header>src/widgets/icondatawidget</header>
   </customwidget>
  </customwidgets>
  <resources>

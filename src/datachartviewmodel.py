@@ -14,11 +14,12 @@ class DataChartViewModel(BaseViewModel):
     def __init__(self, widget: DataChart):
         super(DataChartViewModel, self).__init__(widget)
 
-    def __bind__(self):
+    def __unbind__(self):
         # Clean widget slot connections
-        if self.previous_model is not None:
-            self.previous_model.value_added.disconnect(self.set_values)
+        if self.model is not None:
+            self.model.value_added.disconnect(self.set_values)
 
+    def __bind__(self):
         # Create new connections to model's signals
         self.model.value_added.connect(self.set_values)
 

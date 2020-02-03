@@ -60,4 +60,4 @@ class CircularGaugePlugin(QPyDesignerCustomWidgetPlugin):
                '</widget>\n'
 
     def includeFile(self):
-        return "gaugewidget"
+        return "src/widgets/gaugewidget"

@@ -11,10 +11,11 @@ class CircularGaugeViewModel(BaseViewModel):
     def __init__(self, widget: CircularGauge):
         super(CircularGaugeViewModel, self).__init__(widget)
 
-    def __bind__(self):
+    def __unbind__(self):
         # Clean widget slot connections
-        if self.previous_model is not None:
-            self.previous_model.value_added.disconnect(self.set_value)
+        if self.model is not None:
+            self.model.value_added.disconnect(self.set_value)
 
+    def __bind__(self):
         # Create new connections to model's signals
         self.model.value_added.connect(self.set_value)
