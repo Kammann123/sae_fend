@@ -1,6 +1,6 @@
 # PyQt5 modules
-from PyQt5.QtWidgets import QWidget, QApplication, QHBoxLayout, QSizePolicy
 from PyQt5.QtGui import QPaintEvent, QPainter, QIcon, QBrush, QPainterPath, QColor, QFont, QFontMetrics, QPen
+from PyQt5.QtWidgets import QWidget, QApplication, QHBoxLayout, QSizePolicy
 from PyQt5.QtCore import QSize, QPoint, QRectF, Qt
 from PyQt5.QtCore import pyqtProperty, pyqtSlot
 

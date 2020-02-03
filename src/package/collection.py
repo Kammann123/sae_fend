@@ -60,10 +60,6 @@ class DataCollection(QObject):
         return max([value.timestamp for value in self.values])
 
     @property
-    def magnitude(self):
-        return self._magnitude
-
-    @property
     def first_value(self):
         if self.has_values:
             return self._values[0]
@@ -90,8 +86,20 @@ class DataCollection(QObject):
         return self._units
 
     @property
-    def values(self) -> List[DataValue]:
+    def timestamps(self) -> List[float]:
+        return [value.timestamp for value in self._values]
+
+    @property
+    def values(self) -> List[float]:
+        return [value.value for value in self._values]
+
+    @property
+    def data_values(self) -> List[DataValue]:
         return self._values
+
+    @property
+    def magnitude(self):
+        return self._magnitude
 
     def __init__(self, name: str, magnitude: str, units: str, values: List[DataValue] = None):
         super(DataCollection, self).__init__()
