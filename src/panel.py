@@ -23,9 +23,6 @@ class Panel(QWidget, Ui_Panel):
         super(Panel, self).__init__(parent)
         self.setupUi(self)
 
-        # Private member/attributes of this class
-        self._data = None
-
         # Wrapping each widget with its ViewModel definition to connect model's data to the view
         self.oil_pressure_view = IconDataViewModel(self.oil_pressure_display)
         self.lambda_view = IconDataViewModel(self.lambda_display)
@@ -58,9 +55,6 @@ class Panel(QWidget, Ui_Panel):
         Sets the current data used for each of the ViewModels.
         :param data: List of new DataCollection's provided by some service
         """
-        # Saving an internal reference to data collections
-        self._data = data
-
         # Binding each model with its view, if exists
         for data_collection in data:
             if data_collection.name in self._map.keys():
@@ -71,9 +65,6 @@ class Panel(QWidget, Ui_Panel):
         """
         Removes the current data being used as models of the ViewModels instances.
         """
-        # Clearing references
-        self._data = None
-
         # Unbinding views
         for view in self._map.values():
             view.remove_model()
@@ -82,19 +73,5 @@ class Panel(QWidget, Ui_Panel):
 if __name__ == "__main__":
     app = QApplication([])
     widget = Panel()
-
-    from src.package.collection import DataCollection, DataValue
-    data = DataCollection(
-        'Ground Speed',
-        'Speed',
-        'km/h'
-    )
-    widget.set_data(
-        [
-            data
-        ]
-    )
-    data.add(DataValue(243))
-
     widget.show()
     app.exec()
