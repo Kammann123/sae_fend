@@ -1,18 +1,19 @@
 # PyQt5 modules
 from PyQt5.QtGui import QPaintEvent, QPainter, QIcon, QBrush, QPainterPath, QColor, QFont, QFontMetrics, QPen
-from PyQt5.QtWidgets import QWidget, QApplication, QHBoxLayout, QSizePolicy
+from PyQt5.QtWidgets import QWidget, QApplication, QHBoxLayout, QVBoxLayout, QSizePolicy, QLayout
 from PyQt5.QtCore import QSize, QPoint, QRectF, Qt
 from PyQt5.QtCore import pyqtProperty, pyqtSlot
 
 # Python modules
 from enum import Enum
 from math import floor
+from os import getcwd, path
 
 # Project modules
 try:
-    from src.widgets.bases.utils import draw_labeled_value, draw_arrow, proxy_property, quick_property
+    from src.widgets.bases.utils import draw_adjusted_text, draw_head_arrow, proxy_property, quick_property
 except:
-    from bases.utils import draw_labeled_value, draw_arrow, proxy_property, quick_property
+    from bases.utils import draw_adjusted_text, draw_head_arrow, proxy_property, quick_property
 
 
 class IconWidget(QWidget):
@@ -27,11 +28,12 @@ class IconWidget(QWidget):
         self._icon = QIcon()
 
     @pyqtSlot(name='onUpdate')
-    def on_update(self):
+    def update(self):
         """
         Updates the widget view.
         """
-        self.update()
+        super(IconWidget, self).update()
+        self.updateGeometry()
 
     def paintEvent(self, event: QPaintEvent):
         painter = QPainter(self)
@@ -48,7 +50,13 @@ class IconWidget(QWidget):
         self.update()
 
     def sizeHint(self):
-        return QSize(50, 50)
+        return QSize(40, 40)
+
+    def minimumSizeHint(self):
+        return self.sizeHint()
+
+    def minimumSize(self):
+        return self.sizeHint()
 
 
 class DataStatus(Enum):
@@ -61,7 +69,8 @@ class ArrowWidget(QWidget):
     """ Shows an arrow up or down according to the current value status
     """
 
-    scale = quick_property(float, 'scale')
+    arrow_width = quick_property(int, 'arrow_width')
+    arrow_height = quick_property(int, 'arrow_height')
     up_brush = quick_property(QBrush, 'up_brush')
     down_brush = quick_property(QBrush, 'down_brush')
 
@@ -71,29 +80,28 @@ class ArrowWidget(QWidget):
 
         self._down_brush = QBrush(QColor(255, 0, 0))
         self._up_brush = QBrush(QColor(0, 255, 0))
-        self._scale = 0.5
         self._status = DataStatus.Steady
+        self._arrow_width = 15
+        self._arrow_height = 15
 
     @pyqtSlot(name='onUpdate')
-    def on_update(self):
+    def update(self):
         """
         Updates the widget view.
         """
-        self.update()
+        super(ArrowWidget, self).update()
+        self.updateGeometry()
 
     def paintEvent(self, event: QPaintEvent):
         painter = QPainter(self)
         painter.setRenderHints(QPainter.Antialiasing | QPainter.HighQualityAntialiasing)
 
-        real_width = self.size().width() * self.scale
-        real_height = self.size().height() * self.scale
-
         if self._status != DataStatus.Steady:
-            draw_arrow(
+            draw_head_arrow(
                 painter,
                 True if self._status == DataStatus.Increasing else False,
-                (self.size().width() - real_width) // 2, (self.size().height() - real_height) // 2,
-                real_width, real_height,
+                self.size().width() // 2, self.size().height() // 2,
+                self.arrow_width, self.arrow_height,
                 self.up_brush if self._status == DataStatus.Increasing else self.down_brush
             )
 
@@ -101,7 +109,13 @@ class ArrowWidget(QWidget):
         self.update()
 
     def sizeHint(self):
-        return QSize(25, 80)
+        return QSize(self.arrow_width, self.arrow_height * 2)
+
+    def minimumSizeHint(self):
+        return self.sizeHint()
+
+    def minimumSize(self):
+        return self.sizeHint()
 
     @pyqtSlot(name='setIncreasing')
     def set_increasing(self):
@@ -123,10 +137,13 @@ class ValueWidget(QWidget):
     """ Show a value with a labeled hint
     """
 
-    value_font = quick_property(QFont, 'value_font')
-    label_font = quick_property(QFont, 'label_font')
+    text_font = quick_property(QFont, 'text_font')
     value = quick_property(int, 'value')
     label = quick_property(str, 'label')
+
+    @pyqtProperty(str)
+    def text(self) -> str:
+        return "{} {}".format(self.value, self.label)
 
     def __init__(self, parent=None):
         super(ValueWidget, self).__init__(parent)
@@ -134,8 +151,7 @@ class ValueWidget(QWidget):
 
         self._value = 0
         self._label = ''
-        self._value_font = QFont()
-        self._label_font = QFont()
+        self._text_font = QFont()
 
     @pyqtSlot(int, name='setValue')
     @pyqtSlot(float, name='setValue')
@@ -148,21 +164,19 @@ class ValueWidget(QWidget):
         self.update()
 
     @pyqtSlot(name='onUpdate')
-    def on_update(self):
+    def update(self):
         """
         Updates the widget view.
         """
-        self.update()
+        super(ValueWidget, self).update()
+        self.updateGeometry()
 
     def paintEvent(self, event: QPaintEvent):
         painter = QPainter(self)
-
-        draw_labeled_value(
+        draw_adjusted_text(
             painter,
-            self.label,
-            self.value,
-            self.label_font,
-            self.value_font,
+            self.text,
+            self.text_font,
             self.size().width() // 2,
             self.size().height() // 2
         )
@@ -171,7 +185,15 @@ class ValueWidget(QWidget):
         self.update()
 
     def sizeHint(self):
-        return QSize(100, 100)
+        metrics = QFontMetrics(self.text_font)
+        size = metrics.boundingRect(self.text)
+        return QSize(size.width(), size.height())
+
+    def minimumSizeHint(self):
+        return self.sizeHint()
+
+    def minimumSize(self):
+        return self.sizeHint()
 
 
 class IconData(QWidget):
@@ -182,10 +204,8 @@ class IconData(QWidget):
 
     value = proxy_property('value_widget', ValueWidget, 'value')
     label = proxy_property('value_widget', ValueWidget, 'label')
-    value_font = proxy_property('value_widget', ValueWidget, 'value_font')
-    label_font = proxy_property('value_widget', ValueWidget, 'label_font')
+    text_font = proxy_property('value_widget', ValueWidget, 'text_font')
 
-    scale = proxy_property('arrow_widget', ArrowWidget, 'scale')
     up_brush = proxy_property('arrow_widget', ArrowWidget, 'up_brush')
     down_brush = proxy_property('arrow_widget', ArrowWidget, 'down_brush')
 
@@ -195,22 +215,43 @@ class IconData(QWidget):
         super(IconData, self).__init__(parent)
         self.setSizePolicy(QSizePolicy.Preferred, QSizePolicy.Preferred)
 
+        # Setting up the widget
         self.icon_widget = IconWidget()
         self.value_widget = ValueWidget()
         self.arrow_widget = ArrowWidget()
 
-        self.horizontal_layout = QHBoxLayout(self)
-        self.horizontal_layout.addWidget(self.icon_widget, alignment=Qt.AlignVCenter)
-        self.horizontal_layout.addWidget(self.value_widget, alignment=Qt.AlignVCenter)
-        self.horizontal_layout.addWidget(self.arrow_widget, alignment=Qt.AlignVCenter)
+        # Setting up the layouts
+        self.data_layout = QVBoxLayout()
+        self.data_layout.setSpacing(0)
+        self.data_layout.addWidget(self.icon_widget, alignment=Qt.AlignHCenter)
+        self.data_layout.addWidget(self.value_widget, alignment=Qt.AlignHCenter)
 
-        self.setLayout(self.horizontal_layout)
+        self.arrow_layout = QVBoxLayout()
+        self.arrow_layout.setSpacing(0)
+        self.arrow_layout.addWidget(self.arrow_widget, alignment=Qt.AlignVCenter)
+
+        self.main_layout = QHBoxLayout(self)
+        self.main_layout.setSpacing(5)
+        self.main_layout.addLayout(self.data_layout)
+        self.main_layout.addLayout(self.arrow_layout)
+        self.setLayout(self.main_layout)
+
+        # Default settings
+        self.value = 12.0
+        self.label = 'V'
+        self.text_font = QFont('Rockwell', 15)
+
+        self.icon = QIcon(path.join(getcwd(), '..', '..', 'assets', 'battery', 'battery.png'))
 
     @pyqtSlot(name='onUpdate')
-    def on_update(self):
+    def update(self):
+        super(IconData, self).update()
+
         self.icon_widget.update()
         self.value_widget.update()
         self.arrow_widget.update()
+
+        self.updateGeometry()
 
     @pyqtSlot(int, name='setValue')
     @pyqtSlot(float, name='setValue')

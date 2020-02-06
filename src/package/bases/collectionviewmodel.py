@@ -58,7 +58,7 @@ class BaseViewModel(QObject):
         self._model = value
         self.__bind__()
 
-        self.widget.on_update()
+        self.widget.update()
 
     @pyqtSlot(name='removeModel')
     def remove_model(self):

@@ -31,6 +31,34 @@ def proxy_property(child_name, child_type, child_property):
     return pyqtProperty(meta_property.typeName(), fget=getter, fset=setter)
 
 
+def draw_head_arrow(
+        painter: QPainter,
+        up: bool,
+        center_x: int,
+        center_y: int,
+        width: int,
+        height: int,
+        brush: QBrush
+):
+    painter.save()
+
+    pen = QPen()
+    pen.setBrush(brush)
+    painter.setBrush(brush)
+    painter.setPen(pen)
+
+    path = QPainterPath()
+    path.moveTo(center_x + width // 2, center_y)
+    path.lineTo(center_x - width // 2, center_y)
+    path.lineTo(center_x, center_y - height if up else center_y + height)
+    path.lineTo(center_x + width // 2, center_y)
+
+    painter.fillPath(path, brush)
+    painter.drawPath(path)
+
+    painter.restore()
+
+
 def draw_arrow(
         painter: QPainter,
         up: bool,
@@ -125,6 +153,7 @@ def draw_adjusted_text(
     :param center_y:
     """
     painter.save()
+    painter.setRenderHints(QPainter.TextAntialiasing)
     painter.setFont(font)
     metrics = QFontMetrics(font)
     label_width = metrics.boundingRect(label).width()
@@ -132,8 +161,8 @@ def draw_adjusted_text(
 
     painter.drawText(
         QRectF(
-            center_x - floor(label_width / 2),
-            center_y - floor(label_height / 2),
+            center_x - label_width / 2,
+            center_y - label_height / 2,
             label_width,
             label_height
         ),

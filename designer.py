@@ -11,9 +11,8 @@ import os
 if __name__ == "__main__":
     designer_bin = 'designer'
 
-    base = os.path.dirname(__file__)
-    plugin_path = os.path.join(base, 'plugins')
-    widget_path = os.path.join(base, 'src', 'widgets')
+    plugin_path = os.path.join(os.path.dirname(__file__), 'plugins')
+    widget_path = os.path.join(os.path.dirname(__file__), 'src', 'widgets')
 
     env = QProcessEnvironment.systemEnvironment()
     env.insert('PYQTDESIGNERPATH', plugin_path)
