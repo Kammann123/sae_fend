@@ -88,13 +88,14 @@ class ArrowWidget(QWidget):
         real_width = self.size().width() * self.scale
         real_height = self.size().height() * self.scale
 
-        draw_arrow(
-            painter,
-            True if self._status == DataStatus.Increasing else False,
-            (self.size().width() - real_width) // 2, (self.size().height() - real_height) // 2,
-            real_width, real_height,
-            self.up_brush if self._status == DataStatus.Increasing else self.down_brush
-        )
+        if self._status != DataStatus.Steady:
+            draw_arrow(
+                painter,
+                True if self._status == DataStatus.Increasing else False,
+                (self.size().width() - real_width) // 2, (self.size().height() - real_height) // 2,
+                real_width, real_height,
+                self.up_brush if self._status == DataStatus.Increasing else self.down_brush
+            )
 
     def resizeEvent(self, event):
         self.update()
@@ -143,7 +144,7 @@ class ValueWidget(QWidget):
         Sets a new value
         :param value: New value
         """
-        self._value = int(value)
+        self._value = value
         self.update()
 
     @pyqtSlot(name='onUpdate')
