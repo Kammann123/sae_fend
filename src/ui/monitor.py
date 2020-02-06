@@ -16,6 +16,9 @@ class Ui_Monitor(object):
         Monitor.resize(808, 508)
         self.verticalLayout = QtWidgets.QVBoxLayout(Monitor)
         self.verticalLayout.setObjectName("verticalLayout")
+        self.open_service_button = QtWidgets.QPushButton(Monitor)
+        self.open_service_button.setObjectName("open_service_button")
+        self.verticalLayout.addWidget(self.open_service_button)
         self.horizontalLayout = QtWidgets.QHBoxLayout()
         self.horizontalLayout.setObjectName("horizontalLayout")
         self.panel_button = QtWidgets.QPushButton(Monitor)
@@ -41,6 +44,7 @@ class Ui_Monitor(object):
     def retranslateUi(self, Monitor):
         _translate = QtCore.QCoreApplication.translate
         Monitor.setWindowTitle(_translate("Monitor", "Form"))
+        self.open_service_button.setText(_translate("Monitor", "Abrir servicio"))
         self.panel_button.setText(_translate("Monitor", "Modo Panel"))
         self.graphic_button.setText(_translate("Monitor", "Modo Gráfico"))
 

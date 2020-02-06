@@ -18,14 +18,17 @@ class ServiceStatus(Enum):
     Connected = 'Connected'
 
 
-class DataService(QObject):
+class DataService:
     """ DataService provides the interface used to create a service which will provide
         the DataCollection objects from any source or input of data.
     """
 
+    # DataService metadata
+    service_name = ''
+
     # Signals
     status_changed = pyqtSignal(ServiceStatus, name='statusChanged')
-    data_changed = pyqtSignal(List[DataCollection], name='dataChanged')
+    data_changed = pyqtSignal(list, name='dataChanged')
     disconnected = pyqtSignal(name='disconnected')
     connected = pyqtSignal(name='connected')
     waiting = pyqtSignal(name='waiting')

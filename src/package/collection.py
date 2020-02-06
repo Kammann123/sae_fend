@@ -115,8 +115,9 @@ class DataCollection(QObject):
         self._magnitude = magnitude
         self._last_value_added = None
 
-    @pyqtSlot(DataValue, name='add', result=bool)
-    def add(self, value: DataValue):
+    @pyqtSlot(DataValue, name='add')
+    @pyqtSlot(float, name='add')
+    def add(self, value):
         """
         Adds a new value to the DataCollection.
         :param value: New DataValue to be added
@@ -136,6 +137,8 @@ class DataCollection(QObject):
                 else:
                     self.remained.emit()
             self._last_value_added = value
+        elif type(value) is float or type(value) is int:
+            self.add(DataValue(value))
         else:
             raise ValueError('Type error when adding a new value to DataCollection. DataValue expected!')
 

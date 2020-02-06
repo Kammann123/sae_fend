@@ -2,10 +2,15 @@
 from PyQt5.QtWidgets import QWidget
 from PyQt5.QtCore import pyqtSlot
 
-# Widgets import
+# Python modules
+from typing import List
+
+# Project modules
+from src.package.collection import DataCollection
 from src.ui.monitor import Ui_Monitor
 from src.slider import ChartSlider
 from src.panel import Panel
+from src.manualservice import ManualService
 
 
 class Monitor(QWidget, Ui_Monitor):
@@ -18,6 +23,7 @@ class Monitor(QWidget, Ui_Monitor):
         self.setupUi(self)
 
         # Setting the reference to the router parent
+        self.data_service = None
         self.router = router
 
         # Adding widgets to the data stacked widget
@@ -30,6 +36,18 @@ class Monitor(QWidget, Ui_Monitor):
         # Connecting signals and slots
         self.panel_button.clicked.connect(self.go_panel)
         self.graphic_button.clicked.connect(self.go_slider)
+        self.open_service_button.clicked.connect(self.open_service)
+
+    @pyqtSlot(name='openService')
+    def open_service(self):
+        self.data_service = ManualService()
+        self.on_data_changed(self.data_service.data)
+        self.data_service.show()
+
+    @pyqtSlot(name='onDataChanged')
+    def on_data_changed(self, data: List[DataCollection]):
+        self.panel.set_data(data)
+        self.slider.set_data(data)
 
     @pyqtSlot(name='goPanel')
     def go_panel(self):
