@@ -160,11 +160,11 @@ class CircularGauge(QWidget):
         self.value = int(value)
 
     @pyqtSlot(name='onUpdate')
-    def on_update(self):
+    def update(self):
         """
         Updates the widget view.
         """
-        self.update()
+        super(CircularGauge, self).update()
 
     def paintEvent(self, event: QPaintEvent):
         painter = QPainter(self)

@@ -121,10 +121,11 @@ class DataChart(QWidget):
         self.update_chart()
 
     @pyqtSlot(name='onUpdate')
-    def on_update(self):
+    def update(self):
         """
         Updates the widget view.
         """
+        super(DataChart, self).update()
         self.update_chart()
 
     @pyqtSlot(list, list, name='setData')
