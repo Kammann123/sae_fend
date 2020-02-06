@@ -107,7 +107,8 @@ def draw_labeled_value(
         label_font: QFont,
         value_font: QFont,
         center_x: int,
-        center_y: int
+        center_y: int,
+        color: QBrush = QBrush(QColor(255, 255, 255, 255))
 ):
     value_str = "{}".format(value)
     label_str = "{}".format(label)
@@ -123,7 +124,8 @@ def draw_labeled_value(
         value_str,
         value_font,
         center_x,
-        center_y - value_metrics.height() // 2
+        center_y - value_metrics.height() // 2,
+        color
     )
 
     draw_adjusted_text(
@@ -131,7 +133,8 @@ def draw_labeled_value(
         label_str,
         label_font,
         center_x,
-        center_y + label_metrics.height() // 2
+        center_y + label_metrics.height() // 2,
+        color
     )
 
     painter.restore()
@@ -142,7 +145,8 @@ def draw_adjusted_text(
         label: str,
         font: QFont,
         center_x: int,
-        center_y: int
+        center_y: int,
+        color: QBrush = QBrush(QColor(255, 255, 255, 255))
 ):
     """
     Draw a string text with a particular format in the screen
@@ -151,10 +155,14 @@ def draw_adjusted_text(
     :param font:
     :param center_x:
     :param center_y:
+    :param color:
     """
     painter.save()
     painter.setRenderHints(QPainter.TextAntialiasing)
     painter.setFont(font)
+    pen = QPen()
+    pen.setBrush(color)
+    painter.setPen(pen)
     metrics = QFontMetrics(font)
     label_width = metrics.boundingRect(label).width()
     label_height = metrics.boundingRect(label).height()

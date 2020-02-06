@@ -110,6 +110,12 @@
           <property name="alignment">
            <set>Qt::AlignCenter</set>
           </property>
+          <property name="minimum">
+           <double>-1000.000000000000000</double>
+          </property>
+          <property name="maximum">
+           <double>1000.000000000000000</double>
+          </property>
          </widget>
         </item>
         <item row="1" column="0">
@@ -123,6 +129,12 @@
          <widget class="QDoubleSpinBox" name="rpm">
           <property name="alignment">
            <set>Qt::AlignCenter</set>
+          </property>
+          <property name="minimum">
+           <double>-1000.000000000000000</double>
+          </property>
+          <property name="maximum">
+           <double>1000.000000000000000</double>
           </property>
          </widget>
         </item>
@@ -138,6 +150,12 @@
           <property name="alignment">
            <set>Qt::AlignCenter</set>
           </property>
+          <property name="minimum">
+           <double>-1000.000000000000000</double>
+          </property>
+          <property name="maximum">
+           <double>1000.000000000000000</double>
+          </property>
          </widget>
         </item>
         <item row="3" column="0">
@@ -151,6 +169,12 @@
          <widget class="QDoubleSpinBox" name="fuel_used">
           <property name="alignment">
            <set>Qt::AlignCenter</set>
+          </property>
+          <property name="minimum">
+           <double>-1000.000000000000000</double>
+          </property>
+          <property name="maximum">
+           <double>1000.000000000000000</double>
           </property>
          </widget>
         </item>
@@ -166,6 +190,12 @@
           <property name="alignment">
            <set>Qt::AlignCenter</set>
           </property>
+          <property name="minimum">
+           <double>-1000.000000000000000</double>
+          </property>
+          <property name="maximum">
+           <double>1000.000000000000000</double>
+          </property>
          </widget>
         </item>
         <item row="5" column="0">
@@ -179,6 +209,12 @@
          <widget class="QDoubleSpinBox" name="ignition_advance">
           <property name="alignment">
            <set>Qt::AlignCenter</set>
+          </property>
+          <property name="minimum">
+           <double>-1000.000000000000000</double>
+          </property>
+          <property name="maximum">
+           <double>1000.000000000000000</double>
           </property>
          </widget>
         </item>
@@ -194,6 +230,12 @@
           <property name="alignment">
            <set>Qt::AlignCenter</set>
           </property>
+          <property name="minimum">
+           <double>-1000.000000000000000</double>
+          </property>
+          <property name="maximum">
+           <double>1000.000000000000000</double>
+          </property>
          </widget>
         </item>
         <item row="7" column="0">
@@ -207,6 +249,12 @@
          <widget class="QDoubleSpinBox" name="engine_temperature">
           <property name="alignment">
            <set>Qt::AlignCenter</set>
+          </property>
+          <property name="minimum">
+           <double>-1000.000000000000000</double>
+          </property>
+          <property name="maximum">
+           <double>1000.000000000000000</double>
           </property>
          </widget>
         </item>
@@ -222,6 +270,12 @@
           <property name="alignment">
            <set>Qt::AlignCenter</set>
           </property>
+          <property name="minimum">
+           <double>-1000.000000000000000</double>
+          </property>
+          <property name="maximum">
+           <double>1000.000000000000000</double>
+          </property>
          </widget>
         </item>
         <item row="9" column="0">
@@ -235,6 +289,12 @@
          <widget class="QDoubleSpinBox" name="lambda_1">
           <property name="alignment">
            <set>Qt::AlignCenter</set>
+          </property>
+          <property name="minimum">
+           <double>-1000.000000000000000</double>
+          </property>
+          <property name="maximum">
+           <double>1000.000000000000000</double>
           </property>
          </widget>
         </item>

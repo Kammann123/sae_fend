@@ -4,6 +4,9 @@ from PyQt5.QtGui import QPaintEvent, QPainter, QPainterPath, QResizeEvent, QFont
 from PyQt5.QtCore import QSize, QPoint, QPointF, QRectF, Qt
 from PyQt5.QtCore import pyqtSlot, pyqtProperty
 
+# Python modules
+from math import cos, sin, radians
+
 # Project modules
 # noinspection PyBroadException
 try:
@@ -27,11 +30,23 @@ class CircularGauge(QWidget):
     fill_color = quick_property(QBrush, 'fill_color')
     line_width = quick_property(int, 'line_width')
     line_color = quick_property(QBrush, 'line_color')
-    bar_background = quick_property(QBrush, 'bar_background')
     bar_width = quick_property(int, 'bar_width')
     angle = quick_property(int, 'angle')
     span = quick_property(int, 'span')
     gauge_size = quick_property(int, 'gauge_size')
+
+    tick_count = quick_property(int, 'tick_count')
+    tick_width = quick_property(int, 'tick_width')
+
+    normal_background = quick_property(QBrush, 'normal_background')
+    normal_fill = quick_property(QBrush, 'normal_fill')
+    warning_fill = quick_property(QBrush, 'warning_fill')
+
+    @pyqtProperty(QBrush)
+    def warning_background(self) -> QBrush:
+        new_color = self.warning_fill.color()
+        new_color.setAlpha(80)
+        return QBrush(new_color)
 
     @pyqtProperty(QPoint)
     def center(self):
@@ -50,8 +65,10 @@ class CircularGauge(QWidget):
     def __init__(self, parent=None):
         super(CircularGauge, self).__init__(parent)
 
-        self._fill_color = QBrush(QColor(255, 255, 255))
-        self._bar_background = QBrush(QColor(0, 0, 0, 30))
+        self._normal_background = QBrush(QColor(100, 100, 100, 80))
+        self._normal_fill = QBrush(QColor(255, 255, 255, 255))
+        self._warning_fill = QBrush(QColor(255, 0, 0, 255))
+
         self._line_color = QBrush(QColor(0, 0, 0, 100))
         self._line_width = 1
         self._bar_width = 20
@@ -59,6 +76,9 @@ class CircularGauge(QWidget):
         self._span = -300
 
         self._gauge_size = 200
+
+        self._tick_count = 30
+        self._tick_width = 10
 
         self._label = 'RPM'
         self._value = 25
@@ -91,13 +111,15 @@ class CircularGauge(QWidget):
         painter = QPainter(self)
         painter.setRenderHints(QPainter.Antialiasing | QPainter.HighQualityAntialiasing)
 
+        angle_factor = 0.8
+
         draw_circular_bar(
             painter,
             self.gauge_size // 2,
             self.angle,
-            self.span,
+            self.span * angle_factor,
             self.bar_width,
-            self.bar_background,
+            self.normal_background,
             self.line_color,
             self.line_width
         )
@@ -105,13 +127,47 @@ class CircularGauge(QWidget):
         draw_circular_bar(
             painter,
             self.gauge_size // 2,
-            self.angle,
-            self.span * ((self.value - self.min_value) / (self.max_value - self.min_value)),
+            self.angle + self.span * angle_factor,
+            self.span * (1 - angle_factor),
             self.bar_width,
-            self.fill_color,
+            self.warning_background,
             self.line_color,
             self.line_width
         )
+
+        span_angle = self.span * ((self.value - self.min_value) / (self.max_value - self.min_value))
+        if span_angle >= self.span * angle_factor:
+            draw_circular_bar(
+                painter,
+                self.gauge_size // 2,
+                self.angle,
+                span_angle,
+                self.bar_width,
+                self.normal_fill,
+                self.line_color,
+                self.line_width
+            )
+        else:
+            draw_circular_bar(
+                painter,
+                self.gauge_size // 2,
+                self.angle,
+                self.span * angle_factor,
+                self.bar_width,
+                self.normal_fill,
+                self.line_color,
+                self.line_width
+            )
+            draw_circular_bar(
+                painter,
+                self.gauge_size // 2,
+                self.angle + self.span * angle_factor,
+                span_angle - self.span * angle_factor,
+                self.bar_width,
+                self.warning_fill,
+                self.line_color,
+                self.line_width
+            )
 
         draw_labeled_value(
             painter,
@@ -120,8 +176,19 @@ class CircularGauge(QWidget):
             self.label_font,
             self.value_font,
             self.center.x(),
-            self.center.y()
+            self.center.y(),
+            self.warning_fill if span_angle < self.span * angle_factor else QBrush(QColor(0, 0, 0, 255))
         )
+
+        for i in range(self.tick_count):
+            tick_angle = (i * self.span / (self.tick_count - 1)) + self.angle
+
+            painter.drawLine(
+                self.center.x() + (self.gauge_size // 2 - self.bar_width - self.tick_width) * cos(radians(tick_angle)),
+                self.center.y() - (self.gauge_size // 2 - self.bar_width - self.tick_width) * sin(radians(tick_angle)),
+                self.center.x() + (self.gauge_size // 2 - self.bar_width) * cos(radians(tick_angle)),
+                self.center.y() - (self.gauge_size // 2 - self.bar_width) * sin(radians(tick_angle))
+            )
 
     def resizeEvent(self, event: QResizeEvent):
         self.gauge_size = min(event.size().width(), event.size().height())

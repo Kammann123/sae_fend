@@ -21,11 +21,13 @@ class IconWidget(QWidget):
     """
 
     icon = quick_property(QIcon, 'icon')
+    icon_size = quick_property(int, 'icon_size')
 
     def __init__(self, parent=None):
         super(IconWidget, self).__init__(parent)
         self.setSizePolicy(QSizePolicy.Preferred, QSizePolicy.Preferred)
         self._icon = QIcon()
+        self._icon_size = 40
 
     @pyqtSlot(name='onUpdate')
     def update(self):
@@ -50,7 +52,7 @@ class IconWidget(QWidget):
         self.update()
 
     def sizeHint(self):
-        return QSize(40, 40)
+        return QSize(self.icon_size, self.icon_size)
 
     def minimumSizeHint(self):
         return self.sizeHint()
