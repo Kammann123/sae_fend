@@ -1,16 +1,16 @@
 # PyQt5 modules
 from PyQt5.QtWidgets import QWidget, QApplication
-from PyQt5.QtGui import QPaintEvent, QPainter, QPainterPath, QFont, QBrush, QColor, QPen, QFontMetrics
+from PyQt5.QtGui import QPaintEvent, QPainter, QPainterPath, QResizeEvent, QFont, QBrush, QColor, QPen, QFontMetrics
 from PyQt5.QtCore import QSize, QPoint, QPointF, QRectF, Qt
 from PyQt5.QtCore import pyqtSlot, pyqtProperty
 
 # Project modules
 # noinspection PyBroadException
 try:
-    from src.widgets.bases.utils import draw_adjusted_text, draw_circular_bar, draw_labeled_value
+    from src.widgets.bases.utils import draw_adjusted_text, draw_circular_bar, draw_labeled_value, quick_property
 except:
     # noinspection PyUnresolvedReferences
-    from bases.utils import draw_adjusted_text, draw_circular_bar, draw_labeled_value
+    from bases.utils import draw_adjusted_text, draw_circular_bar, draw_labeled_value, quick_property
 
 
 class CircularGauge(QWidget):
@@ -19,110 +19,28 @@ class CircularGauge(QWidget):
         It also shows the numeric value.
     """
 
-    @pyqtProperty(QFont)
-    def label_font(self):
-        return self._label_font
-
-    @pyqtProperty(QFont)
-    def value_font(self):
-        return self._value_font
-
-    @pyqtProperty(str)
-    def label(self):
-        return self._label
-
-    @pyqtProperty(int)
-    def value(self):
-        return self._value
-
-    @pyqtProperty(int)
-    def min_value(self):
-        return self._min_value
-
-    @pyqtProperty(int)
-    def max_value(self):
-        return self._max_value
-
-    @pyqtProperty(QBrush)
-    def fill_color(self):
-        return self._fill_color
-
-    @pyqtProperty(int)
-    def line_width(self):
-        return self._line_width
-
-    @pyqtProperty(QBrush)
-    def line_color(self):
-        return self._line_color
-
-    @pyqtProperty(QBrush)
-    def bar_background(self):
-        return self._bar_background
-
-    @pyqtProperty(int)
-    def bar_width(self):
-        return self._bar_width
-
-    @pyqtProperty(int)
-    def angle(self):
-        return self._angle
-
-    @pyqtProperty(int)
-    def span(self):
-        return self._span
+    label_font = quick_property(QFont, 'label_font')
+    value_font = quick_property(QFont, 'value_font')
+    label = quick_property(str, 'label')
+    min_value = quick_property(int, 'min_value')
+    max_value = quick_property(int, 'max_value')
+    fill_color = quick_property(QBrush, 'fill_color')
+    line_width = quick_property(int, 'line_width')
+    line_color = quick_property(QBrush, 'line_color')
+    bar_background = quick_property(QBrush, 'bar_background')
+    bar_width = quick_property(int, 'bar_width')
+    angle = quick_property(int, 'angle')
+    span = quick_property(int, 'span')
+    gauge_size = quick_property(int, 'gauge_size')
 
     @pyqtProperty(QPoint)
     def center(self):
         radius = min(self.width() // 2, self.height() // 2)
         return QPoint(radius, radius)
 
-    @label_font.setter
-    def label_font(self, value: QFont):
-        self._label_font = value
-
-    @value_font.setter
-    def value_font(self, value: QFont):
-        self._value_font = value
-
-    @label.setter
-    def label(self, value: str):
-        self._label = value
-
-    @fill_color.setter
-    def fill_color(self, value: QBrush):
-        self._fill_color = value
-
-    @line_width.setter
-    def line_width(self, value: int):
-        self._line_width = value
-
-    @line_color.setter
-    def line_color(self, value: QBrush):
-        self._line_color = value
-
-    @bar_background.setter
-    def bar_background(self, value: QBrush):
-        self._bar_background = value
-
-    @bar_width.setter
-    def bar_width(self, value: int):
-        self._bar_width = value
-
-    @angle.setter
-    def angle(self, value: int):
-        self._angle = value
-
-    @span.setter
-    def span(self, value: int):
-        self.span = value
-
-    @min_value.setter
-    def min_value(self, value: int):
-        self._min_value = value
-
-    @max_value.setter
-    def max_value(self, value: int):
-        self._max_value = value
+    @pyqtProperty(int)
+    def value(self) -> int:
+        return self._value
 
     @value.setter
     def value(self, value: int):
@@ -139,6 +57,8 @@ class CircularGauge(QWidget):
         self._bar_width = 20
         self._angle = -120
         self._span = -300
+
+        self._gauge_size = 200
 
         self._label = 'RPM'
         self._value = 25
@@ -165,6 +85,7 @@ class CircularGauge(QWidget):
         Updates the widget view.
         """
         super(CircularGauge, self).update()
+        self.updateGeometry()
 
     def paintEvent(self, event: QPaintEvent):
         painter = QPainter(self)
@@ -172,7 +93,7 @@ class CircularGauge(QWidget):
 
         draw_circular_bar(
             painter,
-            min(self.width() // 2, self.height() // 2),
+            self.gauge_size // 2,
             self.angle,
             self.span,
             self.bar_width,
@@ -183,7 +104,7 @@ class CircularGauge(QWidget):
 
         draw_circular_bar(
             painter,
-            min(self.width() // 2, self.height() // 2),
+            self.gauge_size // 2,
             self.angle,
             self.span * ((self.value - self.min_value) / (self.max_value - self.min_value)),
             self.bar_width,
@@ -201,6 +122,20 @@ class CircularGauge(QWidget):
             self.center.x(),
             self.center.y()
         )
+
+    def resizeEvent(self, event: QResizeEvent):
+        self.gauge_size = min(event.size().width(), event.size().height())
+        self.resize(self.sizeHint())
+        self.updateGeometry()
+
+    def sizeHint(self):
+        return QSize(self.gauge_size, self.gauge_size)
+
+    def minimumSizeHint(self):
+        return self.sizeHint()
+
+    def minimumSize(self):
+        return self.sizeHint()
 
 
 if __name__ == "__main__":
