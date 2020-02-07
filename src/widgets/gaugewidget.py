@@ -27,7 +27,6 @@ class CircularGauge(QWidget):
     label = quick_property(str, 'label')
     min_value = quick_property(int, 'min_value')
     max_value = quick_property(int, 'max_value')
-    fill_color = quick_property(QBrush, 'fill_color')
     line_width = quick_property(int, 'line_width')
     line_color = quick_property(QBrush, 'line_color')
     bar_width = quick_property(int, 'bar_width')

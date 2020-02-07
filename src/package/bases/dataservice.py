@@ -4,43 +4,24 @@ from PyQt5.QtCore import pyqtProperty, pyqtSignal
 
 # Project modules
 from src.package.collection import DataCollection
+from src.package.bases.baseservice import BaseService
 
 # Python modules
 from typing import List
 from enum import Enum
 
 
-class ServiceStatus(Enum):
-    """ Status of connection
-    """
-    Disconnected = 'Disconnected'
-    Waiting = 'Waiting'
-    Connected = 'Connected'
-
-
-class DataService:
+class DataService(BaseService):
     """ DataService provides the interface used to create a service which will provide
         the DataCollection objects from any source or input of data.
     """
 
-    # DataService metadata
-    service_name = ''
-
     # Signals
-    status_changed = pyqtSignal(ServiceStatus, name='statusChanged')
     data_changed = pyqtSignal(list, name='dataChanged')
-    disconnected = pyqtSignal(name='disconnected')
-    connected = pyqtSignal(name='connected')
-    waiting = pyqtSignal(name='waiting')
-    message_posted = pyqtSignal(str, name='messagePosted')
 
     @pyqtProperty(list)
     def data(self) -> list:
         return self._data
-
-    @pyqtProperty(ServiceStatus)
-    def status(self) -> ServiceStatus:
-        return self._status
 
     @pyqtProperty(list)
     def names(self) -> list:
@@ -49,31 +30,8 @@ class DataService:
     def __init__(self):
         super(DataService, self).__init__()
 
-        # Public members/attributes of the class
-        self._status: ServiceStatus = ServiceStatus.Disconnected
+        # Private members/attributes of the class
         self._data: List[DataCollection] = []
-
-    def post(self, message: str):
-        """
-        Posts a new status message or info.
-        :param message: New message
-        """
-        self.message_posted.emit(message)
-
-    def set_status(self, status: ServiceStatus):
-        """
-        Sets the current status of the DataService instance
-        :param status: Current connection status
-        """
-        self._status = status
-        self.status_changed.emit(self._status)
-
-        if self._status == ServiceStatus.Disconnected:
-            self.disconnected.emit()
-        elif self._status == ServiceStatus.Connected:
-            self.connected.emit()
-        elif self._status == ServiceStatus.Waiting:
-            self.waiting.emit()
 
     def set_data(self, data: List[DataCollection]):
         """

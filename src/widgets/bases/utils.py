@@ -146,7 +146,7 @@ def draw_adjusted_text(
         font: QFont,
         center_x: int,
         center_y: int,
-        color: QBrush = QBrush(QColor(255, 255, 255, 255))
+        color: QBrush = QBrush(QColor(0, 0, 0, 255))
 ):
     """
     Draw a string text with a particular format in the screen
