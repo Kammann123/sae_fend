@@ -10,6 +10,7 @@ from src.package.collection import DataCollection
 from src.package.usersession import UserSession
 from src.package.bases.router import Router
 from src.ui.monitor import Ui_Monitor
+from src.widgets.togglebutton import ToggleState
 from src.slider import ChartSlider
 from src.panel import Panel
 
@@ -36,11 +37,14 @@ class Monitor(QWidget, Ui_Monitor):
         self.data_widget.setCurrentWidget(self.panel)
 
         # Connecting signals and slots
-        self.panel_button.clicked.connect(self.go_panel)
-        self.graphic_button.clicked.connect(self.go_slider)
+        self.toggle_button.state_changed.connect(self.toggle_data_widget)
 
         # Connecting the UserSession's services
         if self.session is not None:
+
+            # Handling the connections to the DataService if there is one available
+            # also, if events where triggered before here, first loading of service and data
+            # will be forced
             self.session.data_service_changed.connect(self.load_data_service)
             self.load_data_service()
             if self.session.has_data_service:
@@ -72,15 +76,15 @@ class Monitor(QWidget, Ui_Monitor):
         self.slider.set_data(data)
         self.panel.set_data(data)
 
-    @pyqtSlot(name='goPanel')
-    def go_panel(self):
-        """ Changes the screen to show the Panel Widget """
-        self.data_widget.setCurrentWidget(self.panel)
-
-    @pyqtSlot(name='goSlider')
-    def go_slider(self):
-        """ Changed the screen to show the Slider Widget """
-        self.data_widget.setCurrentWidget(self.slider)
+    @pyqtSlot(name='toggleDataWidget')
+    def toggle_data_widget(self):
+        """
+        Toggle the data widget from one to another.
+        """
+        if self.toggle_button.state == ToggleState.Primary:
+            self.data_widget.setCurrentWidget(self.panel)
+        elif self.toggle_button.state == ToggleState.Secondary:
+            self.data_widget.setCurrentWidget(self.slider)
 
 
 if __name__ == '__main__':
