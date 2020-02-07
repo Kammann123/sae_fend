@@ -19,6 +19,10 @@ class DataService(BaseService):
     # Signals
     data_changed = pyqtSignal(list, name='dataChanged')
 
+    @pyqtProperty(bool)
+    def has_data(self) -> bool:
+        return len(self._data) > 0
+
     @pyqtProperty(list)
     def data(self) -> list:
         return self._data

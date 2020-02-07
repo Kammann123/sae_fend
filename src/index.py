@@ -3,6 +3,8 @@ from PyQt5.QtWidgets import QWidget
 from PyQt5.QtCore import pyqtSlot
 
 # Project modules
+from src.package.usersession import UserSession
+from src.package.bases.router import Router
 from src.ui.index import Ui_Index
 
 
@@ -13,12 +15,13 @@ class Index(QWidget, Ui_Index):
         in each step of the application's flow.
     """
 
-    def __init__(self, router):
+    def __init__(self, session: UserSession, router: Router):
         super(Index, self).__init__(router)
         self.setupUi(self)
 
         # Setting the reference of the router parent
         self.router = router
+        self.session = session
 
         # Connecting signals and slots in the widget
         self.continue_button.clicked.connect(self.on_continue)

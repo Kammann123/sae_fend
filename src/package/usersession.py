@@ -21,6 +21,10 @@ class UserSession(QObject):
     def data_service(self) -> DataService:
         return self._data_service
 
+    @pyqtProperty(bool)
+    def has_data_service(self) -> bool:
+        return self._data_service is not None
+
     @pyqtProperty(list)
     def services(self) -> list:
         return [

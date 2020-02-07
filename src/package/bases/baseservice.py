@@ -1,4 +1,5 @@
 # PyQt5 modules
+from PyQt5.QtCore import pyqtSignal, pyqtProperty
 
 # Project modules
 

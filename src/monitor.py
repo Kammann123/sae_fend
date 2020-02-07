@@ -43,22 +43,25 @@ class Monitor(QWidget, Ui_Monitor):
         if self.session is not None:
             self.session.data_service_changed.connect(self.load_data_service)
             self.load_data_service()
+            if self.session.has_data_service:
+                if self.session.data_service.has_data:
+                    self.load_data(self.session.data_service.data)
 
     @pyqtSlot(name='loadDataService')
     def load_data_service(self):
         """ DataService has been changed and binding must be done. """
         if self.session is not None:
-            data_service = self.session.data_service
-            data_service.data_changed.connect(self.load_data)
-            data_service.disconnected.connect(self.unload_data_service)
+            if self.session.has_data_service:
+                self.session.data_service.data_changed.connect(self.load_data)
+                self.session.data_service.disconnected.connect(self.unload_data_service)
 
     @pyqtSlot(name='unloadDataService')
     def unload_data_service(self):
         """ DataService has been disconnected, so the binding should be removed. """
         if self.session is not None:
-            data_service = self.session.data_service
-            data_service.data_changed.disconnect(self.load_data)
-            data_service.disconnected.disconnect(self.unload_data_service)
+            if self.session.has_data_service:
+                self.session.data_service.data_changed.disconnect(self.load_data)
+                self.session.data_service.disconnected.disconnect(self.unload_data_service)
 
     @pyqtSlot(list, name='loadData')
     def load_data(self, data: List[DataCollection]):
