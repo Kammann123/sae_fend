@@ -1,5 +1,5 @@
 # PyQt5 modules
-from PyQt5.QtWidgets import QApplication, QWidget, QVBoxLayout
+from PyQt5.QtWidgets import QApplication, QWidget, QVBoxLayout, QLayout
 from PyQt5.QtCore import pyqtSlot, QSize, Qt
 from PyQt5.QtGui import QPainter
 from PyQt5.QtChart import *
@@ -115,6 +115,7 @@ class DataChart(QWidget):
         # Displaying the layout in the QWidget
         self._layout = QVBoxLayout(self)
         self._layout.addWidget(self._chart_view)
+        self._layout.setSizeConstraint(QLayout.SetMinimumSize)
         self.setLayout(self._layout)
 
         # Updating the chart's content
@@ -172,7 +173,7 @@ class DataChart(QWidget):
 
         # Adding style to the chart
         self._chart.setTitle(self._title)
-        self._chart.setTheme(QChart.ChartThemeDark)
+        self._chart.setTheme(QChart.ChartThemeQt)
         self._chart_view.setRenderHints(QPainter.HighQualityAntialiasing)
 
         for marker in self._chart.legend().markers(self._series):

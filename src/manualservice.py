@@ -3,7 +3,8 @@ from PyQt5.QtWidgets import QApplication, QDialog
 from PyQt5.QtCore import pyqtSlot, QObject
 
 # Project modules
-from src.package.bases.dataservice import DataService, ServiceStatus
+from src.package.bases.dataservice import DataService
+from src.package.bases.baseservice import ServiceStatus
 from src.package.collection import DataCollection
 from src.ui.manualservice import Ui_ManualService
 

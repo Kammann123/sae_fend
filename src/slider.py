@@ -79,6 +79,7 @@ class ChartSlider(QWidget, Ui_ChartSlider):
         # Removing all widgets from the current stacked widget and
         # going back to the default setup of the ChartSlide
         for view in self._views:
+            view.remove_model()
             self.slider_widget.removeWidget(view.widget())
         self.options_box.clear()
         self._current_view = None

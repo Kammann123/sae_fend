@@ -7,10 +7,8 @@ from typing import List
 
 # Project modules
 from src.package.collection import DataCollection
-
 from src.gaugeviewmodel import CircularGaugeViewModel
 from src.icondataviewmodel import IconDataViewModel
-
 from src.ui.panel import Ui_Panel
 
 

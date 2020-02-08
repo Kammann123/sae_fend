@@ -4,6 +4,7 @@ from PyQt5.QtCore import pyqtSlot
 
 # Python modules
 from typing import Dict, List
+from os import path, getcwd
 
 # Project modules
 from src.package.bases.router import Router
@@ -23,8 +24,17 @@ class MainWindow(QMainWindow, Ui_MainWindow, Router):
         super(MainWindow, self).__init__()
         self.setupUi(self)
 
+        self.setWindowTitle('[ITBA] Formula SAE')
+        self.setStyleSheet("background-color: rgb(123, 46, 255);")
+
         # Private members/attributes
         self.session = UserSession()
+
+        # TODO! Here we are setting a manual service for testing purpose, please remember to REMOVE THIS LINE!
+        from src.manualservice import ManualService
+        self.manual_service = ManualService()
+        self.session.set_data_service(self.manual_service)
+        self.manual_service.show()
 
         # Setting up the Router class with the StackedWidget to be used
         self.declare_router(

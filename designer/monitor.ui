@@ -6,57 +6,48 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>803</width>
-    <height>134</height>
+    <width>1275</width>
+    <height>308</height>
    </rect>
+  </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Preferred" vsizetype="Minimum">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
   </property>
   <property name="windowTitle">
    <string>Form</string>
   </property>
   <property name="styleSheet">
-   <string notr="true"/>
+   <string notr="true">background-color: rgb(123, 46, 255);</string>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>
-    <widget class="QWidget" name="horizontalWidget" native="true">
+    <widget class="QFrame" name="frame">
      <property name="styleSheet">
-      <string notr="true"/>
+      <string notr="true">background-color: rgba(73, 69, 129, 150);
+</string>
      </property>
-     <layout class="QHBoxLayout" name="horizontalLayout">
+     <property name="frameShape">
+      <enum>QFrame::StyledPanel</enum>
+     </property>
+     <property name="frameShadow">
+      <enum>QFrame::Raised</enum>
+     </property>
+     <layout class="QVBoxLayout" name="verticalLayout_2">
       <item>
-       <widget class="QStackedWidget" name="data_widget">
+       <widget class="Panel" name="panel">
+        <property name="toolTip">
+         <string>Click and drag here</string>
+        </property>
+        <property name="whatsThis">
+         <string>Panel Widget.  </string>
+        </property>
         <property name="styleSheet">
          <string notr="true"/>
         </property>
-        <widget class="QWidget" name="page"/>
-        <widget class="QWidget" name="page_2"/>
        </widget>
-      </item>
-      <item>
-       <layout class="QVBoxLayout" name="verticalLayout_2">
-        <item>
-         <widget class="ToggleButton" name="toggle_button">
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-          <property name="toolTip">
-           <string>Click and drag here</string>
-          </property>
-          <property name="whatsThis">
-           <string>Toggle Button Widget.  </string>
-          </property>
-          <property name="primary_text" stdset="0">
-           <string>Modo Panel</string>
-          </property>
-          <property name="secondary_text" stdset="0">
-           <string>Modo Gráfico</string>
-          </property>
-         </widget>
-        </item>
-       </layout>
       </item>
      </layout>
     </widget>
@@ -65,9 +56,9 @@
  </widget>
  <customwidgets>
   <customwidget>
-   <class>ToggleButton</class>
-   <extends>QPushButton</extends>
-   <header>src/widgets/togglebutton</header>
+   <class>Panel</class>
+   <extends>QWidget</extends>
+   <header>src/panel</header>
   </customwidget>
  </customwidgets>
  <resources/>

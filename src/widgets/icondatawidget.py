@@ -10,10 +10,7 @@ from math import floor
 from os import getcwd, path
 
 # Project modules
-try:
-    from src.widgets.bases.utils import draw_adjusted_text, draw_head_arrow, proxy_property, quick_property
-except:
-    from bases.utils import draw_adjusted_text, draw_head_arrow, proxy_property, quick_property
+from src.widgets.bases.utils import draw_adjusted_text, draw_head_arrow, proxy_property, quick_property
 
 
 class IconWidget(QWidget):

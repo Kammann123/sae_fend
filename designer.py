@@ -13,10 +13,12 @@ if __name__ == "__main__":
 
     plugin_path = os.path.join(os.path.dirname(__file__), 'plugins')
     widget_path = os.path.join(os.path.dirname(__file__), 'src', 'widgets')
+    custom_path = os.path.join(os.path.dirname(__file__), 'src')
+    project_path = os.path.join(os.path.dirname(__file__))
 
     env = QProcessEnvironment.systemEnvironment()
     env.insert('PYQTDESIGNERPATH', plugin_path)
-    env.insert('PYTHONPATH', widget_path)
+    env.insert('PYTHONPATH', f"{widget_path};{custom_path};{project_path}")
 
     designer = QProcess()
     designer.setProcessEnvironment(env)

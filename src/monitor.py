@@ -10,7 +10,6 @@ from src.package.collection import DataCollection
 from src.package.usersession import UserSession
 from src.package.bases.router import Router
 from src.ui.monitor import Ui_Monitor
-from src.widgets.togglebutton import ToggleState
 from src.slider import ChartSlider
 from src.panel import Panel
 
@@ -28,16 +27,6 @@ class Monitor(QWidget, Ui_Monitor):
         self.data_service = None
         self.router = router
         self.session = session
-
-        # Adding widgets to the data stacked widget
-        self.panel = Panel()
-        self.slider = ChartSlider()
-        self.data_widget.addWidget(self.panel)
-        self.data_widget.addWidget(self.slider)
-        self.data_widget.setCurrentWidget(self.panel)
-
-        # Connecting signals and slots
-        self.toggle_button.state_changed.connect(self.toggle_data_widget)
 
         # Connecting the UserSession's services
         if self.session is not None:
@@ -73,18 +62,7 @@ class Monitor(QWidget, Ui_Monitor):
         Data source from the DataService has changed and binding must be done.
         :param data:    New list of DataCollections
         """
-        self.slider.set_data(data)
         self.panel.set_data(data)
-
-    @pyqtSlot(name='toggleDataWidget')
-    def toggle_data_widget(self):
-        """
-        Toggle the data widget from one to another.
-        """
-        if self.toggle_button.state == ToggleState.Primary:
-            self.data_widget.setCurrentWidget(self.panel)
-        elif self.toggle_button.state == ToggleState.Secondary:
-            self.data_widget.setCurrentWidget(self.slider)
 
 
 if __name__ == '__main__':

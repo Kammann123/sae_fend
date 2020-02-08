@@ -9,11 +9,7 @@ from math import cos, sin, radians
 
 # Project modules
 # noinspection PyBroadException
-try:
-    from src.widgets.bases.utils import draw_adjusted_text, draw_circular_bar, draw_labeled_value, quick_property
-except:
-    # noinspection PyUnresolvedReferences
-    from bases.utils import draw_adjusted_text, draw_circular_bar, draw_labeled_value, quick_property
+from src.widgets.bases.utils import draw_adjusted_text, draw_circular_bar, draw_labeled_value, quick_property
 
 
 class CircularGauge(QWidget):
