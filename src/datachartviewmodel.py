@@ -22,10 +22,11 @@ class DataChartViewModel(BaseViewModel):
     def __bind__(self):
         # Create new connections to model's signals
         self.model.value_added.connect(self.set_values)
+        self.set_values()
 
         # Updating the DataChart metadata
-        self.widget.title = self.model.name
-        self.widget.values_label = f"{self.model.magnitude} [{self.model.units}]"
+        self.widget.set_title(self.model.name)
+        self.widget.set_labels("", f"{self.model.magnitude} [{self.model.units}]")
 
     @pyqtSlot(name='setValues')
     def set_values(self):
@@ -33,7 +34,4 @@ class DataChartViewModel(BaseViewModel):
         Whenever there is a change in the current state of DataCollection,
         this slot parses data and calls the widget's slot.
         """
-        self.widget.set_data(
-            self.model.timestamps,
-            self.model.values
-        )
+        self.widget.set_data(self.model.timestamps, self.model.values)

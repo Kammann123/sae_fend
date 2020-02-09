@@ -1,5 +1,5 @@
 # PyQt5 modules
-from PyQt5.QtWidgets import QWidget, QApplication
+from PyQt5.QtWidgets import QWidget, QApplication, QGraphicsDropShadowEffect
 from PyQt5.QtCore import pyqtSlot
 
 # Python modules
@@ -9,9 +9,8 @@ from typing import List
 from src.package.collection import DataCollection
 from src.package.usersession import UserSession
 from src.package.bases.router import Router
+
 from src.ui.monitor import Ui_Monitor
-from src.slider import ChartSlider
-from src.panel import Panel
 
 
 class Monitor(QWidget, Ui_Monitor):
@@ -63,6 +62,9 @@ class Monitor(QWidget, Ui_Monitor):
         :param data:    New list of DataCollections
         """
         self.panel.set_data(data)
+        self.slider_left.set_data(data)
+        self.slider_middle.set_data(data)
+        self.slider_right.set_data(data)
 
 
 if __name__ == '__main__':

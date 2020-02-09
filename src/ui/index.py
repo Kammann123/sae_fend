@@ -20,7 +20,7 @@ class Ui_Index(object):
         sizePolicy.setHeightForWidth(Index.sizePolicy().hasHeightForWidth())
         Index.setSizePolicy(sizePolicy)
         Index.setAutoFillBackground(False)
-        Index.setStyleSheet("background-color: rgb(123, 46, 255);")
+        Index.setStyleSheet("background-color: rgb(153, 153, 153);")
         self.verticalLayout = QtWidgets.QVBoxLayout(Index)
         self.verticalLayout.setObjectName("verticalLayout")
         self.welcome_message = QtWidgets.QLabel(Index)
@@ -49,19 +49,21 @@ class Ui_Index(object):
         self.continue_button.setAutoFillBackground(False)
         self.continue_button.setStyleSheet("QPushButton {\n"
 "    font: 18pt \"All the Way to the Sun\";\n"
+"    color: rgb(203, 203, 203);\n"
 "    padding: 8;\n"
 "    border-style: solid;\n"
 "    border-width: 1;\n"
 "    border-color: black;\n"
-"    background-color: qlineargradient(spread:pad, x1:0, y1:1, x2:0, y2:0, stop:0.250552 rgba(67, 0, 125, 255), stop:1 rgba(68, 0, 158, 255));\n"
+"    background-color: qlineargradient(spread:pad, x1:0, y1:1, x2:0, y2:0, stop:0.271808 rgba(154, 103, 28, 255), stop:0.723982 rgba(196, 132, 36, 255));\n"
 "}\n"
 "\n"
 "QPushButton::hover {\n"
-"    background-color:qlineargradient(spread:repeat, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(39, 0, 97, 255));\n"
+"    color: rgb(3, 2, 2);\n"
+"    background-color: qlineargradient(spread:pad, x1:0, y1:1, x2:0, y2:0, stop:0.189837 rgba(164, 109, 26, 255));\n"
 "}\n"
 "\n"
 "QPushButton::pressed {\n"
-"    background-color: rgba(67, 0, 125, 255);\n"
+"    background-color: qlineargradient(spread:pad, x1:0, y1:1, x2:0, y2:0, stop:0.189837 rgba(201, 138, 43, 255));\n"
 "}")
         self.continue_button.setObjectName("continue_button")
         self.verticalLayout.addWidget(self.continue_button, 0, QtCore.Qt.AlignHCenter)

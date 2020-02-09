@@ -27,7 +27,7 @@ class Panel(QWidget, Ui_Panel):
         self.air_temperature_view = IconDataViewModel(self.air_temperature_display)
         self.battery_view = IconDataViewModel(self.battery_display)
         self.engine_temperature_view = IconDataViewModel(self.engine_temperature_display)
-        self.throttle_view = IconDataViewModel(self.throttle_display)
+        self.throttle_view = CircularGaugeViewModel(self.throttle_display)
         self.fuel_used_view = IconDataViewModel(self.fuel_used_display)
         self.ignition_advance_view = IconDataViewModel(self.ignition_advance_display)
         self.rpm_view = CircularGaugeViewModel(self.rpm_display)
@@ -53,6 +53,9 @@ class Panel(QWidget, Ui_Panel):
         Sets the current data used for each of the ViewModels.
         :param data: List of new DataCollection's provided by some service
         """
+        # Remove data
+        self.remove_data()
+
         # Binding each model with its view, if exists
         for data_collection in data:
             if data_collection.name in self._map.keys():

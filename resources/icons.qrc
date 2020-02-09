@@ -12,6 +12,7 @@
     <file>../assets/oil/17696-200.png</file>
   </qresource>
   <qresource prefix="lambda">
+    <file>../assets/lambda/icon.png</file>
     <file>../assets/lambda/lambda-97846_960_720.png</file>
   </qresource>
   <qresource prefix="battery">

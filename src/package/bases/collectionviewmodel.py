@@ -69,4 +69,4 @@ class BaseViewModel(QObject):
             self.__unbind__()
         self._model = None
 
-        self.widget.on_update()
+        self.widget.update()

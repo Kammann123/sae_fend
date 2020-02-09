@@ -23,7 +23,7 @@
    <bool>false</bool>
   </property>
   <property name="styleSheet">
-   <string notr="true">background-color: rgb(123, 46, 255);</string>
+   <string notr="true">background-color: rgb(153, 153, 153);</string>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>
@@ -71,19 +71,21 @@
      <property name="styleSheet">
       <string notr="true">QPushButton {
 	font: 18pt &quot;All the Way to the Sun&quot;;
+	color: rgb(203, 203, 203);
 	padding: 8;
 	border-style: solid;
 	border-width: 1;
 	border-color: black;
-	background-color: qlineargradient(spread:pad, x1:0, y1:1, x2:0, y2:0, stop:0.250552 rgba(67, 0, 125, 255), stop:1 rgba(68, 0, 158, 255));
+	background-color: qlineargradient(spread:pad, x1:0, y1:1, x2:0, y2:0, stop:0.271808 rgba(154, 103, 28, 255), stop:0.723982 rgba(196, 132, 36, 255));
 }
 
 QPushButton::hover {
-	background-color:qlineargradient(spread:repeat, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(39, 0, 97, 255));
+	color: rgb(3, 2, 2);
+	background-color: qlineargradient(spread:pad, x1:0, y1:1, x2:0, y2:0, stop:0.189837 rgba(164, 109, 26, 255));
 }
 
 QPushButton::pressed {
-	background-color: rgba(67, 0, 125, 255);
+	background-color: qlineargradient(spread:pad, x1:0, y1:1, x2:0, y2:0, stop:0.189837 rgba(201, 138, 43, 255));
 }</string>
      </property>
      <property name="text">

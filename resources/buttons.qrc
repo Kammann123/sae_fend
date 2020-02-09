@@ -1,0 +1,14 @@
+<RCC>
+  <qresource prefix="arrow_left">
+    <file>../assets/buttons/arrow_left/left_disabled.png</file>
+    <file>../assets/buttons/arrow_left/left.png</file>
+    <file>../assets/buttons/arrow_left/left_hover.png</file>
+    <file>../assets/buttons/arrow_left/left_pressed.png</file>
+  </qresource>
+  <qresource prefix="arrow_right">
+    <file>../assets/buttons/arrow_right/right_disabled.png</file>
+    <file>../assets/buttons/arrow_right/right.png</file>
+    <file>../assets/buttons/arrow_right/right_hover.png</file>
+    <file>../assets/buttons/arrow_right/right_pressed.png</file>
+  </qresource>
+</RCC>

@@ -25,7 +25,7 @@ class MainWindow(QMainWindow, Ui_MainWindow, Router):
         self.setupUi(self)
 
         self.setWindowTitle('[ITBA] Formula SAE')
-        self.setStyleSheet("background-color: rgb(123, 46, 255);")
+        self.setStyleSheet("background-color: rgb(153, 153, 153);")
 
         # Private members/attributes
         self.session = UserSession()
