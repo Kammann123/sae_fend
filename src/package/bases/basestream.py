@@ -12,10 +12,6 @@ from queue import Queue
 class Audio:
     """ Class to hold information of a sound/audio recording """
 
-    @pyqtProperty(int)
-    def frames_count(self) -> int:
-        return len(self.frames)
-
     def __init__(self, rate=44100, channels=1, audio_format=paInt16, frames_per_buffer=1024):
         self.rate = rate
         self.channels = channels
@@ -44,6 +40,7 @@ class BaseStreamLoop(QRunnable):
     Non-Blocking handler to run the loop for reading/writing over a Stream
     using concurrent architecture of Qt framework.
     """
+    MINIMUM_QUEUE_SIZE = 5
 
     def __init__(self, stream):
         super(BaseStreamLoop, self).__init__()
@@ -51,10 +48,13 @@ class BaseStreamLoop(QRunnable):
 
         # Members/Attributes of this class
         self.signals = BaseStreamLoopSignals()
-        self.finishedNotified = False
         self.stream = stream
         self.queue = Queue()
         self.alive = True
+
+        # Internal flags
+        self.minimum_queue_fulfilled = False
+        self.finished_notified = False
 
     @pyqtSlot(name='flush')
     def flush(self):
@@ -86,12 +86,17 @@ class BaseStreamLoop(QRunnable):
                 data = self.stream.stream.read(self.stream.frames_per_buffer)
                 self.signals.frames_received.emit(data)
             elif self.stream.type == BaseStream.Output:
-                if not self.queue.empty():
-                    self.stream.stream.write(*self.queue.get())
-                    self.finishedNotified = False
-                elif not self.finishedNotified:
-                    self.signals.frames_finished.emit()
-                    self.finishedNotified = True
+                if self.minimum_queue_fulfilled:
+                    if not self.queue.empty():
+                        self.stream.stream.write(*self.queue.get())
+                        self.finished_notified = False
+                    elif not self.finished_notified:
+                        self.signals.frames_finished.emit()
+                        self.finished_notified = True
+                        self.minimum_queue_fulfilled = False
+                else:
+                    if self.queue.qsize() > BaseStreamLoop.MINIMUM_QUEUE_SIZE:
+                        self.minimum_queue_fulfilled = True
 
 
 class BaseStream(QObject):
@@ -107,9 +112,10 @@ class BaseStream(QObject):
     Output = 'Output'
 
     """ Stream devices signals or events """
+    frames_received = pyqtSignal(bytes, name='framesReceived')
     state_changed = pyqtSignal(str, name='stateChanged')
     stream_stopped = pyqtSignal(name='streamStopped')
-    frames_received = pyqtSignal(bytes, name='framesReceived')
+    disabled = pyqtSignal(name='disabled')
 
     @pyqtProperty(str)
     def type(self) -> str:
@@ -157,7 +163,6 @@ class BaseStream(QObject):
         self._loop.signals.frames_received.connect(self.frames_received.emit)
 
     def __del__(self):
-        super(BaseStream, self).__del__()
         self._stream.stop_stream()
         self._stream.close()
         self._py_audio.terminate()
@@ -210,3 +215,5 @@ class BaseStream(QObject):
         """
         self._state = value
         self.state_changed.emit(self._state)
+        if value == BaseStream.Disabled:
+            self.disabled.emit()

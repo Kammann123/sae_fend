@@ -18,14 +18,14 @@ class InputStream(BaseStream):
     """
 
     """ InputStream's events or signals """
-    frames_recorded = pyqtSignal(bytes, name='framesRecorded')
+    frames_recorded = pyqtSignal(bytes, int, name='framesRecorded')
     audio_recorded = pyqtSignal(Audio, name='audioRecorded')
 
     @pyqtProperty(list)
     def audios(self) -> List[Audio]:
         return self._audios
 
-    def __init__(self, rate=44100, channels=1, audio_format=paInt16, frames_per_buffer=1024):
+    def __init__(self, rate=48000, channels=1, audio_format=paInt16, frames_per_buffer=1024):
         super(InputStream, self).__init__(
             BaseStream.Input,
             rate,
@@ -40,6 +40,7 @@ class InputStream(BaseStream):
 
         # Connections to the BaseStream
         self.frames_received.connect(self.process_frames)
+        self.disabled.connect(self.stop)
 
     @pyqtSlot(name='start')
     def start(self):
@@ -55,7 +56,7 @@ class InputStream(BaseStream):
         """
         Stops recording and streaming, it will save a copy of the audio recorded while it was streaming.
         """
-        if self.state == BaseStream.Streaming:
+        if self.state == BaseStream.Streaming or self.state == BaseStream.Disabled:
             self.stop_stream()
             self._audios.append(self._current_audio)
             self.audio_recorded.emit(self._current_audio)
@@ -69,7 +70,7 @@ class InputStream(BaseStream):
         """
         if self._current_audio is not None:
             self._current_audio.add_frames(data)
-        self.frames_recorded.emit(data)
+        self.frames_recorded.emit(data, self.frames_per_buffer)
 
 
 if __name__ == "__main__":
