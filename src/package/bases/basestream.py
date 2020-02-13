@@ -12,6 +12,10 @@ from queue import Queue
 class Audio:
     """ Class to hold information of a sound/audio recording """
 
+    @pyqtProperty(int)
+    def frames_count(self) -> int:
+        return len(self.frames)
+
     def __init__(self, rate=44100, channels=1, audio_format=paInt16, frames_per_buffer=1024):
         self.rate = rate
         self.channels = channels
@@ -32,6 +36,7 @@ class BaseStreamLoopSignals(QObject):
     BaseStreamLoop signals used in the QRunnable thread
     """
     frames_received = pyqtSignal(bytes, name='framesReceived')
+    frames_finished = pyqtSignal(name='framesFinished')
 
 
 class BaseStreamLoop(QRunnable):
@@ -45,17 +50,27 @@ class BaseStreamLoop(QRunnable):
         self.setAutoDelete(False)
 
         # Members/Attributes of this class
+        self.signals = BaseStreamLoopSignals()
+        self.finishedNotified = False
         self.stream = stream
         self.queue = Queue()
         self.alive = True
-        self.signals = BaseStreamLoopSignals()
 
+    @pyqtSlot(name='flush')
+    def flush(self):
+        """
+        Cleans the frames queue
+        """
+        self.queue = Queue()
+
+    @pyqtSlot(bool, name='setAlive')
     def set_alive(self, value: bool):
         """
         Closes the Stream loop on this thread.
         """
         self.alive = value
 
+    @pyqtSlot(bytes, int, name='sendFrames')
     def send_frames(self, frames: bytes, frame_count: int):
         """
         Saves in the internal queue a new item to be sent to the Stream device.
@@ -64,6 +79,7 @@ class BaseStreamLoop(QRunnable):
         """
         self.queue.put([frames, frame_count])
 
+    @pyqtSlot(name='run')
     def run(self):
         while self.alive:
             if self.stream.type == BaseStream.Input:
@@ -72,6 +88,10 @@ class BaseStreamLoop(QRunnable):
             elif self.stream.type == BaseStream.Output:
                 if not self.queue.empty():
                     self.stream.stream.write(*self.queue.get())
+                    self.finishedNotified = False
+                elif not self.finishedNotified:
+                    self.signals.frames_finished.emit()
+                    self.finishedNotified = True
 
 
 class BaseStream(QObject):
@@ -102,6 +122,10 @@ class BaseStream(QObject):
     @pyqtProperty(Stream)
     def stream(self) -> Stream:
         return self._stream
+
+    @pyqtProperty(BaseStreamLoop)
+    def loop(self) -> BaseStreamLoop:
+        return self._loop
 
     def __init__(self, stream_type: str, rate=44100, channels=1, audio_format=paInt16, frames_per_buffer=1024):
         super(BaseStream, self).__init__()
@@ -137,6 +161,13 @@ class BaseStream(QObject):
         self._stream.stop_stream()
         self._stream.close()
         self._py_audio.terminate()
+
+    @pyqtSlot(name='flush')
+    def flush(self):
+        """
+        Cleans the internal state of the class
+        """
+        self._loop.flush()
 
     @pyqtSlot(bytes, int, name='writeFrames')
     def write_frames(self, frames: bytes, frames_count: int):

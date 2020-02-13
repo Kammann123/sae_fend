@@ -1,14 +1,11 @@
 # PyQt5 modules
 from PyQt5.QtWidgets import QApplication
 from PyQt5.QtCore import pyqtSlot, pyqtSignal, pyqtProperty
-from PyQt5.QtCore import QTimer
 
 # PyAudio modules
 from pyaudio import *
 
 # Python modules
-import struct
-from time import time
 from typing import List
 
 # Project modules
