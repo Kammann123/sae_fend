@@ -5,6 +5,12 @@
     <file>../assets/buttons/arrow_left/left_hover.png</file>
     <file>../assets/buttons/arrow_left/left_pressed.png</file>
   </qresource>
+  <qresource prefix="mic">
+    <file>../assets/buttons/mic/photoshop/mic_disabled.png</file>
+    <file>../assets/buttons/mic/photoshop/mic_hover.png</file>
+    <file>../assets/buttons/mic/photoshop/mic_normal.png</file>
+    <file>../assets/buttons/mic/photoshop/mic_pressed.png</file>
+  </qresource>
   <qresource prefix="arrow_right">
     <file>../assets/buttons/arrow_right/right_disabled.png</file>
     <file>../assets/buttons/arrow_right/right.png</file>

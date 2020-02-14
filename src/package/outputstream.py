@@ -14,6 +14,7 @@ class OutputStream(BaseStream):
 
     """ OutputStream's events or signals """
     playing_finished = pyqtSignal(name='playingFinished')
+    frames_played = pyqtSignal(bytes, int, name='framesPlayed')
 
     def __init__(self, rate=48000, channels=1, audio_format=paInt16, frames_per_buffer=1024):
         super(OutputStream, self).__init__(
@@ -30,6 +31,7 @@ class OutputStream(BaseStream):
 
         # Setting everything up
         self.loop.signals.frames_finished.connect(self.stop)
+        self.loop.signals.frames_played.connect(self.frames_played.emit)
         self.disabled.connect(self.stop)
 
     @pyqtSlot(Audio, name='playAudio')

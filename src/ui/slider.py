@@ -25,6 +25,7 @@ class Ui_Slider(object):
         font.setPointSize(10)
         font.setBold(True)
         font.setWeight(75)
+        font.setStyleStrategy(QtGui.QFont.PreferAntialias)
         self.title.setFont(font)
         self.title.setObjectName("title")
         self.horizontalLayout_2.addWidget(self.title, 0, QtCore.Qt.AlignBottom)
@@ -115,7 +116,7 @@ class Ui_Slider(object):
         self.data_chart.setToolTip(_translate("Slider", "Click and drag here"))
         self.data_chart.setWhatsThis(_translate("Slider", "Data Chart Widget.  "))
 from src.widgets.datachartwidget import DataChart
-from src.resources import buttons_rc
+import buttons_rc
 
 
 if __name__ == "__main__":

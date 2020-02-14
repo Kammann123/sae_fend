@@ -31,8 +31,10 @@ class BaseStreamLoopSignals(QObject):
     """
     BaseStreamLoop signals used in the QRunnable thread
     """
+    frames_played = pyqtSignal(bytes, int, name='framesPlayed')
     frames_received = pyqtSignal(bytes, name='framesReceived')
     frames_finished = pyqtSignal(name='framesFinished')
+    stream_stopped = pyqtSignal(name='streamStopped')
 
 
 class BaseStreamLoop(QRunnable):
@@ -88,7 +90,9 @@ class BaseStreamLoop(QRunnable):
             elif self.stream.type == BaseStream.Output:
                 if self.minimum_queue_fulfilled:
                     if not self.queue.empty():
-                        self.stream.stream.write(*self.queue.get())
+                        frames, frames_count = self.queue.get()
+                        self.stream.stream.write(frames, frames_count)
+                        self.signals.frames_played.emit(frames, frames_count)
                         self.finished_notified = False
                     elif not self.finished_notified:
                         self.signals.frames_finished.emit()
@@ -97,6 +101,7 @@ class BaseStreamLoop(QRunnable):
                 else:
                     if self.queue.qsize() > BaseStreamLoop.MINIMUM_QUEUE_SIZE:
                         self.minimum_queue_fulfilled = True
+        self.signals.stream_stopped.emit()
 
 
 class BaseStream(QObject):
@@ -161,6 +166,7 @@ class BaseStream(QObject):
         self._pool = QThreadPool()
         self._loop = BaseStreamLoop(self)
         self._loop.signals.frames_received.connect(self.frames_received.emit)
+        self._loop.signals.stream_stopped.connect(self.stream_stopped.emit)
 
     def __del__(self):
         self._stream.stop_stream()
@@ -205,7 +211,6 @@ class BaseStream(QObject):
 
             # Changing Stream class state
             self.set_state(BaseStream.Idle)
-            self.stream_stopped.emit()
 
     @pyqtSlot(str, name='setState')
     def set_state(self, value: str):
@@ -213,7 +218,8 @@ class BaseStream(QObject):
         Changes the current state of the Stream object and updates or notifies.
         :param value: Current new value for the State
         """
-        self._state = value
-        self.state_changed.emit(self._state)
-        if value == BaseStream.Disabled:
-            self.disabled.emit()
+        if value != self.state:
+            self._state = value
+            self.state_changed.emit(self._state)
+            if value == BaseStream.Disabled:
+                self.disabled.emit()
