@@ -13,7 +13,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_VoicePanel(object):
     def setupUi(self, VoicePanel):
         VoicePanel.setObjectName("VoicePanel")
-        VoicePanel.resize(400, 68)
+        VoicePanel.resize(560, 40)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Maximum, QtWidgets.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
@@ -22,6 +22,8 @@ class Ui_VoicePanel(object):
         VoicePanel.setMaximumSize(QtCore.QSize(600, 16777215))
         VoicePanel.setStyleSheet("")
         self.horizontalLayout = QtWidgets.QHBoxLayout(VoicePanel)
+        self.horizontalLayout.setContentsMargins(0, 0, 0, 0)
+        self.horizontalLayout.setSpacing(6)
         self.horizontalLayout.setObjectName("horizontalLayout")
         self.mic_button = QtWidgets.QPushButton(VoicePanel)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
@@ -29,8 +31,8 @@ class Ui_VoicePanel(object):
         sizePolicy.setVerticalStretch(1)
         sizePolicy.setHeightForWidth(self.mic_button.sizePolicy().hasHeightForWidth())
         self.mic_button.setSizePolicy(sizePolicy)
-        self.mic_button.setMinimumSize(QtCore.QSize(50, 50))
-        self.mic_button.setMaximumSize(QtCore.QSize(50, 50))
+        self.mic_button.setMinimumSize(QtCore.QSize(40, 40))
+        self.mic_button.setMaximumSize(QtCore.QSize(40, 40))
         self.mic_button.setStyleSheet("QPushButton::active {\n"
 "    border-image: url(:/mic/assets/buttons/mic/photoshop/mic_normal.png) 0 0 0 0;\n"
 "}\n"

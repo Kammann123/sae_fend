@@ -116,7 +116,7 @@ class Ui_Slider(object):
         self.data_chart.setToolTip(_translate("Slider", "Click and drag here"))
         self.data_chart.setWhatsThis(_translate("Slider", "Data Chart Widget.  "))
 from src.widgets.datachartwidget import DataChart
-import buttons_rc
+from src.resources import buttons_rc
 
 
 if __name__ == "__main__":
