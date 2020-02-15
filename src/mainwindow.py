@@ -1,10 +1,8 @@
 # PyQt5 modules
-from PyQt5.QtWidgets import QMainWindow, QWidget
-from PyQt5.QtCore import pyqtSlot
+from PyQt5.QtWidgets import QMainWindow
 
 # Python modules
-from typing import Dict, List
-from os import path, getcwd
+from typing import List
 
 # Project modules
 from src.package.bases.router import Router

@@ -122,6 +122,26 @@ class BaseStream(QObject):
     stream_stopped = pyqtSignal(name='streamStopped')
     disabled = pyqtSignal(name='disabled')
 
+    @pyqtProperty(int)
+    def device_index(self) -> int:
+        return self._settings['device_index']
+
+    @pyqtProperty(int)
+    def rate(self) -> int:
+        return self._settings['rate']
+
+    @pyqtProperty(int)
+    def frames_per_buffer(self) -> int:
+        return self._settings['frames_per_buffer']
+
+    @pyqtProperty(int)
+    def format(self) -> int:
+        return self._settings['format']
+
+    @pyqtProperty(int)
+    def channels(self) -> int:
+        return self._settings['channels']
+
     @pyqtProperty(str)
     def type(self) -> str:
         return self._type
@@ -134,6 +154,10 @@ class BaseStream(QObject):
     def stream(self) -> Stream:
         return self._stream
 
+    @pyqtProperty(dict)
+    def settings(self) -> dict:
+        return self._settings
+
     @pyqtProperty(BaseStreamLoop)
     def loop(self) -> BaseStreamLoop:
         return self._loop
@@ -144,34 +168,67 @@ class BaseStream(QObject):
         # Private members/attributes of this class
         self._state = BaseStream.Idle
         self._type = stream_type
-
-        # Public members/attributes of this class
-        self.rate = rate
-        self.channels = channels
-        self.format = audio_format
-        self.frames_per_buffer = frames_per_buffer
+        self._settings = {
+            "rate": rate,
+            "channels": channels,
+            "format": audio_format,
+            "frames_per_buffer": frames_per_buffer,
+            "device_index": None
+        }
 
         # Handlers or helpers
         self._py_audio = PyAudio()
-        self._stream = self._py_audio.open(
-            rate=rate,
-            channels=channels,
-            format=audio_format,
-            frames_per_buffer=frames_per_buffer,
-            input=True if self._type == BaseStream.Input else False,
-            output=True if self._type == BaseStream.Output else False
-        )
+        self._stream = None
 
         # Configuring the internal loop handler with private slot
         self._pool = QThreadPool()
         self._loop = BaseStreamLoop(self)
         self._loop.signals.frames_received.connect(self.frames_received.emit)
         self._loop.signals.stream_stopped.connect(self.stream_stopped.emit)
+        self._loop.signals.stream_stopped.connect(self.close_stream)
 
     def __del__(self):
-        self._stream.stop_stream()
-        self._stream.close()
+        self.close_stream()
         self._py_audio.terminate()
+
+    def set_settings(self, settings: dict):
+        """
+        Overwrites the internal settings used to open a new stream device.
+        :param settings: New settings
+        """
+        self._settings = settings
+
+    def set_settings_by_fields(self, **kwargs):
+        """
+        Changes the current value of individual fields in the current settings
+        :param kwargs: Current values
+        """
+        for key, value in kwargs.items():
+            self._settings[key] = value
+
+    def close_stream(self):
+        """
+        Closes the current Stream device.
+        """
+        if self._stream is not None:
+            self._stream.stop_stream()
+            self._stream.close()
+
+    def open_stream(self):
+        """
+        Opens a new Stream device, updating its settings
+        """
+        if self._stream is None:
+            self._stream = self._py_audio.open(
+                rate=self.settings['rate'],
+                channels=self.settings['channels'],
+                format=self.settings['format'],
+                frames_per_buffer=self.settings['frames_per_buffer'],
+                input=True if self._type == BaseStream.Input else False,
+                output=True if self._type == BaseStream.Output else False,
+                input_device_index=self.device_index if self._type == BaseStream.Input else None,
+                output_device_index=self.device_index if self._type == BaseStream.Output else None
+            )
 
     @pyqtSlot(name='flush')
     def flush(self):
@@ -191,6 +248,9 @@ class BaseStream(QObject):
         Starts recording or playing in the Stream device configured.
         """
         if self.state == BaseStream.Idle:
+            # Opening the stream
+            self.open_stream()
+
             # Turning on the loop enable
             self._loop.set_alive(True)
 
@@ -211,6 +271,10 @@ class BaseStream(QObject):
 
             # Changing Stream class state
             self.set_state(BaseStream.Idle)
+
+            # Note, close_stream() should be expected to be called here, but we cannot be sure
+            # that the BaseStreamLoop thread has been closed to this point... so close_stream is closed
+            # when it has been effectively closed!
 
     @pyqtSlot(str, name='setState')
     def set_state(self, value: str):
