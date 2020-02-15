@@ -7,10 +7,18 @@ from pyaudio import paInt16
 
 # Python modules
 from queue import Queue
+from time import time
 
 
 class Audio:
     """ Class to hold information of a sound/audio recording """
+
+    @pyqtProperty(float)
+    def duration(self) -> float:
+        if self.finishing_time is not None:
+            return self.finishing_time - self.starting_time
+        else:
+            return 0.0
 
     def __init__(self, rate=44100, channels=1, audio_format=paInt16, frames_per_buffer=1024):
         self.rate = rate
@@ -19,12 +27,16 @@ class Audio:
         self.frames_per_buffer = frames_per_buffer
         self.frames = []
 
+        self.starting_time = time()
+        self.finishing_time = None
+
     def add_frames(self, frames):
         """
         Adds new frames to the Audio recording
         :param frames: New frames being added
         """
         self.frames.append(frames)
+        self.finishing_time = time()
 
 
 class BaseStreamLoopSignals(QObject):
