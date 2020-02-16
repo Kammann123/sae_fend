@@ -17,7 +17,7 @@ import math
 class VoicePanel(QWidget, Ui_VoicePanel):
     """ VoicePanel for input, output stream ui controls
     """
-    LOOP_BUFFERING = False
+    LOOP_BUFFERING = True
 
     @pyqtProperty(InputStream)
     def input_stream(self) -> InputStream:

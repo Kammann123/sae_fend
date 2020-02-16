@@ -10,6 +10,47 @@ from queue import Queue
 from time import time
 
 
+class StreamDevice:
+    """ Class to hold information of any streaming device detected by the operating system """
+
+    """ Static variables of StreamDevice to handle devices through my own helper
+        using static members and function of StreamDevice class
+    """
+    @staticmethod
+    def get_devices() -> list:
+        """
+        Returns a list of detected and parsed StreamDevices.
+        :return: List of StreamDevices
+        """
+        p = PyAudio()
+        devices = []
+        for i in range(p.get_device_count()):
+            raw_device = p.get_device_info_by_index(i)
+            device = StreamDevice(raw_device)
+            devices.append(device)
+        return devices
+
+    @pyqtProperty(bool)
+    def is_input(self) -> bool:
+        return self.max_input_channels > 0
+
+    @pyqtProperty(bool)
+    def is_output(self) -> bool:
+        return self.max_output_channels > 0
+
+    def __init__(self, raw_settings: dict):
+        self.index = raw_settings['index']
+        self.name = raw_settings['name']
+        self.host_api = raw_settings['hostApi']
+        self.max_input_channels = raw_settings['maxInputChannels']
+        self.max_output_channels = raw_settings['maxOutputChannels']
+        self.default_sample_rate = raw_settings['defaultSampleRate']
+        self.default_low_input_latency = raw_settings['defaultLowInputLatency']
+        self.default_high_input_latency = raw_settings['defaultHighInputLatency']
+        self.default_low_output_latency = raw_settings['defaultLowOutputLatency']
+        self.default_high_output_latency = raw_settings['defaultHighOutputLatency']
+
+
 class Audio:
     """ Class to hold information of a sound/audio recording """
 
@@ -225,6 +266,7 @@ class BaseStream(QObject):
         if self._stream is not None:
             self._stream.stop_stream()
             self._stream.close()
+            self._stream = None
 
     def open_stream(self):
         """

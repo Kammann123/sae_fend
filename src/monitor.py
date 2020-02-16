@@ -1,5 +1,5 @@
 # PyQt5 modules
-from PyQt5.QtWidgets import QWidget, QApplication, QGraphicsDropShadowEffect
+from PyQt5.QtWidgets import QWidget, QApplication, QMenuBar, QMenu
 from PyQt5.QtCore import pyqtSlot
 
 # Python modules
@@ -11,6 +11,7 @@ from src.package.usersession import UserSession
 from src.package.bases.router import Router
 
 from src.ui.monitor import Ui_Monitor
+from src.settings import Settings
 
 
 class Monitor(QWidget, Ui_Monitor):
@@ -27,6 +28,21 @@ class Monitor(QWidget, Ui_Monitor):
         self.router = router
         self.session = session
 
+        # Configuring the menu bar of the Monitor
+        self.menu_bar = QMenuBar()
+        self.file_menu = QMenu('Archivo')
+        self.file_menu.addAction('Configuraciones', self.on_settings)
+        self.file_menu.addAction('Salir')
+        self.menu_bar.addMenu(self.file_menu)
+        self.layout().setMenuBar(self.menu_bar)
+
+        # Inner dialogs and helpers of the Monitor
+        self.settings_dialog = Settings()
+        self.settings_dialog.sound_settings_changed.connect(self.session.set_sound_settings)
+        self.settings_dialog.mic_settings_changed.connect(self.session.set_mic_settings)
+        self.session.set_mic_settings(self.settings_dialog.mic_settings)
+        self.session.set_sound_settings(self.settings_dialog.sound_settings)
+
         # Connecting the UserSession's services
         if self.session is not None:
 
@@ -38,6 +54,10 @@ class Monitor(QWidget, Ui_Monitor):
             if self.session.has_data_service:
                 if self.session.data_service.has_data:
                     self.load_data(self.session.data_service.data)
+
+    @pyqtSlot(name='onSettings')
+    def on_settings(self):
+        self.settings_dialog.exec()
 
     @pyqtSlot(name='loadDataService')
     def load_data_service(self):
