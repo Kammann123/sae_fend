@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1204</width>
-    <height>741</height>
+    <width>1040</width>
+    <height>604</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -26,20 +26,25 @@
    <string>Form</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">background-color: rgb(153, 153, 153);</string>
+   <string notr="true">QWidget {
+	background-color: rgb(153, 153, 153);
+	margin: 0px;
+	padding: 0px;
+	contentMargins: 0px;
+}</string>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <property name="spacing">
     <number>3</number>
    </property>
    <property name="leftMargin">
-    <number>5</number>
+    <number>0</number>
    </property>
    <property name="topMargin">
-    <number>5</number>
+    <number>0</number>
    </property>
    <property name="rightMargin">
-    <number>5</number>
+    <number>0</number>
    </property>
    <property name="bottomMargin">
     <number>0</number>
@@ -53,10 +58,10 @@
       </sizepolicy>
      </property>
      <property name="styleSheet">
-      <string notr="true">background-color: rgb(74, 74, 74);</string>
+      <string notr="true">background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(3, 9, 20, 255), stop:0.498721 rgba(9, 28, 59, 249), stop:1 rgba(3, 9, 20, 255));</string>
      </property>
      <property name="frameShape">
-      <enum>QFrame::Panel</enum>
+      <enum>QFrame::NoFrame</enum>
      </property>
      <layout class="QHBoxLayout" name="horizontalLayout">
       <property name="leftMargin">
@@ -96,34 +101,6 @@
         </property>
        </widget>
       </item>
-      <item alignment="Qt::AlignRight">
-       <widget class="VoicePanel" name="voice_panel">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="minimumSize">
-         <size>
-          <width>500</width>
-          <height>0</height>
-         </size>
-        </property>
-        <property name="maximumSize">
-         <size>
-          <width>800</width>
-          <height>16777215</height>
-         </size>
-        </property>
-        <property name="toolTip">
-         <string>Click and drag here</string>
-        </property>
-        <property name="whatsThis">
-         <string>Voice Panel Widget.  </string>
-        </property>
-       </widget>
-      </item>
      </layout>
     </widget>
    </item>
@@ -141,6 +118,34 @@
      <property name="bottomMargin">
       <number>10</number>
      </property>
+     <item>
+      <widget class="VoicePanel" name="voice_panel">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>500</width>
+         <height>0</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>800</width>
+         <height>16777215</height>
+        </size>
+       </property>
+       <property name="toolTip">
+        <string>Click and drag here</string>
+       </property>
+       <property name="whatsThis">
+        <string>Voice Panel Widget.  </string>
+       </property>
+      </widget>
+     </item>
      <item>
       <layout class="QHBoxLayout" name="horizontalLayout_2">
        <item>

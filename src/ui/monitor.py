@@ -13,16 +13,21 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_Monitor(object):
     def setupUi(self, Monitor):
         Monitor.setObjectName("Monitor")
-        Monitor.resize(1030, 594)
+        Monitor.resize(1022, 583)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Minimum)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(Monitor.sizePolicy().hasHeightForWidth())
         Monitor.setSizePolicy(sizePolicy)
         Monitor.setMaximumSize(QtCore.QSize(16777215, 16777215))
-        Monitor.setStyleSheet("background-color: rgb(153, 153, 153);")
+        Monitor.setStyleSheet("QWidget {\n"
+"    background-color: rgb(153, 153, 153);\n"
+"    margin: 0px;\n"
+"    padding: 0px;\n"
+"    contentMargins: 0px;\n"
+"}")
         self.verticalLayout = QtWidgets.QVBoxLayout(Monitor)
-        self.verticalLayout.setContentsMargins(5, 5, 5, 0)
+        self.verticalLayout.setContentsMargins(0, 0, 0, 0)
         self.verticalLayout.setSpacing(3)
         self.verticalLayout.setObjectName("verticalLayout")
         self.verticalFrame = QtWidgets.QFrame(Monitor)
@@ -31,8 +36,8 @@ class Ui_Monitor(object):
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.verticalFrame.sizePolicy().hasHeightForWidth())
         self.verticalFrame.setSizePolicy(sizePolicy)
-        self.verticalFrame.setStyleSheet("background-color: rgb(74, 74, 74);")
-        self.verticalFrame.setFrameShape(QtWidgets.QFrame.Panel)
+        self.verticalFrame.setStyleSheet("background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(3, 9, 20, 255), stop:0.498721 rgba(9, 28, 59, 249), stop:1 rgba(3, 9, 20, 255));")
+        self.verticalFrame.setFrameShape(QtWidgets.QFrame.NoFrame)
         self.verticalFrame.setObjectName("verticalFrame")
         self.horizontalLayout = QtWidgets.QHBoxLayout(self.verticalFrame)
         self.horizontalLayout.setContentsMargins(3, 3, 3, 3)
@@ -62,7 +67,7 @@ class Ui_Monitor(object):
         self.voice_panel.setMinimumSize(QtCore.QSize(500, 0))
         self.voice_panel.setMaximumSize(QtCore.QSize(800, 16777215))
         self.voice_panel.setObjectName("voice_panel")
-        self.horizontalLayout.addWidget(self.voice_panel, 0, QtCore.Qt.AlignRight)
+        self.horizontalLayout.addWidget(self.voice_panel)
         self.verticalLayout.addWidget(self.verticalFrame)
         self.verticalLayout_8 = QtWidgets.QVBoxLayout()
         self.verticalLayout_8.setContentsMargins(10, 10, 10, 10)

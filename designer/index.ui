@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>668</width>
-    <height>576</height>
+    <width>500</width>
+    <height>581</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -23,9 +23,24 @@
    <bool>false</bool>
   </property>
   <property name="styleSheet">
-   <string notr="true">background-color: rgb(153, 153, 153);</string>
+   <string notr="true">background-color: rgb(218, 218, 218);</string>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
+   <property name="spacing">
+    <number>20</number>
+   </property>
+   <property name="leftMargin">
+    <number>10</number>
+   </property>
+   <property name="topMargin">
+    <number>10</number>
+   </property>
+   <property name="rightMargin">
+    <number>10</number>
+   </property>
+   <property name="bottomMargin">
+    <number>10</number>
+   </property>
    <item>
     <widget class="QLabel" name="welcome_message">
      <property name="sizePolicy">
@@ -65,31 +80,45 @@
        <verstretch>0</verstretch>
       </sizepolicy>
      </property>
+     <property name="font">
+      <font>
+       <family>All the Way to the Sun</family>
+       <pointsize>18</pointsize>
+       <weight>50</weight>
+       <italic>false</italic>
+       <bold>false</bold>
+       <stylestrategy>PreferAntialias</stylestrategy>
+      </font>
+     </property>
      <property name="autoFillBackground">
       <bool>false</bool>
      </property>
      <property name="styleSheet">
       <string notr="true">QPushButton {
 	font: 18pt &quot;All the Way to the Sun&quot;;
-	color: rgb(203, 203, 203);
+	color: black;
 	padding: 8;
 	border-style: solid;
-	border-width: 1;
+	border-width: 0;
 	border-color: black;
-	background-color: qlineargradient(spread:pad, x1:0, y1:1, x2:0, y2:0, stop:0.271808 rgba(154, 103, 28, 255), stop:0.723982 rgba(196, 132, 36, 255));
+	background-color: rgb(108, 109, 177);
 }
 
 QPushButton::hover {
-	color: rgb(3, 2, 2);
-	background-color: qlineargradient(spread:pad, x1:0, y1:1, x2:0, y2:0, stop:0.189837 rgba(164, 109, 26, 255));
+	color: black;
+	background-color: rgb(39, 43, 120);
 }
 
 QPushButton::pressed {
-	background-color: qlineargradient(spread:pad, x1:0, y1:1, x2:0, y2:0, stop:0.189837 rgba(201, 138, 43, 255));
+	color: black;
+	background-color: rgb(32, 103, 255);
 }</string>
      </property>
      <property name="text">
       <string>CONTINUAR</string>
+     </property>
+     <property name="flat">
+      <bool>true</bool>
      </property>
     </widget>
    </item>
