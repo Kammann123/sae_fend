@@ -101,12 +101,12 @@ class Ui_VoicePanel(object):
         self.mic_bar.setStyleSheet("QProgressBar::chunk {\n"
 "    width: 5px;\n"
 "    margin: 0.5px;\n"
-"    background-color: rgb(255, 115, 117);\n"
+"    background-color: rgb(218, 55, 55);\n"
 "}\n"
 "\n"
 "QProgressBar {\n"
-"    background-color: rgb(135, 135, 135, 100);\n"
-"    border-color:  rgb(135, 135, 135, 100);\n"
+"    background-color: rgba(255, 253, 249, 100);\n"
+"    border-color:  rgba(255, 253, 249, 100);\n"
 "}")
         self.mic_bar.setProperty("value", 0)
         self.mic_bar.setAlignment(QtCore.Qt.AlignCenter)
@@ -124,8 +124,8 @@ class Ui_VoicePanel(object):
 "}\n"
 "\n"
 "QProgressBar {\n"
-"    background-color: rgb(135, 135, 135, 100);\n"
-"    border-color:  rgb(135, 135, 135, 100);\n"
+"    background-color: rgba(255, 253, 249, 100);\n"
+"    border-color:  rgba(255, 253, 249, 100);\n"
 "}")
         self.sound_bar.setProperty("value", 0)
         self.sound_bar.setAlignment(QtCore.Qt.AlignCenter)

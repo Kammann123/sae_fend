@@ -3,7 +3,7 @@ from PyQt5.QtWidgets import QWidget
 from PyQt5.QtCore import pyqtSlot, pyqtProperty
 
 # Python modules
-from typing import Dict
+from typing import Dict, List
 
 
 class Router:
@@ -19,6 +19,13 @@ class Router:
         self._widget_paths: Dict[str, QWidget] = {}
         self._default_path: str = ''
         self._router_widget = None
+
+    def get_paths(self) -> List[str]:
+        """
+        Returns a list of valid string paths to be used in the main window's router
+        :return: List of string paths
+        """
+        return list(self._widget_paths.keys())
 
     def declare_router(self, default_path: str, router_widget: QWidget, paths: Dict[str, QWidget]):
         """
@@ -38,8 +45,6 @@ class Router:
                     raise ValueError('Invalid type of path targets in dictionary received at declare_router() method')
             else:
                 self._widget_paths = paths
-                for key, value in paths.items():
-                    self._router_widget.addWidget(value)
         else:
             raise ValueError('Invalid type of paths parameter in declare_router() method')
 
@@ -56,4 +61,7 @@ class Router:
         if path not in self.get_paths():
             raise ValueError('Unknown router path used in the route() method')
         else:
+            if self._router_widget.currentWidget():
+                self._router_widget.removeWidget(self._router_widget.currentWidget())
+            self._router_widget.addWidget(self._widget_paths[path])
             self._router_widget.setCurrentWidget(self._widget_paths[path])

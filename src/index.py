@@ -16,7 +16,7 @@ class Index(QWidget, Ui_Index):
     """
 
     def __init__(self, session: UserSession, router: Router):
-        super(Index, self).__init__(router)
+        super(Index, self).__init__()
         self.setupUi(self)
 
         # Setting the reference of the router parent

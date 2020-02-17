@@ -20,7 +20,7 @@ class Monitor(QWidget, Ui_Monitor):
     """
 
     def __init__(self, session: UserSession = None, router: Router = None):
-        super(Monitor, self).__init__(router)
+        super(Monitor, self).__init__()
         self.setupUi(self)
 
         # Setting the reference to the router parent
@@ -82,9 +82,10 @@ class Monitor(QWidget, Ui_Monitor):
         :param data:    New list of DataCollections
         """
         self.panel.set_data(data)
-        self.slider_left.set_data(data)
-        self.slider_middle.set_data(data)
-        self.slider_right.set_data(data)
+        self.slider_0.set_data(data)
+        self.slider_1.set_data(data)
+        self.slider_2.set_data(data)
+        self.slider_3.set_data(data)
 
 
 if __name__ == '__main__':

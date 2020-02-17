@@ -22,11 +22,10 @@ class MainWindow(QMainWindow, Ui_MainWindow, Router):
         super(MainWindow, self).__init__()
         self.setupUi(self)
 
-        self.setWindowTitle('[ITBA] Formula SAE')
-        self.setStyleSheet("background-color: rgb(153, 153, 153);")
-
         # Private members/attributes
         self.session = UserSession()
+
+        # Styling the MainWindow
 
         # TODO! Here we are setting a manual service for testing purpose, please remember to REMOVE THIS LINE!
         from src.manualservice import ManualService
@@ -42,10 +41,3 @@ class MainWindow(QMainWindow, Ui_MainWindow, Router):
                 'monitor': Monitor(self.session, self)
             }
         )
-
-    def get_paths(self) -> List[str]:
-        """
-        Returns a list of valid string paths to be used in the main window's router
-        :return: List of string paths
-        """
-        return list(self._widget_paths.keys())

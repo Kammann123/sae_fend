@@ -13,19 +13,35 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(755, 544)
+        MainWindow.resize(477, 162)
+        MainWindow.setStyleSheet("")
         self.central_widget = QtWidgets.QWidget(MainWindow)
         self.central_widget.setObjectName("central_widget")
         self.verticalLayout = QtWidgets.QVBoxLayout(self.central_widget)
+        self.verticalLayout.setContentsMargins(0, 0, 0, 0)
+        self.verticalLayout.setSpacing(0)
         self.verticalLayout.setObjectName("verticalLayout")
         self.router_widget = QtWidgets.QStackedWidget(self.central_widget)
+        self.router_widget.setStyleSheet("QWidget {\n"
+"    margin: 0px;\n"
+"    padding: 0px;\n"
+"    contentMargins: 0px;\n"
+"}")
         self.router_widget.setObjectName("router_widget")
         self.page = QtWidgets.QWidget()
+        self.page.setStyleSheet("QWidget {\n"
+"    margin: 0px;\n"
+"    padding: 0px;\n"
+"}")
         self.page.setObjectName("page")
+        self.verticalLayout_2 = QtWidgets.QVBoxLayout(self.page)
+        self.verticalLayout_2.setContentsMargins(0, 0, 0, 0)
+        self.verticalLayout_2.setSpacing(0)
+        self.verticalLayout_2.setObjectName("verticalLayout_2")
+        self.label = QtWidgets.QLabel(self.page)
+        self.label.setObjectName("label")
+        self.verticalLayout_2.addWidget(self.label, 0, QtCore.Qt.AlignHCenter)
         self.router_widget.addWidget(self.page)
-        self.page_2 = QtWidgets.QWidget()
-        self.page_2.setObjectName("page_2")
-        self.router_widget.addWidget(self.page_2)
         self.verticalLayout.addWidget(self.router_widget)
         MainWindow.setCentralWidget(self.central_widget)
 
@@ -34,7 +50,9 @@ class Ui_MainWindow(object):
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
-        MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
+        MainWindow.setWindowTitle(_translate("MainWindow", "ITBA SAE"))
+        self.label.setText(_translate("MainWindow", "TextLabel"))
+from src.resources import index_rc
 
 
 if __name__ == "__main__":
