@@ -32,7 +32,7 @@ def get_rms(frames: bytes):
 class VoicePanel(QWidget, Ui_VoicePanel):
     """ VoicePanel for input, output stream ui controls
     """
-    LISTEN_RECORDING = True
+    LISTEN_RECORDING = False
     LOOP_BUFFERING = False
     ICON_STATUS = {
         'Recording': 0,

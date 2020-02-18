@@ -2,9 +2,6 @@
 from PyQt5.QtWidgets import QMainWindow, QWidget
 from PyQt5.QtCore import pyqtSlot
 
-# Python modules
-from typing import List
-
 # Project modules
 from src.package.bases.router import Router
 from src.package.usersession import UserSession
@@ -54,4 +51,5 @@ class MainWindow(QMainWindow, Ui_MainWindow, Router):
         :param path:
         """
         pass
-        # self.layout().setSizeConstraint(widget.layout().sizeConstraint())
+        # TODO! Should not resize sometimes, depends on the current widget being displayed
+        # TODO! self.layout().setSizeConstraint(widget.layout().sizeConstraint())

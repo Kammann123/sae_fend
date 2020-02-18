@@ -46,6 +46,11 @@ class Monitor(QWidget, Ui_Monitor):
         # Connecting the UserSession's services
         if self.session is not None:
 
+            # Handling the connections to the StreamService
+            self.session.stream_service_changed.connect(self.load_stream_service)
+            if self.session.has_stream_service:
+                self.load_stream_service()
+
             # Handling the connections to the DataService if there is one available
             # also, if events where triggered before here, first loading of service and data
             # will be forced
@@ -58,6 +63,24 @@ class Monitor(QWidget, Ui_Monitor):
     @pyqtSlot(name='onSettings')
     def on_settings(self):
         self.settings_dialog.exec()
+
+    @pyqtSlot(name='loadStreamService')
+    def load_stream_service(self):
+        """ StreamService has been changed and binding must be done. """
+        if self.session is not None:
+            if self.session.has_stream_service:
+                self.session.stream_service.frames_received.connect(self.voice_panel.output_stream.play_frames)
+                self.voice_panel.input_stream.frames_recorded.connect(self.session.stream_service.send_frames)
+                self.session.stream_service.disconnected.connect(self.unload_stream_service)
+
+    @pyqtSlot(name='unloadDataService')
+    def unload_stream_service(self):
+        """ StreamService has been disconnected, so the binding should be removed. """
+        if self.session is not None:
+            if self.session.has_stream_service:
+                self.session.stream_service.frames_received.disconnect(self.voice_panel.output_stream.play_frames)
+                self.voice_panel.input_stream.frames_recorded.disconnect(self.session.stream_service.send_frames)
+                self.session.stream_service.disconnected.disconnect(self.unload_stream_service)
 
     @pyqtSlot(name='loadDataService')
     def load_data_service(self):

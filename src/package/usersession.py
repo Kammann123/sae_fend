@@ -4,6 +4,7 @@ from PyQt5.QtCore import pyqtSignal, pyqtProperty, pyqtSlot
 
 # Project modules
 from src.package.bases.dataservice import DataService
+from src.package.bases.streamservice import StreamService
 
 
 class UserSession(QObject):
@@ -16,12 +17,21 @@ class UserSession(QObject):
     # UserSession's Signals
     services_changed = pyqtSignal(name='servicesChanged')
     data_service_changed = pyqtSignal(name='dataServiceChanged')
+    stream_service_changed = pyqtSignal(name='streamServiceChanged')
     sound_settings_changed = pyqtSignal(dict, name='soundSettingsChanged')
     mic_settings_changed = pyqtSignal(dict, name='micSettingsChanged')
 
     @pyqtProperty(DataService)
     def data_service(self) -> DataService:
         return self._data_service
+
+    @pyqtProperty(StreamService)
+    def stream_service(self) -> StreamService:
+        return self._stream_service
+
+    @pyqtProperty(bool)
+    def has_stream_service(self) -> bool:
+        return self._stream_service is not None
 
     @pyqtProperty(bool)
     def has_data_service(self) -> bool:
@@ -30,7 +40,8 @@ class UserSession(QObject):
     @pyqtProperty(list)
     def services(self) -> list:
         return [
-            self._data_service
+            self._data_service,
+            self._stream_service
         ]
 
     @pyqtProperty(dict)
@@ -46,6 +57,8 @@ class UserSession(QObject):
 
         # Private members/attributes of the class
         self._data_service = None
+        self._stream_service = None
+
         self._sound_settings = sound_settings
         self._mic_settings = mic_settings
 
@@ -75,4 +88,14 @@ class UserSession(QObject):
         """
         self._data_service = service
         self.data_service_changed.emit()
+        self.services_changed.emit()
+
+    @pyqtSlot(StreamService, name='setStreamService')
+    def set_stream_service(self, service: StreamService):
+        """
+        Sets the new StreamService.
+        :param service: StreamService instance
+        """
+        self._stream_service = service
+        self.stream_service_changed.emit()
         self.services_changed.emit()

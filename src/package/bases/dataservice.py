@@ -1,14 +1,12 @@
 # PyQt5 modules
-from PyQt5.QtCore import QObject
 from PyQt5.QtCore import pyqtProperty, pyqtSignal
 
 # Project modules
-from src.package.collection import DataCollection
 from src.package.bases.baseservice import BaseService
+from src.package.collection import DataCollection
 
 # Python modules
 from typing import List
-from enum import Enum
 
 
 class DataService(BaseService):
