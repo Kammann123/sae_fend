@@ -1,5 +1,5 @@
 # PyQt5 modules
-from PyQt5.QtWidgets import QWidget, QApplication, QMenuBar, QMenu
+from PyQt5.QtWidgets import QWidget, QApplication, QMenuBar, QMenu, QLayout
 from PyQt5.QtCore import pyqtSlot
 
 # Python modules

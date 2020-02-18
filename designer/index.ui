@@ -29,11 +29,15 @@
    <bool>false</bool>
   </property>
   <property name="styleSheet">
-   <string notr="true">background-color: rgb(218, 218, 218);</string>
+   <string notr="true">background-color: #6c7b95;
+</string>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <property name="spacing">
     <number>20</number>
+   </property>
+   <property name="sizeConstraint">
+    <enum>QLayout::SetFixedSize</enum>
    </property>
    <property name="leftMargin">
     <number>10</number>
@@ -107,17 +111,17 @@
 	border-style: solid;
 	border-width: 0;
 	border-color: black;
-	background-color: rgb(108, 109, 177);
+	background-color: #142850;
 }
 
 QPushButton::hover {
 	color: black;
-	background-color: rgb(39, 43, 120);
+	background-color: #27496d;
 }
 
 QPushButton::pressed {
 	color: black;
-	background-color: rgb(32, 103, 255);
+	background-color: #0c7b93;
 }</string>
      </property>
      <property name="text">

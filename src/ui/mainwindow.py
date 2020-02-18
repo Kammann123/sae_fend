@@ -14,7 +14,7 @@ class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
         MainWindow.resize(477, 162)
-        MainWindow.setStyleSheet("")
+        MainWindow.setStyleSheet("background-color: #6c7b95;")
         self.central_widget = QtWidgets.QWidget(MainWindow)
         self.central_widget.setObjectName("central_widget")
         self.verticalLayout = QtWidgets.QVBoxLayout(self.central_widget)
@@ -38,9 +38,6 @@ class Ui_MainWindow(object):
         self.verticalLayout_2.setContentsMargins(0, 0, 0, 0)
         self.verticalLayout_2.setSpacing(0)
         self.verticalLayout_2.setObjectName("verticalLayout_2")
-        self.label = QtWidgets.QLabel(self.page)
-        self.label.setObjectName("label")
-        self.verticalLayout_2.addWidget(self.label, 0, QtCore.Qt.AlignHCenter)
         self.router_widget.addWidget(self.page)
         self.verticalLayout.addWidget(self.router_widget)
         MainWindow.setCentralWidget(self.central_widget)
@@ -51,7 +48,6 @@ class Ui_MainWindow(object):
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "ITBA SAE"))
-        self.label.setText(_translate("MainWindow", "TextLabel"))
 from src.resources import index_rc
 
 

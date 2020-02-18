@@ -21,8 +21,10 @@ class Ui_Index(object):
         Index.setSizePolicy(sizePolicy)
         Index.setMaximumSize(QtCore.QSize(500, 581))
         Index.setAutoFillBackground(False)
-        Index.setStyleSheet("background-color: rgb(218, 218, 218);")
+        Index.setStyleSheet("background-color: #6c7b95;\n"
+"")
         self.verticalLayout = QtWidgets.QVBoxLayout(Index)
+        self.verticalLayout.setSizeConstraint(QtWidgets.QLayout.SetFixedSize)
         self.verticalLayout.setContentsMargins(10, 10, 10, 10)
         self.verticalLayout.setSpacing(20)
         self.verticalLayout.setObjectName("verticalLayout")
@@ -65,17 +67,17 @@ class Ui_Index(object):
 "    border-style: solid;\n"
 "    border-width: 0;\n"
 "    border-color: black;\n"
-"    background-color: rgb(108, 109, 177);\n"
+"    background-color: #142850;\n"
 "}\n"
 "\n"
 "QPushButton::hover {\n"
 "    color: black;\n"
-"    background-color: rgb(39, 43, 120);\n"
+"    background-color: #27496d;\n"
 "}\n"
 "\n"
 "QPushButton::pressed {\n"
 "    color: black;\n"
-"    background-color: rgb(32, 103, 255);\n"
+"    background-color: #0c7b93;\n"
 "}")
         self.continue_button.setFlat(True)
         self.continue_button.setObjectName("continue_button")

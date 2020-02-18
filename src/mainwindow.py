@@ -1,5 +1,6 @@
 # PyQt5 modules
-from PyQt5.QtWidgets import QMainWindow
+from PyQt5.QtWidgets import QMainWindow, QWidget
+from PyQt5.QtCore import pyqtSlot
 
 # Python modules
 from typing import List
@@ -25,13 +26,15 @@ class MainWindow(QMainWindow, Ui_MainWindow, Router):
         # Private members/attributes
         self.session = UserSession()
 
-        # Styling the MainWindow
-
         # TODO! Here we are setting a manual service for testing purpose, please remember to REMOVE THIS LINE!
         from src.manualservice import ManualService
         self.manual_service = ManualService()
         self.session.set_data_service(self.manual_service)
         self.manual_service.show()
+        # TODO! Remove end
+
+        # Connections between signals and slots
+        self.routing.connect(self.on_routing)
 
         # Setting up the Router class with the StackedWidget to be used
         self.declare_router(
@@ -41,3 +44,14 @@ class MainWindow(QMainWindow, Ui_MainWindow, Router):
                 'monitor': Monitor(self.session, self)
             }
         )
+
+    @pyqtSlot(str, QWidget, name='onRouting')
+    def on_routing(self, path: str, widget: QWidget):
+        """
+        When some external actuator routes the screen of the MainWindow, some updates
+        on its internal configuration must be done.
+        :param widget:
+        :param path:
+        """
+        pass
+        # self.layout().setSizeConstraint(widget.layout().sizeConstraint())

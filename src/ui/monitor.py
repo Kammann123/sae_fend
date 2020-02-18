@@ -21,12 +21,13 @@ class Ui_Monitor(object):
         Monitor.setSizePolicy(sizePolicy)
         Monitor.setMaximumSize(QtCore.QSize(16777215, 16777215))
         Monitor.setStyleSheet("QWidget {\n"
-"    background-color: #35495e;\n"
+"    background-color: #6c7b95;\n"
 "    margin: 0px;\n"
 "    padding: 0px;\n"
 "    contentMargins: 0px;\n"
 "}")
         self.verticalLayout = QtWidgets.QVBoxLayout(Monitor)
+        self.verticalLayout.setSizeConstraint(QtWidgets.QLayout.SetNoConstraint)
         self.verticalLayout.setContentsMargins(0, 0, 0, 0)
         self.verticalLayout.setSpacing(3)
         self.verticalLayout.setObjectName("verticalLayout")
@@ -36,7 +37,7 @@ class Ui_Monitor(object):
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.verticalFrame.sizePolicy().hasHeightForWidth())
         self.verticalFrame.setSizePolicy(sizePolicy)
-        self.verticalFrame.setStyleSheet("background-color: #21243d;")
+        self.verticalFrame.setStyleSheet("background-color: #464159;")
         self.verticalFrame.setFrameShape(QtWidgets.QFrame.NoFrame)
         self.verticalFrame.setObjectName("verticalFrame")
         self.horizontalLayout = QtWidgets.QHBoxLayout(self.verticalFrame)
@@ -80,7 +81,7 @@ class Ui_Monitor(object):
         sizePolicy.setVerticalStretch(1)
         sizePolicy.setHeightForWidth(self.frame_5.sizePolicy().hasHeightForWidth())
         self.frame_5.setSizePolicy(sizePolicy)
-        self.frame_5.setStyleSheet("background-color: #5b5656;")
+        self.frame_5.setStyleSheet("background-color: #8bbabb;")
         self.frame_5.setFrameShape(QtWidgets.QFrame.NoFrame)
         self.frame_5.setFrameShadow(QtWidgets.QFrame.Plain)
         self.frame_5.setLineWidth(1)
@@ -103,7 +104,7 @@ class Ui_Monitor(object):
         sizePolicy.setVerticalStretch(1)
         sizePolicy.setHeightForWidth(self.frame_6.sizePolicy().hasHeightForWidth())
         self.frame_6.setSizePolicy(sizePolicy)
-        self.frame_6.setStyleSheet("background-color: #5b5656;")
+        self.frame_6.setStyleSheet("background-color: #8bbabb;")
         self.frame_6.setFrameShape(QtWidgets.QFrame.NoFrame)
         self.frame_6.setFrameShadow(QtWidgets.QFrame.Plain)
         self.frame_6.setLineWidth(1)
@@ -126,7 +127,7 @@ class Ui_Monitor(object):
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.frame.sizePolicy().hasHeightForWidth())
         self.frame.setSizePolicy(sizePolicy)
-        self.frame.setStyleSheet("background-color: #5b5656;")
+        self.frame.setStyleSheet("background-color: #8bbabb;")
         self.frame.setFrameShape(QtWidgets.QFrame.NoFrame)
         self.frame.setFrameShadow(QtWidgets.QFrame.Plain)
         self.frame.setLineWidth(1)
@@ -151,7 +152,7 @@ class Ui_Monitor(object):
         sizePolicy.setVerticalStretch(1)
         sizePolicy.setHeightForWidth(self.frame_4.sizePolicy().hasHeightForWidth())
         self.frame_4.setSizePolicy(sizePolicy)
-        self.frame_4.setStyleSheet("background-color: #5b5656;")
+        self.frame_4.setStyleSheet("background-color: #8bbabb;")
         self.frame_4.setFrameShape(QtWidgets.QFrame.NoFrame)
         self.frame_4.setFrameShadow(QtWidgets.QFrame.Plain)
         self.frame_4.setLineWidth(1)
@@ -174,7 +175,7 @@ class Ui_Monitor(object):
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.frame_3.sizePolicy().hasHeightForWidth())
         self.frame_3.setSizePolicy(sizePolicy)
-        self.frame_3.setStyleSheet("background-color: #5b5656;")
+        self.frame_3.setStyleSheet("background-color: #8bbabb;")
         self.frame_3.setFrameShape(QtWidgets.QFrame.NoFrame)
         self.frame_3.setFrameShadow(QtWidgets.QFrame.Plain)
         self.frame_3.setLineWidth(1)

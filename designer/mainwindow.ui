@@ -14,7 +14,7 @@
    <string>ITBA SAE</string>
   </property>
   <property name="styleSheet">
-   <string notr="true"/>
+   <string notr="true">background-color: #6c7b95;</string>
   </property>
   <widget class="QWidget" name="central_widget">
    <layout class="QVBoxLayout" name="verticalLayout">
@@ -65,13 +65,6 @@
         <property name="bottomMargin">
          <number>0</number>
         </property>
-        <item alignment="Qt::AlignHCenter">
-         <widget class="QLabel" name="label">
-          <property name="text">
-           <string>TextLabel</string>
-          </property>
-         </widget>
-        </item>
        </layout>
       </widget>
      </widget>

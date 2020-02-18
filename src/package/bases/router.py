@@ -1,6 +1,6 @@
 # PyQt5 modules
 from PyQt5.QtWidgets import QWidget
-from PyQt5.QtCore import pyqtSlot, pyqtProperty
+from PyQt5.QtCore import pyqtSlot, pyqtProperty, pyqtSignal
 
 # Python modules
 from typing import Dict, List
@@ -10,6 +10,9 @@ class Router:
     """ Router class provides an interface to be used in a Window or Widget
         as to route between several pages registered as other custom Widgets.
     """
+
+    """ Signals from the Router class """
+    routing = pyqtSignal(str, QWidget, name='routing')
 
     @pyqtProperty(str)
     def default_path(self) -> str:
@@ -65,3 +68,4 @@ class Router:
                 self._router_widget.removeWidget(self._router_widget.currentWidget())
             self._router_widget.addWidget(self._widget_paths[path])
             self._router_widget.setCurrentWidget(self._widget_paths[path])
+            self.routing.emit(path, self._widget_paths[path])

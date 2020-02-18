@@ -1,5 +1,5 @@
 # PyQt5 modules
-from PyQt5.QtWidgets import QWidget
+from PyQt5.QtWidgets import QWidget, QApplication, QLayout
 from PyQt5.QtCore import pyqtSlot
 
 # Project modules
@@ -33,3 +33,10 @@ class Index(QWidget, Ui_Index):
         the application to the monitor screen.
         """
         self.router.route('monitor')
+
+
+if __name__ == "__main__":
+    app = QApplication([])
+    index = Index(None, None)
+    index.show()
+    app.exec()
