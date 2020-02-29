@@ -11,6 +11,11 @@
     <file>../assets/buttons/mic/photoshop/mic_normal.png</file>
     <file>../assets/buttons/mic/photoshop/mic_pressed.png</file>
   </qresource>
+  <qresource prefix="message">
+    <file>../assets/buttons/messages/send_hover.png</file>
+    <file>../assets/buttons/messages/send_normal.png</file>
+    <file>../assets/buttons/messages/send_press.png</file>
+  </qresource>
   <qresource prefix="arrow_right">
     <file>../assets/buttons/arrow_right/right_disabled.png</file>
     <file>../assets/buttons/arrow_right/right.png</file>
