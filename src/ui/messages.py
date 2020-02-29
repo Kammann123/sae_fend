@@ -12,51 +12,60 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_Messages(object):
     def setupUi(self, Messages):
         Messages.setObjectName("Messages")
-        Messages.resize(309, 195)
-        Messages.setStyleSheet("background-color: rgb(255, 255, 255);\n"
-"")
+        Messages.resize(312, 196)
+        Messages.setStyleSheet("background-color: rgb(0, 0, 127);")
         self.verticalLayout = QtWidgets.QVBoxLayout(Messages)
         self.verticalLayout.setObjectName("verticalLayout")
         self.scrollArea_2 = QtWidgets.QScrollArea(Messages)
+        self.scrollArea_2.setFrameShape(QtWidgets.QFrame.NoFrame)
         self.scrollArea_2.setWidgetResizable(True)
         self.scrollArea_2.setAlignment(QtCore.Qt.AlignBottom|QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft)
         self.scrollArea_2.setObjectName("scrollArea_2")
-        self.oldMessages = QtWidgets.QWidget()
-        self.oldMessages.setGeometry(QtCore.QRect(0, 0, 289, 117))
-        self.oldMessages.setLayoutDirection(QtCore.Qt.LeftToRight)
-        self.oldMessages.setObjectName("oldMessages")
-        self.verticalLayout_2 = QtWidgets.QVBoxLayout(self.oldMessages)
-        self.verticalLayout_2.setObjectName("verticalLayout_2")
+        self.old_messages = QtWidgets.QWidget()
+        self.old_messages.setGeometry(QtCore.QRect(0, 0, 294, 120))
+        self.old_messages.setLayoutDirection(QtCore.Qt.LeftToRight)
+        self.old_messages.setObjectName("old_messages")
+        self.messeges_layout = QtWidgets.QVBoxLayout(self.old_messages)
+        self.messeges_layout.setObjectName("messeges_layout")
         spacerItem = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
-        self.verticalLayout_2.addItem(spacerItem)
-        self.scrollArea_2.setWidget(self.oldMessages)
+        self.messeges_layout.addItem(spacerItem)
+        self.sample = QtWidgets.QPushButton(self.old_messages)
+        self.sample.setStyleSheet("background-color: lightblue; \n"
+"border-width: 2px; \n"
+"border-color: darkkhaki; \n"
+"border-style: solid; \n"
+"border-radius: 5; \n"
+"padding: 3px;")
+        self.sample.setObjectName("sample")
+        self.messeges_layout.addWidget(self.sample)
+        self.scrollArea_2.setWidget(self.old_messages)
         self.verticalLayout.addWidget(self.scrollArea_2)
         self.horizontalLayout = QtWidgets.QHBoxLayout()
         self.horizontalLayout.setObjectName("horizontalLayout")
-        self.Message = QtWidgets.QTextEdit(Messages)
+        self.message = QtWidgets.QTextEdit(Messages)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Maximum)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.Message.sizePolicy().hasHeightForWidth())
-        self.Message.setSizePolicy(sizePolicy)
-        self.Message.setMaximumSize(QtCore.QSize(16777215, 50))
-        self.Message.setStyleSheet("border-width: 2px;\n"
+        sizePolicy.setHeightForWidth(self.message.sizePolicy().hasHeightForWidth())
+        self.message.setSizePolicy(sizePolicy)
+        self.message.setMaximumSize(QtCore.QSize(16777215, 50))
+        self.message.setStyleSheet("border-width: 2px;\n"
 "background-color: rgba(255, 255, 255, 200);\n"
 "border-color: darkkhaki;\n"
 "border-style: solid;\n"
 "border-radius: 5;\n"
 "padding: 3px;\n"
 "")
-        self.Message.setObjectName("Message")
-        self.horizontalLayout.addWidget(self.Message)
-        self.sendButton = QtWidgets.QPushButton(Messages)
+        self.message.setObjectName("message")
+        self.horizontalLayout.addWidget(self.message)
+        self.send_button = QtWidgets.QPushButton(Messages)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.sendButton.sizePolicy().hasHeightForWidth())
-        self.sendButton.setSizePolicy(sizePolicy)
-        self.sendButton.setMinimumSize(QtCore.QSize(25, 25))
-        self.sendButton.setStyleSheet("QPushButton::active {\n"
+        sizePolicy.setHeightForWidth(self.send_button.sizePolicy().hasHeightForWidth())
+        self.send_button.setSizePolicy(sizePolicy)
+        self.send_button.setMinimumSize(QtCore.QSize(25, 25))
+        self.send_button.setStyleSheet("QPushButton::active {\n"
 "    border-image: url(:message/assets/buttons/messages/send_normal.png) 0 0 0 0;\n"
 "}\n"
 "        \n"
@@ -68,9 +77,9 @@ class Ui_Messages(object):
 "    border-image: url(::message/assets/buttons/messages/send_press.png) 0 0 0 0;\n"
 "}\n"
 "")
-        self.sendButton.setText("")
-        self.sendButton.setObjectName("sendButton")
-        self.horizontalLayout.addWidget(self.sendButton)
+        self.send_button.setText("")
+        self.send_button.setObjectName("send_button")
+        self.horizontalLayout.addWidget(self.send_button)
         self.verticalLayout.addLayout(self.horizontalLayout)
 
         self.retranslateUi(Messages)
@@ -79,10 +88,11 @@ class Ui_Messages(object):
     def retranslateUi(self, Messages):
         _translate = QtCore.QCoreApplication.translate
         Messages.setWindowTitle(_translate("Messages", "Form"))
+        self.sample.setText(_translate("Messages", "PushButton"))
 
 
-import buttons_rc
-import icons_rc
+from src.resources import buttons_rc
+from src.resources import icons_rc
 
 
 if __name__ == "__main__":

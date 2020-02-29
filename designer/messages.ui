@@ -6,39 +6,41 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>309</width>
-    <height>195</height>
+    <width>312</width>
+    <height>196</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Form</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">background-color: rgb(255, 255, 255);
-</string>
+   <string notr="true">background-color: rgb(0, 0, 127);</string>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>
     <widget class="QScrollArea" name="scrollArea_2">
+     <property name="frameShape">
+      <enum>QFrame::NoFrame</enum>
+     </property>
      <property name="widgetResizable">
       <bool>true</bool>
      </property>
      <property name="alignment">
       <set>Qt::AlignBottom|Qt::AlignLeading|Qt::AlignLeft</set>
      </property>
-     <widget class="QWidget" name="oldMessages">
+     <widget class="QWidget" name="old_messages">
       <property name="geometry">
        <rect>
         <x>0</x>
         <y>0</y>
-        <width>289</width>
-        <height>117</height>
+        <width>294</width>
+        <height>120</height>
        </rect>
       </property>
       <property name="layoutDirection">
        <enum>Qt::LeftToRight</enum>
       </property>
-      <layout class="QVBoxLayout" name="verticalLayout_2">
+      <layout class="QVBoxLayout" name="messeges_layout">
        <item>
         <spacer name="verticalSpacer">
          <property name="orientation">
@@ -52,6 +54,21 @@
          </property>
         </spacer>
        </item>
+       <item>
+        <widget class="QPushButton" name="sample">
+         <property name="styleSheet">
+          <string notr="true">background-color: lightblue; 
+border-width: 2px; 
+border-color: darkkhaki; 
+border-style: solid; 
+border-radius: 5; 
+padding: 3px;</string>
+         </property>
+         <property name="text">
+          <string>PushButton</string>
+         </property>
+        </widget>
+       </item>
       </layout>
      </widget>
     </widget>
@@ -59,7 +76,7 @@
    <item>
     <layout class="QHBoxLayout" name="horizontalLayout">
      <item>
-      <widget class="QTextEdit" name="Message">
+      <widget class="QTextEdit" name="message">
        <property name="sizePolicy">
         <sizepolicy hsizetype="Minimum" vsizetype="Maximum">
          <horstretch>0</horstretch>
@@ -84,7 +101,7 @@ padding: 3px;
       </widget>
      </item>
      <item>
-      <widget class="QPushButton" name="sendButton">
+      <widget class="QPushButton" name="send_button">
        <property name="sizePolicy">
         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
          <horstretch>0</horstretch>
