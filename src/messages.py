@@ -10,4 +10,7 @@ from src.ui.messages import Ui_Messages
 
 class Messages(QWidget, Ui_Messages):
     """ Messages widget to handle the message sending ui function"""
-    @pyqtProperty()
+
+    def __init__(self, parent=None):
+        super(Messages, self).__init__(parent)
+        self.setupUi(self)
