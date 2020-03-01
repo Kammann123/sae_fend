@@ -6,7 +6,6 @@ from PyQt5.QtCore import pyqtProperty, pyqtSlot
 
 # Python modules
 from enum import Enum
-from math import floor
 from os import getcwd, path
 
 # Project modules
