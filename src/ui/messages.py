@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'designer/messages.ui'
 #
-# Created by: PyQt5 UI code generator 5.14.1
+# Created by: PyQt5 UI code generator 5.13.2
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -13,7 +13,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_Messages(object):
     def setupUi(self, Messages):
         Messages.setObjectName("Messages")
-        Messages.resize(332, 145)
+        Messages.resize(307, 145)
         Messages.setStyleSheet("")
         self.verticalLayout = QtWidgets.QVBoxLayout(Messages)
         self.verticalLayout.setObjectName("verticalLayout")
@@ -23,20 +23,15 @@ class Ui_Messages(object):
         self.scrollArea_2.setAlignment(QtCore.Qt.AlignBottom|QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft)
         self.scrollArea_2.setObjectName("scrollArea_2")
         self.old_messages = QtWidgets.QWidget()
-        self.old_messages.setGeometry(QtCore.QRect(0, 0, 314, 69))
+        self.old_messages.setGeometry(QtCore.QRect(0, 0, 289, 69))
         self.old_messages.setLayoutDirection(QtCore.Qt.LeftToRight)
         self.old_messages.setObjectName("old_messages")
         self.messeges_layout = QtWidgets.QVBoxLayout(self.old_messages)
         self.messeges_layout.setObjectName("messeges_layout")
-        spacerItem = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
+        spacerItem = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Maximum)
         self.messeges_layout.addItem(spacerItem)
         self.sample = QtWidgets.QPushButton(self.old_messages)
-        self.sample.setStyleSheet("background-color: lightblue; \n"
-"border-width: 2px; \n"
-"border-color: darkkhaki; \n"
-"border-style: solid; \n"
-"border-radius: 5; \n"
-"padding: 3px;")
+        self.sample.setStyleSheet("")
         self.sample.setObjectName("sample")
         self.messeges_layout.addWidget(self.sample)
         self.scrollArea_2.setWidget(self.old_messages)
@@ -50,13 +45,7 @@ class Ui_Messages(object):
         sizePolicy.setHeightForWidth(self.message.sizePolicy().hasHeightForWidth())
         self.message.setSizePolicy(sizePolicy)
         self.message.setMaximumSize(QtCore.QSize(16777215, 50))
-        self.message.setStyleSheet("border-width: 2px;\n"
-"background-color: rgba(255, 255, 255, 200);\n"
-"border-color: darkkhaki;\n"
-"border-style: solid;\n"
-"border-radius: 5;\n"
-"padding: 3px;\n"
-"")
+        self.message.setStyleSheet("")
         self.message.setObjectName("message")
         self.horizontalLayout.addWidget(self.message)
         self.send_button = QtWidgets.QPushButton(Messages)
@@ -90,8 +79,8 @@ class Ui_Messages(object):
         _translate = QtCore.QCoreApplication.translate
         Messages.setWindowTitle(_translate("Messages", "Form"))
         self.sample.setText(_translate("Messages", "PushButton"))
-import buttons_rc
-import icons_rc
+from src.resources import buttons_rc
+from src.resources import icons_rc
 
 
 if __name__ == "__main__":

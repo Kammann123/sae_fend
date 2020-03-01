@@ -1,5 +1,5 @@
 # PyQt5 modules
-from PyQt5.QtWidgets import QWidget, QApplication, QLayout
+from PyQt5.QtWidgets import QWidget, QApplication
 from PyQt5.QtCore import pyqtSlot
 
 # Project modules

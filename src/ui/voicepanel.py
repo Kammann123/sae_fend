@@ -25,6 +25,54 @@ class Ui_VoicePanel(object):
         self.horizontalLayout.setContentsMargins(1, 1, 1, 1)
         self.horizontalLayout.setSpacing(1)
         self.horizontalLayout.setObjectName("horizontalLayout")
+        spacerItem = QtWidgets.QSpacerItem(10, 20, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout.addItem(spacerItem)
+        self.widget = QtWidgets.QWidget(VoicePanel)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.widget.sizePolicy().hasHeightForWidth())
+        self.widget.setSizePolicy(sizePolicy)
+        self.widget.setObjectName("widget")
+        self.verticalLayout = QtWidgets.QVBoxLayout(self.widget)
+        self.verticalLayout.setContentsMargins(0, 0, 0, 0)
+        self.verticalLayout.setSpacing(4)
+        self.verticalLayout.setObjectName("verticalLayout")
+        self.mic_bar = QtWidgets.QProgressBar(self.widget)
+        self.mic_bar.setMaximumSize(QtCore.QSize(16777215, 10))
+        self.mic_bar.setStyleSheet("QProgressBar::chunk {\n"
+"    background-color: rgb(218, 55, 55);\n"
+"}\n"
+"\n"
+"QProgressBar {\n"
+"    background-color: rgba(255, 253, 249, 100);\n"
+"    border-color:  rgba(255, 253, 249, 100);\n"
+"}")
+        self.mic_bar.setProperty("value", 0)
+        self.mic_bar.setAlignment(QtCore.Qt.AlignCenter)
+        self.mic_bar.setTextVisible(False)
+        self.mic_bar.setOrientation(QtCore.Qt.Horizontal)
+        self.mic_bar.setInvertedAppearance(False)
+        self.mic_bar.setObjectName("mic_bar")
+        self.verticalLayout.addWidget(self.mic_bar)
+        self.sound_bar = QtWidgets.QProgressBar(self.widget)
+        self.sound_bar.setMaximumSize(QtCore.QSize(16777215, 10))
+        self.sound_bar.setStyleSheet("QProgressBar::chunk {\n"
+"    background-color: rgb(253, 255, 98);\n"
+"}\n"
+"\n"
+"QProgressBar {\n"
+"    background-color: rgba(255, 253, 249, 100);\n"
+"    border-color:  rgba(255, 253, 249, 100);\n"
+"}")
+        self.sound_bar.setProperty("value", 0)
+        self.sound_bar.setAlignment(QtCore.Qt.AlignCenter)
+        self.sound_bar.setTextVisible(False)
+        self.sound_bar.setOrientation(QtCore.Qt.Horizontal)
+        self.sound_bar.setInvertedAppearance(False)
+        self.sound_bar.setObjectName("sound_bar")
+        self.verticalLayout.addWidget(self.sound_bar)
+        self.horizontalLayout.addWidget(self.widget)
         self.icon_widget = QtWidgets.QStackedWidget(VoicePanel)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
@@ -85,59 +133,9 @@ class Ui_VoicePanel(object):
         self.verticalLayout_3.addWidget(self.label)
         self.icon_widget.addWidget(self.listen_page)
         self.horizontalLayout.addWidget(self.icon_widget)
-        self.widget = QtWidgets.QWidget(VoicePanel)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Fixed)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.widget.sizePolicy().hasHeightForWidth())
-        self.widget.setSizePolicy(sizePolicy)
-        self.widget.setObjectName("widget")
-        self.verticalLayout = QtWidgets.QVBoxLayout(self.widget)
-        self.verticalLayout.setContentsMargins(0, 0, 0, 0)
-        self.verticalLayout.setSpacing(4)
-        self.verticalLayout.setObjectName("verticalLayout")
-        self.mic_bar = QtWidgets.QProgressBar(self.widget)
-        self.mic_bar.setMaximumSize(QtCore.QSize(16777215, 15))
-        self.mic_bar.setStyleSheet("QProgressBar::chunk {\n"
-"    width: 5px;\n"
-"    margin: 0.5px;\n"
-"    background-color: rgb(218, 55, 55);\n"
-"}\n"
-"\n"
-"QProgressBar {\n"
-"    background-color: rgba(255, 253, 249, 100);\n"
-"    border-color:  rgba(255, 253, 249, 100);\n"
-"}")
-        self.mic_bar.setProperty("value", 0)
-        self.mic_bar.setAlignment(QtCore.Qt.AlignCenter)
-        self.mic_bar.setTextVisible(False)
-        self.mic_bar.setOrientation(QtCore.Qt.Horizontal)
-        self.mic_bar.setInvertedAppearance(False)
-        self.mic_bar.setObjectName("mic_bar")
-        self.verticalLayout.addWidget(self.mic_bar)
-        self.sound_bar = QtWidgets.QProgressBar(self.widget)
-        self.sound_bar.setMaximumSize(QtCore.QSize(16777215, 15))
-        self.sound_bar.setStyleSheet("QProgressBar::chunk {\n"
-"    width: 5px;\n"
-"    margin: 0.5px;\n"
-"    background-color: rgb(253, 255, 98);\n"
-"}\n"
-"\n"
-"QProgressBar {\n"
-"    background-color: rgba(255, 253, 249, 100);\n"
-"    border-color:  rgba(255, 253, 249, 100);\n"
-"}")
-        self.sound_bar.setProperty("value", 0)
-        self.sound_bar.setAlignment(QtCore.Qt.AlignCenter)
-        self.sound_bar.setTextVisible(False)
-        self.sound_bar.setOrientation(QtCore.Qt.Horizontal)
-        self.sound_bar.setInvertedAppearance(False)
-        self.sound_bar.setObjectName("sound_bar")
-        self.verticalLayout.addWidget(self.sound_bar)
-        self.horizontalLayout.addWidget(self.widget)
 
         self.retranslateUi(VoicePanel)
-        self.icon_widget.setCurrentIndex(1)
+        self.icon_widget.setCurrentIndex(0)
         QtCore.QMetaObject.connectSlotsByName(VoicePanel)
 
     def retranslateUi(self, VoicePanel):
