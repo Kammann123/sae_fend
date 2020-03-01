@@ -58,11 +58,7 @@ class VoicePanel(QWidget, Ui_VoicePanel):
         # Signal and slot connections
         self.mic_button.clicked.connect(self.on_mic_clicked)
         self._input.state_changed.connect(self.on_input_state_changed)
-        self._input.frames_recorded.connect(lambda frames, frames_count: self.mic_bar.setValue(get_rms(frames)))
-        self._input.stream_stopped.connect(self.clear_bar)
         self._output.state_changed.connect(self.on_output_state_changed)
-        self._output.frames_played.connect(lambda frames, frames_count: self.sound_bar.setValue(get_rms(frames)))
-        self._output.stream_stopped.connect(self.clear_bar)
 
         if VoicePanel.LOOP_BUFFERING:
             self._input.frames_recorded.connect(self._output.play_frames)
@@ -71,14 +67,6 @@ class VoicePanel(QWidget, Ui_VoicePanel):
 
         # Initial internal update
         self.on_general_update()
-
-    @pyqtSlot(name='clearBar')
-    def clear_bar(self):
-        """
-        Clears the volume bar's value when stopping the streaming device
-        """
-        self.mic_bar.setValue(0)
-        self.sound_bar.setValue(0)
 
     @pyqtSlot(name='onGeneralUpdate')
     def on_general_update(self):
