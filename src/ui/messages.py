@@ -1,10 +1,11 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'messages.ui'
+# Form implementation generated from reading ui file 'designer/messages.ui'
 #
-# Created by: PyQt5 UI code generator 5.12.2
+# Created by: PyQt5 UI code generator 5.14.1
 #
 # WARNING! All changes made in this file will be lost!
+
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 
@@ -12,8 +13,8 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_Messages(object):
     def setupUi(self, Messages):
         Messages.setObjectName("Messages")
-        Messages.resize(312, 196)
-        Messages.setStyleSheet("background-color: rgb(0, 0, 127);")
+        Messages.resize(332, 145)
+        Messages.setStyleSheet("")
         self.verticalLayout = QtWidgets.QVBoxLayout(Messages)
         self.verticalLayout.setObjectName("verticalLayout")
         self.scrollArea_2 = QtWidgets.QScrollArea(Messages)
@@ -22,7 +23,7 @@ class Ui_Messages(object):
         self.scrollArea_2.setAlignment(QtCore.Qt.AlignBottom|QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft)
         self.scrollArea_2.setObjectName("scrollArea_2")
         self.old_messages = QtWidgets.QWidget()
-        self.old_messages.setGeometry(QtCore.QRect(0, 0, 294, 120))
+        self.old_messages.setGeometry(QtCore.QRect(0, 0, 314, 69))
         self.old_messages.setLayoutDirection(QtCore.Qt.LeftToRight)
         self.old_messages.setObjectName("old_messages")
         self.messeges_layout = QtWidgets.QVBoxLayout(self.old_messages)
@@ -89,10 +90,8 @@ class Ui_Messages(object):
         _translate = QtCore.QCoreApplication.translate
         Messages.setWindowTitle(_translate("Messages", "Form"))
         self.sample.setText(_translate("Messages", "PushButton"))
-
-
-from src.resources import buttons_rc
-from src.resources import icons_rc
+import buttons_rc
+import icons_rc
 
 
 if __name__ == "__main__":

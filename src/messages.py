@@ -1,6 +1,6 @@
 # PyQt5 modules
 from PyQt5.QtWidgets import QApplication, QWidget, QPushButton
-from PyQt5.QtCore import pyqtSlot, pyqtProperty, pyqtSignal
+from PyQt5.QtCore import pyqtSlot, pyqtSignal
 
 # Project modules
 from src.ui.messages import Ui_Messages
@@ -8,13 +8,13 @@ from src.ui.messages import Ui_Messages
 # Python modules
 
 
-class Messages(QWidget, Ui_Messages):
+class MessagesWidget(QWidget, Ui_Messages):
     """ Messages widget to handle the message sending ui function"""
 
     send_message = pyqtSignal(str, name='sendMessage')
 
     def __init__(self, parent=None):
-        super(Messages, self).__init__(parent)
+        super(MessagesWidget, self).__init__(parent)
         self.setupUi(self)
 
         # Private members/attributes of this class
@@ -25,7 +25,7 @@ class Messages(QWidget, Ui_Messages):
         # Signal and slot connections
         self.send_button.clicked.connect(self.on_send_clicked)
 
-        #Other things to do
+        # Other things to do
         self.sample.hide()
 
     @pyqtSlot(name='onSendClicked')
@@ -65,6 +65,6 @@ class Messages(QWidget, Ui_Messages):
 
 if __name__ == "__main__":
     app = QApplication([])
-    panel = Messages()
+    panel = MessagesWidget()
     panel.show()
     app.exec()
