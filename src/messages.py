@@ -1,6 +1,6 @@
 # PyQt5 modules
-from PyQt5.QtWidgets import QWidget, QApplication
-from PyQt5.QtCore import pyqtSlot, pyqtSignal, Qt
+from PyQt5.QtWidgets import QWidget, QApplication, QListWidgetItem
+from PyQt5.QtCore import pyqtSlot, pyqtSignal
 
 # Project modules
 from src.ui.messages import Ui_Messages
@@ -19,6 +19,7 @@ class MessagesWidget(QWidget, Ui_Messages):
 
         # Private members/attributes of the class
         self.messages = []
+        self.item_messages = []
 
     @pyqtSlot(str, name='addMessage')
     def add_message(self, text: str):
@@ -29,13 +30,20 @@ class MessagesWidget(QWidget, Ui_Messages):
         if text != '':
             new_message = MessageWidget(text)
             new_message.clicked.connect(lambda message: self.message_selected.emit(message))
+            new_item = QListWidgetItem(self.message_box)
+            new_item.setSizeHint(new_message.sizeHint())
             self.messages.append(new_message)
-            self.messages_box.addWidget(new_message)
+            self.item_messages.append(new_item)
+            self.message_box.insertItem(0, new_item)
+            self.message_box.setItemWidget(new_item, new_message)
 
 
 if __name__ == "__main__":
     app = QApplication([])
     widget = MessagesWidget()
-    widget.add_message("Mensaje en memoria")
+    widget.add_message("Mensaje en memoria 1")
+    widget.add_message("Mensaje en memoria 2")
+    widget.add_message("Mensaje en memoria 3")
+    widget.add_message("Mensaje en memoria 4")
     widget.show()
     app.exec()

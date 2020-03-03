@@ -29,22 +29,30 @@ class Ui_Messages(object):
         self.verticalLayout_3.setContentsMargins(0, 0, 0, 0)
         self.verticalLayout_3.setSpacing(0)
         self.verticalLayout_3.setObjectName("verticalLayout_3")
-        self.messages_box = QtWidgets.QVBoxLayout()
-        self.messages_box.setContentsMargins(-1, -1, -1, 0)
-        self.messages_box.setSpacing(0)
-        self.messages_box.setObjectName("messages_box")
-        spacerItem = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
-        self.messages_box.addItem(spacerItem)
-        self.verticalLayout_3.addLayout(self.messages_box)
+        self.message_box = QtWidgets.QListWidget(self.scrollAreaWidgetContents)
+        self.message_box.setAutoFillBackground(True)
+        self.message_box.setStyleSheet("background-color: rgba(255, 255, 255, 0);\n"
+"border-color: rgba(255, 255, 255, 0);\n"
+"border: 0px;")
+        self.message_box.setEditTriggers(QtWidgets.QAbstractItemView.NoEditTriggers)
+        self.message_box.setDragEnabled(False)
+        self.message_box.setAlternatingRowColors(False)
+        self.message_box.setSelectionMode(QtWidgets.QAbstractItemView.SingleSelection)
+        self.message_box.setSelectionBehavior(QtWidgets.QAbstractItemView.SelectItems)
+        self.message_box.setItemAlignment(QtCore.Qt.AlignTop)
+        self.message_box.setObjectName("message_box")
+        self.verticalLayout_3.addWidget(self.message_box)
         self.scrollArea.setWidget(self.scrollAreaWidgetContents)
         self.verticalLayout.addWidget(self.scrollArea)
 
         self.retranslateUi(Messages)
+        self.message_box.setCurrentRow(-1)
         QtCore.QMetaObject.connectSlotsByName(Messages)
 
     def retranslateUi(self, Messages):
         _translate = QtCore.QCoreApplication.translate
         Messages.setWindowTitle(_translate("Messages", "Form"))
+        self.message_box.setSortingEnabled(False)
 
 
 if __name__ == "__main__":

@@ -200,6 +200,7 @@ class Ui_Monitor(object):
         self.voice_panel.framesRecorded['PyQt_PyObject','int'].connect(self.voice_signal.setSamples)
         self.voice_panel.framesPlayed['PyQt_PyObject','int'].connect(self.voice_signal.setSamples)
         self.sd_message_input.sendStringMessage['QString'].connect(self.messages_widget.addMessage)
+        self.messages_widget.messageSelected['QString'].connect(self.message_input_widget.setMessage)
         QtCore.QMetaObject.connectSlotsByName(Monitor)
 
     def retranslateUi(self, Monitor):
