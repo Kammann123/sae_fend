@@ -13,7 +13,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_Messages(object):
     def setupUi(self, Messages):
         Messages.setObjectName("Messages")
-        Messages.resize(400, 300)
+        Messages.resize(400, 383)
         self.verticalLayout = QtWidgets.QVBoxLayout(Messages)
         self.verticalLayout.setContentsMargins(0, 0, 0, 0)
         self.verticalLayout.setSpacing(0)
@@ -23,7 +23,7 @@ class Ui_Messages(object):
         self.scrollArea.setWidgetResizable(True)
         self.scrollArea.setObjectName("scrollArea")
         self.scrollAreaWidgetContents = QtWidgets.QWidget()
-        self.scrollAreaWidgetContents.setGeometry(QtCore.QRect(0, 0, 400, 300))
+        self.scrollAreaWidgetContents.setGeometry(QtCore.QRect(0, 0, 400, 383))
         self.scrollAreaWidgetContents.setObjectName("scrollAreaWidgetContents")
         self.verticalLayout_3 = QtWidgets.QVBoxLayout(self.scrollAreaWidgetContents)
         self.verticalLayout_3.setContentsMargins(0, 0, 0, 0)
@@ -33,6 +33,8 @@ class Ui_Messages(object):
         self.messages_box.setContentsMargins(-1, -1, -1, 0)
         self.messages_box.setSpacing(0)
         self.messages_box.setObjectName("messages_box")
+        spacerItem = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
+        self.messages_box.addItem(spacerItem)
         self.verticalLayout_3.addLayout(self.messages_box)
         self.scrollArea.setWidget(self.scrollAreaWidgetContents)
         self.verticalLayout.addWidget(self.scrollArea)

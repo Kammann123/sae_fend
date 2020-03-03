@@ -6,9 +6,12 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>150</width>
+    <width>587</width>
     <height>70</height>
    </rect>
+  </property>
+  <property name="focusPolicy">
+   <enum>Qt::ClickFocus</enum>
   </property>
   <property name="windowTitle">
    <string>Form</string>
@@ -56,6 +59,9 @@
 	padding: 3px;
 }</string>
        </property>
+       <property name="tabChangesFocus">
+        <bool>true</bool>
+       </property>
        <property name="html">
         <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
@@ -78,30 +84,36 @@ p, li { white-space: pre-wrap; }
        </property>
        <property name="minimumSize">
         <size>
-         <width>20</width>
-         <height>20</height>
+         <width>35</width>
+         <height>35</height>
         </size>
        </property>
        <property name="styleSheet">
-        <string notr="true">QPushButton::active {
-	border-image: url(:message/assets/buttons/messages/send_normal.png) 0 0 0 0;
+        <string notr="true">:active {
+	border-image:url(:/message_v3/assets/buttons/messages/v3/mic_normal.png) 0 0 0 0;
 }
 
-QPushButton::closed {
-	border-image: url(:message/assets/buttons/messages/send_normal.png) 0 0 0 0;
+:closed {
+	border-image: url(:/message_v3/assets/buttons/messages/v3/mic_normal.png) 0 0 0 0;
 }
         
-QPushButton::hover {
-	border-image: url(:message/assets/buttons/messages/send_hover.png) 0 0 0 0;
+:hover {
+	border-image: url(:/message_v3/assets/buttons/messages/v3/mic_hover.png) 0 0 0 0;
 }
         
-QPushButton::checked {
-	border-image: url(::message/assets/buttons/messages/send_press.png) 0 0 0 0;
+:pressed {
+	border-image: url(:/message_v3/assets/buttons/messages/v3/mic_pressed.png) 0 0 0 0;
 }
 </string>
        </property>
        <property name="text">
         <string/>
+       </property>
+       <property name="checkable">
+        <bool>false</bool>
+       </property>
+       <property name="flat">
+        <bool>true</bool>
        </property>
       </widget>
      </item>

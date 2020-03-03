@@ -1,6 +1,7 @@
 # PyQt5 modules
-from PyQt5.QtWidgets import QApplication, QWidget
-from PyQt5.QtCore import pyqtSlot, pyqtSignal
+from PyQt5.QtWidgets import QApplication, QWidget, QTextEdit
+from PyQt5.QtCore import pyqtSlot, pyqtSignal, Qt
+from PyQt5.QtGui import QKeyEvent
 
 # Project modules
 from src.ui.messageinput import Ui_MessageInput
@@ -20,6 +21,7 @@ class MessageInputWidget(QWidget, Ui_MessageInput):
 
         # Signal and slot connections
         self.send_button.clicked.connect(self.on_send_clicked)
+        self.message.keyPressEvent = self.keyPressEvent
 
     @pyqtSlot(str, name='setMessage')
     def set_message(self, text: str):
@@ -42,6 +44,12 @@ class MessageInputWidget(QWidget, Ui_MessageInput):
             self.send_message.emit(new_message)
             self.messages.append(new_message)
             self.message.clear()
+
+    def keyPressEvent(self, event: QKeyEvent):
+        if event.key() == Qt.Key_Return:
+            self.on_send_clicked()
+        else:
+            QTextEdit.keyPressEvent(self.message, event)
 
 
 if __name__ == "__main__":

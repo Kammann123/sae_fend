@@ -13,7 +13,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_Monitor(object):
     def setupUi(self, Monitor):
         Monitor.setObjectName("Monitor")
-        Monitor.resize(1634, 532)
+        Monitor.resize(1422, 494)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Minimum)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
@@ -57,6 +57,7 @@ class Ui_Monitor(object):
         self.verticalLayout_9 = QtWidgets.QVBoxLayout(self.frame_3)
         self.verticalLayout_9.setObjectName("verticalLayout_9")
         self.messages_widget = MessagesWidget(self.frame_3)
+        self.messages_widget.setStyleSheet("")
         self.messages_widget.setObjectName("messages_widget")
         self.verticalLayout_9.addWidget(self.messages_widget)
         self.verticalLayout_7.addWidget(self.frame_3)
@@ -69,17 +70,39 @@ class Ui_Monitor(object):
         self.verticalLayout_10.setSpacing(10)
         self.verticalLayout_10.setObjectName("verticalLayout_10")
         self.horizontalLayout = QtWidgets.QHBoxLayout()
+        self.horizontalLayout.setContentsMargins(10, -1, -1, -1)
+        self.horizontalLayout.setSpacing(0)
         self.horizontalLayout.setObjectName("horizontalLayout")
         self.voice_panel = VoicePanel(self.frame_5)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.voice_panel.sizePolicy().hasHeightForWidth())
+        self.voice_panel.setSizePolicy(sizePolicy)
         self.voice_panel.setObjectName("voice_panel")
         self.horizontalLayout.addWidget(self.voice_panel)
         self.message_input_widget = MessageInputWidget(self.frame_5)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Minimum)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.message_input_widget.sizePolicy().hasHeightForWidth())
+        self.message_input_widget.setSizePolicy(sizePolicy)
         self.message_input_widget.setObjectName("message_input_widget")
-        self.horizontalLayout.addWidget(self.message_input_widget)
+        self.horizontalLayout.addWidget(self.message_input_widget, 0, QtCore.Qt.AlignRight)
+        self.sd_message_input = SdMessageInput(self.frame_5)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.sd_message_input.sizePolicy().hasHeightForWidth())
+        self.sd_message_input.setSizePolicy(sizePolicy)
+        self.sd_message_input.setMinimumSize(QtCore.QSize(50, 35))
+        self.sd_message_input.setMaximumSize(QtCore.QSize(35, 35))
+        self.sd_message_input.setObjectName("sd_message_input")
+        self.horizontalLayout.addWidget(self.sd_message_input)
         self.verticalLayout_10.addLayout(self.horizontalLayout)
         self.voice_signal = VoiceSignalWidget(self.frame_5)
         self.voice_signal.setMinimumSize(QtCore.QSize(0, 40))
-        brush = QtGui.QBrush(QtGui.QColor(255, 115, 134, 150))
+        brush = QtGui.QBrush(QtGui.QColor(255, 211, 35))
         brush.setStyle(QtCore.Qt.SolidPattern)
         self.voice_signal.setProperty("bar_color", brush)
         self.voice_signal.setObjectName("voice_signal")
@@ -92,7 +115,7 @@ class Ui_Monitor(object):
         self.gridLayout.setObjectName("gridLayout")
         self.frame = QtWidgets.QFrame(Monitor)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Fixed)
-        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setHorizontalStretch(2)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.frame.sizePolicy().hasHeightForWidth())
         self.frame.setSizePolicy(sizePolicy)
@@ -103,6 +126,8 @@ class Ui_Monitor(object):
         self.frame.setMidLineWidth(0)
         self.frame.setObjectName("frame")
         self.verticalLayout_2 = QtWidgets.QVBoxLayout(self.frame)
+        self.verticalLayout_2.setContentsMargins(0, 0, 0, 0)
+        self.verticalLayout_2.setSpacing(0)
         self.verticalLayout_2.setObjectName("verticalLayout_2")
         self.panel = Panel(self.frame)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Fixed)
@@ -128,6 +153,8 @@ class Ui_Monitor(object):
         self.frame_4.setMidLineWidth(0)
         self.frame_4.setObjectName("frame_4")
         self.verticalLayout_5 = QtWidgets.QVBoxLayout(self.frame_4)
+        self.verticalLayout_5.setContentsMargins(0, 0, 0, 0)
+        self.verticalLayout_5.setSpacing(0)
         self.verticalLayout_5.setObjectName("verticalLayout_5")
         self.slider_3 = Slider(self.frame_4)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Minimum)
@@ -151,6 +178,8 @@ class Ui_Monitor(object):
         self.frame_6.setMidLineWidth(0)
         self.frame_6.setObjectName("frame_6")
         self.verticalLayout_8 = QtWidgets.QVBoxLayout(self.frame_6)
+        self.verticalLayout_8.setContentsMargins(0, 0, 0, 0)
+        self.verticalLayout_8.setSpacing(0)
         self.verticalLayout_8.setObjectName("verticalLayout_8")
         self.slider_2 = Slider(self.frame_6)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Minimum)
@@ -170,6 +199,7 @@ class Ui_Monitor(object):
         self.voice_panel.streamStopped.connect(self.voice_signal.clear)
         self.voice_panel.framesRecorded['PyQt_PyObject','int'].connect(self.voice_signal.setSamples)
         self.voice_panel.framesPlayed['PyQt_PyObject','int'].connect(self.voice_signal.setSamples)
+        self.sd_message_input.sendStringMessage['QString'].connect(self.messages_widget.addMessage)
         QtCore.QMetaObject.connectSlotsByName(Monitor)
 
     def retranslateUi(self, Monitor):
@@ -181,6 +211,8 @@ class Ui_Monitor(object):
         self.voice_panel.setWhatsThis(_translate("Monitor", "Voice Panel Widget.  "))
         self.message_input_widget.setToolTip(_translate("Monitor", "Click and drag here"))
         self.message_input_widget.setWhatsThis(_translate("Monitor", "Message Input Widget.  "))
+        self.sd_message_input.setToolTip(_translate("Monitor", "Click and drag here"))
+        self.sd_message_input.setWhatsThis(_translate("Monitor", "SD Message Input Widget.  "))
         self.voice_signal.setToolTip(_translate("Monitor", "Click and drag here"))
         self.voice_signal.setWhatsThis(_translate("Monitor", "Voice Signal Widget.  "))
         self.panel.setToolTip(_translate("Monitor", "Click and drag here"))
@@ -192,9 +224,10 @@ class Ui_Monitor(object):
 from src.messageinput import MessageInputWidget
 from src.messages import MessagesWidget
 from src.panel import Panel
+from src.sdmessageinput import SdMessageInput
 from src.slider import Slider
 from src.voicepanel import VoicePanel
-from voicesignalwidget import VoiceSignalWidget
+from src.widgets.voicesignalwidget import VoiceSignalWidget
 
 
 if __name__ == "__main__":

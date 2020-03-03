@@ -36,7 +36,6 @@ class MessagesWidget(QWidget, Ui_Messages):
 if __name__ == "__main__":
     app = QApplication([])
     widget = MessagesWidget()
-    widget.add_message("Mensaje de prueba")
-    widget.add_message("Soy Lucas A. Kammann")
+    widget.add_message("Mensaje en memoria")
     widget.show()
     app.exec()

@@ -9,13 +9,13 @@ from PyQt5.QtDesigner import QPyDesignerCustomWidgetPlugin
 from PyQt5.QtGui import QIcon
 
 # Project modules
-from voicesignalwidget import VoiceSignalWidget
+from sdmessageinput import SdMessageInput
 
 
-class VoiceSignalWidgetPlugin(QPyDesignerCustomWidgetPlugin):
+class SdMessageInputPlugin(QPyDesignerCustomWidgetPlugin):
 
     def __init__(self, parent=None):
-        super(VoiceSignalWidgetPlugin, self).__init__(parent)
+        super(SdMessageInputPlugin, self).__init__(parent)
         self.initialized = False
 
     def initialize(self, core):
@@ -28,10 +28,10 @@ class VoiceSignalWidgetPlugin(QPyDesignerCustomWidgetPlugin):
         return self.initialized
 
     def createWidget(self, parent):
-        return VoiceSignalWidget(parent)
+        return SdMessageInput(parent)
 
     def name(self):
-        return "VoiceSignalWidget"
+        return "SdMessageInput"
 
     def group(self):
         return "SAE Widgets"
@@ -49,15 +49,15 @@ class VoiceSignalWidgetPlugin(QPyDesignerCustomWidgetPlugin):
         return False
 
     def domXml(self):
-        return '<widget class="VoiceSignalWidget" name="voice_signal">\n' \
+        return '<widget class="SdMessageInput" name="sd_message_input">\n' \
                ' <property name="toolTip">\n' \
                '  <string>Click and drag here</string>\n' \
                ' </property>\n' \
                ' <property name="whatsThis">\n' \
-               '  <string>Voice Signal Widget. ' \
+               '  <string>SD Message Input Widget. ' \
                ' </string>\n' \
                ' </property>\n' \
                '</widget>\n'
 
     def includeFile(self):
-        return "src/widgets/voicesignalwidget"
+        return "src/sdmessageinput"

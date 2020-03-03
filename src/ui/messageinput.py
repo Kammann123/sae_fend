@@ -13,7 +13,8 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_MessageInput(object):
     def setupUi(self, MessageInput):
         MessageInput.setObjectName("MessageInput")
-        MessageInput.resize(150, 70)
+        MessageInput.resize(587, 70)
+        MessageInput.setFocusPolicy(QtCore.Qt.ClickFocus)
         MessageInput.setStyleSheet("")
         self.verticalLayout = QtWidgets.QVBoxLayout(MessageInput)
         self.verticalLayout.setObjectName("verticalLayout")
@@ -38,6 +39,7 @@ class Ui_MessageInput(object):
 "    text-align: center;\n"
 "    padding: 3px;\n"
 "}")
+        self.message.setTabChangesFocus(True)
         self.message.setObjectName("message")
         self.horizontalLayout.addWidget(self.message)
         self.send_button = QtWidgets.QPushButton(MessageInput)
@@ -46,24 +48,26 @@ class Ui_MessageInput(object):
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.send_button.sizePolicy().hasHeightForWidth())
         self.send_button.setSizePolicy(sizePolicy)
-        self.send_button.setMinimumSize(QtCore.QSize(20, 20))
-        self.send_button.setStyleSheet("QPushButton::active {\n"
-"    border-image: url(:message/assets/buttons/messages/send_normal.png) 0 0 0 0;\n"
+        self.send_button.setMinimumSize(QtCore.QSize(35, 35))
+        self.send_button.setStyleSheet(":active {\n"
+"    border-image:url(:/message_v3/assets/buttons/messages/v3/mic_normal.png) 0 0 0 0;\n"
 "}\n"
 "\n"
-"QPushButton::closed {\n"
-"    border-image: url(:message/assets/buttons/messages/send_normal.png) 0 0 0 0;\n"
+":closed {\n"
+"    border-image: url(:/message_v3/assets/buttons/messages/v3/mic_normal.png) 0 0 0 0;\n"
 "}\n"
 "        \n"
-"QPushButton::hover {\n"
-"    border-image: url(:message/assets/buttons/messages/send_hover.png) 0 0 0 0;\n"
+":hover {\n"
+"    border-image: url(:/message_v3/assets/buttons/messages/v3/mic_hover.png) 0 0 0 0;\n"
 "}\n"
 "        \n"
-"QPushButton::checked {\n"
-"    border-image: url(::message/assets/buttons/messages/send_press.png) 0 0 0 0;\n"
+":pressed {\n"
+"    border-image: url(:/message_v3/assets/buttons/messages/v3/mic_pressed.png) 0 0 0 0;\n"
 "}\n"
 "")
         self.send_button.setText("")
+        self.send_button.setCheckable(False)
+        self.send_button.setFlat(True)
         self.send_button.setObjectName("send_button")
         self.horizontalLayout.addWidget(self.send_button)
         self.verticalLayout.addLayout(self.horizontalLayout)

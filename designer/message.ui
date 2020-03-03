@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>530</width>
-    <height>52</height>
+    <width>378</width>
+    <height>84</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -27,6 +27,9 @@
   </property>
   <property name="windowTitle">
    <string>Form</string>
+  </property>
+  <property name="autoFillBackground">
+   <bool>false</bool>
   </property>
   <property name="styleSheet">
    <string notr="true">:hover{
@@ -89,18 +92,24 @@
        <pointsize>10</pointsize>
        <weight>50</weight>
        <bold>false</bold>
+       <stylestrategy>PreferAntialias</stylestrategy>
       </font>
      </property>
      <property name="styleSheet">
       <string notr="true">QLabel {
-    border: 2pxn;
 	background: rgb(96, 115, 202);
-    border-radius: 4px;
+    border-radius: 5px;
     padding: 5px;
 }</string>
      </property>
      <property name="text">
       <string>Este es un mensaje predeterminado para probar el componente de mensaje.</string>
+     </property>
+     <property name="textFormat">
+      <enum>Qt::RichText</enum>
+     </property>
+     <property name="scaledContents">
+      <bool>false</bool>
      </property>
      <property name="wordWrap">
       <bool>true</bool>

@@ -33,7 +33,7 @@ class MessageWidget(Ui_Message, QWidget):
 if __name__ == "__main__":
     app = QApplication([])
     widget = MessageWidget(
-        "Este es un mensaje de prueba para determinar si funciona correctamente este componente de mensaje."
+        "Mensaje en memoria"
     )
     widget.show()
     app.exec()

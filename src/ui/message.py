@@ -13,7 +13,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_Message(object):
     def setupUi(self, Message):
         Message.setObjectName("Message")
-        Message.resize(530, 52)
+        Message.resize(378, 84)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
@@ -24,6 +24,7 @@ class Ui_Message(object):
         font.setStrikeOut(False)
         Message.setFont(font)
         Message.setMouseTracking(True)
+        Message.setAutoFillBackground(False)
         Message.setStyleSheet(":hover{\n"
 "    \n"
 "    background-color: rgb(218, 218, 218);\n"
@@ -59,13 +60,15 @@ class Ui_Message(object):
         font.setPointSize(10)
         font.setBold(False)
         font.setWeight(50)
+        font.setStyleStrategy(QtGui.QFont.PreferAntialias)
         self.message_label.setFont(font)
         self.message_label.setStyleSheet("QLabel {\n"
-"    border: 2pxn;\n"
 "    background: rgb(96, 115, 202);\n"
-"    border-radius: 4px;\n"
+"    border-radius: 5px;\n"
 "    padding: 5px;\n"
 "}")
+        self.message_label.setTextFormat(QtCore.Qt.RichText)
+        self.message_label.setScaledContents(False)
         self.message_label.setWordWrap(True)
         self.message_label.setObjectName("message_label")
         self.horizontalLayout.addWidget(self.message_label, 0, QtCore.Qt.AlignRight)
