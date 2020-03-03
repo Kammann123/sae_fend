@@ -55,6 +55,8 @@ class Ui_Monitor(object):
         self.frame_3.setFrameShadow(QtWidgets.QFrame.Raised)
         self.frame_3.setObjectName("frame_3")
         self.verticalLayout_9 = QtWidgets.QVBoxLayout(self.frame_3)
+        self.verticalLayout_9.setContentsMargins(0, 0, 0, 0)
+        self.verticalLayout_9.setSpacing(0)
         self.verticalLayout_9.setObjectName("verticalLayout_9")
         self.messages_widget = MessagesWidget(self.frame_3)
         self.messages_widget.setStyleSheet("")

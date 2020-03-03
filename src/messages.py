@@ -21,6 +21,10 @@ class MessagesWidget(QWidget, Ui_Messages):
         self.messages = []
         self.item_messages = []
 
+        self.message_box.itemSelectionChanged.connect(
+            lambda: self.message_selected.emit(self.messages[self.message_box.currentRow()].message)
+        )
+
     @pyqtSlot(str, name='addMessage')
     def add_message(self, text: str):
         """
@@ -29,7 +33,6 @@ class MessagesWidget(QWidget, Ui_Messages):
         """
         if text != '':
             new_message = MessageWidget(text)
-            new_message.clicked.connect(lambda message: self.message_selected.emit(message))
             new_item = QListWidgetItem(self.message_box)
             new_item.setSizeHint(new_message.sizeHint())
             self.messages.append(new_message)
