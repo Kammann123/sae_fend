@@ -53,3 +53,6 @@ class MainWindow(QMainWindow, Ui_MainWindow, Router):
         pass
         # TODO! Should not resize sometimes, depends on the current widget being displayed
         # TODO! self.layout().setSizeConstraint(widget.layout().sizeConstraint())
+
+    def closeEvent(self, *args, **kwargs):
+        self.session.save_data()
