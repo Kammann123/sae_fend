@@ -139,21 +139,22 @@ class UserSession(QObject):
         """
         Save DataCollections from DataServices
         """
-        properties = self._data_service.names
-        properties_data = self._data_service.get_data_by_names(properties)
-        csv_file_names = []
-        for data in properties_data:
-            time = [datetime.fromtimestamp(moment/1000) for moment in data.timestamps]
-            formatted_time = [instant.strftime('%H:%M:%S') for instant in time]
-            values = data.values
-            csv_file_names.append(self._dir+'/'+data.name+'.csv')
-            file = open(csv_file_names[-1], 'w')
-            file.write('Time,Value' + os.linesep)
-            for index in range(len(time)):
-                file.write(formatted_time[index] + ',' + str(values[index]) + os.linesep)
-            file.close()
-        excel_file = pd.ExcelWriter(self._dir+'/Data.xlsx')
-        for csv_file in csv_file_names:
-            to_attach = pd.read_csv(csv_file)
-            to_attach.to_excel(excel_file, sheet_name=csv_file.split('/')[-1].split('.')[0])
-        excel_file.save()
+        if self.has_data_service:
+            properties = self._data_service.names
+            properties_data = self._data_service.get_data_by_names(properties)
+            csv_file_names = []
+            for data in properties_data:
+                time = [datetime.fromtimestamp(moment/1000) for moment in data.timestamps]
+                formatted_time = [instant.strftime('%H:%M:%S') for instant in time]
+                values = data.values
+                csv_file_names.append(self._dir+'/'+data.name+'.csv')
+                file = open(csv_file_names[-1], 'w')
+                file.write('Time,Value' + os.linesep)
+                for index in range(len(time)):
+                    file.write(formatted_time[index] + ',' + str(values[index]) + os.linesep)
+                file.close()
+            excel_file = pd.ExcelWriter(self._dir+'/Data.xlsx')
+            for csv_file in csv_file_names:
+                to_attach = pd.read_csv(csv_file)
+                to_attach.to_excel(excel_file, sheet_name=csv_file.split('/')[-1].split('.')[0])
+            excel_file.save()
