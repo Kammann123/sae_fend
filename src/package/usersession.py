@@ -124,7 +124,6 @@ class UserSession(QObject):
         self.stream_service_changed.emit()
         self.services_changed.emit()
 
-<<<<<<< HEAD
     @pyqtSlot(MessageService, name='setMessageService')
     def set_message_service(self, service: MessageService):
         """
@@ -134,7 +133,7 @@ class UserSession(QObject):
         self._message_service = service
         self.message_service_changed.emit()
         self.services_changed.emit()
-=======
+
     @pyqtSlot(name='saveData')
     def save_data(self):
         """
@@ -158,4 +157,3 @@ class UserSession(QObject):
             to_attach = pd.read_csv(csv_file)
             to_attach.to_excel(excel_file, sheet_name=csv_file.split('/')[-1].split('.')[0])
         excel_file.save()
->>>>>>> 336c434eb61a008a94ef229ef4f0321ae01b2732
