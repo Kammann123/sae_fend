@@ -1,32 +1,13 @@
 # PyQt5 modules
 from PyQt5.QtWidgets import QApplication, QWidget
-from PyQt5.QtCore import pyqtSlot, pyqtProperty
+from PyQt5.QtCore import pyqtSlot, pyqtProperty, pyqtSignal
 
 # Project modules
 from src.ui.voicepanel import Ui_VoicePanel
 
 from src.package.inputstream import InputStream
 from src.package.outputstream import OutputStream
-from src.package.bases.basestream import BaseStream
-
-# Python modules
-import struct
-import math
-
-
-def get_rms(frames: bytes):
-    """
-    Calculates the average RMS value of a sequence of samples or frames of
-    any sound recording, either input or output.
-    :param frames:
-    """
-    normalize_factor = 100.0 / 128.0
-    shorts = struct.unpack("%dh" % (len(frames)/2), frames)
-    sum_squares = 0.0
-    for sample in shorts:
-        n = sample * normalize_factor
-        sum_squares += n * n
-    return int(math.sqrt(sum_squares) // len(frames))
+from src.package.bases.basestream import BaseStream, Audio
 
 
 class VoicePanel(QWidget, Ui_VoicePanel):
@@ -38,6 +19,13 @@ class VoicePanel(QWidget, Ui_VoicePanel):
         'Recording': 0,
         'Listening': 1
     }
+
+    """ Stream signals forwarding """
+    frames_recorded = pyqtSignal(bytes, int, name='framesRecorded')
+    audio_recorded = pyqtSignal(Audio, name='audioRecorded')
+    playing_finished = pyqtSignal(name='playingFinished')
+    frames_played = pyqtSignal(bytes, int, name='framesPlayed')
+    stream_stopped = pyqtSignal(name='streamStopped')
 
     @pyqtProperty(InputStream)
     def input_stream(self) -> InputStream:
@@ -58,11 +46,15 @@ class VoicePanel(QWidget, Ui_VoicePanel):
         # Signal and slot connections
         self.mic_button.clicked.connect(self.on_mic_clicked)
         self._input.state_changed.connect(self.on_input_state_changed)
-        self._input.frames_recorded.connect(lambda frames, frames_count: self.mic_bar.setValue(get_rms(frames)))
-        self._input.stream_stopped.connect(self.clear_bar)
         self._output.state_changed.connect(self.on_output_state_changed)
-        self._output.frames_played.connect(lambda frames, frames_count: self.sound_bar.setValue(get_rms(frames)))
-        self._output.stream_stopped.connect(self.clear_bar)
+
+        # VoicePanel shows the same signals as its inner streams
+        self.output_stream.playing_finished.connect(self.playing_finished.emit)
+        self.output_stream.frames_played.connect(self.frames_played.emit)
+        self.output_stream.stream_stopped.connect(self.stream_stopped.emit)
+        self.input_stream.frames_recorded.connect(self.frames_recorded.emit)
+        self.input_stream.audio_recorded.connect(self.audio_recorded.emit)
+        self.input_stream.stream_stopped.connect(self.stream_stopped.emit)
 
         if VoicePanel.LOOP_BUFFERING:
             self._input.frames_recorded.connect(self._output.play_frames)
@@ -71,14 +63,6 @@ class VoicePanel(QWidget, Ui_VoicePanel):
 
         # Initial internal update
         self.on_general_update()
-
-    @pyqtSlot(name='clearBar')
-    def clear_bar(self):
-        """
-        Clears the volume bar's value when stopping the streaming device
-        """
-        self.mic_bar.setValue(0)
-        self.sound_bar.setValue(0)
 
     @pyqtSlot(name='onGeneralUpdate')
     def on_general_update(self):

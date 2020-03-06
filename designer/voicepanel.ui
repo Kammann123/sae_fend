@@ -6,20 +6,26 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>455</width>
-    <height>60</height>
+    <width>94</width>
+    <height>35</height>
    </rect>
   </property>
   <property name="sizePolicy">
-   <sizepolicy hsizetype="Maximum" vsizetype="Fixed">
+   <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
     <horstretch>0</horstretch>
     <verstretch>0</verstretch>
    </sizepolicy>
   </property>
+  <property name="minimumSize">
+   <size>
+    <width>35</width>
+    <height>35</height>
+   </size>
+  </property>
   <property name="maximumSize">
    <size>
-    <width>600</width>
-    <height>16777215</height>
+    <width>94</width>
+    <height>40</height>
    </size>
   </property>
   <property name="windowTitle">
@@ -28,23 +34,26 @@
   <property name="styleSheet">
    <string notr="true"/>
   </property>
-  <layout class="QHBoxLayout" name="horizontalLayout">
-   <property name="spacing">
-    <number>1</number>
+  <layout class="QGridLayout" name="gridLayout">
+   <property name="sizeConstraint">
+    <enum>QLayout::SetNoConstraint</enum>
    </property>
    <property name="leftMargin">
-    <number>1</number>
+    <number>0</number>
    </property>
    <property name="topMargin">
-    <number>1</number>
+    <number>0</number>
    </property>
    <property name="rightMargin">
-    <number>1</number>
+    <number>0</number>
    </property>
    <property name="bottomMargin">
-    <number>1</number>
+    <number>0</number>
    </property>
-   <item>
+   <property name="spacing">
+    <number>0</number>
+   </property>
+   <item row="0" column="0" alignment="Qt::AlignHCenter">
     <widget class="QStackedWidget" name="icon_widget">
      <property name="sizePolicy">
       <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
@@ -52,12 +61,39 @@
        <verstretch>0</verstretch>
       </sizepolicy>
      </property>
+     <property name="minimumSize">
+      <size>
+       <width>35</width>
+       <height>35</height>
+      </size>
+     </property>
+     <property name="maximumSize">
+      <size>
+       <width>35</width>
+       <height>35</height>
+      </size>
+     </property>
      <property name="currentIndex">
-      <number>1</number>
+      <number>0</number>
      </property>
      <widget class="QWidget" name="record_page">
       <layout class="QVBoxLayout" name="verticalLayout_2">
-       <item>
+       <property name="spacing">
+        <number>0</number>
+       </property>
+       <property name="leftMargin">
+        <number>0</number>
+       </property>
+       <property name="topMargin">
+        <number>0</number>
+       </property>
+       <property name="rightMargin">
+        <number>0</number>
+       </property>
+       <property name="bottomMargin">
+        <number>0</number>
+       </property>
+       <item alignment="Qt::AlignHCenter|Qt::AlignVCenter">
         <widget class="QPushButton" name="mic_button">
          <property name="sizePolicy">
           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
@@ -67,14 +103,14 @@
          </property>
          <property name="minimumSize">
           <size>
-           <width>40</width>
-           <height>40</height>
+           <width>35</width>
+           <height>35</height>
           </size>
          </property>
          <property name="maximumSize">
           <size>
-           <width>40</width>
-           <height>40</height>
+           <width>35</width>
+           <height>35</height>
           </size>
          </property>
          <property name="font">
@@ -84,6 +120,10 @@
          </property>
          <property name="styleSheet">
           <string notr="true">QPushButton::active {
+	border-image: url(:/mic/assets/buttons/mic/photoshop/mic_normal.png) 0 0 0 0;
+}
+
+QPushButton::closed {
 	border-image: url(:/mic/assets/buttons/mic/photoshop/mic_normal.png) 0 0 0 0;
 }
         
@@ -111,24 +151,39 @@ QPushButton::disabled {
      </widget>
      <widget class="QWidget" name="listen_page">
       <layout class="QVBoxLayout" name="verticalLayout_3">
-       <item>
+       <property name="spacing">
+        <number>0</number>
+       </property>
+       <property name="leftMargin">
+        <number>0</number>
+       </property>
+       <property name="topMargin">
+        <number>0</number>
+       </property>
+       <property name="rightMargin">
+        <number>0</number>
+       </property>
+       <property name="bottomMargin">
+        <number>0</number>
+       </property>
+       <item alignment="Qt::AlignHCenter|Qt::AlignVCenter">
         <widget class="QLabel" name="label">
          <property name="sizePolicy">
           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-           <horstretch>0</horstretch>
-           <verstretch>0</verstretch>
+           <horstretch>1</horstretch>
+           <verstretch>1</verstretch>
           </sizepolicy>
          </property>
          <property name="minimumSize">
           <size>
-           <width>40</width>
-           <height>40</height>
+           <width>35</width>
+           <height>35</height>
           </size>
          </property>
          <property name="maximumSize">
           <size>
-           <width>40</width>
-           <height>40</height>
+           <width>35</width>
+           <height>35</height>
           </size>
          </property>
          <property name="text">
@@ -141,113 +196,6 @@ QPushButton::disabled {
        </item>
       </layout>
      </widget>
-    </widget>
-   </item>
-   <item>
-    <widget class="QWidget" name="widget" native="true">
-     <property name="sizePolicy">
-      <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-       <horstretch>0</horstretch>
-       <verstretch>0</verstretch>
-      </sizepolicy>
-     </property>
-     <layout class="QVBoxLayout" name="verticalLayout">
-      <property name="spacing">
-       <number>4</number>
-      </property>
-      <property name="leftMargin">
-       <number>0</number>
-      </property>
-      <property name="topMargin">
-       <number>0</number>
-      </property>
-      <property name="rightMargin">
-       <number>0</number>
-      </property>
-      <property name="bottomMargin">
-       <number>0</number>
-      </property>
-      <item>
-       <widget class="QProgressBar" name="mic_bar">
-        <property name="maximumSize">
-         <size>
-          <width>16777215</width>
-          <height>15</height>
-         </size>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">QProgressBar::chunk {
-	width: 5px;
-	margin: 0.5px;
-	background-color: rgb(218, 55, 55);
-}
-
-QProgressBar {
-	background-color: rgba(255, 253, 249, 100);
-	border-color:  rgba(255, 253, 249, 100);
-}</string>
-        </property>
-        <property name="value">
-         <number>0</number>
-        </property>
-        <property name="alignment">
-         <set>Qt::AlignCenter</set>
-        </property>
-        <property name="textVisible">
-         <bool>false</bool>
-        </property>
-        <property name="orientation">
-         <enum>Qt::Horizontal</enum>
-        </property>
-        <property name="invertedAppearance">
-         <bool>false</bool>
-        </property>
-        <property name="format">
-         <string>%p%</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QProgressBar" name="sound_bar">
-        <property name="maximumSize">
-         <size>
-          <width>16777215</width>
-          <height>15</height>
-         </size>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">QProgressBar::chunk {
-	width: 5px;
-	margin: 0.5px;
-	background-color: rgb(253, 255, 98);
-}
-
-QProgressBar {
-	background-color: rgba(255, 253, 249, 100);
-	border-color:  rgba(255, 253, 249, 100);
-}</string>
-        </property>
-        <property name="value">
-         <number>0</number>
-        </property>
-        <property name="alignment">
-         <set>Qt::AlignCenter</set>
-        </property>
-        <property name="textVisible">
-         <bool>false</bool>
-        </property>
-        <property name="orientation">
-         <enum>Qt::Horizontal</enum>
-        </property>
-        <property name="invertedAppearance">
-         <bool>false</bool>
-        </property>
-        <property name="format">
-         <string>%p%</string>
-        </property>
-       </widget>
-      </item>
-     </layout>
     </widget>
    </item>
   </layout>

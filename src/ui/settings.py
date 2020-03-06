@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'designer/settings.ui'
+# Form implementation generated from reading ui file 'designer\settings.ui'
 #
 # Created by: PyQt5 UI code generator 5.13.2
 #
@@ -41,7 +41,7 @@ class Ui_Settings(object):
         self.verticalLayout.addWidget(self.tabWidget)
 
         self.retranslateUi(Settings)
-        self.tabWidget.setCurrentIndex(1)
+        self.tabWidget.setCurrentIndex(0)
         QtCore.QMetaObject.connectSlotsByName(Settings)
 
     def retranslateUi(self, Settings):

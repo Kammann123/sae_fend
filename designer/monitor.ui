@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1610</width>
-    <height>561</height>
+    <width>1422</width>
+    <height>494</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -35,7 +35,7 @@
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <property name="spacing">
-    <number>3</number>
+    <number>0</number>
    </property>
    <property name="sizeConstraint">
     <enum>QLayout::SetNoConstraint</enum>
@@ -53,331 +53,418 @@
     <number>0</number>
    </property>
    <item>
-    <widget class="QFrame" name="verticalFrame">
-     <property name="sizePolicy">
-      <sizepolicy hsizetype="Preferred" vsizetype="Maximum">
-       <horstretch>0</horstretch>
-       <verstretch>0</verstretch>
-      </sizepolicy>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">background-color: #464159;</string>
-     </property>
-     <property name="frameShape">
-      <enum>QFrame::NoFrame</enum>
-     </property>
-     <layout class="QHBoxLayout" name="horizontalLayout">
-      <property name="spacing">
-       <number>2</number>
-      </property>
-      <property name="leftMargin">
-       <number>10</number>
-      </property>
-      <property name="topMargin">
-       <number>3</number>
-      </property>
-      <property name="rightMargin">
-       <number>10</number>
-      </property>
-      <property name="bottomMargin">
-       <number>3</number>
-      </property>
-      <item>
-       <widget class="QLabel" name="label">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="font">
-         <font>
-          <family>The Bold Font</family>
-          <pointsize>20</pointsize>
-          <weight>75</weight>
-          <bold>true</bold>
-          <stylestrategy>PreferAntialias</stylestrategy>
-         </font>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">color: #f5eaea;</string>
-        </property>
-        <property name="text">
-         <string>SAE Monitor</string>
-        </property>
-       </widget>
-      </item>
-      <item alignment="Qt::AlignRight">
-       <widget class="VoicePanel" name="voice_panel">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Fixed" vsizetype="Minimum">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="minimumSize">
-         <size>
-          <width>500</width>
-          <height>0</height>
-         </size>
-        </property>
-        <property name="maximumSize">
-         <size>
-          <width>16777215</width>
-          <height>16777215</height>
-         </size>
-        </property>
-        <property name="toolTip">
-         <string>Click and drag here</string>
-        </property>
-        <property name="whatsThis">
-         <string>Voice Panel Widget.  </string>
-        </property>
-       </widget>
-      </item>
-     </layout>
-    </widget>
-   </item>
-   <item>
-    <layout class="QGridLayout" name="gridLayout">
+    <layout class="QHBoxLayout" name="horizontalLayout_2">
      <property name="leftMargin">
-      <number>10</number>
+      <number>0</number>
      </property>
-     <property name="topMargin">
-      <number>10</number>
-     </property>
-     <property name="rightMargin">
-      <number>10</number>
-     </property>
-     <property name="bottomMargin">
-      <number>10</number>
-     </property>
-     <property name="spacing">
-      <number>10</number>
-     </property>
-     <item row="0" column="0">
-      <widget class="QFrame" name="frame_5">
+     <item>
+      <widget class="QFrame" name="frame_2">
        <property name="sizePolicy">
-        <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
-         <horstretch>0</horstretch>
+        <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+         <horstretch>1</horstretch>
          <verstretch>1</verstretch>
         </sizepolicy>
        </property>
+       <property name="minimumSize">
+        <size>
+         <width>100</width>
+         <height>0</height>
+        </size>
+       </property>
        <property name="styleSheet">
-        <string notr="true">background-color: #8bbabb;</string>
+        <string notr="true">background-color: #464159;</string>
        </property>
        <property name="frameShape">
-        <enum>QFrame::NoFrame</enum>
+        <enum>QFrame::StyledPanel</enum>
        </property>
        <property name="frameShadow">
-        <enum>QFrame::Plain</enum>
-       </property>
-       <property name="lineWidth">
-        <number>1</number>
-       </property>
-       <property name="midLineWidth">
-        <number>0</number>
+        <enum>QFrame::Raised</enum>
        </property>
        <layout class="QVBoxLayout" name="verticalLayout_7">
+        <property name="spacing">
+         <number>0</number>
+        </property>
+        <property name="leftMargin">
+         <number>0</number>
+        </property>
+        <property name="topMargin">
+         <number>0</number>
+        </property>
+        <property name="rightMargin">
+         <number>0</number>
+        </property>
+        <property name="bottomMargin">
+         <number>0</number>
+        </property>
         <item>
-         <widget class="Slider" name="slider_0">
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-          <property name="toolTip">
-           <string>Click and drag here</string>
-          </property>
-          <property name="whatsThis">
-           <string>Slider Widget.  </string>
-          </property>
-         </widget>
-        </item>
-       </layout>
-      </widget>
-     </item>
-     <item row="0" column="1">
-      <widget class="QFrame" name="frame_6">
-       <property name="sizePolicy">
-        <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
-         <horstretch>0</horstretch>
-         <verstretch>1</verstretch>
-        </sizepolicy>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">background-color: #8bbabb;</string>
-       </property>
-       <property name="frameShape">
-        <enum>QFrame::NoFrame</enum>
-       </property>
-       <property name="frameShadow">
-        <enum>QFrame::Plain</enum>
-       </property>
-       <property name="lineWidth">
-        <number>1</number>
-       </property>
-       <property name="midLineWidth">
-        <number>0</number>
-       </property>
-       <layout class="QVBoxLayout" name="verticalLayout_8">
-        <item>
-         <widget class="Slider" name="slider_2">
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-          <property name="toolTip">
-           <string>Click and drag here</string>
-          </property>
-          <property name="whatsThis">
-           <string>Slider Widget.  </string>
-          </property>
-         </widget>
-        </item>
-       </layout>
-      </widget>
-     </item>
-     <item row="1" column="1" rowspan="2" colspan="2">
-      <widget class="QFrame" name="frame">
-       <property name="sizePolicy">
-        <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
-         <horstretch>0</horstretch>
-         <verstretch>0</verstretch>
-        </sizepolicy>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">background-color: #8bbabb;</string>
-       </property>
-       <property name="frameShape">
-        <enum>QFrame::NoFrame</enum>
-       </property>
-       <property name="frameShadow">
-        <enum>QFrame::Plain</enum>
-       </property>
-       <property name="lineWidth">
-        <number>1</number>
-       </property>
-       <property name="midLineWidth">
-        <number>0</number>
-       </property>
-       <layout class="QVBoxLayout" name="verticalLayout_2">
-        <item alignment="Qt::AlignHCenter">
-         <widget class="Panel" name="panel">
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>1000</width>
-            <height>354</height>
-           </size>
-          </property>
-          <property name="toolTip">
-           <string>Click and drag here</string>
-          </property>
-          <property name="whatsThis">
-           <string>Panel Widget.  </string>
-          </property>
+         <widget class="QFrame" name="frame_3">
           <property name="styleSheet">
-           <string notr="true"/>
+           <string notr="true">background-color: #f1f9f9;</string>
           </property>
+          <property name="frameShape">
+           <enum>QFrame::StyledPanel</enum>
+          </property>
+          <property name="frameShadow">
+           <enum>QFrame::Raised</enum>
+          </property>
+          <layout class="QVBoxLayout" name="verticalLayout_9">
+           <property name="spacing">
+            <number>0</number>
+           </property>
+           <property name="leftMargin">
+            <number>0</number>
+           </property>
+           <property name="topMargin">
+            <number>0</number>
+           </property>
+           <property name="rightMargin">
+            <number>0</number>
+           </property>
+           <property name="bottomMargin">
+            <number>0</number>
+           </property>
+           <item>
+            <widget class="MessagesWidget" name="messages_widget">
+             <property name="toolTip">
+              <string>Click and drag here</string>
+             </property>
+             <property name="whatsThis">
+              <string>Messages Widget.  </string>
+             </property>
+             <property name="styleSheet">
+              <string notr="true"/>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </item>
+        <item>
+         <widget class="QFrame" name="frame_5">
+          <property name="frameShape">
+           <enum>QFrame::StyledPanel</enum>
+          </property>
+          <property name="frameShadow">
+           <enum>QFrame::Raised</enum>
+          </property>
+          <layout class="QVBoxLayout" name="verticalLayout_10">
+           <property name="spacing">
+            <number>10</number>
+           </property>
+           <property name="leftMargin">
+            <number>0</number>
+           </property>
+           <property name="topMargin">
+            <number>0</number>
+           </property>
+           <property name="rightMargin">
+            <number>0</number>
+           </property>
+           <property name="bottomMargin">
+            <number>0</number>
+           </property>
+           <item>
+            <layout class="QHBoxLayout" name="horizontalLayout">
+             <property name="spacing">
+              <number>0</number>
+             </property>
+             <property name="leftMargin">
+              <number>10</number>
+             </property>
+             <item>
+              <widget class="VoicePanel" name="voice_panel">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="toolTip">
+                <string>Click and drag here</string>
+               </property>
+               <property name="whatsThis">
+                <string>Voice Panel Widget.  </string>
+               </property>
+              </widget>
+             </item>
+             <item alignment="Qt::AlignRight">
+              <widget class="MessageInputWidget" name="message_input_widget">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="toolTip">
+                <string>Click and drag here</string>
+               </property>
+               <property name="whatsThis">
+                <string>Message Input Widget.  </string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="SdMessageInput" name="sd_message_input">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="minimumSize">
+                <size>
+                 <width>50</width>
+                 <height>35</height>
+                </size>
+               </property>
+               <property name="maximumSize">
+                <size>
+                 <width>35</width>
+                 <height>35</height>
+                </size>
+               </property>
+               <property name="toolTip">
+                <string>Click and drag here</string>
+               </property>
+               <property name="whatsThis">
+                <string>SD Message Input Widget.  </string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+           <item>
+            <widget class="VoiceSignalWidget" name="voice_signal">
+             <property name="minimumSize">
+              <size>
+               <width>0</width>
+               <height>40</height>
+              </size>
+             </property>
+             <property name="toolTip">
+              <string>Click and drag here</string>
+             </property>
+             <property name="whatsThis">
+              <string>Voice Signal Widget.  </string>
+             </property>
+             <property name="bar_color" stdset="0">
+              <brush brushstyle="SolidPattern">
+               <color alpha="255">
+                <red>255</red>
+                <green>211</green>
+                <blue>35</blue>
+               </color>
+              </brush>
+             </property>
+            </widget>
+           </item>
+          </layout>
          </widget>
         </item>
        </layout>
       </widget>
      </item>
-     <item row="0" column="2">
-      <widget class="QFrame" name="frame_4">
-       <property name="sizePolicy">
-        <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
-         <horstretch>0</horstretch>
-         <verstretch>1</verstretch>
-        </sizepolicy>
+     <item>
+      <layout class="QGridLayout" name="gridLayout">
+       <property name="leftMargin">
+        <number>10</number>
        </property>
-       <property name="styleSheet">
-        <string notr="true">background-color: #8bbabb;</string>
+       <property name="topMargin">
+        <number>10</number>
        </property>
-       <property name="frameShape">
-        <enum>QFrame::NoFrame</enum>
+       <property name="rightMargin">
+        <number>10</number>
        </property>
-       <property name="frameShadow">
-        <enum>QFrame::Plain</enum>
+       <property name="bottomMargin">
+        <number>10</number>
        </property>
-       <property name="lineWidth">
-        <number>1</number>
+       <property name="spacing">
+        <number>10</number>
        </property>
-       <property name="midLineWidth">
-        <number>0</number>
-       </property>
-       <layout class="QVBoxLayout" name="verticalLayout_5">
-        <item>
-         <widget class="Slider" name="slider_3">
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
+       <item row="1" column="0" rowspan="2" colspan="2">
+        <widget class="QFrame" name="frame">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+           <horstretch>2</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">background-color: #8bbabb;</string>
+         </property>
+         <property name="frameShape">
+          <enum>QFrame::NoFrame</enum>
+         </property>
+         <property name="frameShadow">
+          <enum>QFrame::Plain</enum>
+         </property>
+         <property name="lineWidth">
+          <number>1</number>
+         </property>
+         <property name="midLineWidth">
+          <number>0</number>
+         </property>
+         <layout class="QVBoxLayout" name="verticalLayout_2">
+          <property name="spacing">
+           <number>0</number>
           </property>
-          <property name="toolTip">
-           <string>Click and drag here</string>
+          <property name="leftMargin">
+           <number>0</number>
           </property>
-          <property name="whatsThis">
-           <string>Slider Widget.  </string>
+          <property name="topMargin">
+           <number>0</number>
           </property>
-         </widget>
-        </item>
-       </layout>
-      </widget>
-     </item>
-     <item row="1" column="0" rowspan="2">
-      <widget class="QFrame" name="frame_3">
-       <property name="sizePolicy">
-        <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
-         <horstretch>0</horstretch>
-         <verstretch>0</verstretch>
-        </sizepolicy>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">background-color: #8bbabb;</string>
-       </property>
-       <property name="frameShape">
-        <enum>QFrame::NoFrame</enum>
-       </property>
-       <property name="frameShadow">
-        <enum>QFrame::Plain</enum>
-       </property>
-       <property name="lineWidth">
-        <number>1</number>
-       </property>
-       <property name="midLineWidth">
-        <number>0</number>
-       </property>
-       <layout class="QVBoxLayout" name="verticalLayout_4">
-        <item>
-         <widget class="Slider" name="slider_1">
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
+          <property name="rightMargin">
+           <number>0</number>
           </property>
-          <property name="toolTip">
-           <string>Click and drag here</string>
+          <property name="bottomMargin">
+           <number>0</number>
           </property>
-          <property name="whatsThis">
-           <string>Slider Widget.  </string>
+          <item alignment="Qt::AlignHCenter">
+           <widget class="Panel" name="panel">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>1000</width>
+              <height>354</height>
+             </size>
+            </property>
+            <property name="toolTip">
+             <string>Click and drag here</string>
+            </property>
+            <property name="whatsThis">
+             <string>Panel Widget.  </string>
+            </property>
+            <property name="styleSheet">
+             <string notr="true"/>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item row="0" column="1">
+        <widget class="QFrame" name="frame_4">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+           <horstretch>0</horstretch>
+           <verstretch>2</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">background-color: #8bbabb;</string>
+         </property>
+         <property name="frameShape">
+          <enum>QFrame::NoFrame</enum>
+         </property>
+         <property name="frameShadow">
+          <enum>QFrame::Plain</enum>
+         </property>
+         <property name="lineWidth">
+          <number>1</number>
+         </property>
+         <property name="midLineWidth">
+          <number>0</number>
+         </property>
+         <layout class="QVBoxLayout" name="verticalLayout_5">
+          <property name="spacing">
+           <number>0</number>
           </property>
-         </widget>
-        </item>
-       </layout>
-      </widget>
+          <property name="leftMargin">
+           <number>0</number>
+          </property>
+          <property name="topMargin">
+           <number>0</number>
+          </property>
+          <property name="rightMargin">
+           <number>0</number>
+          </property>
+          <property name="bottomMargin">
+           <number>0</number>
+          </property>
+          <item>
+           <widget class="Slider" name="slider_3">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="toolTip">
+             <string>Click and drag here</string>
+            </property>
+            <property name="whatsThis">
+             <string>Slider Widget.  </string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item row="0" column="0">
+        <widget class="QFrame" name="frame_6">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+           <horstretch>0</horstretch>
+           <verstretch>2</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">background-color: #8bbabb;</string>
+         </property>
+         <property name="frameShape">
+          <enum>QFrame::NoFrame</enum>
+         </property>
+         <property name="frameShadow">
+          <enum>QFrame::Plain</enum>
+         </property>
+         <property name="lineWidth">
+          <number>1</number>
+         </property>
+         <property name="midLineWidth">
+          <number>0</number>
+         </property>
+         <layout class="QVBoxLayout" name="verticalLayout_8">
+          <property name="spacing">
+           <number>0</number>
+          </property>
+          <property name="leftMargin">
+           <number>0</number>
+          </property>
+          <property name="topMargin">
+           <number>0</number>
+          </property>
+          <property name="rightMargin">
+           <number>0</number>
+          </property>
+          <property name="bottomMargin">
+           <number>0</number>
+          </property>
+          <item>
+           <widget class="Slider" name="slider_2">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="toolTip">
+             <string>Click and drag here</string>
+            </property>
+            <property name="whatsThis">
+             <string>Slider Widget.  </string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+      </layout>
      </item>
     </layout>
    </item>
@@ -385,9 +472,24 @@
  </widget>
  <customwidgets>
   <customwidget>
+   <class>MessageInputWidget</class>
+   <extends>QWidget</extends>
+   <header>src/messageinput</header>
+  </customwidget>
+  <customwidget>
+   <class>MessagesWidget</class>
+   <extends>QWidget</extends>
+   <header>src/messages</header>
+  </customwidget>
+  <customwidget>
    <class>Panel</class>
    <extends>QWidget</extends>
    <header>src/panel</header>
+  </customwidget>
+  <customwidget>
+   <class>SdMessageInput</class>
+   <extends>QWidget</extends>
+   <header>src/sdmessageinput</header>
   </customwidget>
   <customwidget>
    <class>Slider</class>
@@ -399,7 +501,125 @@
    <extends>QWidget</extends>
    <header>src/voicepanel</header>
   </customwidget>
+  <customwidget>
+   <class>VoiceSignalWidget</class>
+   <extends>QWidget</extends>
+   <header>src/widgets/voicesignalwidget</header>
+  </customwidget>
  </customwidgets>
  <resources/>
- <connections/>
+ <connections>
+  <connection>
+   <sender>message_input_widget</sender>
+   <signal>sendMessage(QString)</signal>
+   <receiver>messages_widget</receiver>
+   <slot>addMessage(QString)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>347</x>
+     <y>439</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>367</x>
+     <y>286</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>messages_widget</sender>
+   <signal>messageSelected(QString)</signal>
+   <receiver>message_input_widget</receiver>
+   <slot>setMessage(QString)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>180</x>
+     <y>293</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>208</x>
+     <y>439</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>voice_panel</sender>
+   <signal>streamStopped()</signal>
+   <receiver>voice_signal</receiver>
+   <slot>clear()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>47</x>
+     <y>425</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>54</x>
+     <y>490</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>voice_panel</sender>
+   <signal>framesRecorded(PyQt_PyObject,int)</signal>
+   <receiver>voice_signal</receiver>
+   <slot>setSamples(PyQt_PyObject,int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>28</x>
+     <y>425</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>20</x>
+     <y>490</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>voice_panel</sender>
+   <signal>framesPlayed(PyQt_PyObject,int)</signal>
+   <receiver>voice_signal</receiver>
+   <slot>setSamples(PyQt_PyObject,int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>47</x>
+     <y>425</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>37</x>
+     <y>490</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>sd_message_input</sender>
+   <signal>sendStringMessage(QString)</signal>
+   <receiver>messages_widget</receiver>
+   <slot>addMessage(QString)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>391</x>
+     <y>414</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>393</x>
+     <y>298</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>messages_widget</sender>
+   <signal>messageSelected(QString)</signal>
+   <receiver>message_input_widget</receiver>
+   <slot>setMessage(QString)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>209</x>
+     <y>223</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>208</x>
+     <y>424</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
 </ui>

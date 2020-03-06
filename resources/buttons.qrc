@@ -5,11 +5,31 @@
     <file>../assets/buttons/arrow_left/left_hover.png</file>
     <file>../assets/buttons/arrow_left/left_pressed.png</file>
   </qresource>
+  <qresource prefix="sd">
+    <file>../assets/buttons/sd/photoshop/sd_hover.png</file>
+    <file>../assets/buttons/sd/photoshop/sd_normal.png</file>
+    <file>../assets/buttons/sd/photoshop/sd_pressed.png</file>
+  </qresource>
+  <qresource prefix="message_v3">
+    <file>../assets/buttons/messages/v3/mic_hover.png</file>
+    <file>../assets/buttons/messages/v3/mic_normal.png</file>
+    <file>../assets/buttons/messages/v3/mic_pressed.png</file>
+  </qresource>
   <qresource prefix="mic">
     <file>../assets/buttons/mic/photoshop/mic_disabled.png</file>
     <file>../assets/buttons/mic/photoshop/mic_hover.png</file>
     <file>../assets/buttons/mic/photoshop/mic_normal.png</file>
     <file>../assets/buttons/mic/photoshop/mic_pressed.png</file>
+  </qresource>
+  <qresource prefix="message_v1">
+    <file>../assets/buttons/messages/send_hover.png</file>
+    <file>../assets/buttons/messages/send_normal.png</file>
+    <file>../assets/buttons/messages/send_press.png</file>
+  </qresource>
+  <qresource prefix="message_v2">
+    <file>../assets/buttons/messages/v2/send_hover.png</file>
+    <file>../assets/buttons/messages/v2/send_normal.png</file>
+    <file>../assets/buttons/messages/v2/send_pressed.png</file>
   </qresource>
   <qresource prefix="arrow_right">
     <file>../assets/buttons/arrow_right/right_disabled.png</file>

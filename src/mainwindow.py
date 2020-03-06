@@ -23,12 +23,10 @@ class MainWindow(QMainWindow, Ui_MainWindow, Router):
         # Private members/attributes
         self.session = UserSession()
 
-        # TODO! Here we are setting a manual service for testing purpose, please remember to REMOVE THIS LINE!
-        from src.manualservice import ManualService
-        self.manual_service = ManualService()
-        self.session.set_data_service(self.manual_service)
-        self.manual_service.show()
-        # TODO! Remove end
+        # Setting the session services
+        # self.session.set_data_service( ... )
+        # self.session.set_message_service( ... )
+        # self.session.set_stream_service( ...)
 
         # Connections between signals and slots
         self.routing.connect(self.on_routing)

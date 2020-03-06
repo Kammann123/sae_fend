@@ -5,8 +5,8 @@
     <file>../assets/thermometer/thermometer.png</file>
   </qresource>
   <qresource prefix="listening">
-    <file>../assets/listening/photoshop/listening.png</file>
     <file>../assets/listening/listening-6d551d3509ecd92969e2d3a4cc7f9ba0.png</file>
+    <file>../assets/listening/photoshop/listening.png</file>
     <file>../assets/listening/headphones-512.png</file>
     <file>../assets/listening/High_volume-512.png</file>
   </qresource>
