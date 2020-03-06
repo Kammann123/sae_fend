@@ -5,6 +5,7 @@ from PyQt5.QtCore import pyqtSignal, pyqtProperty, pyqtSlot
 # Project modules
 from src.package.bases.dataservice import DataService
 from src.package.bases.streamservice import StreamService
+from src.package.bases.messageservice import MessageService
 
 
 class UserSession(QObject):
@@ -18,6 +19,7 @@ class UserSession(QObject):
     services_changed = pyqtSignal(name='servicesChanged')
     data_service_changed = pyqtSignal(name='dataServiceChanged')
     stream_service_changed = pyqtSignal(name='streamServiceChanged')
+    message_service_changed = pyqtSignal(name='messageServiceChanged')
     sound_settings_changed = pyqtSignal(dict, name='soundSettingsChanged')
     mic_settings_changed = pyqtSignal(dict, name='micSettingsChanged')
 
@@ -29,6 +31,10 @@ class UserSession(QObject):
     def stream_service(self) -> StreamService:
         return self._stream_service
 
+    @pyqtProperty(MessageService)
+    def message_service(self) -> MessageService:
+        return self._message_service
+
     @pyqtProperty(bool)
     def has_stream_service(self) -> bool:
         return self._stream_service is not None
@@ -37,12 +43,18 @@ class UserSession(QObject):
     def has_data_service(self) -> bool:
         return self._data_service is not None
 
+    @pyqtProperty(bool)
+    def has_message_service(self) -> bool:
+        return self._message_service is not None
+
     @pyqtProperty(list)
     def services(self) -> list:
-        return [
+        raw = [
             self._data_service,
-            self._stream_service
+            self._stream_service,
+            self._message_service
         ]
+        return [service for service in raw if raw is not None]
 
     @pyqtProperty(dict)
     def sound_settings(self) -> dict:
@@ -58,6 +70,7 @@ class UserSession(QObject):
         # Private members/attributes of the class
         self._data_service = None
         self._stream_service = None
+        self._message_service = None
 
         self._sound_settings = sound_settings
         self._mic_settings = mic_settings
@@ -98,4 +111,14 @@ class UserSession(QObject):
         """
         self._stream_service = service
         self.stream_service_changed.emit()
+        self.services_changed.emit()
+
+    @pyqtSlot(MessageService, name='setMessageService')
+    def set_message_service(self, service: MessageService):
+        """
+        Sets the new MessageService
+        :param service: MessageService instance
+        """
+        self._message_service = service
+        self.message_service_changed.emit()
         self.services_changed.emit()

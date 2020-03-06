@@ -87,9 +87,6 @@ border: 0px;</string>
          <property name="selectionBehavior">
           <enum>QAbstractItemView::SelectItems</enum>
          </property>
-         <property name="itemAlignment">
-          <set>Qt::AlignTop</set>
-         </property>
          <property name="currentRow">
           <number>-1</number>
          </property>

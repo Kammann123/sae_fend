@@ -46,6 +46,11 @@ class Monitor(QWidget, Ui_Monitor):
         # Connecting the UserSession's services
         if self.session is not None:
 
+            # Handling the connections to the MessageService
+            self.session.message_service_changed.connect(self.load_stream_service)
+            if self.session.has_message_service:
+                self.load_message_service()
+
             # Handling the connections to the StreamService
             self.session.stream_service_changed.connect(self.load_stream_service)
             if self.session.has_stream_service:
@@ -63,6 +68,24 @@ class Monitor(QWidget, Ui_Monitor):
     @pyqtSlot(name='onSettings')
     def on_settings(self):
         self.settings_dialog.exec()
+
+    @pyqtSlot(name='loadMessageService')
+    def load_message_service(self):
+        """ MessageService has been changed and binding must be done. """
+        if self.session is not None:
+            if self.session.has_message_service:
+                self.sd_message_input.send_index_message.connect(self.session.message_service.send_memory_message)
+                self.message_input_widget.send_message.connect(self.session.message_service.send_message)
+                self.session.message_service.disconnected.connect(self.unload_message_service)
+
+    @pyqtSlot(name='unloadMessageService')
+    def unload_message_service(self):
+        """ MessageService has been changed and binding must be removed. """
+        if self.session is not None:
+            if self.session.has_message_service:
+                self.sd_message_input.send_index_message.disconnect(self.session.message_service.send_memory_message)
+                self.message_input_widget.send_message.disconnect(self.session.message_service.send_message)
+                self.session.message_service.disconnected.disconnect(self.unload_message_service)
 
     @pyqtSlot(name='loadStreamService')
     def load_stream_service(self):
