@@ -1,3 +1,7 @@
+# Python modules
+import os
+from datetime import datetime
+
 # PyQt5 modules
 from PyQt5.QtCore import QObject
 from PyQt5.QtCore import pyqtSignal, pyqtProperty, pyqtSlot
@@ -6,6 +10,9 @@ from PyQt5.QtCore import pyqtSignal, pyqtProperty, pyqtSlot
 from src.package.bases.dataservice import DataService
 from src.package.bases.streamservice import StreamService
 from src.package.bases.messageservice import MessageService
+
+# Third party modules
+import pandas as pd
 
 
 class UserSession(QObject):
@@ -75,6 +82,10 @@ class UserSession(QObject):
         self._sound_settings = sound_settings
         self._mic_settings = mic_settings
 
+        # Creating the session folder for future use
+        self._dir = datetime.now().strftime('%d-%m-%Y__%H-%M')
+        os.mkdir(self._dir)
+
     @pyqtSlot(dict, name='setSoundSettings')
     def set_sound_settings(self, settings: dict):
         """
@@ -113,6 +124,7 @@ class UserSession(QObject):
         self.stream_service_changed.emit()
         self.services_changed.emit()
 
+<<<<<<< HEAD
     @pyqtSlot(MessageService, name='setMessageService')
     def set_message_service(self, service: MessageService):
         """
@@ -122,3 +134,28 @@ class UserSession(QObject):
         self._message_service = service
         self.message_service_changed.emit()
         self.services_changed.emit()
+=======
+    @pyqtSlot(name='saveData')
+    def save_data(self):
+        """
+        Save DataCollections from DataServices
+        """
+        properties = self._data_service.names
+        properties_data = self._data_service.get_data_by_names(properties)
+        csv_file_names = []
+        for data in properties_data:
+            time = [datetime.fromtimestamp(moment/1000) for moment in data.timestamps]
+            formatted_time = [instant.strftime('%H:%M:%S') for instant in time]
+            values = data.values
+            csv_file_names.append(self._dir+'/'+data.name+'.csv')
+            file = open(csv_file_names[-1], 'w')
+            file.write('Time,Value' + os.linesep)
+            for index in range(len(time)):
+                file.write(formatted_time[index] + ',' + str(values[index]) + os.linesep)
+            file.close()
+        excel_file = pd.ExcelWriter(self._dir+'/Data.xlsx')
+        for csv_file in csv_file_names:
+            to_attach = pd.read_csv(csv_file)
+            to_attach.to_excel(excel_file, sheet_name=csv_file.split('/')[-1].split('.')[0])
+        excel_file.save()
+>>>>>>> 336c434eb61a008a94ef229ef4f0321ae01b2732

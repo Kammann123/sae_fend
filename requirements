@@ -4,3 +4,5 @@ PyQt5
 PyQtChart
 PyQtGraph
 PyAudio
+openpyxl
+Pandas
