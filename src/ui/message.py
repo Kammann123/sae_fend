@@ -2,10 +2,9 @@
 
 # Form implementation generated from reading ui file 'designer\message.ui'
 #
-# Created by: PyQt5 UI code generator 5.13.2
+# Created by: PyQt5 UI code generator 5.12.2
 #
 # WARNING! All changes made in this file will be lost!
-
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 
@@ -81,6 +80,8 @@ class Ui_Message(object):
         Message.setWindowTitle(_translate("Message", "Form"))
         self.time_label.setText(_translate("Message", "11:00"))
         self.message_label.setText(_translate("Message", "Este es un mensaje predeterminado para probar el componente de mensaje."))
+
+
 
 
 if __name__ == "__main__":

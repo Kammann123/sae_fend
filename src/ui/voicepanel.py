@@ -2,10 +2,9 @@
 
 # Form implementation generated from reading ui file 'designer\voicepanel.ui'
 #
-# Created by: PyQt5 UI code generator 5.13.2
+# Created by: PyQt5 UI code generator 5.12.2
 #
 # WARNING! All changes made in this file will be lost!
-
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 
@@ -105,6 +104,8 @@ class Ui_VoicePanel(object):
     def retranslateUi(self, VoicePanel):
         _translate = QtCore.QCoreApplication.translate
         VoicePanel.setWindowTitle(_translate("VoicePanel", "Form"))
+
+
 from src.resources import buttons_rc
 from src.resources import icons_rc
 

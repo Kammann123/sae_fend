@@ -2,10 +2,9 @@
 
 # Form implementation generated from reading ui file 'designer\monitor.ui'
 #
-# Created by: PyQt5 UI code generator 5.13.2
+# Created by: PyQt5 UI code generator 5.12.2
 #
 # WARNING! All changes made in this file will be lost!
-
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 
@@ -13,7 +12,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_Monitor(object):
     def setupUi(self, Monitor):
         Monitor.setObjectName("Monitor")
-        Monitor.resize(1422, 494)
+        Monitor.resize(698, 494)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Minimum)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
@@ -27,12 +26,26 @@ class Ui_Monitor(object):
 "    contentMargins: 0px;\n"
 "}")
         self.verticalLayout = QtWidgets.QVBoxLayout(Monitor)
-        self.verticalLayout.setSizeConstraint(QtWidgets.QLayout.SetNoConstraint)
         self.verticalLayout.setContentsMargins(0, 0, 0, 0)
         self.verticalLayout.setSpacing(0)
         self.verticalLayout.setObjectName("verticalLayout")
+        self.nav_bar = NavBarWidget(Monitor)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.nav_bar.sizePolicy().hasHeightForWidth())
+        self.nav_bar.setSizePolicy(sizePolicy)
+        self.nav_bar.setMaximumSize(QtCore.QSize(16777215, 50))
+        self.nav_bar.setStyleSheet("NavBarWidget{\n"
+"    border-width: 1;\n"
+"    border-color: balck;\n"
+"}")
+        self.nav_bar.setObjectName("nav_bar")
+        self.verticalLayout.addWidget(self.nav_bar)
         self.horizontalLayout_2 = QtWidgets.QHBoxLayout()
-        self.horizontalLayout_2.setContentsMargins(0, -1, -1, -1)
+        self.horizontalLayout_2.setSizeConstraint(QtWidgets.QLayout.SetFixedSize)
+        self.horizontalLayout_2.setContentsMargins(0, 0, 10, 5)
+        self.horizontalLayout_2.setSpacing(6)
         self.horizontalLayout_2.setObjectName("horizontalLayout_2")
         self.frame_2 = QtWidgets.QFrame(Monitor)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Preferred)
@@ -112,8 +125,8 @@ class Ui_Monitor(object):
         self.verticalLayout_7.addWidget(self.frame_5)
         self.horizontalLayout_2.addWidget(self.frame_2)
         self.gridLayout = QtWidgets.QGridLayout()
-        self.gridLayout.setContentsMargins(10, 10, 10, 10)
-        self.gridLayout.setSpacing(10)
+        self.gridLayout.setContentsMargins(5, 3, 0, 0)
+        self.gridLayout.setSpacing(5)
         self.gridLayout.setObjectName("gridLayout")
         self.frame = QtWidgets.QFrame(Monitor)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Fixed)
@@ -196,12 +209,12 @@ class Ui_Monitor(object):
         self.verticalLayout.addLayout(self.horizontalLayout_2)
 
         self.retranslateUi(Monitor)
-        self.message_input_widget.sendMessage['QString'].connect(self.messages_widget.addMessage)
-        self.messages_widget.messageSelected['QString'].connect(self.message_input_widget.setMessage)
         self.voice_panel.streamStopped.connect(self.voice_signal.clear)
-        self.voice_panel.framesRecorded['PyQt_PyObject','int'].connect(self.voice_signal.setSamples)
-        self.voice_panel.framesPlayed['PyQt_PyObject','int'].connect(self.voice_signal.setSamples)
+        self.message_input_widget.sendMessage['QString'].connect(self.messages_widget.addMessage)
         self.sd_message_input.sendStringMessage['QString'].connect(self.messages_widget.addMessage)
+        self.voice_panel.framesRecorded['PyQt_PyObject','int'].connect(self.voice_signal.setSamples)
+        self.messages_widget.messageSelected['QString'].connect(self.message_input_widget.setMessage)
+        self.voice_panel.framesPlayed['PyQt_PyObject','int'].connect(self.voice_signal.setSamples)
         self.messages_widget.messageSelected['QString'].connect(self.message_input_widget.setMessage)
         QtCore.QMetaObject.connectSlotsByName(Monitor)
 
@@ -224,8 +237,11 @@ class Ui_Monitor(object):
         self.slider_3.setWhatsThis(_translate("Monitor", "Slider Widget.  "))
         self.slider_2.setToolTip(_translate("Monitor", "Click and drag here"))
         self.slider_2.setWhatsThis(_translate("Monitor", "Slider Widget.  "))
+
+
 from src.messageinput import MessageInputWidget
 from src.messages import MessagesWidget
+from src.navbar import NavBarWidget
 from src.panel import Panel
 from src.sdmessageinput import SdMessageInput
 from src.slider import Slider

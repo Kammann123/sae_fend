@@ -29,19 +29,19 @@ class Monitor(QWidget, Ui_Monitor):
         self.session = session
 
         # Configuring the menu bar of the Monitor
-        self.menu_bar = QMenuBar()
-        self.file_menu = QMenu('Archivo')
-        self.file_menu.addAction('Configuraciones', self.on_settings)
-        self.file_menu.addAction('Salir')
-        self.menu_bar.addMenu(self.file_menu)
-        self.layout().setMenuBar(self.menu_bar)
+        # self.menu_bar = QMenuBar()
+        # self.file_menu = QMenu('Archivo')
+        # self.file_menu.addAction('Configuraciones', self.on_settings)
+        # self.file_menu.addAction('Salir')
+        # self.menu_bar.addMenu(self.file_menu)
+        # self.layout().setMenuBar(self.menu_bar)
 
         # Inner dialogs and helpers of the Monitor
-        self.settings_dialog = Settings()
-        self.settings_dialog.sound_settings_changed.connect(self.session.set_sound_settings)
-        self.settings_dialog.mic_settings_changed.connect(self.session.set_mic_settings)
-        self.session.set_mic_settings(self.settings_dialog.mic_settings)
-        self.session.set_sound_settings(self.settings_dialog.sound_settings)
+        # self.settings_dialog = Settings()
+        self.nav_bar.sound_settings_changed.connect(self.session.set_sound_settings)
+        self.nav_bar.mic_settings_changed.connect(self.session.set_mic_settings)
+        self.session.set_mic_settings(self.nav_bar.mic_settings)
+        self.session.set_sound_settings(self.nav_bar.sound_settings)
 
         # Connecting the UserSession's services
         if self.session is not None:
@@ -65,9 +65,9 @@ class Monitor(QWidget, Ui_Monitor):
                 if self.session.data_service.has_data:
                     self.load_data(self.session.data_service.data)
 
-    @pyqtSlot(name='onSettings')
-    def on_settings(self):
-        self.settings_dialog.exec()
+    # @pyqtSlot(name='onSettings')
+    # def on_settings(self):
+        # self.settings_dialog.exec()
 
     @pyqtSlot(name='loadMessageService')
     def load_message_service(self):

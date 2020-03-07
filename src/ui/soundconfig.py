@@ -2,10 +2,9 @@
 
 # Form implementation generated from reading ui file 'designer\soundconfig.ui'
 #
-# Created by: PyQt5 UI code generator 5.13.2
+# Created by: PyQt5 UI code generator 5.12.2
 #
 # WARNING! All changes made in this file will be lost!
-
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 
@@ -128,6 +127,8 @@ class Ui_SoundConfig(object):
         self.channels.setText(_translate("SoundConfig", "1"))
         self.frames_per_buffer.setText(_translate("SoundConfig", "1024"))
         self.apply.setText(_translate("SoundConfig", "Aplicar cambios"))
+
+
 
 
 if __name__ == "__main__":

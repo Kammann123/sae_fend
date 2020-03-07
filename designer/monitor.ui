@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1422</width>
+    <width>698</width>
     <height>494</height>
    </rect>
   </property>
@@ -37,9 +37,6 @@
    <property name="spacing">
     <number>0</number>
    </property>
-   <property name="sizeConstraint">
-    <enum>QLayout::SetNoConstraint</enum>
-   </property>
    <property name="leftMargin">
     <number>0</number>
    </property>
@@ -53,9 +50,46 @@
     <number>0</number>
    </property>
    <item>
+    <widget class="NavBarWidget" name="nav_bar" native="true">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="maximumSize">
+      <size>
+       <width>16777215</width>
+       <height>50</height>
+      </size>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">NavBarWidget{
+	border-width: 1;
+	border-color: balck;
+}</string>
+     </property>
+    </widget>
+   </item>
+   <item>
     <layout class="QHBoxLayout" name="horizontalLayout_2">
+     <property name="spacing">
+      <number>6</number>
+     </property>
+     <property name="sizeConstraint">
+      <enum>QLayout::SetFixedSize</enum>
+     </property>
      <property name="leftMargin">
       <number>0</number>
+     </property>
+     <property name="topMargin">
+      <number>0</number>
+     </property>
+     <property name="rightMargin">
+      <number>10</number>
+     </property>
+     <property name="bottomMargin">
+      <number>5</number>
      </property>
      <item>
       <widget class="QFrame" name="frame_2">
@@ -124,7 +158,7 @@
             <number>0</number>
            </property>
            <item>
-            <widget class="MessagesWidget" name="messages_widget">
+            <widget class="MessagesWidget" name="messages_widget" native="true">
              <property name="toolTip">
               <string>Click and drag here</string>
              </property>
@@ -172,7 +206,7 @@
               <number>10</number>
              </property>
              <item>
-              <widget class="VoicePanel" name="voice_panel">
+              <widget class="VoicePanel" name="voice_panel" native="true">
                <property name="sizePolicy">
                 <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                  <horstretch>0</horstretch>
@@ -188,7 +222,7 @@
               </widget>
              </item>
              <item alignment="Qt::AlignRight">
-              <widget class="MessageInputWidget" name="message_input_widget">
+              <widget class="MessageInputWidget" name="message_input_widget" native="true">
                <property name="sizePolicy">
                 <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
                  <horstretch>0</horstretch>
@@ -204,7 +238,7 @@
               </widget>
              </item>
              <item>
-              <widget class="SdMessageInput" name="sd_message_input">
+              <widget class="SdMessageInput" name="sd_message_input" native="true">
                <property name="sizePolicy">
                 <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                  <horstretch>0</horstretch>
@@ -234,7 +268,7 @@
             </layout>
            </item>
            <item>
-            <widget class="VoiceSignalWidget" name="voice_signal">
+            <widget class="VoiceSignalWidget" name="voice_signal" native="true">
              <property name="minimumSize">
               <size>
                <width>0</width>
@@ -267,19 +301,19 @@
      <item>
       <layout class="QGridLayout" name="gridLayout">
        <property name="leftMargin">
-        <number>10</number>
+        <number>5</number>
        </property>
        <property name="topMargin">
-        <number>10</number>
+        <number>3</number>
        </property>
        <property name="rightMargin">
-        <number>10</number>
+        <number>0</number>
        </property>
        <property name="bottomMargin">
-        <number>10</number>
+        <number>0</number>
        </property>
        <property name="spacing">
-        <number>10</number>
+        <number>5</number>
        </property>
        <item row="1" column="0" rowspan="2" colspan="2">
         <widget class="QFrame" name="frame">
@@ -321,7 +355,7 @@
            <number>0</number>
           </property>
           <item alignment="Qt::AlignHCenter">
-           <widget class="Panel" name="panel">
+           <widget class="Panel" name="panel" native="true">
             <property name="sizePolicy">
              <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
               <horstretch>0</horstretch>
@@ -388,7 +422,7 @@
            <number>0</number>
           </property>
           <item>
-           <widget class="Slider" name="slider_3">
+           <widget class="Slider" name="slider_3" native="true">
             <property name="sizePolicy">
              <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
               <horstretch>0</horstretch>
@@ -446,7 +480,7 @@
            <number>0</number>
           </property>
           <item>
-           <widget class="Slider" name="slider_2">
+           <widget class="Slider" name="slider_2" native="true">
             <property name="sizePolicy">
              <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
               <horstretch>0</horstretch>
@@ -506,41 +540,15 @@
    <extends>QWidget</extends>
    <header>src/widgets/voicesignalwidget</header>
   </customwidget>
+  <customwidget>
+   <class>NavBarWidget</class>
+   <extends>QWidget</extends>
+   <header>src/navbar</header>
+   <container>1</container>
+  </customwidget>
  </customwidgets>
  <resources/>
  <connections>
-  <connection>
-   <sender>message_input_widget</sender>
-   <signal>sendMessage(QString)</signal>
-   <receiver>messages_widget</receiver>
-   <slot>addMessage(QString)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>347</x>
-     <y>439</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>367</x>
-     <y>286</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>messages_widget</sender>
-   <signal>messageSelected(QString)</signal>
-   <receiver>message_input_widget</receiver>
-   <slot>setMessage(QString)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>180</x>
-     <y>293</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>208</x>
-     <y>439</y>
-    </hint>
-   </hints>
-  </connection>
   <connection>
    <sender>voice_panel</sender>
    <signal>streamStopped()</signal>
@@ -558,34 +566,18 @@
    </hints>
   </connection>
   <connection>
-   <sender>voice_panel</sender>
-   <signal>framesRecorded(PyQt_PyObject,int)</signal>
-   <receiver>voice_signal</receiver>
-   <slot>setSamples(PyQt_PyObject,int)</slot>
+   <sender>message_input_widget</sender>
+   <signal>sendMessage(QString)</signal>
+   <receiver>messages_widget</receiver>
+   <slot>addMessage(QString)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>28</x>
-     <y>425</y>
+     <x>347</x>
+     <y>439</y>
     </hint>
     <hint type="destinationlabel">
-     <x>20</x>
-     <y>490</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>voice_panel</sender>
-   <signal>framesPlayed(PyQt_PyObject,int)</signal>
-   <receiver>voice_signal</receiver>
-   <slot>setSamples(PyQt_PyObject,int)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>47</x>
-     <y>425</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>37</x>
-     <y>490</y>
+     <x>367</x>
+     <y>286</y>
     </hint>
    </hints>
   </connection>
@@ -606,6 +598,22 @@
    </hints>
   </connection>
   <connection>
+   <sender>voice_panel</sender>
+   <signal>framesRecorded(PyQt_PyObject,int)</signal>
+   <receiver>voice_signal</receiver>
+   <slot>setSamples(PyQt_PyObject,int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>28</x>
+     <y>425</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>20</x>
+     <y>490</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
    <sender>messages_widget</sender>
    <signal>messageSelected(QString)</signal>
    <receiver>message_input_widget</receiver>
@@ -618,6 +626,38 @@
     <hint type="destinationlabel">
      <x>208</x>
      <y>424</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>voice_panel</sender>
+   <signal>framesPlayed(PyQt_PyObject,int)</signal>
+   <receiver>voice_signal</receiver>
+   <slot>setSamples(PyQt_PyObject,int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>47</x>
+     <y>425</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>37</x>
+     <y>490</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>messages_widget</sender>
+   <signal>messageSelected(QString)</signal>
+   <receiver>message_input_widget</receiver>
+   <slot>setMessage(QString)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>180</x>
+     <y>293</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>208</x>
+     <y>439</y>
     </hint>
    </hints>
   </connection>

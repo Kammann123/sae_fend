@@ -2,10 +2,9 @@
 
 # Form implementation generated from reading ui file 'designer\micconfig.ui'
 #
-# Created by: PyQt5 UI code generator 5.13.2
+# Created by: PyQt5 UI code generator 5.12.2
 #
 # WARNING! All changes made in this file will be lost!
-
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 
@@ -128,6 +127,8 @@ class Ui_MicConfig(object):
         self.channels.setText(_translate("MicConfig", "1"))
         self.frames_per_buffer.setText(_translate("MicConfig", "1024"))
         self.apply.setText(_translate("MicConfig", "Aplicar cambios"))
+
+
 
 
 if __name__ == "__main__":

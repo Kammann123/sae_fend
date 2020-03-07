@@ -2,10 +2,9 @@
 
 # Form implementation generated from reading ui file 'designer\sdmessageinput.ui'
 #
-# Created by: PyQt5 UI code generator 5.13.2
+# Created by: PyQt5 UI code generator 5.12.2
 #
 # WARNING! All changes made in this file will be lost!
-
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 
@@ -56,6 +55,8 @@ class Ui_SdMessage(object):
     def retranslateUi(self, SdMessage):
         _translate = QtCore.QCoreApplication.translate
         SdMessage.setWindowTitle(_translate("SdMessage", "Form"))
+
+
 from src.resources import buttons_rc
 
 

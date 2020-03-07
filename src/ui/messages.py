@@ -2,10 +2,9 @@
 
 # Form implementation generated from reading ui file 'designer\messages.ui'
 #
-# Created by: PyQt5 UI code generator 5.13.2
+# Created by: PyQt5 UI code generator 5.12.2
 #
 # WARNING! All changes made in this file will be lost!
-
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 
@@ -39,7 +38,6 @@ class Ui_Messages(object):
         self.message_box.setAlternatingRowColors(False)
         self.message_box.setSelectionMode(QtWidgets.QAbstractItemView.SingleSelection)
         self.message_box.setSelectionBehavior(QtWidgets.QAbstractItemView.SelectItems)
-        self.message_box.setItemAlignment(QtCore.Qt.AlignTop)
         self.message_box.setObjectName("message_box")
         self.verticalLayout_3.addWidget(self.message_box)
         self.scrollArea.setWidget(self.scrollAreaWidgetContents)
@@ -53,6 +51,8 @@ class Ui_Messages(object):
         _translate = QtCore.QCoreApplication.translate
         Messages.setWindowTitle(_translate("Messages", "Form"))
         self.message_box.setSortingEnabled(False)
+
+
 
 
 if __name__ == "__main__":

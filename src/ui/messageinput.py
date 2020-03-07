@@ -2,10 +2,9 @@
 
 # Form implementation generated from reading ui file 'designer\messageinput.ui'
 #
-# Created by: PyQt5 UI code generator 5.13.2
+# Created by: PyQt5 UI code generator 5.12.2
 #
 # WARNING! All changes made in this file will be lost!
-
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 
@@ -84,6 +83,8 @@ class Ui_MessageInput(object):
 "</style></head><body style=\" font-family:\'Arial\'; font-size:9pt; font-weight:400; font-style:normal;\">\n"
 "<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:\'Arial\';\"><br /></p></body></html>"))
         self.message.setPlaceholderText(_translate("MessageInput", "Escribe un mensaje..."))
+
+
 from src.resources import buttons_rc
 from src.resources import icons_rc
 
