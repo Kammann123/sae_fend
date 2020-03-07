@@ -84,7 +84,10 @@ class UserSession(QObject):
 
         # Creating the session folder for future use
         self._dir = datetime.now().strftime('%d-%m-%Y__%H-%M')
-        os.mkdir(self._dir)
+        try:
+            os.mkdir(self._dir)
+        except FileExistsError:
+            pass
 
     @pyqtSlot(dict, name='setSoundSettings')
     def set_sound_settings(self, settings: dict):
