@@ -2,9 +2,10 @@
 
 # Form implementation generated from reading ui file 'designer\monitor.ui'
 #
-# Created by: PyQt5 UI code generator 5.12.2
+# Created by: PyQt5 UI code generator 5.14.2
 #
 # WARNING! All changes made in this file will be lost!
+
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 
@@ -237,8 +238,6 @@ class Ui_Monitor(object):
         self.slider_3.setWhatsThis(_translate("Monitor", "Slider Widget.  "))
         self.slider_2.setToolTip(_translate("Monitor", "Click and drag here"))
         self.slider_2.setWhatsThis(_translate("Monitor", "Slider Widget.  "))
-
-
 from src.messageinput import MessageInputWidget
 from src.messages import MessagesWidget
 from src.navbar import NavBarWidget

@@ -2,9 +2,10 @@
 
 # Form implementation generated from reading ui file 'designer\index.ui'
 #
-# Created by: PyQt5 UI code generator 5.12.2
+# Created by: PyQt5 UI code generator 5.14.2
 #
 # WARNING! All changes made in this file will be lost!
+
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 
@@ -89,8 +90,6 @@ class Ui_Index(object):
         _translate = QtCore.QCoreApplication.translate
         Index.setWindowTitle(_translate("Index", "Form"))
         self.continue_button.setText(_translate("Index", "CONTINUAR"))
-
-
 from src.resources import index_rc
 
 

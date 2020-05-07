@@ -2,9 +2,10 @@
 
 # Form implementation generated from reading ui file 'designer\settings.ui'
 #
-# Created by: PyQt5 UI code generator 5.12.2
+# Created by: PyQt5 UI code generator 5.14.2
 #
 # WARNING! All changes made in this file will be lost!
+
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 
@@ -52,8 +53,6 @@ class Ui_Settings(object):
         self.sound_config.setToolTip(_translate("Settings", "Click and drag here"))
         self.sound_config.setWhatsThis(_translate("Settings", "Sound Config Widget.  "))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_2), _translate("Settings", "Sonido"))
-
-
 from src.micconfig import MicConfig
 from src.soundconfig import SoundConfig
 

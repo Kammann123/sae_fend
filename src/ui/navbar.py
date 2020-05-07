@@ -2,9 +2,10 @@
 
 # Form implementation generated from reading ui file 'designer\navbar.ui'
 #
-# Created by: PyQt5 UI code generator 5.12.2
+# Created by: PyQt5 UI code generator 5.14.2
 #
 # WARNING! All changes made in this file will be lost!
+
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 
@@ -150,8 +151,6 @@ class Ui_NavBar(object):
         self.sound.setText(_translate("NavBar", "Sound"))
         self.mic.setText(_translate("NavBar", "Microphone"))
         self.usb.setText(_translate("NavBar", "Serial Port"))
-
-
 from src.resources import index_rc
 
 

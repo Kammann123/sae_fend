@@ -2,9 +2,10 @@
 
 # Form implementation generated from reading ui file 'designer\panel.ui'
 #
-# Created by: PyQt5 UI code generator 5.12.2
+# Created by: PyQt5 UI code generator 5.14.2
 #
 # WARNING! All changes made in this file will be lost!
+
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 
@@ -300,8 +301,6 @@ class Ui_Panel(object):
         self.air_temperature_display.setProperty("label", _translate("Panel", "°C"))
         self.rpm_display.setToolTip(_translate("Panel", "Click and drag here"))
         self.rpm_display.setWhatsThis(_translate("Panel", "Circular Gauge Widget.  "))
-
-
 from src.widgets.gaugewidget import CircularGauge
 from src.widgets.icondatawidget import IconData
 from src.resources import icons_rc

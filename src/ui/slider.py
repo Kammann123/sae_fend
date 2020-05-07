@@ -2,9 +2,10 @@
 
 # Form implementation generated from reading ui file 'designer\slider.ui'
 #
-# Created by: PyQt5 UI code generator 5.12.2
+# Created by: PyQt5 UI code generator 5.14.2
 #
 # WARNING! All changes made in this file will be lost!
+
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 
@@ -114,8 +115,6 @@ class Ui_Slider(object):
         self.title.setText(_translate("Slider", "Engine Temperature"))
         self.data_chart.setToolTip(_translate("Slider", "Click and drag here"))
         self.data_chart.setWhatsThis(_translate("Slider", "Data Chart Widget.  "))
-
-
 from src.widgets.datachartwidget import DataChart
 from src.resources import buttons_rc
 

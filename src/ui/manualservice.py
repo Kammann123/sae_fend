@@ -2,9 +2,10 @@
 
 # Form implementation generated from reading ui file 'designer\manualservice.ui'
 #
-# Created by: PyQt5 UI code generator 5.12.2
+# Created by: PyQt5 UI code generator 5.14.2
 #
 # WARNING! All changes made in this file will be lost!
+
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 
@@ -184,8 +185,6 @@ class Ui_ManualService(object):
         self.label_9.setText(_translate("ManualService", "Battery"))
         self.label_10.setText(_translate("ManualService", "Lambda"))
         self.load_button.setText(_translate("ManualService", "CARGAR"))
-
-
 
 
 if __name__ == "__main__":

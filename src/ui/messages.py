@@ -2,9 +2,10 @@
 
 # Form implementation generated from reading ui file 'designer\messages.ui'
 #
-# Created by: PyQt5 UI code generator 5.12.2
+# Created by: PyQt5 UI code generator 5.14.2
 #
 # WARNING! All changes made in this file will be lost!
+
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 
@@ -51,8 +52,6 @@ class Ui_Messages(object):
         _translate = QtCore.QCoreApplication.translate
         Messages.setWindowTitle(_translate("Messages", "Form"))
         self.message_box.setSortingEnabled(False)
-
-
 
 
 if __name__ == "__main__":
